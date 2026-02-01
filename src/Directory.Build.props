@@ -40,10 +40,10 @@
     <None Include="../README.md" Pack="true" PackagePath="\" Condition="Exists('../README.md')" />
     <!-- Icon -->
     <None
-      Include="../.branding/icon.png"
+      Include="../branding/icon.png"
       Pack="true"
       PackagePath="\"
-      Condition="Exists('../.branding/icon.png')"
+      Condition="Exists('../branding/icon.png')"
     />
   </ItemGroup>
 </Project>

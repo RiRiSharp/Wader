@@ -1,6 +1,6 @@
 # Wader
 
-![Logo](./.branding/logo.svg)
+![Logo](./branding/logo.svg)
 
 ## Name
 > Waders denotes a waterproof boot or overalls extending from the foot to the thigh, the chest or even the neck.
