@@ -6,7 +6,7 @@
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <Nullable>enable</Nullable>
     <AnalysisMode>All</AnalysisMode>
-    <BaseVersion>1.0.0</BaseVersion>
+    <Version>1.0.0</Version>
   </PropertyGroup>
   <PropertyGroup>
     <Deterministic>true</Deterministic>
