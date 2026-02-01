@@ -34,17 +34,18 @@ jobs:
 
       - name: Build (Release)
         working-directory: src
-        run: dotnet build --configuration Release --no-restore
+        run: |
+          VERSION_SUFFIX="alpha-${{ github.run_number }}"
+          dotnet build --configuration Release --no-restore \
+            -p:VersionSuffix="$VERSION_SUFFIX" \
+            -p:ContinuousIntegrationBuild=true
 
       # For <Version>1.2.3</Version>, adds the suffix: <VersionSuffix>alpha-<run_number></VersionSuffix>
       - name: Pack with alpha suffix
         working-directory: src
         run: |
           VERSION_SUFFIX="alpha-${{ github.run_number }}"
-          dotnet pack --configuration Release --no-build \
-            -p:VersionSuffix="$VERSION_SUFFIX" \
-            -p:ContinuousIntegrationBuild=true \
-            -o artifacts
+          dotnet pack --configuration Release --no-build -o artifacts
 
       - name: Push nupkg
         working-directory: src
