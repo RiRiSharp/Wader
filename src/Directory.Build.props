@@ -19,7 +19,8 @@
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
     <Deterministic>true</Deterministic>
-    <GenerateDocumentationFile>false</GenerateDocumentationFile> <!-- TODO: Generate proper documentation -->
+    <GenerateDocumentationFile>false</GenerateDocumentationFile> <!-- TODO: Generate proper
+    documentation -->
     <IncludeSymbols>true</IncludeSymbols>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
     <IsPackable>true</IsPackable>
@@ -37,13 +38,13 @@
     <PackageReference Include="Microsoft.SourceLink.GitHub" PrivateAssets="All" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="../README.md" Pack="true" PackagePath="\" Condition="Exists('../README.md')" />
-    <!-- Icon -->
+    <None Include="../../README.md" Pack="true" PackagePath="\"
+      Condition="Exists('../../README.md')" />
     <None
-      Include="../branding/icon.png"
+      Include="../../branding/logo.png"
       Pack="true"
       PackagePath="\"
-      Condition="Exists('../branding/icon.png')"
+      Condition="Exists('../../branding/logo.png')"
     />
   </ItemGroup>
 </Project>
