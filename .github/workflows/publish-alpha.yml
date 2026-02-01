@@ -46,12 +46,23 @@ jobs:
             -p:ContinuousIntegrationBuild=true \
             -o artifacts
 
-      - name: Push to NuGet.org
+      - name: Push nupkg
         working-directory: src
         env:
           NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
         run: |
           find artifacts -name "*.nupkg" -print0 | xargs -0 -I{} \
+            dotnet nuget push "{}" \
+              --api-key "$NUGET_API_KEY" \
+              --source https://api.nuget.org/v3/index.json \
+              --skip-duplicate
+
+      - name: Push nupkg
+        working-directory: src
+        env:
+          NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
+        run: |
+          find artifacts -name "*.snupkg" -print0 | xargs -0 -I{} \
             dotnet nuget push "{}" \
               --api-key "$NUGET_API_KEY" \
               --source https://api.nuget.org/v3/index.json \

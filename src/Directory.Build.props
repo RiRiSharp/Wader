@@ -9,10 +9,21 @@
     <Version>1.0.0</Version>
   </PropertyGroup>
   <PropertyGroup>
-    <Deterministic>true</Deterministic>
-    <EmbedUntrackedSources>true</EmbedUntrackedSources>
-    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <PackageProjectUrl>https://github.com/RiRiSharp/Wader</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/RiRiSharp/Wader.git</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageIcon>logo.png</PackageIcon>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
+    <Deterministic>true</Deterministic>
+    <GenerateDocumentationFile>false</GenerateDocumentationFile> <!-- TODO: Generate proper documentation -->
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    <IsPackable>true</IsPackable>
+    <IncludeBuildOutput>true</IncludeBuildOutput>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="CSharpier.MsBuild">
@@ -23,5 +34,16 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="Microsoft.SourceLink.GitHub" PrivateAssets="All" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="../README.md" Pack="true" PackagePath="\" Condition="Exists('../README.md')" />
+    <!-- Icon -->
+    <None
+      Include="../.branding/icon.png"
+      Pack="true"
+      PackagePath="\"
+      Condition="Exists('../.branding/icon.png')"
+    />
   </ItemGroup>
 </Project>
