@@ -71,15 +71,14 @@ public class BsButtonBaseTests() : BsComponentTests<BsButtonBase>("""<button cla
     {
         // Arrange
         ConfigureTestContext();
+        var attributes = AttributesForDefaultTests;
+        attributes["disabled"] = "";
 
         // Act
         var cut = GetCut(parameters => parameters.Add(p => p.Disabled, disabled));
 
         // Assert
-        var expectedMarkupString = GetExpectedHtml(
-            $"{ClassesForDefaultTests} {expectedClass}",
-            AttributesForDefaultTests
-        );
+        var expectedMarkupString = GetExpectedHtml($"{ClassesForDefaultTests} {expectedClass}", attributes);
         cut.MarkupMatches(expectedMarkupString);
     }
 
