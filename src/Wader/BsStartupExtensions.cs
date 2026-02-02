@@ -14,7 +14,20 @@ namespace Wader;
 
 public static class BsStartupExtensions
 {
-    public static IServiceCollection EnableJsInteractiveComponents(this IServiceCollection services)
+    public static IServiceCollection AddWaderServerJsFallbacks(this IServiceCollection services)
+    {
+        return services
+            .AddNoOpJs<IBsAccordionJsFunctions>()
+            .AddNoOpJs<IBsAlertJsFunctions>()
+            .AddNoOpJs<IBsButtonJsFunctions>()
+            .AddNoOpJs<IBsCarouselJsFunctions>()
+            .AddNoOpJs<IBsCheckboxJsFunctions>()
+            .AddNoOpJs<IBsCollapseJsFunctions>()
+            .AddNoOpJs<IBsModalJsFunctions>()
+            .AddNoOpJs<IBsOffcanvasJsFunctions>();
+    }
+
+    public static IServiceCollection AddWaderWasmJsInterop(this IServiceCollection services)
     {
         return services
             .AddBootstrapJs<IBsAccordionJsFunctions, BsAccordionJsFunctions>()
@@ -38,5 +51,11 @@ public static class BsStartupExtensions
             var bsJsObjectRef = new BsJsObjectReference(jsRuntime, filePath);
             return ActivatorUtilities.CreateInstance<TImpl>(sp, bsJsObjectRef);
         });
+    }
+
+    private static IServiceCollection AddNoOpJs<T>(this IServiceCollection services)
+        where T : class
+    {
+        return services.AddScoped<T>(_ => NoOpJsFunctions.Create<T>());
     }
 }

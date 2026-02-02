@@ -2,24 +2,15 @@ namespace Wader.Components.Buttons;
 
 public enum BsButtonVariant
 {
-    None = 0,
-    Primary = 1,
-    Secondary = 2,
-    Success = 3,
-    Danger = 4,
-    Warning = 5,
-    Info = 6,
-    Light = 7,
-    Dark = 8,
-    Link = 9,
-    OutlinePrimary = 10,
-    OutlineSecondary = 11,
-    OutlineSuccess = 12,
-    OutlineDanger = 13,
-    OutlineWarning = 14,
-    OutlineInfo = 15,
-    OutlineLight = 16,
-    OutlineDark = 17,
+    Primary = 0,
+    Secondary = 1,
+    Success = 2,
+    Danger = 3,
+    Warning = 4,
+    Info = 5,
+    Light = 6,
+    Dark = 7,
+    Link = 8,
 }
 
 internal static class BsButtonVariantExtensions
@@ -28,7 +19,6 @@ internal static class BsButtonVariantExtensions
     {
         return variant switch
         {
-            BsButtonVariant.None => null,
             BsButtonVariant.Primary => "btn-primary",
             BsButtonVariant.Secondary => "btn-secondary",
             BsButtonVariant.Success => "btn-success",
@@ -38,14 +28,6 @@ internal static class BsButtonVariantExtensions
             BsButtonVariant.Light => "btn-light",
             BsButtonVariant.Dark => "btn-dark",
             BsButtonVariant.Link => "btn-link",
-            BsButtonVariant.OutlinePrimary => "btn-outline-primary",
-            BsButtonVariant.OutlineSecondary => "btn-outline-secondary",
-            BsButtonVariant.OutlineSuccess => "btn-outline-success",
-            BsButtonVariant.OutlineDanger => "btn-outline-danger",
-            BsButtonVariant.OutlineWarning => "btn-outline-warning",
-            BsButtonVariant.OutlineInfo => "btn-outline-info",
-            BsButtonVariant.OutlineLight => "btn-outline-light",
-            BsButtonVariant.OutlineDark => "btn-outline-dark",
             _ => throw new ArgumentOutOfRangeException(nameof(variant), variant, null),
         };
     }

@@ -11,7 +11,7 @@ public class BsButtonGroupTests() : BsComponentTests<BsButtonGroup>("""<div clas
     [InlineData(BsButtonGroupSize.Regular, "")]
     [InlineData(BsButtonGroupSize.Small, "btn-group-sm")]
     [InlineData(BsButtonGroupSize.Large, "btn-group-lg")]
-    public void SizeParameterAppliesCorrectClass(BsButtonGroupSize size, string? expectedClass)
+    public void SizeAddsCorrectClass(BsButtonGroupSize size, string? expectedClass)
     {
         // Arrange
         ConfigureTestContext();

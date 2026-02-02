@@ -1,21 +1,22 @@
-using Microsoft.AspNetCore.Components;
+﻿using Microsoft.AspNetCore.Components;
 using Wader.BaseComponents;
 using Wader.Components.Buttons.Internals;
 
 namespace Wader.Components.Buttons;
 
-public partial class BsButtonAnchor : BsChildContentComponent, IAsyncDisposable
+public partial class BsButtonBase : BsChildContentComponent, IAsyncDisposable
 {
     internal ElementReference HtmlRef;
 
-    protected override string BsComponentClasses =>
-        $"btn {Variant.ToBootstrapClass()} {Size.ToBootstrapClass()} {DisabledClass} {ActiveClass}";
-
-    [Parameter]
-    public BsButtonVariant Variant { get; set; } = BsButtonVariant.Primary;
+    protected override string BsComponentClasses => $"btn {Size.ToBootstrapClass()} {ActiveClass} {DisabledClass}";
 
     [Parameter]
     public BsButtonSize Size { get; set; }
+
+    [Parameter]
+    public bool Active { get; set; }
+
+    private string? ActiveClass => Active ? "active" : null;
 
     [Parameter]
     public bool Disabled { get; set; }
@@ -23,9 +24,7 @@ public partial class BsButtonAnchor : BsChildContentComponent, IAsyncDisposable
     private string? DisabledClass => Disabled ? "disabled" : null;
 
     [Parameter]
-    public bool Active { get; set; }
-
-    private string? ActiveClass => Active ? "active" : null;
+    public BsButtonType ButtonType { get; set; }
 
     [Inject]
     private IBsButtonJsFunctions ButtonJsFunctions { get; set; } = null!;

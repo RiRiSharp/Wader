@@ -104,7 +104,7 @@ public class BsCarouselTests() : BsComponentTests<BsCarousel>("""<div class="car
     [Theory]
     [InlineData(BsCarouselTransitionType.Slide, "")]
     [InlineData(BsCarouselTransitionType.Crossfade, "carousel-fade")]
-    public void TransitionTypeParameterAppliesCorrectClass(BsCarouselTransitionType variant, string? expectedClass)
+    public void TransitionTypeAddsCorrectClass(BsCarouselTransitionType variant, string? expectedClass)
     {
         // Arrange
         ConfigureTestContext();

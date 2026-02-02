@@ -1,8 +1,8 @@
 @inherits Wader.BaseComponents.BsChildContentComponent
 
-@switch (Type)
+@switch (LinkType)
 {
-    case BsPageLinkType.Anchor:
+    case BsPageLinkType.Link:
         <a @attributes="RenderAttributes">
             @(ChildContent)
         </a>

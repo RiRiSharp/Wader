@@ -1,6 +1,6 @@
 @inherits Wader.BaseComponents.BsChildContentComponent
 
-@switch (Type)
+@switch (ItemType)
 {
     case BsListGroupItemType.ListItem:
         <li @attributes="RenderAttributes">
@@ -12,7 +12,7 @@
             @(ChildContent)
         </button>
         break;
-    case BsListGroupItemType.Anchor:
+    case BsListGroupItemType.Link:
         <a @attributes="RenderAttributes">
             @(ChildContent)
         </a>

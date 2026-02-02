@@ -20,7 +20,7 @@ public class BsAlertTests() : BsComponentTests<BsAlert>("""<div class="alert {0}
     [InlineData(BsAlertVariant.Info, "alert-info")]
     [InlineData(BsAlertVariant.Light, "alert-light")]
     [InlineData(BsAlertVariant.Dark, "alert-dark")]
-    public void VariantParameterAppliesCorrectClass(BsAlertVariant variant, string? expectedClass)
+    public void VariantAddsCorrectClass(BsAlertVariant variant, string? expectedClass)
     {
         // Arrange
         ConfigureTestContext();

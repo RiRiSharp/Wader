@@ -6,6 +6,6 @@ namespace Wader.Components.Pagination;
 public partial class BsPageLink : BsChildContentComponent
 {
     [Parameter]
-    public BsPageLinkType Type { get; set; }
+    public BsPageLinkType LinkType { get; set; }
     protected override string BsComponentClasses => "page-link";
 }

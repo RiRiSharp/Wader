@@ -7,14 +7,14 @@ public class BsListGroupItemTests() : BsComponentTests<BsListGroupItem>("""<li c
     [Theory]
     [InlineData(BsListGroupItemType.ListItem, "li")]
     [InlineData(BsListGroupItemType.Button, "button")]
-    [InlineData(BsListGroupItemType.Anchor, "a")]
-    public void TypeCreatesCorrectTag(BsListGroupItemType type, string expectedTag)
+    [InlineData(BsListGroupItemType.Link, "a")]
+    public void ItemTypeCreatesCorrectTag(BsListGroupItemType type, string expectedTag)
     {
         // Arrange
         ConfigureTestContext();
 
         // Act
-        var cut = GetCut(parameters => parameters.Add(x => x.Type, type));
+        var cut = GetCut(parameters => parameters.Add(x => x.ItemType, type));
 
         // Assert
         cut.MarkupMatches($"<{expectedTag} diff:ignoreAttributes></{expectedTag}>");
@@ -87,7 +87,7 @@ public class BsListGroupItemTests() : BsComponentTests<BsListGroupItem>("""<li c
 
         // Act
         var cut = GetCut(parameters =>
-            parameters.Add(p => p.Type, BsListGroupItemType.Button).AddUnmatched(attributeKey, value)
+            parameters.Add(p => p.ItemType, BsListGroupItemType.Button).AddUnmatched(attributeKey, value)
         );
 
         // Assert

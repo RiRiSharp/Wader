@@ -9,6 +9,6 @@ export function toggle(buttonRef) {
 export function dispose(buttonRef) {
     if (!buttonRef) return;
 
-    const buttonInstance = bootstrap.Button.getOrCreateInstance(alertRef);
+    const buttonInstance = bootstrap.Button.getOrCreateInstance(buttonRef);
     buttonInstance.dispose();
 }

@@ -11,7 +11,7 @@ public class BsCardImageTests() : BsComponentTests<BsCardImage>("""<img class="{
     [InlineData(BsCardImagePosition.Top, "card-img-top")]
     [InlineData(BsCardImagePosition.Bottom, "card-img-bottom")]
     [InlineData(BsCardImagePosition.Overlay, "card-img")]
-    public void PositionParameterAppliesCorrectClass(BsCardImagePosition position, string? expectedClass)
+    public void PositionAddsCorrectClass(BsCardImagePosition position, string? expectedClass)
     {
         // Arrange
         ConfigureTestContext();

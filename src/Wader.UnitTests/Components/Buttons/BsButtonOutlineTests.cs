@@ -4,22 +4,22 @@ using Wader.Components.Buttons.Internals;
 
 namespace Wader.UnitTests.Components.Buttons;
 
-public class BsButtonTests() : BsComponentTests<BsButton>("""<button type="button" class="btn {0}" {1}></button>""")
+public class BsButtonOutlineTests()
+    : BsComponentTests<BsButtonOutline>("""<button type="button" class="btn {0}" {1}></button>""")
 {
     private readonly IBsButtonJsFunctions _buttonJsFunctionsMock = Substitute.For<IBsButtonJsFunctions>();
-    protected override string ClassesForDefaultTests => "btn-primary";
+    protected override string ClassesForDefaultTests => "btn-outline-primary";
 
     [Theory]
-    [InlineData(BsButtonVariant.Primary, "btn-primary")]
-    [InlineData(BsButtonVariant.Secondary, "btn-secondary")]
-    [InlineData(BsButtonVariant.Success, "btn-success")]
-    [InlineData(BsButtonVariant.Danger, "btn-danger")]
-    [InlineData(BsButtonVariant.Warning, "btn-warning")]
-    [InlineData(BsButtonVariant.Info, "btn-info")]
-    [InlineData(BsButtonVariant.Light, "btn-light")]
-    [InlineData(BsButtonVariant.Dark, "btn-dark")]
-    [InlineData(BsButtonVariant.Link, "btn-link")]
-    public void VariantAddsCorrectClass(BsButtonVariant variant, string? expectedClass)
+    [InlineData(BsButtonOutlineVariant.Primary, "btn-outline-primary")]
+    [InlineData(BsButtonOutlineVariant.Secondary, "btn-outline-secondary")]
+    [InlineData(BsButtonOutlineVariant.Success, "btn-outline-success")]
+    [InlineData(BsButtonOutlineVariant.Danger, "btn-outline-danger")]
+    [InlineData(BsButtonOutlineVariant.Warning, "btn-outline-warning")]
+    [InlineData(BsButtonOutlineVariant.Info, "btn-outline-info")]
+    [InlineData(BsButtonOutlineVariant.Light, "btn-outline-light")]
+    [InlineData(BsButtonOutlineVariant.Dark, "btn-outline-dark")]
+    public void VariantAddsCorrectClass(BsButtonOutlineVariant variant, string? expectedClass)
     {
         // Arrange
         ConfigureTestContext();

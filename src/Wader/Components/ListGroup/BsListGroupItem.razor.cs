@@ -14,7 +14,7 @@ public partial class BsListGroupItem : BsChildContentComponent
     /// Has a different name because button also has a type tag, and those two cannot coexist.
     /// </remark>
     [Parameter]
-    public BsListGroupItemType Type { get; set; }
+    public BsListGroupItemType ItemType { get; set; }
 
     [Parameter]
     public BsListGroupItemVariant Variant { get; set; }

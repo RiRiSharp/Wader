@@ -3,7 +3,7 @@ using Wader.BaseComponents;
 
 namespace Wader.Components.Buttons;
 
-public partial class BsButton : BsChildContentComponent, IAsyncDisposable
+public partial class BsButtonOutline : BsChildContentComponent, IAsyncDisposable
 {
     private BsButtonBase? _buttonBase;
     protected override string? BsComponentClasses => Variant.ToBootstrapClass();
@@ -12,7 +12,7 @@ public partial class BsButton : BsChildContentComponent, IAsyncDisposable
     public BsButtonType ButtonType { get; set; }
 
     [Parameter]
-    public BsButtonVariant Variant { get; set; }
+    public BsButtonOutlineVariant Variant { get; set; }
 
     [Parameter]
     public BsButtonSize Size { get; set; }

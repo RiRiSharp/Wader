@@ -1,0 +1,23 @@
+﻿@using Wader.BaseComponents
+@inherits BsChildContentComponent
+
+@switch (ButtonType)
+{
+    case BsButtonType.Button:
+        <button type="button" @attributes="RenderAttributes" @ref="HtmlRef">
+            @(ChildContent)
+        </button>
+        break;
+    case BsButtonType.Link:
+        <a role="button" @attributes="RenderAttributes" @ref="HtmlRef">
+            @(ChildContent)
+        </a>
+        break;
+    case BsButtonType.Label:
+        <label @attributes="RenderAttributes" @ref="HtmlRef">
+            @(ChildContent)
+        </label>
+        break;
+    default:
+        throw new ArgumentOutOfRangeException();
+}
