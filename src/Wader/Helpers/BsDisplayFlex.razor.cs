@@ -3,7 +3,7 @@ using Wader.BaseComponents;
 
 namespace Wader.Helpers;
 
-public partial class DisplayFlex : BsChildContentComponent
+public partial class BsDisplayFlex : BsChildContentComponent
 {
     protected override string BsComponentClasses => $"d-flex {Justify.ToBootstrapClass()}";
 

@@ -1,9 +1,13 @@
+using Microsoft.AspNetCore.Components;
 using Wader.BaseComponents;
+using Wader.Primitives;
 
 namespace Wader.Layout.Containers;
 
-public partial class BsContainer(string breakpoint = "") : BsChildContentComponent
+public partial class BsContainer : BsChildContentComponent
 {
-    protected override string BsComponentClasses =>
-        string.IsNullOrWhiteSpace(breakpoint) ? "container" : $"container-{breakpoint}";
+    protected override string? BsComponentClasses => Breakpoint.ToBootstrapContainerClass();
+
+    [Parameter]
+    public BsBreakpoint Breakpoint { get; set; }
 }
