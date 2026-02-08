@@ -13,7 +13,7 @@ public class BsButtonBaseTests() : BsComponentTests<BsButtonBase>("""<button cla
     [InlineData(BsButtonType.Button, "button")]
     [InlineData(BsButtonType.Link, "a")]
     [InlineData(BsButtonType.Label, "label")]
-    public void TypeCreatesCorrectTag(BsButtonType type, string expectedTag)
+    public void ButtonTypeCreatesCorrectTag(BsButtonType type, string expectedTag)
     {
         // Arrange
         ConfigureTestContext();

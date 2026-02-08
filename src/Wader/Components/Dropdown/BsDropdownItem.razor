@@ -1,7 +1,19 @@
 @inherits Wader.BaseComponents.BsChildContentComponent
 
 <li>
-    <a @attributes="RenderAttributes">
-        @(ChildContent)
-    </a>
+    @switch (ItemType)
+    {
+        case BsDropdownItemType.Link:
+            <a @attributes="RenderAttributes">
+                @(ChildContent)
+            </a>
+            break;
+        case BsDropdownItemType.Button:
+            <button type="button" @attributes="RenderAttributes">
+                @(ChildContent)
+            </button>
+            break;
+        default:
+                throw new ArgumentOutOfRangeException();
+    }
 </li>
