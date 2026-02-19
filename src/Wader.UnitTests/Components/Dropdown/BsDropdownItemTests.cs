@@ -14,7 +14,7 @@ public class BsDropdownItemTests()
         ConfigureTestContext();
 
         // Act
-        var cut = GetCut(parameters => parameters.Add(x => x.ItemType, type));
+        var cut = GetCut(parameters => parameters.Add(x => x.ElType, type));
 
         // Assert
         cut.MarkupMatches($"<li><{expectedTag} diff:ignoreAttributes></{expectedTag}></li>");

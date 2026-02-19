@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
   <PropertyGroup>
     <BootstrapIconsVersion>1.13.1</BootstrapIconsVersion>
-    <RootNamespace>Wader.Icons</RootNamespace>
+    <PhosphorIconsVersion>2.0.8</PhosphorIconsVersion>
   </PropertyGroup>
   <ItemGroup>
     <SupportedPlatform Include="browser" />
@@ -11,5 +11,12 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Wader\Wader.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="wwwroot\fonts\bootstrap-icons.woff" />
+    <_ContentIncludedByDefault Remove="wwwroot\fonts\bootstrap-icons.woff2" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="wwwroot\sprites\bootstrap\" />
   </ItemGroup>
 </Project>

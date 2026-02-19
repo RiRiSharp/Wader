@@ -14,7 +14,7 @@ public class BsListGroupItemTests() : BsComponentTests<BsListGroupItem>("""<li c
         ConfigureTestContext();
 
         // Act
-        var cut = GetCut(parameters => parameters.Add(x => x.ItemType, type));
+        var cut = GetCut(parameters => parameters.Add(x => x.ElType, type));
 
         // Assert
         cut.MarkupMatches($"<{expectedTag} diff:ignoreAttributes></{expectedTag}>");
@@ -87,7 +87,7 @@ public class BsListGroupItemTests() : BsComponentTests<BsListGroupItem>("""<li c
 
         // Act
         var cut = GetCut(parameters =>
-            parameters.Add(p => p.ItemType, BsListGroupItemType.Button).AddUnmatched(attributeKey, value)
+            parameters.Add(p => p.ElType, BsListGroupItemType.Button).AddUnmatched(attributeKey, value)
         );
 
         // Assert

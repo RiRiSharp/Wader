@@ -8,7 +8,7 @@ public partial class BsDropdownItem : BsChildContentComponent
     protected override string BsComponentClasses => $"dropdown-item {ActiveClass} {DisabledClass}";
 
     [Parameter]
-    public BsDropdownItemType ItemType { get; set; }
+    public BsDropdownItemType ElType { get; set; }
 
     [Parameter]
     public bool Active { get; set; }

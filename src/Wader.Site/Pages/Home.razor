@@ -4,6 +4,8 @@
 @using Wader.Components.Dropdown
 @using Wader.Components.ListGroup
 @using Wader.Components.Offcanvas
+@using Wader.Icons.Bootstrap
+@using Wader.Icons.Phosphor
 
 <PageTitle>Home</PageTitle>
 
@@ -32,11 +34,11 @@
 </BsDropdown>
 
 <BsListGroup>
-    <BsListGroupItem Itemtype="BsListGroupItemType.Button" Variant="BsListGroupItemVariant.Primary">Super cool
+    <BsListGroupItem ElType="BsListGroupItemType.Button" Variant="BsListGroupItemVariant.Primary">Super cool
     </BsListGroupItem>
-    <BsListGroupItem Itemtype="BsListGroupItemType.Button" Variant="BsListGroupItemVariant.Primary">Super cool
+    <BsListGroupItem ElType="BsListGroupItemType.Button" Variant="BsListGroupItemVariant.Primary">Super cool
     </BsListGroupItem>
-    <BsListGroupItem Itemtype="BsListGroupItemType.Anchor" Variant="BsListGroupItemVariant.Success"
+    <BsListGroupItem ElType="BsListGroupItemType.Link" Variant="BsListGroupItemVariant.Success"
                      href="https://duckduckgo.com">Linkert
     </BsListGroupItem>
 </BsListGroup>
@@ -45,6 +47,14 @@
     <BsOffcanvasTitle>Title!</BsOffcanvasTitle>
     <BsOffcanvasBody>Body!</BsOffcanvasBody>
 </BsOffcanvas>
+
+<h3>
+    Icons!
+</h3>
+<BsIcon Name="@(BsIconNames.Airplane)"/>
+<PhosphorIcon Name="@(PhosphorIconNames.Airplane)"/>
+<PhosphorIcon Name="@(PhosphorIconNames.Airplane)" Weight="PhosphorIconWeight.DuoTone"/>
+<PhosphorIcon Name="@(PhosphorIconNames.Airplane)" Weight="PhosphorIconWeight.Light"/>
 
 @code {
     private BsCollapse? _collapse;
