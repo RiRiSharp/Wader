@@ -41,7 +41,7 @@ internal static class BsAttributeUtilities
             return "";
         }
 
-        return string.IsNullOrEmpty(classNames) ? classAttributeValue : $"{classAttributeValue} {classNames}";
+        return string.IsNullOrEmpty(classNames) ? classAttributeValue : $"{classNames} {classAttributeValue}";
     }
 
     /// <summary>
@@ -86,9 +86,7 @@ internal static class BsAttributeUtilities
         additionalAttributes ??= [];
         var allClasses = CombineClassNames(additionalAttributes, classNames);
         // Make sure every class is only mentioned once, otherwise every parameterSet call will re-add some classes
-        additionalAttributes["class"] = allClasses
-            .Split(' ', StringSplitOptions.RemoveEmptyEntries)
-            .ToHashSet()
-            .Aggregate("", (current, @class) => @class + " " + current);
+        var classSet = allClasses.Split(' ', StringSplitOptions.RemoveEmptyEntries).ToHashSet();
+        additionalAttributes["class"] = string.Join(" ", classSet);
     }
 }
