@@ -1,7 +1,0 @@
-@inherits Wader.BaseComponents.BsComponent
-
-@* The attribute data-bs-target is added because some styling is dependent on it, even though we are trying to do everything with C#/Js interop
-   We add data-bs-slide-to because the JS needs to know which slide this corresponds to. We can create our own attribute, but why do that when already one exists fitted for this purpose. *@
-<button type="button" @onclick="MoveToCorrespondingSlideAsync" @attributes="RenderAttributes" data-bs-target data-bs-slide-to="@(SlideNo)">
-    @(ChildContent)
-</button>

@@ -1,5 +1,5 @@
 using Microsoft.AspNetCore.Components;
-using Wader.Components.NavBar;
+using Wader.Bootstrap.Components.NavBar;
 
 namespace Wader.Site.Layout.Components;
 

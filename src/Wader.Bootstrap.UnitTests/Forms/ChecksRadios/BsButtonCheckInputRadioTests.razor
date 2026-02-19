@@ -1,0 +1,23 @@
+@using Wader.Bootstrap.Forms.ChecksRadios
+@inherits BsComponentTests<Wader.Bootstrap.Forms.ChecksRadios.BsButtonCheckInputRadio<string>>
+
+@code {
+    [Theory]
+    [InlineData("someValueId", SOME_VALUE_VAR)]
+    [InlineData("differentValueId", DIFFERENT_VALUE_VAR)]
+    public void ClickingRadioSetsCorrectValue(string idToClick, string expectedBoundValue)
+    {
+        // Arrange
+        var fragment = Render(@<BsInputRadioGroup @bind-Value="_boundValue">
+            <BsButtonCheckInputRadio Value="SOME_VALUE_VAR" id="someValueId"/>
+            <BsButtonCheckInputRadio Value="DIFFERENT_VALUE_VAR" id="differentValueId"/>
+        </BsInputRadioGroup>);
+
+        // Act
+        var cut = fragment.Find($"#{idToClick}");
+        cut.Change(new ChangeEventArgs { Value = expectedBoundValue });
+
+        // Assert
+        Assert.Equal(expectedBoundValue, _boundValue);
+    }
+}

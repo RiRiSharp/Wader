@@ -1,6 +1,0 @@
-using Wader.Content.Lists;
-
-namespace Wader.UnitTests.Content.Lists;
-
-public class BsInlineListItemTests()
-    : BsComponentTests<BsInlineListItem>("""<li class="list-inline-item {0}" {1}></li>""");

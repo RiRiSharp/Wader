@@ -1,0 +1,17 @@
+@inherits Wader.Bootstrap.BaseComponents.BsChildContentComponent
+
+@switch (LinkType)
+{
+    case BsPageLinkType.Link:
+        <a @attributes="RenderAttributes">
+            @(ChildContent)
+        </a>
+        break;
+    case BsPageLinkType.Span:
+        <span @attributes="RenderAttributes">
+            @(ChildContent)
+        </span>
+        break;
+    default:    
+        throw new ArgumentOutOfRangeException();
+}

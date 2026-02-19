@@ -1,0 +1,23 @@
+using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components.Forms;
+using Wader.Bootstrap.BaseComponents;
+using Wader.Bootstrap.Internals;
+
+namespace Wader.Bootstrap.Forms;
+
+public class BsEditForm : EditForm, IBsComponent
+{
+    [Parameter]
+    public string? Classes { get; set; }
+
+    protected override void OnParametersSet()
+    {
+        base.OnParametersSet();
+        SetClasses();
+    }
+
+    private void SetClasses()
+    {
+        AdditionalAttributes = BsAttributeUtilities.AssignClassNames(AdditionalAttributes, Classes);
+    }
+}

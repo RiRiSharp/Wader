@@ -1,0 +1,8 @@
+﻿using Wader.Bootstrap.BaseComponents;
+
+namespace Wader.Bootstrap.Forms;
+
+public partial class BsFormTextInline : BsChildContentComponent
+{
+    protected override string BsComponentClasses => "form-text";
+}

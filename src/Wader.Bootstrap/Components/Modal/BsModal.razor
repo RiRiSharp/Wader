@@ -1,0 +1,8 @@
+@inherits Wader.Bootstrap.BaseComponents.BsChildContentComponent
+
+<div tabindex="-1" aria-hidden="true" @attributes="RenderAttributes" data-bs-backdrop="@(DataBsBackdrop)"
+     data-bs-keyboard="@(DataBsKeyboard)" @ref="HtmlRef">
+    <CascadingValue Value="ModalContext">
+        @(ChildContent)
+    </CascadingValue>
+</div>

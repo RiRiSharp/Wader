@@ -1,0 +1,6 @@
+@inherits Wader.Bootstrap.BaseComponents.BsChildContentComponent
+@* has-validation class is added because it is necessary when one wants validation on it, it has no (known) drawbacks,
+   therefore we always add it *@
+<div @attributes="RenderAttributes">
+    @(ChildContent)
+</div>

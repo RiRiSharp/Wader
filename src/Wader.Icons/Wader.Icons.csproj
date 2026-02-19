@@ -10,7 +10,7 @@
     <PackageReference Include="Microsoft.AspNetCore.Components.Web" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Wader\Wader.csproj" />
+    <ProjectReference Include="..\Wader.Bootstrap\Wader.Bootstrap.csproj" />
   </ItemGroup>
   <ItemGroup>
     <_ContentIncludedByDefault Remove="wwwroot\fonts\bootstrap-icons.woff" />

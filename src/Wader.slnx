@@ -9,9 +9,9 @@
     <File Path="global.json" />
   </Folder>
   <Folder Name="/Tests/">
-    <Project Path="Wader.UnitTests/Wader.UnitTests.csproj" />
+    <Project Path="Wader.Bootstrap.UnitTests/Wader.Bootstrap.UnitTests.csproj" />
   </Folder>
+  <Project Path="Wader.Bootstrap/Wader.Bootstrap.csproj" />
   <Project Path="Wader.Icons/Wader.Icons.csproj" />
   <Project Path="Wader.Site/Wader.Site.csproj" />
-  <Project Path="Wader/Wader.csproj" />
 </Solution>
