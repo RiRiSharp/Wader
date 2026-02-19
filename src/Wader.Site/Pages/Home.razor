@@ -14,12 +14,13 @@
 </BsButton>
 <BsButton Variant="BsButtonVariant.Secondary" @onclick="() => _collapse?.ShowAsync() ?? Task.CompletedTask">Show
 </BsButton>
-<BsButton Variant="BsButtonVariant.OutlinePrimary" @onclick="() => _collapse?.CollapseAsync() ?? Task.CompletedTask">
+<BsButtonOutline Variant="BsButtonOutlineVariant.Primary"
+                 @onclick="() => _collapse?.CollapseAsync() ?? Task.CompletedTask">
     Hide
-</BsButton>
+</BsButtonOutline>
 
 <BsDropdown>
-    <BsDropdownToggle Variant="BsButtonVariant.OutlinePrimary" Size="BsButtonSize.Large">
+    <BsDropdownToggle OutlineVariant="BsButtonOutlineVariant.Primary" Size="BsButtonSize.Large">
         Dropdown button
     </BsDropdownToggle>
     <BsDropdownMenu>
@@ -31,11 +32,11 @@
 </BsDropdown>
 
 <BsListGroup>
-    <BsListGroupItem itemtype="BsListGroupItemType.Button" Variant="BsListGroupItemVariant.Primary">Super cool
+    <BsListGroupItem Itemtype="BsListGroupItemType.Button" Variant="BsListGroupItemVariant.Primary">Super cool
     </BsListGroupItem>
-    <BsListGroupItem itemtype="BsListGroupItemType.Button" Variant="BsListGroupItemVariant.Primary">Super cool
+    <BsListGroupItem Itemtype="BsListGroupItemType.Button" Variant="BsListGroupItemVariant.Primary">Super cool
     </BsListGroupItem>
-    <BsListGroupItem itemtype="BsListGroupItemType.Anchor" Variant="BsListGroupItemVariant.Success"
+    <BsListGroupItem Itemtype="BsListGroupItemType.Anchor" Variant="BsListGroupItemVariant.Success"
                      href="https://duckduckgo.com">Linkert
     </BsListGroupItem>
 </BsListGroup>

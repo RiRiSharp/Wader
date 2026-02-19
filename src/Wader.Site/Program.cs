@@ -15,7 +15,7 @@ internal static class Program
         {
             BaseAddress = new Uri(builder.HostEnvironment.BaseAddress),
         });
-        _ = builder.Services.EnableJsInteractiveComponents();
+        _ = builder.Services.AddWaderWasmJsInterop();
 
         await builder.Build().RunAsync();
     }

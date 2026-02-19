@@ -1,12 +1,10 @@
-﻿@using System.Reflection
-@using Wader.Helpers
-@using DisplayFlex = Wader.Helpers.DisplayFlex
+﻿@using Wader.Helpers
 <footer class="border-top text-muted mt-3">
-    <DisplayFlex Justify="BsJustification.Center">
+    <BsDisplayFlex Justify="BsJustification.Center">
         <div>
             &copy; @(DateTime.Now.Year) - Wader - v@(_version ?? "UNKNOWN")
         </div>
-    </DisplayFlex>
+    </BsDisplayFlex>
 </footer>
 
 @code {
