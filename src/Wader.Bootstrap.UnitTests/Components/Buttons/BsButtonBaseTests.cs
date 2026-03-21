@@ -72,7 +72,10 @@ public class BsButtonBaseTests() : BsComponentTests<BsButtonBase>("""<button cla
         // Arrange
         ConfigureTestContext();
         var attributes = AttributesForDefaultTests;
-        attributes["disabled"] = "";
+        if (disabled)
+        {
+            attributes["disabled"] = "";
+        }
 
         // Act
         var cut = GetCut(parameters => parameters.Add(p => p.Disabled, disabled));
