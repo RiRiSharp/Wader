@@ -6,7 +6,13 @@ namespace Wader.Bootstrap.Components.Offcanvas.Internals;
 
 internal sealed class BsOffcanvasJsFunctions : IBsOffcanvasJsFunctions, IBsJsFunctionsWrapper, IAsyncDisposable
 {
-    public static string JsFileName => "offcanvasFunctions.js";
+    internal const string TOGGLE = "toggle";
+
+    internal const string SHOW = "show";
+
+    internal const string CLOSE = "close";
+
+    internal const string DISPOSE = "dispose";
     private readonly IJSObjectReference _bsJsObjectRef;
 
     public BsOffcanvasJsFunctions(IJSObjectReference bsJsObjectRef)
@@ -14,36 +20,30 @@ internal sealed class BsOffcanvasJsFunctions : IBsOffcanvasJsFunctions, IBsJsFun
         _bsJsObjectRef = bsJsObjectRef;
     }
 
-    internal const string TOGGLE = "toggle";
+    public async ValueTask DisposeAsync()
+    {
+        await _bsJsObjectRef.DisposeAsync();
+    }
+
+    public static string JsFileName => "offcanvasFunctions.js";
 
     public async Task ToggleAsync(ElementReference offcanvasRef)
     {
         await _bsJsObjectRef.InvokeVoidAsync(TOGGLE, offcanvasRef);
     }
 
-    internal const string SHOW = "show";
-
     public async Task ShowAsync(ElementReference offcanvasRef)
     {
         await _bsJsObjectRef.InvokeVoidAsync(SHOW, offcanvasRef);
     }
-
-    internal const string CLOSE = "close";
 
     public async Task CloseAsync(ElementReference offcanvasRef)
     {
         await _bsJsObjectRef.InvokeVoidAsync(CLOSE, offcanvasRef);
     }
 
-    internal const string DISPOSE = "dispose";
-
-    public async Task DisposeAsync(ElementReference elementRef)
+    public async Task DisposeReferenceAsync(ElementReference elementRef)
     {
         await _bsJsObjectRef.InvokeVoidAsync(DISPOSE, elementRef);
-    }
-
-    public async ValueTask DisposeAsync()
-    {
-        await _bsJsObjectRef.DisposeAsync();
     }
 }

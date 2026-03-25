@@ -76,7 +76,7 @@ public class BsModalJsFunctionsTests
         ElementReference modalRef = default;
 
         // Act
-        await sut.DisposeAsync(modalRef);
+        await sut.DisposeReferenceAsync(modalRef);
 
         // Assert
         AssertJsInterop.Calls(jsObj, BsModalJsFunctions.DISPOSE, modalRef);

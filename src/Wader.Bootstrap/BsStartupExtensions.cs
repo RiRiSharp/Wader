@@ -7,6 +7,7 @@ using Wader.Bootstrap.Components.Carousel.Internals;
 using Wader.Bootstrap.Components.Collapse.Internals;
 using Wader.Bootstrap.Components.Modal.Internals;
 using Wader.Bootstrap.Components.Offcanvas.Internals;
+using Wader.Bootstrap.Components.Popover.Internals;
 using Wader.Bootstrap.Forms.ChecksRadios.Internals;
 using Wader.Bootstrap.Internals;
 
@@ -16,31 +17,36 @@ public static class BsStartupExtensions
 {
     public static IServiceCollection AddWaderServerJsFallbacks(this IServiceCollection services)
     {
-        return services
-            .AddNoOpJs<IBsAccordionJsFunctions>()
-            .AddNoOpJs<IBsAlertJsFunctions>()
-            .AddNoOpJs<IBsButtonJsFunctions>()
-            .AddNoOpJs<IBsCarouselJsFunctions>()
-            .AddNoOpJs<IBsCheckboxJsFunctions>()
-            .AddNoOpJs<IBsCollapseJsFunctions>()
-            .AddNoOpJs<IBsModalJsFunctions>()
-            .AddNoOpJs<IBsOffcanvasJsFunctions>();
+        return services.AddWaderJs(true);
     }
 
     public static IServiceCollection AddWaderWasmJsInterop(this IServiceCollection services)
     {
-        return services
-            .AddBootstrapJs<IBsAccordionJsFunctions, BsAccordionJsFunctions>()
-            .AddBootstrapJs<IBsAlertJsFunctions, BsAlertJsFunctions>()
-            .AddBootstrapJs<IBsButtonJsFunctions, BsButtonJsFunctions>()
-            .AddBootstrapJs<IBsCarouselJsFunctions, BsCarouselJsFunctions>()
-            .AddBootstrapJs<IBsCheckboxJsFunctions, BsCheckboxJsFunctions>()
-            .AddBootstrapJs<IBsCollapseJsFunctions, BsCollapseJsFunctions>()
-            .AddBootstrapJs<IBsModalJsFunctions, BsModalJsFunctions>()
-            .AddBootstrapJs<IBsOffcanvasJsFunctions, BsOffcanvasJsFunctions>();
+        return services.AddWaderJs(false);
     }
 
-    private static IServiceCollection AddBootstrapJs<TService, TImpl>(this IServiceCollection services)
+    private static IServiceCollection AddWaderJs(this IServiceCollection services, bool useNoOp)
+    {
+        return services
+            .AddWaderJsSingle<IBsAccordionJsFunctions, BsAccordionJsFunctions>(useNoOp)
+            .AddWaderJsSingle<IBsAlertJsFunctions, BsAlertJsFunctions>(useNoOp)
+            .AddWaderJsSingle<IBsButtonJsFunctions, BsButtonJsFunctions>(useNoOp)
+            .AddWaderJsSingle<IBsCarouselJsFunctions, BsCarouselJsFunctions>(useNoOp)
+            .AddWaderJsSingle<IBsCheckboxJsFunctions, BsCheckboxJsFunctions>(useNoOp)
+            .AddWaderJsSingle<IBsCollapseJsFunctions, BsCollapseJsFunctions>(useNoOp)
+            .AddWaderJsSingle<IBsModalJsFunctions, BsModalJsFunctions>(useNoOp)
+            .AddWaderJsSingle<IBsOffcanvasJsFunctions, BsOffcanvasJsFunctions>(useNoOp)
+            .AddWaderJsSingle<IBsPopoverJsFunctions, BsPopoverJsFunctions>(useNoOp);
+    }
+
+    private static IServiceCollection AddWaderJsSingle<TService, TImpl>(this IServiceCollection services, bool useNoOp)
+        where TService : class
+        where TImpl : class, TService, IBsJsFunctionsWrapper
+    {
+        return useNoOp ? services.AddNoOpJs<TService>() : services.AddFunctionalJs<TService, TImpl>();
+    }
+
+    private static IServiceCollection AddFunctionalJs<TService, TImpl>(this IServiceCollection services)
         where TService : class
         where TImpl : class, TService, IBsJsFunctionsWrapper
     {

@@ -122,7 +122,7 @@ public class BsCarouselJsFunctionsTests
         ElementReference carouselRef = default;
 
         // Act
-        await sut.DisposeAsync(carouselRef);
+        await sut.DisposeReferenceAsync(carouselRef);
 
         // Assert
         AssertJsInterop.Calls(jsObj, BsCarouselJsFunctions.DISPOSE, carouselRef);

@@ -65,6 +65,6 @@ public partial class BsModal : BsChildContentComponent, IAsyncDisposable
             return;
         }
 
-        await BsModalJsFunctions.DisposeAsync(HtmlRef);
+        await BsModalJsFunctions.DisposeReferenceAsync(HtmlRef);
     }
 }

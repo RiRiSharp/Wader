@@ -80,7 +80,7 @@ public partial class BsAlert : BsChildContentComponent, IAsyncDisposable
             return;
         }
 
-        await AlertJsFunctions.DisposeAsync(HtmlRef);
+        await AlertJsFunctions.DisposeReferenceAsync(HtmlRef);
         _dotNetRef?.Dispose();
     }
 }

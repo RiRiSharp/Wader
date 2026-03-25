@@ -127,7 +127,7 @@ public class BsAccordionJsFunctionsTests : BunitContext
         ElementReference accordionItemRef = default;
 
         // Act
-        await sut.DisposeAsync(accordionItemRef);
+        await sut.DisposeReferenceAsync(accordionItemRef);
 
         // Assert
         AssertJsInterop.Calls(jsObj, BsAccordionJsFunctions.DISPOSE, accordionItemRef);

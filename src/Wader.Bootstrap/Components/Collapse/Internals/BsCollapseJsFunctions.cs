@@ -6,7 +6,13 @@ namespace Wader.Bootstrap.Components.Collapse.Internals;
 
 internal sealed class BsCollapseJsFunctions : IBsCollapseJsFunctions, IBsJsFunctionsWrapper, IAsyncDisposable
 {
-    public static string JsFileName => "collapseFunctions.js";
+    internal const string TOGGLE = "toggle";
+
+    internal const string SHOW = "show";
+
+    internal const string COLLAPSE = "collapse";
+
+    internal const string DISPOSE = "dispose";
     private readonly IJSObjectReference _bsJsObjectRef;
 
     public BsCollapseJsFunctions(IJSObjectReference bsJsObjectRef)
@@ -14,36 +20,30 @@ internal sealed class BsCollapseJsFunctions : IBsCollapseJsFunctions, IBsJsFunct
         _bsJsObjectRef = bsJsObjectRef;
     }
 
-    internal const string TOGGLE = "toggle";
+    public async ValueTask DisposeAsync()
+    {
+        await _bsJsObjectRef.DisposeAsync();
+    }
 
     public async Task ToggleAsync(ElementReference collapseRef)
     {
         await _bsJsObjectRef.InvokeVoidAsync(TOGGLE, collapseRef);
     }
 
-    internal const string SHOW = "show";
-
     public async Task ShowAsync(ElementReference collapseRef)
     {
         await _bsJsObjectRef.InvokeVoidAsync(SHOW, collapseRef);
     }
-
-    internal const string COLLAPSE = "collapse";
 
     public async Task CollapseAsync(ElementReference collapseRef)
     {
         await _bsJsObjectRef.InvokeVoidAsync(COLLAPSE, collapseRef);
     }
 
-    internal const string DISPOSE = "dispose";
-
-    public async Task DisposeAsync(ElementReference elementRef)
+    public async Task DisposeReferenceAsync(ElementReference elementRef)
     {
         await _bsJsObjectRef.InvokeVoidAsync(DISPOSE, elementRef);
     }
 
-    public async ValueTask DisposeAsync()
-    {
-        await _bsJsObjectRef.DisposeAsync();
-    }
+    public static string JsFileName => "collapseFunctions.js";
 }

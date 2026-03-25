@@ -140,6 +140,6 @@ public partial class BsCarousel : BsChildContentComponent, IAsyncDisposable
             return;
         }
 
-        await CarouselJsFunctions.DisposeAsync(HtmlRef);
+        await CarouselJsFunctions.DisposeReferenceAsync(HtmlRef);
     }
 }

@@ -61,7 +61,7 @@ public class BsCollapseJsFunctionsTests
         ElementReference collapseRef = default;
 
         // Act
-        await sut.DisposeAsync(collapseRef);
+        await sut.DisposeReferenceAsync(collapseRef);
 
         // Assert
         AssertJsInterop.Calls(jsObj, BsCollapseJsFunctions.DISPOSE, collapseRef);

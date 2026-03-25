@@ -59,6 +59,6 @@ public partial class BsAccordionItem : BsChildContentComponent, IAsyncDisposable
             return;
         }
 
-        await AccordionJsFunctions.DisposeAsync(HtmlRef);
+        await AccordionJsFunctions.DisposeReferenceAsync(HtmlRef);
     }
 }

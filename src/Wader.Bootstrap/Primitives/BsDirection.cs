@@ -48,4 +48,16 @@ internal static class DropdownDirectionExtensions
             _ => throw new ArgumentOutOfRangeException(nameof(direction), direction, null),
         };
     }
+
+    internal static string ToPopperPlacementParameter(this BsDirection direction)
+    {
+        return direction switch
+        {
+            BsDirection.Down => "bottom",
+            BsDirection.Up => "top",
+            BsDirection.Start => "right", // Yeah that's a quirk on Bootstrap's side
+            BsDirection.End => "left",
+            _ => throw new ArgumentOutOfRangeException(nameof(direction), direction, null),
+        };
+    }
 }

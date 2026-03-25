@@ -40,6 +40,6 @@ public partial class BsNavbarCollapse : BsChildContentComponent, IAsyncDisposabl
             return;
         }
 
-        await CollapseJsFunctions.DisposeAsync(HtmlRef);
+        await CollapseJsFunctions.DisposeReferenceAsync(HtmlRef);
     }
 }

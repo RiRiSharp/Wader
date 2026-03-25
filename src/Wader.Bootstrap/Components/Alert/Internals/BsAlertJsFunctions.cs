@@ -6,7 +6,11 @@ namespace Wader.Bootstrap.Components.Alert.Internals;
 
 internal sealed class BsAlertJsFunctions : IBsAlertJsFunctions, IBsJsFunctionsWrapper, IAsyncDisposable
 {
-    public static string JsFileName => "alertFunctions.js";
+    internal const string DISMISS = "dismiss";
+
+    internal const string REGISTER_DISMISS_CALLBACK = "registerDismissCallback";
+
+    internal const string DISPOSE = "dispose";
     private readonly IJSObjectReference _bsJsObjectRef;
 
     public BsAlertJsFunctions(IJSObjectReference bsJsObjectRef)
@@ -14,29 +18,25 @@ internal sealed class BsAlertJsFunctions : IBsAlertJsFunctions, IBsJsFunctionsWr
         _bsJsObjectRef = bsJsObjectRef;
     }
 
-    internal const string DISMISS = "dismiss";
+    public async ValueTask DisposeAsync()
+    {
+        await _bsJsObjectRef.DisposeAsync();
+    }
 
     public async Task DismissAsync(ElementReference alertRef)
     {
         await _bsJsObjectRef.InvokeVoidAsync(DISMISS, alertRef);
     }
 
-    internal const string REGISTER_DISMISS_CALLBACK = "registerDismissCallback";
-
     public async Task RegisterDismissCallbackAsync(ElementReference alertRef, DotNetObjectReference<BsAlert> dotNetRef)
     {
         await _bsJsObjectRef.InvokeVoidAsync(REGISTER_DISMISS_CALLBACK, alertRef, dotNetRef);
     }
 
-    internal const string DISPOSE = "dispose";
-
-    public async Task DisposeAsync(ElementReference elementRef)
+    public async Task DisposeReferenceAsync(ElementReference elementRef)
     {
         await _bsJsObjectRef.InvokeVoidAsync(DISPOSE, elementRef);
     }
 
-    public async ValueTask DisposeAsync()
-    {
-        await _bsJsObjectRef.DisposeAsync();
-    }
+    public static string JsFileName => "alertFunctions.js";
 }

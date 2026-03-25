@@ -50,6 +50,6 @@ public partial class BsCollapse : BsChildContentComponent, IAsyncDisposable
             return;
         }
 
-        await CollapseJsFunctions.DisposeAsync(HtmlRef);
+        await CollapseJsFunctions.DisposeReferenceAsync(HtmlRef);
     }
 }

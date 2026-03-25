@@ -63,6 +63,6 @@ public partial class BsOffcanvas : BsChildContentComponent, IAsyncDisposable
             return;
         }
 
-        await BsOffcanvasJsFunctions.DisposeAsync(HtmlRef);
+        await BsOffcanvasJsFunctions.DisposeReferenceAsync(HtmlRef);
     }
 }

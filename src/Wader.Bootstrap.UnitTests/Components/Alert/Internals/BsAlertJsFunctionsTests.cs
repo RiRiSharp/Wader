@@ -48,7 +48,7 @@ public class BsAlertJsFunctionsTests
         ElementReference alertRef = default;
 
         // Act
-        await sut.DisposeAsync(alertRef);
+        await sut.DisposeReferenceAsync(alertRef);
 
         // Assert
         AssertJsInterop.Calls(jsObj, BsAlertJsFunctions.DISPOSE, alertRef);

@@ -6,7 +6,9 @@ namespace Wader.Bootstrap.Components.Buttons.Internals;
 
 internal sealed class BsButtonJsFunctions : IBsButtonJsFunctions, IBsJsFunctionsWrapper, IAsyncDisposable
 {
-    public static string JsFileName => "buttonFunctions.js";
+    internal const string TOGGLE = "toggle";
+
+    internal const string DISPOSE = "dispose";
     private readonly IJSObjectReference _bsJsObjectRef;
 
     public BsButtonJsFunctions(IJSObjectReference bsJsObjectRef)
@@ -14,22 +16,20 @@ internal sealed class BsButtonJsFunctions : IBsButtonJsFunctions, IBsJsFunctions
         _bsJsObjectRef = bsJsObjectRef;
     }
 
-    internal const string TOGGLE = "toggle";
+    public async ValueTask DisposeAsync()
+    {
+        await _bsJsObjectRef.DisposeAsync();
+    }
 
     public async Task ToggleAsync(ElementReference buttonRef)
     {
         await _bsJsObjectRef.InvokeVoidAsync(TOGGLE, buttonRef);
     }
 
-    internal const string DISPOSE = "dispose";
-
-    public async Task DisposeAsync(ElementReference elementRef)
+    public async Task DisposeReferenceAsync(ElementReference elementRef)
     {
         await _bsJsObjectRef.InvokeVoidAsync(DISPOSE, elementRef);
     }
 
-    public async ValueTask DisposeAsync()
-    {
-        await _bsJsObjectRef.DisposeAsync();
-    }
+    public static string JsFileName => "buttonFunctions.js";
 }

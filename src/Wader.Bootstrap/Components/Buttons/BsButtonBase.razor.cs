@@ -47,6 +47,6 @@ public partial class BsButtonBase : BsChildContentComponent, IAsyncDisposable
             return;
         }
 
-        await ButtonJsFunctions.DisposeAsync(HtmlRef);
+        await ButtonJsFunctions.DisposeReferenceAsync(HtmlRef);
     }
 }
