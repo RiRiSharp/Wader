@@ -6,8 +6,8 @@ namespace Wader.Bootstrap.UnitTests.Components.Carousel;
 
 public class BsCarouselTests() : BsComponentTests<BsCarousel>("""<div class="carousel slide {0}" {1}></div>""")
 {
+    private readonly IBsCarouselJsInterop _carouselJsInteropMock = Substitute.For<IBsCarouselJsInterop>();
     protected override Dictionary<string, string> AttributesForDefaultTests => new() { ["data-bs-touch"] = "true" };
-    private readonly IBsCarouselJsFunctions _carouselJsFunctionsMock = Substitute.For<IBsCarouselJsFunctions>();
 
     [Theory]
     [InlineData(BsCarouselAutoPlayMode.None, 0)]
@@ -22,7 +22,7 @@ public class BsCarouselTests() : BsComponentTests<BsCarousel>("""<div class="car
         var cut = GetCut(parameters => parameters.Add(p => p.AutoPlay, mode));
 
         // Assert
-        await _carouselJsFunctionsMock.Received(noOfCalls).CycleAsync(cut.Instance.HtmlRef);
+        await _carouselJsInteropMock.Received(noOfCalls).CycleAsync(cut.Instance.HtmlRef);
     }
 
     [Theory]
@@ -38,7 +38,7 @@ public class BsCarouselTests() : BsComponentTests<BsCarousel>("""<div class="car
         var cut = GetCut(parameters => parameters.Add(p => p.AutoPlay, mode));
 
         // Assert
-        await _carouselJsFunctionsMock.Received(noOfCalls).AddCycleCallbackAsync(cut.Instance.HtmlRef);
+        await _carouselJsInteropMock.Received(noOfCalls).AddCycleCallbackAsync(cut.Instance.HtmlRef);
     }
 
     [Theory]
@@ -58,7 +58,7 @@ public class BsCarouselTests() : BsComponentTests<BsCarousel>("""<div class="car
         await cut.InvokeAsync(cut.Instance.MoveNextAsync);
 
         // Assert
-        await _carouselJsFunctionsMock.Received(noOfCalls).AddCycleCallbackAsync(cut.Instance.HtmlRef);
+        await _carouselJsInteropMock.Received(noOfCalls).AddCycleCallbackAsync(cut.Instance.HtmlRef);
     }
 
     [Theory]
@@ -78,7 +78,7 @@ public class BsCarouselTests() : BsComponentTests<BsCarousel>("""<div class="car
         await cut.InvokeAsync(cut.Instance.MovePrevAsync);
 
         // Assert
-        await _carouselJsFunctionsMock.Received(noOfCalls).AddCycleCallbackAsync(cut.Instance.HtmlRef);
+        await _carouselJsInteropMock.Received(noOfCalls).AddCycleCallbackAsync(cut.Instance.HtmlRef);
     }
 
     [Theory]
@@ -98,7 +98,7 @@ public class BsCarouselTests() : BsComponentTests<BsCarousel>("""<div class="car
         await cut.InvokeAsync(cut.Instance.PauseAsync);
 
         // Assert
-        await _carouselJsFunctionsMock.Received(noOfCalls).RemoveCycleCallbackAsync(cut.Instance.HtmlRef);
+        await _carouselJsInteropMock.Received(noOfCalls).RemoveCycleCallbackAsync(cut.Instance.HtmlRef);
     }
 
     [Theory]
@@ -146,7 +146,7 @@ public class BsCarouselTests() : BsComponentTests<BsCarousel>("""<div class="car
         await cut.InvokeAsync(cut.Instance.MoveNextAsync);
 
         // Assert
-        await _carouselJsFunctionsMock.Received(1).MoveNextAsync(cut.Instance.HtmlRef);
+        await _carouselJsInteropMock.Received(1).MoveNextAsync(cut.Instance.HtmlRef);
     }
 
     [Fact]
@@ -160,7 +160,7 @@ public class BsCarouselTests() : BsComponentTests<BsCarousel>("""<div class="car
         await cut.InvokeAsync(cut.Instance.MovePrevAsync);
 
         // Assert
-        await _carouselJsFunctionsMock.Received(1).MovePrevAsync(cut.Instance.HtmlRef);
+        await _carouselJsInteropMock.Received(1).MovePrevAsync(cut.Instance.HtmlRef);
     }
 
     [Fact]
@@ -174,7 +174,7 @@ public class BsCarouselTests() : BsComponentTests<BsCarousel>("""<div class="car
         await cut.InvokeAsync(cut.Instance.CycleAsync);
 
         // Assert
-        await _carouselJsFunctionsMock.Received(1).CycleAsync(cut.Instance.HtmlRef);
+        await _carouselJsInteropMock.Received(1).CycleAsync(cut.Instance.HtmlRef);
     }
 
     [Fact]
@@ -188,7 +188,7 @@ public class BsCarouselTests() : BsComponentTests<BsCarousel>("""<div class="car
         await cut.InvokeAsync(cut.Instance.PauseAsync);
 
         // Assert
-        await _carouselJsFunctionsMock.Received(1).PauseAsync(cut.Instance.HtmlRef);
+        await _carouselJsInteropMock.Received(1).PauseAsync(cut.Instance.HtmlRef);
     }
 
     [Fact]
@@ -199,6 +199,6 @@ public class BsCarouselTests() : BsComponentTests<BsCarousel>("""<div class="car
 
     protected override void ConfigureTestContext()
     {
-        _ = Services.AddSingleton(_carouselJsFunctionsMock);
+        _ = Services.AddSingleton(_carouselJsInteropMock);
     }
 }

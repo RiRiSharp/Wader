@@ -4,25 +4,25 @@ using Wader.Bootstrap.Internals;
 
 namespace Wader.Bootstrap.Forms.ChecksRadios.Internals;
 
-internal sealed class BsCheckboxJsFunctions : IBsCheckboxJsFunctions, IBsJsFunctionsWrapper, IAsyncDisposable
+internal sealed class BsCheckboxJsInterop : IBsCheckboxJsInterop, IBsJsFunctionsWrapper, IAsyncDisposable
 {
-    public static string JsFileName => "BsCheckboxJsFunctions.js";
+    internal const string INITIALIZE_INDETERMINATE = "initializeIndeterminate";
     private readonly IJSObjectReference _bsJsObjectRef;
 
-    internal BsCheckboxJsFunctions(IJSObjectReference js)
+    internal BsCheckboxJsInterop(IJSObjectReference js)
     {
         _bsJsObjectRef = js;
-    }
-
-    internal const string INITIALIZE_INDETERMINATE = "initializeIndeterminate";
-
-    public async ValueTask InitializeIndeterminateAsync(ElementReference checkboxReference)
-    {
-        await _bsJsObjectRef.InvokeVoidAsync(INITIALIZE_INDETERMINATE, checkboxReference);
     }
 
     public async ValueTask DisposeAsync()
     {
         await _bsJsObjectRef.DisposeAsync();
     }
+
+    public async ValueTask InitializeIndeterminateAsync(ElementReference checkboxReference)
+    {
+        await _bsJsObjectRef.InvokeVoidAsync(INITIALIZE_INDETERMINATE, checkboxReference);
+    }
+
+    public static string JsFileName => "BsCheckboxJsFunctions.js";
 }

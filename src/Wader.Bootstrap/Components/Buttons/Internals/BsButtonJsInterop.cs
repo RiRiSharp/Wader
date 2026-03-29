@@ -4,14 +4,14 @@ using Wader.Bootstrap.Internals;
 
 namespace Wader.Bootstrap.Components.Buttons.Internals;
 
-internal sealed class BsButtonJsFunctions : IBsButtonJsFunctions, IBsJsFunctionsWrapper, IAsyncDisposable
+internal sealed class BsButtonJsInterop : IBsButtonJsInterop, IBsJsFunctionsWrapper, IAsyncDisposable
 {
     internal const string TOGGLE = "toggle";
 
     internal const string DISPOSE = "dispose";
     private readonly IJSObjectReference _bsJsObjectRef;
 
-    public BsButtonJsFunctions(IJSObjectReference bsJsObjectRef)
+    public BsButtonJsInterop(IJSObjectReference bsJsObjectRef)
     {
         _bsJsObjectRef = bsJsObjectRef;
     }

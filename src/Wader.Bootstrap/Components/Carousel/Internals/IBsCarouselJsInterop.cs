@@ -3,7 +3,7 @@ using Wader.Bootstrap.Internals;
 
 namespace Wader.Bootstrap.Components.Carousel.Internals;
 
-public interface IBsCarouselJsFunctions : IBsJsDisposable
+public interface IBsCarouselJsInterop : IBsJsDisposable
 {
     Task MoveToSlideAsync(ElementReference carouselRef, int slideNumber);
     Task MovePrevAsync(ElementReference carouselRef);

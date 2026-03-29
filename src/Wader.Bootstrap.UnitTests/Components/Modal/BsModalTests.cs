@@ -7,7 +7,7 @@ namespace Wader.Bootstrap.UnitTests.Components.Modal;
 
 public class BsModalTests() : BsComponentTests<BsModal>("""<div class="modal {0}" {1}></div>""")
 {
-    private readonly IBsModalJsFunctions _modalJsFunctionsMock = Substitute.For<IBsModalJsFunctions>();
+    private readonly IBsModalJsInterop _modalJsInteropMock = Substitute.For<IBsModalJsInterop>();
     protected override string ClassesForDefaultTests => "fade";
 
     protected override Dictionary<string, string> AttributesForDefaultTests =>
@@ -71,7 +71,7 @@ public class BsModalTests() : BsComponentTests<BsModal>("""<div class="modal {0}
         await cut.Instance.ToggleAsync();
 
         // Assert
-        await _modalJsFunctionsMock.Received(1).ToggleAsync(cut.Instance.HtmlRef);
+        await _modalJsInteropMock.Received(1).ToggleAsync(cut.Instance.HtmlRef);
     }
 
     [Fact]
@@ -85,7 +85,7 @@ public class BsModalTests() : BsComponentTests<BsModal>("""<div class="modal {0}
         await cut.Instance.ShowAsync();
 
         // Assert
-        await _modalJsFunctionsMock.Received(1).ShowAsync(cut.Instance.HtmlRef);
+        await _modalJsInteropMock.Received(1).ShowAsync(cut.Instance.HtmlRef);
     }
 
     [Fact]
@@ -99,7 +99,7 @@ public class BsModalTests() : BsComponentTests<BsModal>("""<div class="modal {0}
         await cut.Instance.CloseAsync();
 
         // Assert
-        await _modalJsFunctionsMock.Received(1).CloseAsync(cut.Instance.HtmlRef);
+        await _modalJsInteropMock.Received(1).CloseAsync(cut.Instance.HtmlRef);
     }
 
     [Fact]
@@ -122,6 +122,6 @@ public class BsModalTests() : BsComponentTests<BsModal>("""<div class="modal {0}
 
     protected override void ConfigureTestContext()
     {
-        _ = Services.AddSingleton(_modalJsFunctionsMock);
+        _ = Services.AddSingleton(_modalJsInteropMock);
     }
 }

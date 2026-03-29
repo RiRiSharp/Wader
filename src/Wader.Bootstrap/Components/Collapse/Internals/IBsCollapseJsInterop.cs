@@ -3,7 +3,7 @@ using Wader.Bootstrap.Internals;
 
 namespace Wader.Bootstrap.Components.Collapse.Internals;
 
-public interface IBsCollapseJsFunctions : IBsJsDisposable
+public interface IBsCollapseJsInterop : IBsJsDisposable
 {
     Task CollapseAsync(ElementReference collapseRef);
     Task ShowAsync(ElementReference collapseRef);

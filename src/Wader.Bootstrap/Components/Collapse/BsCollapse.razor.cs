@@ -18,7 +18,7 @@ public partial class BsCollapse : BsChildContentComponent, IAsyncDisposable
     private string? ShowClass => Show ? "show" : null;
 
     [Inject]
-    private IBsCollapseJsFunctions CollapseJsFunctions { get; set; } = null!;
+    private IBsCollapseJsInterop CollapseJsInterop { get; set; } = null!;
 
     private string? DirectionClass => Direction.ToBootstrapClass();
 
@@ -30,17 +30,17 @@ public partial class BsCollapse : BsChildContentComponent, IAsyncDisposable
 
     public async Task ToggleAsync()
     {
-        await CollapseJsFunctions.ToggleAsync(HtmlRef);
+        await CollapseJsInterop.ToggleAsync(HtmlRef);
     }
 
     public async Task ShowAsync()
     {
-        await CollapseJsFunctions.ShowAsync(HtmlRef);
+        await CollapseJsInterop.ShowAsync(HtmlRef);
     }
 
     public async Task CollapseAsync()
     {
-        await CollapseJsFunctions.CollapseAsync(HtmlRef);
+        await CollapseJsInterop.CollapseAsync(HtmlRef);
     }
 
     private async Task Dispose(bool disposing)
@@ -50,6 +50,6 @@ public partial class BsCollapse : BsChildContentComponent, IAsyncDisposable
             return;
         }
 
-        await CollapseJsFunctions.DisposeReferenceAsync(HtmlRef);
+        await CollapseJsInterop.DisposeReferenceAsync(HtmlRef);
     }
 }

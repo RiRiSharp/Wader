@@ -17,7 +17,7 @@ public partial class BsAccordion : BsChildContentComponent
     public BsAccordionDisplayStyle DisplayStyle { get; set; }
 
     [Inject]
-    private IBsAccordionJsFunctions AccordionJsFunctions { get; set; } = null!;
+    private IBsAccordionJsInterop AccordionJsInterop { get; set; } = null!;
 
     protected override void OnInitialized()
     {
@@ -27,16 +27,16 @@ public partial class BsAccordion : BsChildContentComponent
 
     public async Task CollapseAllAsync()
     {
-        await AccordionJsFunctions.CollapseAllAsync(HtmlRef);
+        await AccordionJsInterop.CollapseAllAsync(HtmlRef);
     }
 
     public async Task ShowAllAsync()
     {
-        await AccordionJsFunctions.ShowAllAsync(HtmlRef);
+        await AccordionJsInterop.ShowAllAsync(HtmlRef);
     }
 
     public async Task CollapseAllButOneAsync(BsAccordionItem accordionItem)
     {
-        await AccordionJsFunctions.CollapseAllButOneAsync(HtmlRef, accordionItem.HtmlRef);
+        await AccordionJsInterop.CollapseAllButOneAsync(HtmlRef, accordionItem.HtmlRef);
     }
 }

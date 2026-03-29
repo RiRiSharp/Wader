@@ -4,7 +4,7 @@ using Wader.Bootstrap.Internals;
 
 namespace Wader.Bootstrap.Components.Accordion.Internals;
 
-internal sealed class BsAccordionJsFunctions : IBsAccordionJsFunctions, IBsJsFunctionsWrapper, IAsyncDisposable
+internal sealed class BsAccordionJsInterop : IBsAccordionJsInterop, IBsJsFunctionsWrapper, IAsyncDisposable
 {
     internal const string COLLAPSE_ALL = "collapseAll";
 
@@ -23,7 +23,7 @@ internal sealed class BsAccordionJsFunctions : IBsAccordionJsFunctions, IBsJsFun
     internal const string DISPOSE = "dispose";
     private readonly IJSObjectReference _bsJsObjectRef;
 
-    public BsAccordionJsFunctions(IJSObjectReference bsJsObjectRef)
+    public BsAccordionJsInterop(IJSObjectReference bsJsObjectRef)
     {
         _bsJsObjectRef = bsJsObjectRef;
     }

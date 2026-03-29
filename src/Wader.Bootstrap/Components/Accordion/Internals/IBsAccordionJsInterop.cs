@@ -4,7 +4,7 @@ using Wader.Bootstrap.Internals;
 
 namespace Wader.Bootstrap.Components.Accordion.Internals;
 
-public interface IBsAccordionJsFunctions : IBsJsDisposable
+public interface IBsAccordionJsInterop : IBsJsDisposable
 {
     Task CollapseAllAsync(ElementReference accordionRef);
     Task ShowAllAsync(ElementReference accordionRef);

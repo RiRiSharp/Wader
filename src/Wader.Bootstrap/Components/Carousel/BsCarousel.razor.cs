@@ -31,7 +31,7 @@ public partial class BsCarousel : BsChildContentComponent, IAsyncDisposable
     private string EnableTouchAttributeValue => EnableTouch.ToString().ToLowerInvariant();
 
     [Inject]
-    private IBsCarouselJsFunctions CarouselJsFunctions { get; set; } = null!;
+    private IBsCarouselJsInterop CarouselJsInterop { get; set; } = null!;
 
     private string? TransitionTypeClass => TransitionType.ToBootstrapClass();
 
@@ -84,7 +84,7 @@ public partial class BsCarousel : BsChildContentComponent, IAsyncDisposable
 
     public async Task MoveToSlideAsync(int i)
     {
-        await CarouselJsFunctions.MoveToSlideAsync(HtmlRef, i);
+        await CarouselJsInterop.MoveToSlideAsync(HtmlRef, i);
         if (AutoPlay is BsCarouselAutoPlayMode.AutoPlayAfterUserInteraction)
         {
             await AddCycleCallback();
@@ -93,7 +93,7 @@ public partial class BsCarousel : BsChildContentComponent, IAsyncDisposable
 
     public async Task MovePrevAsync()
     {
-        await CarouselJsFunctions.MovePrevAsync(HtmlRef);
+        await CarouselJsInterop.MovePrevAsync(HtmlRef);
         if (AutoPlay is BsCarouselAutoPlayMode.AutoPlayAfterUserInteraction)
         {
             await AddCycleCallback();
@@ -102,7 +102,7 @@ public partial class BsCarousel : BsChildContentComponent, IAsyncDisposable
 
     public async Task MoveNextAsync()
     {
-        await CarouselJsFunctions.MoveNextAsync(HtmlRef);
+        await CarouselJsInterop.MoveNextAsync(HtmlRef);
         if (AutoPlay is BsCarouselAutoPlayMode.AutoPlayAfterUserInteraction)
         {
             await AddCycleCallback();
@@ -111,12 +111,12 @@ public partial class BsCarousel : BsChildContentComponent, IAsyncDisposable
 
     public async Task CycleAsync()
     {
-        await CarouselJsFunctions.CycleAsync(HtmlRef);
+        await CarouselJsInterop.CycleAsync(HtmlRef);
     }
 
     public async Task PauseAsync()
     {
-        await CarouselJsFunctions.PauseAsync(HtmlRef);
+        await CarouselJsInterop.PauseAsync(HtmlRef);
         if (AutoPlay is BsCarouselAutoPlayMode.AutoPlayAfterUserInteraction)
         {
             await RemoveCycleCallback();
@@ -125,12 +125,12 @@ public partial class BsCarousel : BsChildContentComponent, IAsyncDisposable
 
     private async Task AddCycleCallback()
     {
-        await CarouselJsFunctions.AddCycleCallbackAsync(HtmlRef);
+        await CarouselJsInterop.AddCycleCallbackAsync(HtmlRef);
     }
 
     private async Task RemoveCycleCallback()
     {
-        await CarouselJsFunctions.RemoveCycleCallbackAsync(HtmlRef);
+        await CarouselJsInterop.RemoveCycleCallbackAsync(HtmlRef);
     }
 
     private async Task Dispose(bool disposing)
@@ -140,6 +140,6 @@ public partial class BsCarousel : BsChildContentComponent, IAsyncDisposable
             return;
         }
 
-        await CarouselJsFunctions.DisposeReferenceAsync(HtmlRef);
+        await CarouselJsInterop.DisposeReferenceAsync(HtmlRef);
     }
 }

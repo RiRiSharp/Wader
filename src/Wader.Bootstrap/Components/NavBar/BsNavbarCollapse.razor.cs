@@ -10,7 +10,7 @@ public partial class BsNavbarCollapse : BsChildContentComponent, IAsyncDisposabl
     protected override string BsComponentClasses => "collapse navbar-collapse";
 
     [Inject]
-    private IBsCollapseJsFunctions CollapseJsFunctions { get; set; } = null!;
+    private IBsCollapseJsInterop CollapseJsInterop { get; set; } = null!;
 
     public async ValueTask DisposeAsync()
     {
@@ -20,17 +20,17 @@ public partial class BsNavbarCollapse : BsChildContentComponent, IAsyncDisposabl
 
     public async Task ToggleAsync()
     {
-        await CollapseJsFunctions.ToggleAsync(HtmlRef);
+        await CollapseJsInterop.ToggleAsync(HtmlRef);
     }
 
     public async Task ShowAsync()
     {
-        await CollapseJsFunctions.ShowAsync(HtmlRef);
+        await CollapseJsInterop.ShowAsync(HtmlRef);
     }
 
     public async Task CollapseAsync()
     {
-        await CollapseJsFunctions.CollapseAsync(HtmlRef);
+        await CollapseJsInterop.CollapseAsync(HtmlRef);
     }
 
     private async Task Dispose(bool disposing)
@@ -40,6 +40,6 @@ public partial class BsNavbarCollapse : BsChildContentComponent, IAsyncDisposabl
             return;
         }
 
-        await CollapseJsFunctions.DisposeReferenceAsync(HtmlRef);
+        await CollapseJsInterop.DisposeReferenceAsync(HtmlRef);
     }
 }

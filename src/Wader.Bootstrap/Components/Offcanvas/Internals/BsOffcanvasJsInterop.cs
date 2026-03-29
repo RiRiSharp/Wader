@@ -4,7 +4,7 @@ using Wader.Bootstrap.Internals;
 
 namespace Wader.Bootstrap.Components.Offcanvas.Internals;
 
-internal sealed class BsOffcanvasJsFunctions : IBsOffcanvasJsFunctions, IBsJsFunctionsWrapper, IAsyncDisposable
+internal sealed class BsOffcanvasJsInterop : IBsOffcanvasJsInterop, IBsJsFunctionsWrapper, IAsyncDisposable
 {
     internal const string TOGGLE = "toggle";
 
@@ -15,7 +15,7 @@ internal sealed class BsOffcanvasJsFunctions : IBsOffcanvasJsFunctions, IBsJsFun
     internal const string DISPOSE = "dispose";
     private readonly IJSObjectReference _bsJsObjectRef;
 
-    public BsOffcanvasJsFunctions(IJSObjectReference bsJsObjectRef)
+    public BsOffcanvasJsInterop(IJSObjectReference bsJsObjectRef)
     {
         _bsJsObjectRef = bsJsObjectRef;
     }

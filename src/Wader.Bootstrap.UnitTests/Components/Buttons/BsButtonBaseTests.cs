@@ -6,7 +6,7 @@ namespace Wader.Bootstrap.UnitTests.Components.Buttons;
 
 public class BsButtonBaseTests() : BsComponentTests<BsButtonBase>("""<button class="btn {0}" {1}></button>""")
 {
-    private readonly IBsButtonJsFunctions _buttonJsFunctionsMock = Substitute.For<IBsButtonJsFunctions>();
+    private readonly IBsButtonJsInterop _buttonJsInteropMock = Substitute.For<IBsButtonJsInterop>();
     protected override Dictionary<string, string> AttributesForDefaultTests => new() { ["type"] = "button" };
 
     [Theory]
@@ -96,7 +96,7 @@ public class BsButtonBaseTests() : BsComponentTests<BsButtonBase>("""<button cla
         await cut.InvokeAsync(cut.Instance.ToggleAsync);
 
         // Assert
-        await _buttonJsFunctionsMock.Received(1).ToggleAsync(cut.Instance.HtmlRef);
+        await _buttonJsInteropMock.Received(1).ToggleAsync(cut.Instance.HtmlRef);
     }
 
     [Fact]
@@ -107,6 +107,6 @@ public class BsButtonBaseTests() : BsComponentTests<BsButtonBase>("""<button cla
 
     protected override void ConfigureTestContext()
     {
-        _ = Services.AddSingleton(_buttonJsFunctionsMock);
+        _ = Services.AddSingleton(_buttonJsInteropMock);
     }
 }

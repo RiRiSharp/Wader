@@ -8,10 +8,10 @@ namespace Wader.Bootstrap.UnitTests.Components.Accordion;
 public class BsAccordionCollapseTests()
     : BsComponentTests<BsAccordionCollapse>("""<div class="accordion-collapse collapse {0}" {1}></div>""")
 {
-    protected override string ClassesForDefaultTests => "show";
-
-    private readonly IBsAccordionJsFunctions _accordionJsFunctionsMock = Substitute.For<IBsAccordionJsFunctions>();
     private readonly IBsAccordionItemContext _accordionItemContextMock = Substitute.For<IBsAccordionItemContext>();
+
+    private readonly IBsAccordionJsInterop _accordionJsInteropMock = Substitute.For<IBsAccordionJsInterop>();
+    protected override string ClassesForDefaultTests => "show";
 
     [Theory]
     [InlineData(true)]
@@ -41,7 +41,7 @@ public class BsAccordionCollapseTests()
         var cut = GetCut();
 
         // Assert
-        await _accordionJsFunctionsMock
+        await _accordionJsInteropMock
             .Received(1)
             .RegisterCollapseCallbackAsync(cut.Instance.HtmlRef, Arg.Any<DotNetObjectReference<BsAccordionCollapse>>());
     }
@@ -54,6 +54,6 @@ public class BsAccordionCollapseTests()
 
     protected override void ConfigureTestContext()
     {
-        _ = Services.AddSingleton(_accordionJsFunctionsMock);
+        _ = Services.AddSingleton(_accordionJsInteropMock);
     }
 }

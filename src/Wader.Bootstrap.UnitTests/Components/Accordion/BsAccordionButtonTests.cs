@@ -9,7 +9,7 @@ public class BsAccordionButtonTests()
     : BsComponentTests<BsAccordionButton>("""<button class="accordion-button {0}" {1}></button>""")
 {
     private readonly IBsAccordionItemContext _accordionItemContextMock = Substitute.For<IBsAccordionItemContext>();
-    private readonly IBsAccordionJsFunctions _accordionJsFunctionsMock = Substitute.For<IBsAccordionJsFunctions>();
+    private readonly IBsAccordionJsInterop _accordionJsInteropMock = Substitute.For<IBsAccordionJsInterop>();
 
     protected override Dictionary<string, string> AttributesForDefaultTests => new() { ["type"] = "button" };
 
@@ -47,7 +47,7 @@ public class BsAccordionButtonTests()
         var cut = GetCut();
 
         // Assert
-        await _accordionJsFunctionsMock
+        await _accordionJsInteropMock
             .Received(1)
             .RegisterCollapseCallbackAsync(cut.Instance.HtmlRef, Arg.Any<DotNetObjectReference<BsAccordionButton>>());
     }
@@ -60,6 +60,6 @@ public class BsAccordionButtonTests()
 
     protected override void ConfigureTestContext()
     {
-        _ = Services.AddSingleton(_accordionJsFunctionsMock);
+        _ = Services.AddSingleton(_accordionJsInteropMock);
     }
 }

@@ -21,7 +21,7 @@ public partial class BsAccordionButton : BsChildContentComponent, IHasCollapseSt
     internal IBsAccordionItemContext? AccordionItemContext { get; set; }
 
     [Inject]
-    private IBsAccordionJsFunctions AccordionJsFunctions { get; set; } = null!;
+    private IBsAccordionJsInterop AccordionJsInterop { get; set; } = null!;
 
     [JSInvokable]
     public void UpdateCollapseState(bool isCollapsed)
@@ -52,7 +52,7 @@ public partial class BsAccordionButton : BsChildContentComponent, IHasCollapseSt
         }
 
         _dotNetRef = DotNetObjectReference.Create(this);
-        await AccordionJsFunctions.RegisterCollapseCallbackAsync(HtmlRef, _dotNetRef);
+        await AccordionJsInterop.RegisterCollapseCallbackAsync(HtmlRef, _dotNetRef);
     }
 
     private async Task ToggleAsync()

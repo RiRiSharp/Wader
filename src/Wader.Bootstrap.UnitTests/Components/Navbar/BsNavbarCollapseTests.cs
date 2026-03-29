@@ -7,7 +7,7 @@ namespace Wader.Bootstrap.UnitTests.Components.Navbar;
 public class BsNavbarCollapseTests()
     : BsComponentTests<BsNavbarCollapse>("""<div class="collapse navbar-collapse {0}" {1}></div>""")
 {
-    private readonly IBsCollapseJsFunctions _collapseJsFunctionsMock = Substitute.For<IBsCollapseJsFunctions>();
+    private readonly IBsCollapseJsInterop _collapseJsInteropMock = Substitute.For<IBsCollapseJsInterop>();
 
     [Fact]
     public async Task ToggleCallsJsCorrectlyAsync()
@@ -20,7 +20,7 @@ public class BsNavbarCollapseTests()
         await cut.Instance.ToggleAsync();
 
         // Assert
-        await _collapseJsFunctionsMock.Received(1).ToggleAsync(cut.Instance.HtmlRef);
+        await _collapseJsInteropMock.Received(1).ToggleAsync(cut.Instance.HtmlRef);
     }
 
     [Fact]
@@ -34,7 +34,7 @@ public class BsNavbarCollapseTests()
         await cut.Instance.ShowAsync();
 
         // Assert
-        await _collapseJsFunctionsMock.Received(1).ShowAsync(cut.Instance.HtmlRef);
+        await _collapseJsInteropMock.Received(1).ShowAsync(cut.Instance.HtmlRef);
     }
 
     [Fact]
@@ -48,11 +48,11 @@ public class BsNavbarCollapseTests()
         await cut.Instance.CollapseAsync();
 
         // Assert
-        await _collapseJsFunctionsMock.Received(1).CollapseAsync(cut.Instance.HtmlRef);
+        await _collapseJsInteropMock.Received(1).CollapseAsync(cut.Instance.HtmlRef);
     }
 
     protected override void ConfigureTestContext()
     {
-        _ = Services.AddSingleton(_collapseJsFunctionsMock);
+        _ = Services.AddSingleton(_collapseJsInteropMock);
     }
 }

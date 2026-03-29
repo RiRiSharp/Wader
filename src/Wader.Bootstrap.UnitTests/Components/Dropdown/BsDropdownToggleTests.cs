@@ -11,7 +11,7 @@ public class BsDropdownToggleTests()
         """<button class="btn dropdown-toggle {0}" data-bs-toggle="dropdown" {1}></div>"""
     )
 {
-    private readonly IBsButtonJsFunctions _buttonJsFunctionsMock = Substitute.For<IBsButtonJsFunctions>();
+    private readonly IBsButtonJsInterop _buttonJsInteropMock = Substitute.For<IBsButtonJsInterop>();
 
     protected override Dictionary<string, string> AttributesForDefaultTests =>
         new() { ["type"] = "button", ["aria-expanded"] = "false" };
@@ -111,6 +111,6 @@ public class BsDropdownToggleTests()
 
     protected override void ConfigureTestContext()
     {
-        _ = Services.AddSingleton(_buttonJsFunctionsMock);
+        _ = Services.AddSingleton(_buttonJsInteropMock);
     }
 }

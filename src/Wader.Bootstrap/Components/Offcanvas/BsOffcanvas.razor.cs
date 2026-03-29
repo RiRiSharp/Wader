@@ -25,7 +25,7 @@ public partial class BsOffcanvas : BsChildContentComponent, IAsyncDisposable
     private string? DataBsBackdrop => Backdrop.ToDataBsBackdropValue();
 
     [Inject]
-    public IBsOffcanvasJsFunctions BsOffcanvasJsFunctions { get; set; } = null!;
+    public IBsOffcanvasJsInterop BsOffcanvasJsInterop { get; set; } = null!;
 
     private string DirectionClass => Direction.ToOffcanvasBootstrapClass();
 
@@ -43,17 +43,17 @@ public partial class BsOffcanvas : BsChildContentComponent, IAsyncDisposable
 
     public async Task ToggleAsync()
     {
-        await BsOffcanvasJsFunctions.ToggleAsync(HtmlRef);
+        await BsOffcanvasJsInterop.ToggleAsync(HtmlRef);
     }
 
     public async Task ShowAsync()
     {
-        await BsOffcanvasJsFunctions.ShowAsync(HtmlRef);
+        await BsOffcanvasJsInterop.ShowAsync(HtmlRef);
     }
 
     public async Task CloseAsync()
     {
-        await BsOffcanvasJsFunctions.CloseAsync(HtmlRef);
+        await BsOffcanvasJsInterop.CloseAsync(HtmlRef);
     }
 
     private async Task Dispose(bool disposing)
@@ -63,6 +63,6 @@ public partial class BsOffcanvas : BsChildContentComponent, IAsyncDisposable
             return;
         }
 
-        await BsOffcanvasJsFunctions.DisposeReferenceAsync(HtmlRef);
+        await BsOffcanvasJsInterop.DisposeReferenceAsync(HtmlRef);
     }
 }

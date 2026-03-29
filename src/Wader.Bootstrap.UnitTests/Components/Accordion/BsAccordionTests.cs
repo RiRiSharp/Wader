@@ -6,7 +6,7 @@ namespace Wader.Bootstrap.UnitTests.Components.Accordion;
 
 public class BsAccordionTests() : BsComponentTests<BsAccordion>("""<div class="accordion {0}" {1}></div>""")
 {
-    private readonly IBsAccordionJsFunctions _accordionJsFunctionsMock = Substitute.For<IBsAccordionJsFunctions>();
+    private readonly IBsAccordionJsInterop _accordionJsInteropMock = Substitute.For<IBsAccordionJsInterop>();
 
     [Theory]
     [InlineData(BsAccordionDisplayStyle.Regular, "")]
@@ -47,7 +47,7 @@ public class BsAccordionTests() : BsComponentTests<BsAccordion>("""<div class="a
         await cut.InvokeAsync(cut.Instance.CollapseAllAsync);
 
         // Assert
-        await _accordionJsFunctionsMock.Received(1).CollapseAllAsync(cut.Instance.HtmlRef);
+        await _accordionJsInteropMock.Received(1).CollapseAllAsync(cut.Instance.HtmlRef);
     }
 
     [Fact]
@@ -61,7 +61,7 @@ public class BsAccordionTests() : BsComponentTests<BsAccordion>("""<div class="a
         await cut.InvokeAsync(cut.Instance.ShowAllAsync);
 
         // Assert
-        await _accordionJsFunctionsMock.Received(1).ShowAllAsync(cut.Instance.HtmlRef);
+        await _accordionJsInteropMock.Received(1).ShowAllAsync(cut.Instance.HtmlRef);
     }
 
     [Fact]
@@ -76,7 +76,7 @@ public class BsAccordionTests() : BsComponentTests<BsAccordion>("""<div class="a
         await cut.InvokeAsync(() => cut.Instance.CollapseAllButOneAsync(accordionItem));
 
         // Assert
-        await _accordionJsFunctionsMock.Received(1).CollapseAllButOneAsync(cut.Instance.HtmlRef, accordionItem.HtmlRef);
+        await _accordionJsInteropMock.Received(1).CollapseAllButOneAsync(cut.Instance.HtmlRef, accordionItem.HtmlRef);
     }
 
     [Fact]
@@ -87,6 +87,6 @@ public class BsAccordionTests() : BsComponentTests<BsAccordion>("""<div class="a
 
     protected override void ConfigureTestContext()
     {
-        _ = Services.AddSingleton(_accordionJsFunctionsMock);
+        _ = Services.AddSingleton(_accordionJsInteropMock);
     }
 }

@@ -18,7 +18,7 @@ public partial class BsAccordionItem : BsChildContentComponent, IAsyncDisposable
     private IBsAccordionContext? AccordionContext { get; set; }
 
     [Inject]
-    private IBsAccordionJsFunctions AccordionJsFunctions { get; set; } = null!;
+    private IBsAccordionJsInterop AccordionJsInterop { get; set; } = null!;
 
     public async ValueTask DisposeAsync()
     {
@@ -39,17 +39,17 @@ public partial class BsAccordionItem : BsChildContentComponent, IAsyncDisposable
 
     public async Task ToggleAsync()
     {
-        await AccordionJsFunctions.ToggleAsync(HtmlRef, AccordionContext!.AlwaysOpen);
+        await AccordionJsInterop.ToggleAsync(HtmlRef, AccordionContext!.AlwaysOpen);
     }
 
     public async Task ShowAsync()
     {
-        await AccordionJsFunctions.ShowAsync(HtmlRef, AccordionContext!.AlwaysOpen);
+        await AccordionJsInterop.ShowAsync(HtmlRef, AccordionContext!.AlwaysOpen);
     }
 
     public async Task CollapseAsync()
     {
-        await AccordionJsFunctions.CollapseAsync(HtmlRef);
+        await AccordionJsInterop.CollapseAsync(HtmlRef);
     }
 
     private async ValueTask DisposeAsync(bool disposing)
@@ -59,6 +59,6 @@ public partial class BsAccordionItem : BsChildContentComponent, IAsyncDisposable
             return;
         }
 
-        await AccordionJsFunctions.DisposeReferenceAsync(HtmlRef);
+        await AccordionJsInterop.DisposeReferenceAsync(HtmlRef);
     }
 }

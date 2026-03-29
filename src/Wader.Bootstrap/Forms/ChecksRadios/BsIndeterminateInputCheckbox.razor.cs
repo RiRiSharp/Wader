@@ -5,20 +5,22 @@ namespace Wader.Bootstrap.Forms.ChecksRadios;
 
 public partial class BsIndeterminateInputCheckbox : BsInputBase<bool?>
 {
-    private readonly IBsCheckboxJsFunctions _bsCheckboxJsFunctions;
+    private readonly IBsCheckboxJsInterop _bsCheckboxJsInterop;
     internal ElementReference HtmlRef;
 
-    public BsIndeterminateInputCheckbox(IBsCheckboxJsFunctions bsCheckboxJsFunctions)
+    public BsIndeterminateInputCheckbox(IBsCheckboxJsInterop bsCheckboxJsInterop)
     {
-        _bsCheckboxJsFunctions = bsCheckboxJsFunctions;
+        _bsCheckboxJsInterop = bsCheckboxJsInterop;
     }
+
+    protected override string BsComponentClasses => "form-check-input";
 
     protected override async Task OnParametersSetAsync()
     {
         await base.OnParametersSetAsync();
         if (CurrentValue is null)
         {
-            await _bsCheckboxJsFunctions.InitializeIndeterminateAsync(HtmlRef);
+            await _bsCheckboxJsInterop.InitializeIndeterminateAsync(HtmlRef);
         }
     }
 
@@ -26,6 +28,4 @@ public partial class BsIndeterminateInputCheckbox : BsInputBase<bool?>
     {
         throw new NotImplementedException("This method is not necessary for parsing input checkboxes.");
     }
-
-    protected override string BsComponentClasses => "form-check-input";
 }

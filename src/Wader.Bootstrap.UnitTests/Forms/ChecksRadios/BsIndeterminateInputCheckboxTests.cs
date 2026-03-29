@@ -9,7 +9,7 @@ public class BsIndeterminateInputCheckboxTests()
         """<input class="form-check-input {0}" {1}></label>"""
     )
 {
-    private readonly IBsCheckboxJsFunctions _bsCheckboxJsFunctionsMock = Substitute.For<IBsCheckboxJsFunctions>();
+    private readonly IBsCheckboxJsInterop _bsCheckboxJsInteropMock = Substitute.For<IBsCheckboxJsInterop>();
 
     protected override Dictionary<string, string> AttributesForDefaultTests => new() { ["type"] = "checkbox" };
 
@@ -23,7 +23,7 @@ public class BsIndeterminateInputCheckboxTests()
         var cut = GetCut();
 
         // Assert
-        await _bsCheckboxJsFunctionsMock.ReceivedWithAnyArgs(1).InitializeIndeterminateAsync(cut.Instance.HtmlRef);
+        await _bsCheckboxJsInteropMock.ReceivedWithAnyArgs(1).InitializeIndeterminateAsync(cut.Instance.HtmlRef);
     }
 
     [Theory]
@@ -61,6 +61,6 @@ public class BsIndeterminateInputCheckboxTests()
 
     protected override void ConfigureTestContext()
     {
-        _ = Services.AddSingleton(_bsCheckboxJsFunctionsMock);
+        _ = Services.AddSingleton(_bsCheckboxJsInteropMock);
     }
 }

@@ -7,7 +7,7 @@ namespace Wader.Bootstrap.UnitTests.Components.Buttons;
 public class BsButtonOutlineTests()
     : BsComponentTests<BsButtonOutline>("""<button type="button" class="btn {0}" {1}></button>""")
 {
-    private readonly IBsButtonJsFunctions _buttonJsFunctionsMock = Substitute.For<IBsButtonJsFunctions>();
+    private readonly IBsButtonJsInterop _buttonJsInteropMock = Substitute.For<IBsButtonJsInterop>();
     protected override string ClassesForDefaultTests => "btn-outline-primary";
 
     [Theory]
@@ -94,6 +94,6 @@ public class BsButtonOutlineTests()
 
     protected override void ConfigureTestContext()
     {
-        _ = Services.AddSingleton(_buttonJsFunctionsMock);
+        _ = Services.AddSingleton(_buttonJsInteropMock);
     }
 }

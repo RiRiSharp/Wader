@@ -21,7 +21,7 @@ public partial class BsAlert : BsChildContentComponent, IAsyncDisposable
     public IBsAlertContext AlertContext => _alertContext;
 
     [Inject]
-    private IBsAlertJsFunctions AlertJsFunctions { get; set; } = null!;
+    private IBsAlertJsInterop AlertJsInterop { get; set; } = null!;
 
     [Parameter]
     public BsAlertVariant Variant { get; set; }
@@ -52,7 +52,7 @@ public partial class BsAlert : BsChildContentComponent, IAsyncDisposable
         }
 
         _dotNetRef = DotNetObjectReference.Create(this);
-        await AlertJsFunctions.RegisterDismissCallbackAsync(HtmlRef, _dotNetRef);
+        await AlertJsInterop.RegisterDismissCallbackAsync(HtmlRef, _dotNetRef);
     }
 
     public async Task DismissAsync()
@@ -64,7 +64,7 @@ public partial class BsAlert : BsChildContentComponent, IAsyncDisposable
             );
         }
 
-        await AlertJsFunctions.DismissAsync(HtmlRef);
+        await AlertJsInterop.DismissAsync(HtmlRef);
     }
 
     [JSInvokable]
@@ -80,7 +80,7 @@ public partial class BsAlert : BsChildContentComponent, IAsyncDisposable
             return;
         }
 
-        await AlertJsFunctions.DisposeReferenceAsync(HtmlRef);
+        await AlertJsInterop.DisposeReferenceAsync(HtmlRef);
         _dotNetRef?.Dispose();
     }
 }

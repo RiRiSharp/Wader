@@ -5,21 +5,21 @@ using Wader.Bootstrap.Components.Modal.Internals;
 
 namespace Wader.Bootstrap.UnitTests.Components.Modal.Internals;
 
-public class BsModalJsFunctionsTests
+public class BsModalJsInteropTests
 {
     [Fact]
     public async Task ToggleCallsCorrectJsFunctionAsync()
     {
         // Arrange
         var jsObj = Substitute.For<IJSObjectReference>();
-        await using var sut = new BsModalJsFunctions(jsObj);
+        await using var sut = new BsModalJsInterop(jsObj);
         ElementReference modalRef = default;
 
         // Act
         await sut.ToggleAsync(modalRef);
 
         // Assert
-        AssertJsInterop.Calls(jsObj, BsModalJsFunctions.TOGGLE, modalRef);
+        AssertJsInterop.Calls(jsObj, BsModalJsInterop.TOGGLE, modalRef);
     }
 
     [Fact]
@@ -27,14 +27,14 @@ public class BsModalJsFunctionsTests
     {
         // Arrange
         var jsObj = Substitute.For<IJSObjectReference>();
-        await using var sut = new BsModalJsFunctions(jsObj);
+        await using var sut = new BsModalJsInterop(jsObj);
         ElementReference modalRef = default;
 
         // Act
         await sut.ShowAsync(modalRef);
 
         // Assert
-        AssertJsInterop.Calls(jsObj, BsModalJsFunctions.SHOW, modalRef);
+        AssertJsInterop.Calls(jsObj, BsModalJsInterop.SHOW, modalRef);
     }
 
     [Fact]
@@ -42,14 +42,14 @@ public class BsModalJsFunctionsTests
     {
         // Arrange
         var jsObj = Substitute.For<IJSObjectReference>();
-        await using var sut = new BsModalJsFunctions(jsObj);
+        await using var sut = new BsModalJsInterop(jsObj);
         ElementReference modalRef = default;
 
         // Act
         await sut.CloseAsync(modalRef);
 
         // Assert
-        AssertJsInterop.Calls(jsObj, BsModalJsFunctions.CLOSE, modalRef);
+        AssertJsInterop.Calls(jsObj, BsModalJsInterop.CLOSE, modalRef);
     }
 
     [Fact]
@@ -57,14 +57,14 @@ public class BsModalJsFunctionsTests
     {
         // Arrange
         var jsObj = Substitute.For<IJSObjectReference>();
-        await using var sut = new BsModalJsFunctions(jsObj);
+        await using var sut = new BsModalJsInterop(jsObj);
         ElementReference modalRef = default;
 
         // Act
         await sut.HandleUpdateAsync(modalRef);
 
         // Assert
-        AssertJsInterop.Calls(jsObj, BsModalJsFunctions.HANDLE_UPDATE, modalRef);
+        AssertJsInterop.Calls(jsObj, BsModalJsInterop.HANDLE_UPDATE, modalRef);
     }
 
     [Fact]
@@ -72,13 +72,13 @@ public class BsModalJsFunctionsTests
     {
         // Arrange
         var jsObj = Substitute.For<IJSObjectReference>();
-        await using var sut = new BsModalJsFunctions(jsObj);
+        await using var sut = new BsModalJsInterop(jsObj);
         ElementReference modalRef = default;
 
         // Act
         await sut.DisposeReferenceAsync(modalRef);
 
         // Assert
-        AssertJsInterop.Calls(jsObj, BsModalJsFunctions.DISPOSE, modalRef);
+        AssertJsInterop.Calls(jsObj, BsModalJsInterop.DISPOSE, modalRef);
     }
 }

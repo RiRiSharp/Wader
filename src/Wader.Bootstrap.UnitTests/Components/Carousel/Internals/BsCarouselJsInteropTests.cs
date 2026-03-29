@@ -5,14 +5,14 @@ using Wader.Bootstrap.Components.Carousel.Internals;
 
 namespace Wader.Bootstrap.UnitTests.Components.Carousel.Internals;
 
-public class BsCarouselJsFunctionsTests
+public class BsCarouselJsInteropTests
 {
     [Fact]
     public async Task MoveToSlideCallsCorrectJsFunctionAsync()
     {
         // Arrange
         var jsObj = Substitute.For<IJSObjectReference>();
-        await using var sut = new BsCarouselJsFunctions(jsObj);
+        await using var sut = new BsCarouselJsInterop(jsObj);
         ElementReference carouselRef = default;
         const int slideNumber = 1337;
 
@@ -20,7 +20,7 @@ public class BsCarouselJsFunctionsTests
         await sut.MoveToSlideAsync(carouselRef, slideNumber);
 
         // Assert
-        AssertJsInterop.Calls(jsObj, BsCarouselJsFunctions.MOVE_TO_SLIDE, carouselRef, slideNumber);
+        AssertJsInterop.Calls(jsObj, BsCarouselJsInterop.MOVE_TO_SLIDE, carouselRef, slideNumber);
     }
 
     [Fact]
@@ -28,14 +28,14 @@ public class BsCarouselJsFunctionsTests
     {
         // Arrange
         var jsObj = Substitute.For<IJSObjectReference>();
-        await using var sut = new BsCarouselJsFunctions(jsObj);
+        await using var sut = new BsCarouselJsInterop(jsObj);
         ElementReference carouselRef = default;
 
         // Act
         await sut.MovePrevAsync(carouselRef);
 
         // Assert
-        AssertJsInterop.Calls(jsObj, BsCarouselJsFunctions.MOVE_PREV, carouselRef);
+        AssertJsInterop.Calls(jsObj, BsCarouselJsInterop.MOVE_PREV, carouselRef);
     }
 
     [Fact]
@@ -43,14 +43,14 @@ public class BsCarouselJsFunctionsTests
     {
         // Arrange
         var jsObj = Substitute.For<IJSObjectReference>();
-        await using var sut = new BsCarouselJsFunctions(jsObj);
+        await using var sut = new BsCarouselJsInterop(jsObj);
         ElementReference carouselRef = default;
 
         // Act
         await sut.MoveNextAsync(carouselRef);
 
         // Assert
-        AssertJsInterop.Calls(jsObj, BsCarouselJsFunctions.MOVE_NEXT, carouselRef);
+        AssertJsInterop.Calls(jsObj, BsCarouselJsInterop.MOVE_NEXT, carouselRef);
     }
 
     [Fact]
@@ -58,14 +58,14 @@ public class BsCarouselJsFunctionsTests
     {
         // Arrange
         var jsObj = Substitute.For<IJSObjectReference>();
-        await using var sut = new BsCarouselJsFunctions(jsObj);
+        await using var sut = new BsCarouselJsInterop(jsObj);
         ElementReference carouselRef = default;
 
         // Act
         await sut.CycleAsync(carouselRef);
 
         // Assert
-        AssertJsInterop.Calls(jsObj, BsCarouselJsFunctions.CYCLE, carouselRef);
+        AssertJsInterop.Calls(jsObj, BsCarouselJsInterop.CYCLE, carouselRef);
     }
 
     [Fact]
@@ -73,14 +73,14 @@ public class BsCarouselJsFunctionsTests
     {
         // Arrange
         var jsObj = Substitute.For<IJSObjectReference>();
-        await using var sut = new BsCarouselJsFunctions(jsObj);
+        await using var sut = new BsCarouselJsInterop(jsObj);
         ElementReference carouselRef = default;
 
         // Act
         await sut.PauseAsync(carouselRef);
 
         // Assert
-        AssertJsInterop.Calls(jsObj, BsCarouselJsFunctions.PAUSE, carouselRef);
+        AssertJsInterop.Calls(jsObj, BsCarouselJsInterop.PAUSE, carouselRef);
     }
 
     [Fact]
@@ -88,14 +88,14 @@ public class BsCarouselJsFunctionsTests
     {
         // Arrange
         var jsObj = Substitute.For<IJSObjectReference>();
-        await using var sut = new BsCarouselJsFunctions(jsObj);
+        await using var sut = new BsCarouselJsInterop(jsObj);
         ElementReference carouselRef = default;
 
         // Act
         await sut.AddCycleCallbackAsync(carouselRef);
 
         // Assert
-        AssertJsInterop.Calls(jsObj, BsCarouselJsFunctions.ADD_CYCLE_CALLBACK, carouselRef);
+        AssertJsInterop.Calls(jsObj, BsCarouselJsInterop.ADD_CYCLE_CALLBACK, carouselRef);
     }
 
     [Fact]
@@ -103,14 +103,14 @@ public class BsCarouselJsFunctionsTests
     {
         // Arrange
         var jsObj = Substitute.For<IJSObjectReference>();
-        await using var sut = new BsCarouselJsFunctions(jsObj);
+        await using var sut = new BsCarouselJsInterop(jsObj);
         ElementReference carouselRef = default;
 
         // Act
         await sut.RemoveCycleCallbackAsync(carouselRef);
 
         // Assert
-        AssertJsInterop.Calls(jsObj, BsCarouselJsFunctions.REMOVE_CYCLE_CALLBACK, carouselRef);
+        AssertJsInterop.Calls(jsObj, BsCarouselJsInterop.REMOVE_CYCLE_CALLBACK, carouselRef);
     }
 
     [Fact]
@@ -118,13 +118,13 @@ public class BsCarouselJsFunctionsTests
     {
         // Arrange
         var jsObj = Substitute.For<IJSObjectReference>();
-        await using var sut = new BsCarouselJsFunctions(jsObj);
+        await using var sut = new BsCarouselJsInterop(jsObj);
         ElementReference carouselRef = default;
 
         // Act
         await sut.DisposeReferenceAsync(carouselRef);
 
         // Assert
-        AssertJsInterop.Calls(jsObj, BsCarouselJsFunctions.DISPOSE, carouselRef);
+        AssertJsInterop.Calls(jsObj, BsCarouselJsInterop.DISPOSE, carouselRef);
     }
 }

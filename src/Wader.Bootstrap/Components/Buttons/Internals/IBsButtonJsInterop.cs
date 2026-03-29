@@ -3,7 +3,7 @@ using Wader.Bootstrap.Internals;
 
 namespace Wader.Bootstrap.Components.Buttons.Internals;
 
-public interface IBsButtonJsFunctions : IBsJsDisposable
+public interface IBsButtonJsInterop : IBsJsDisposable
 {
     Task ToggleAsync(ElementReference buttonRef);
 }

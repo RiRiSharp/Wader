@@ -24,7 +24,7 @@ public partial class BsModal : BsChildContentComponent, IAsyncDisposable
     private string? FadeClass => Fade ? "fade" : null;
 
     [Inject]
-    private IBsModalJsFunctions BsModalJsFunctions { get; set; } = null!;
+    private IBsModalJsInterop BsModalJsInterop { get; set; } = null!;
 
     public async ValueTask DisposeAsync()
     {
@@ -40,22 +40,22 @@ public partial class BsModal : BsChildContentComponent, IAsyncDisposable
 
     public async Task ToggleAsync()
     {
-        await BsModalJsFunctions.ToggleAsync(HtmlRef);
+        await BsModalJsInterop.ToggleAsync(HtmlRef);
     }
 
     public async Task ShowAsync()
     {
-        await BsModalJsFunctions.ShowAsync(HtmlRef);
+        await BsModalJsInterop.ShowAsync(HtmlRef);
     }
 
     public async Task CloseAsync()
     {
-        await BsModalJsFunctions.CloseAsync(HtmlRef);
+        await BsModalJsInterop.CloseAsync(HtmlRef);
     }
 
     public async Task HandleUpdateAsync()
     {
-        await BsModalJsFunctions.HandleUpdateAsync(HtmlRef);
+        await BsModalJsInterop.HandleUpdateAsync(HtmlRef);
     }
 
     private async Task Dispose(bool disposing)
@@ -65,6 +65,6 @@ public partial class BsModal : BsChildContentComponent, IAsyncDisposable
             return;
         }
 
-        await BsModalJsFunctions.DisposeReferenceAsync(HtmlRef);
+        await BsModalJsInterop.DisposeReferenceAsync(HtmlRef);
     }
 }

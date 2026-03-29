@@ -7,7 +7,7 @@ namespace Wader.Bootstrap.UnitTests.Components.Offcanvas;
 
 public class BsOffcanvasTests() : BsComponentTests<BsOffcanvas>("""<div class="offcanvas {0}" {1}></nav>""")
 {
-    private readonly IBsOffcanvasJsFunctions _offcanvasJsFunctionsMock = Substitute.For<IBsOffcanvasJsFunctions>();
+    private readonly IBsOffcanvasJsInterop _offcanvasJsInteropMock = Substitute.For<IBsOffcanvasJsInterop>();
     protected override string ClassesForDefaultTests => "offcanvas-start";
 
     protected override Dictionary<string, string> AttributesForDefaultTests =>
@@ -42,7 +42,7 @@ public class BsOffcanvasTests() : BsComponentTests<BsOffcanvas>("""<div class="o
         await cut.Instance.ToggleAsync();
 
         // Assert
-        await _offcanvasJsFunctionsMock.Received(1).ToggleAsync(cut.Instance.HtmlRef);
+        await _offcanvasJsInteropMock.Received(1).ToggleAsync(cut.Instance.HtmlRef);
     }
 
     [Fact]
@@ -56,7 +56,7 @@ public class BsOffcanvasTests() : BsComponentTests<BsOffcanvas>("""<div class="o
         await cut.Instance.ShowAsync();
 
         // Assert
-        await _offcanvasJsFunctionsMock.Received(1).ShowAsync(cut.Instance.HtmlRef);
+        await _offcanvasJsInteropMock.Received(1).ShowAsync(cut.Instance.HtmlRef);
     }
 
     [Fact]
@@ -70,7 +70,7 @@ public class BsOffcanvasTests() : BsComponentTests<BsOffcanvas>("""<div class="o
         await cut.Instance.CloseAsync();
 
         // Assert
-        await _offcanvasJsFunctionsMock.Received(1).CloseAsync(cut.Instance.HtmlRef);
+        await _offcanvasJsInteropMock.Received(1).CloseAsync(cut.Instance.HtmlRef);
     }
 
     [Fact]
@@ -81,6 +81,6 @@ public class BsOffcanvasTests() : BsComponentTests<BsOffcanvas>("""<div class="o
 
     protected override void ConfigureTestContext()
     {
-        _ = Services.AddSingleton(_offcanvasJsFunctionsMock);
+        _ = Services.AddSingleton(_offcanvasJsInteropMock);
     }
 }

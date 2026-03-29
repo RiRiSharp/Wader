@@ -6,21 +6,21 @@ using Wader.Bootstrap.Components.Alert.Internals;
 
 namespace Wader.Bootstrap.UnitTests.Components.Alert.Internals;
 
-public class BsAlertJsFunctionsTests
+public class BsAlertJsInteropTests
 {
     [Fact]
     public async Task DismissCallsCorrectJsFunctionAsync()
     {
         // Arrange
         var jsObj = Substitute.For<IJSObjectReference>();
-        await using var sut = new BsAlertJsFunctions(jsObj);
+        await using var sut = new BsAlertJsInterop(jsObj);
         ElementReference alertRef = default;
 
         // Act
         await sut.DismissAsync(alertRef);
 
         // Assert
-        AssertJsInterop.Calls(jsObj, BsAlertJsFunctions.DISMISS, alertRef);
+        AssertJsInterop.Calls(jsObj, BsAlertJsInterop.DISMISS, alertRef);
     }
 
     [Fact]
@@ -28,7 +28,7 @@ public class BsAlertJsFunctionsTests
     {
         // Arrange
         var jsObj = Substitute.For<IJSObjectReference>();
-        await using var sut = new BsAlertJsFunctions(jsObj);
+        await using var sut = new BsAlertJsInterop(jsObj);
         ElementReference alertRef = default;
         DotNetObjectReference<BsAlert> dotNetRef = null!;
 
@@ -36,7 +36,7 @@ public class BsAlertJsFunctionsTests
         await sut.RegisterDismissCallbackAsync(alertRef, dotNetRef);
 
         // Assert
-        AssertJsInterop.Calls(jsObj, BsAlertJsFunctions.REGISTER_DISMISS_CALLBACK, alertRef, dotNetRef);
+        AssertJsInterop.Calls(jsObj, BsAlertJsInterop.REGISTER_DISMISS_CALLBACK, alertRef, dotNetRef);
     }
 
     [Fact]
@@ -44,13 +44,13 @@ public class BsAlertJsFunctionsTests
     {
         // Arrange
         var jsObj = Substitute.For<IJSObjectReference>();
-        await using var sut = new BsAlertJsFunctions(jsObj);
+        await using var sut = new BsAlertJsInterop(jsObj);
         ElementReference alertRef = default;
 
         // Act
         await sut.DisposeReferenceAsync(alertRef);
 
         // Assert
-        AssertJsInterop.Calls(jsObj, BsAlertJsFunctions.DISPOSE, alertRef);
+        AssertJsInterop.Calls(jsObj, BsAlertJsInterop.DISPOSE, alertRef);
     }
 }

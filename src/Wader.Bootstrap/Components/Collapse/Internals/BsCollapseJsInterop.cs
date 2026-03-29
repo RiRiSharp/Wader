@@ -4,7 +4,7 @@ using Wader.Bootstrap.Internals;
 
 namespace Wader.Bootstrap.Components.Collapse.Internals;
 
-internal sealed class BsCollapseJsFunctions : IBsCollapseJsFunctions, IBsJsFunctionsWrapper, IAsyncDisposable
+internal sealed class BsCollapseJsInterop : IBsCollapseJsInterop, IBsJsFunctionsWrapper, IAsyncDisposable
 {
     internal const string TOGGLE = "toggle";
 
@@ -15,7 +15,7 @@ internal sealed class BsCollapseJsFunctions : IBsCollapseJsFunctions, IBsJsFunct
     internal const string DISPOSE = "dispose";
     private readonly IJSObjectReference _bsJsObjectRef;
 
-    public BsCollapseJsFunctions(IJSObjectReference bsJsObjectRef)
+    public BsCollapseJsInterop(IJSObjectReference bsJsObjectRef)
     {
         _bsJsObjectRef = bsJsObjectRef;
     }

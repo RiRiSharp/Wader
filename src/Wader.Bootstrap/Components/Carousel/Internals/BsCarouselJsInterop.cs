@@ -4,7 +4,7 @@ using Wader.Bootstrap.Internals;
 
 namespace Wader.Bootstrap.Components.Carousel.Internals;
 
-internal sealed class BsCarouselJsFunctions : IBsCarouselJsFunctions, IBsJsFunctionsWrapper, IAsyncDisposable
+internal sealed class BsCarouselJsInterop : IBsCarouselJsInterop, IBsJsFunctionsWrapper, IAsyncDisposable
 {
     internal const string MOVE_TO_SLIDE = "moveToSlide";
 
@@ -23,7 +23,7 @@ internal sealed class BsCarouselJsFunctions : IBsCarouselJsFunctions, IBsJsFunct
     internal const string DISPOSE = "dispose";
     private readonly IJSObjectReference _bsJsObjectRef;
 
-    public BsCarouselJsFunctions(IJSObjectReference bsJsObjectRef)
+    public BsCarouselJsInterop(IJSObjectReference bsJsObjectRef)
     {
         _bsJsObjectRef = bsJsObjectRef;
     }

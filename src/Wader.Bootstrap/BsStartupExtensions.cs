@@ -17,29 +17,29 @@ public static class BsStartupExtensions
 {
     public static IServiceCollection AddWaderServerJsFallbacks(this IServiceCollection services)
     {
-        return services.AddWaderJs(true);
+        return services.AddWaderJsInterop(true);
     }
 
     public static IServiceCollection AddWaderWasmJsInterop(this IServiceCollection services)
     {
-        return services.AddWaderJs(false);
+        return services.AddWaderJsInterop(false);
     }
 
-    private static IServiceCollection AddWaderJs(this IServiceCollection services, bool useNoOp)
+    private static IServiceCollection AddWaderJsInterop(this IServiceCollection services, bool useNoOp)
     {
         return services
-            .AddWaderJsSingle<IBsAccordionJsFunctions, BsAccordionJsFunctions>(useNoOp)
-            .AddWaderJsSingle<IBsAlertJsFunctions, BsAlertJsFunctions>(useNoOp)
-            .AddWaderJsSingle<IBsButtonJsFunctions, BsButtonJsFunctions>(useNoOp)
-            .AddWaderJsSingle<IBsCarouselJsFunctions, BsCarouselJsFunctions>(useNoOp)
-            .AddWaderJsSingle<IBsCheckboxJsFunctions, BsCheckboxJsFunctions>(useNoOp)
-            .AddWaderJsSingle<IBsCollapseJsFunctions, BsCollapseJsFunctions>(useNoOp)
-            .AddWaderJsSingle<IBsModalJsFunctions, BsModalJsFunctions>(useNoOp)
-            .AddWaderJsSingle<IBsOffcanvasJsFunctions, BsOffcanvasJsFunctions>(useNoOp)
-            .AddWaderJsSingle<IBsPopoverJsFunctions, BsPopoverJsFunctions>(useNoOp);
+            .AddWaderJsInterop<IBsAccordionJsInterop, BsAccordionJsInterop>(useNoOp)
+            .AddWaderJsInterop<IBsAlertJsInterop, BsAlertJsInterop>(useNoOp)
+            .AddWaderJsInterop<IBsButtonJsInterop, BsButtonJsInterop>(useNoOp)
+            .AddWaderJsInterop<IBsCarouselJsInterop, BsCarouselJsInterop>(useNoOp)
+            .AddWaderJsInterop<IBsCheckboxJsInterop, BsCheckboxJsInterop>(useNoOp)
+            .AddWaderJsInterop<IBsCollapseJsInterop, BsCollapseJsInterop>(useNoOp)
+            .AddWaderJsInterop<IBsModalJsInterop, BsModalJsInterop>(useNoOp)
+            .AddWaderJsInterop<IBsOffcanvasJsInterop, BsOffcanvasJsInterop>(useNoOp)
+            .AddWaderJsInterop<IBsPopoverJsInterop, BsPopoverJsInterop>(useNoOp);
     }
 
-    private static IServiceCollection AddWaderJsSingle<TService, TImpl>(this IServiceCollection services, bool useNoOp)
+    private static IServiceCollection AddWaderJsInterop<TService, TImpl>(this IServiceCollection services, bool useNoOp)
         where TService : class
         where TImpl : class, TService, IBsJsFunctionsWrapper
     {

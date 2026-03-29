@@ -8,9 +8,9 @@ namespace Wader.Bootstrap.Components.Accordion;
 
 public partial class BsAccordionCollapse : BsChildContentComponent, IHasCollapseState
 {
-    internal ElementReference HtmlRef;
     private DotNetObjectReference<BsAccordionCollapse> _dotNetRef = null!;
     private bool _initialCollapse;
+    internal ElementReference HtmlRef;
 
     protected override string BsComponentClasses => $"accordion-collapse collapse {GetInitialCollapsedClass()}";
     public bool Collapsed { get; set; } = true;
@@ -19,7 +19,7 @@ public partial class BsAccordionCollapse : BsChildContentComponent, IHasCollapse
     public IBsAccordionItemContext? AccordionItemContext { get; set; }
 
     [Inject]
-    private IBsAccordionJsFunctions AccordionJsFunctions { get; set; } = null!;
+    private IBsAccordionJsInterop AccordionJsInterop { get; set; } = null!;
 
     [JSInvokable]
     public void UpdateCollapseState(bool isCollapsed)
@@ -51,7 +51,7 @@ public partial class BsAccordionCollapse : BsChildContentComponent, IHasCollapse
         }
 
         _dotNetRef = DotNetObjectReference.Create(this);
-        await AccordionJsFunctions.RegisterCollapseCallbackAsync(HtmlRef, _dotNetRef);
+        await AccordionJsInterop.RegisterCollapseCallbackAsync(HtmlRef, _dotNetRef);
     }
 
     private string GetInitialCollapsedClass()

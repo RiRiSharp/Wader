@@ -4,7 +4,7 @@ using Wader.Bootstrap.Internals;
 
 namespace Wader.Bootstrap.Components.Alert.Internals;
 
-internal sealed class BsAlertJsFunctions : IBsAlertJsFunctions, IBsJsFunctionsWrapper, IAsyncDisposable
+internal sealed class BsAlertJsInterop : IBsAlertJsInterop, IBsJsFunctionsWrapper, IAsyncDisposable
 {
     internal const string DISMISS = "dismiss";
 
@@ -13,7 +13,7 @@ internal sealed class BsAlertJsFunctions : IBsAlertJsFunctions, IBsJsFunctionsWr
     internal const string DISPOSE = "dispose";
     private readonly IJSObjectReference _bsJsObjectRef;
 
-    public BsAlertJsFunctions(IJSObjectReference bsJsObjectRef)
+    public BsAlertJsInterop(IJSObjectReference bsJsObjectRef)
     {
         _bsJsObjectRef = bsJsObjectRef;
     }

@@ -3,7 +3,7 @@ using Wader.Bootstrap.Internals;
 
 namespace Wader.Bootstrap.Components.Offcanvas.Internals;
 
-public interface IBsOffcanvasJsFunctions : IBsJsDisposable
+public interface IBsOffcanvasJsInterop : IBsJsDisposable
 {
     Task ToggleAsync(ElementReference offcanvasRef);
     Task ShowAsync(ElementReference offcanvasRef);

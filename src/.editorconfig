@@ -298,7 +298,7 @@ roslynator_empty_string_style = literal
 roslynator_null_check_style = pattern_matching
 
 # RCS1078: Use "" instead of 'string.Empty'
-dotnet_diagnostig.RCS1078.severity = warning
+dotnet_diagnostic.RCS1078.severity = warning
 
 # RCS1213: Remove unused member declaration
 dotnet_diagnostic.RCS1213.severity = warning

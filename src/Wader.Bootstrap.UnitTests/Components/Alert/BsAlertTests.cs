@@ -6,7 +6,7 @@ namespace Wader.Bootstrap.UnitTests.Components.Alert;
 
 public class BsAlertTests() : BsComponentTests<BsAlert>("""<div class="alert {0}" {1}></div>""")
 {
-    private readonly IBsAlertJsFunctions _alertJsFunctionsMock = Substitute.For<IBsAlertJsFunctions>();
+    private readonly IBsAlertJsInterop _alertJsInteropMock = Substitute.For<IBsAlertJsInterop>();
 
     protected override string ClassesForDefaultTests => "alert-primary fade show";
     protected override Dictionary<string, string> AttributesForDefaultTests => new() { ["role"] = "alert" };
@@ -81,7 +81,7 @@ public class BsAlertTests() : BsComponentTests<BsAlert>("""<div class="alert {0}
         await cut.InvokeAsync(cut.Instance.DismissAsync);
 
         // Assert
-        await _alertJsFunctionsMock.Received(1).DismissAsync(cut.Instance.HtmlRef);
+        await _alertJsInteropMock.Received(1).DismissAsync(cut.Instance.HtmlRef);
     }
 
     [Fact]
@@ -98,6 +98,6 @@ public class BsAlertTests() : BsComponentTests<BsAlert>("""<div class="alert {0}
 
     protected override void ConfigureTestContext()
     {
-        _ = Services.AddSingleton(_alertJsFunctionsMock);
+        _ = Services.AddSingleton(_alertJsInteropMock);
     }
 }

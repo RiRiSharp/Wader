@@ -5,21 +5,21 @@ using Wader.Bootstrap.Components.Accordion.Internals;
 
 namespace Wader.Bootstrap.UnitTests.Components.Accordion.Internals;
 
-public class BsAccordionJsFunctionsTests : BunitContext
+public class BsAccordionJsInteropTests : BunitContext
 {
     [Fact]
     public async Task CollapseAllCallsCorrectJsFunctionAsync()
     {
         // Arrange
         var jsObj = Substitute.For<IJSObjectReference>();
-        await using var sut = new BsAccordionJsFunctions(jsObj);
+        await using var sut = new BsAccordionJsInterop(jsObj);
         ElementReference accordionRef = default;
 
         // Act
         await sut.CollapseAllAsync(accordionRef);
 
         // Assert
-        AssertJsInterop.Calls(jsObj, BsAccordionJsFunctions.COLLAPSE_ALL, accordionRef);
+        AssertJsInterop.Calls(jsObj, BsAccordionJsInterop.COLLAPSE_ALL, accordionRef);
     }
 
     [Fact]
@@ -27,14 +27,14 @@ public class BsAccordionJsFunctionsTests : BunitContext
     {
         // Arrange
         var jsObj = Substitute.For<IJSObjectReference>();
-        await using var sut = new BsAccordionJsFunctions(jsObj);
+        await using var sut = new BsAccordionJsInterop(jsObj);
         ElementReference accordionRef = default;
 
         // Act
         await sut.ShowAllAsync(accordionRef);
 
         // Assert
-        AssertJsInterop.Calls(jsObj, BsAccordionJsFunctions.SHOW_ALL, accordionRef);
+        AssertJsInterop.Calls(jsObj, BsAccordionJsInterop.SHOW_ALL, accordionRef);
     }
 
     [Fact]
@@ -42,7 +42,7 @@ public class BsAccordionJsFunctionsTests : BunitContext
     {
         // Arrange
         var jsObj = Substitute.For<IJSObjectReference>();
-        await using var sut = new BsAccordionJsFunctions(jsObj);
+        await using var sut = new BsAccordionJsInterop(jsObj);
         ElementReference accordionRef = default;
         ElementReference itemRef = default;
 
@@ -50,7 +50,7 @@ public class BsAccordionJsFunctionsTests : BunitContext
         await sut.CollapseAllButOneAsync(accordionRef, itemRef);
 
         // Assert
-        AssertJsInterop.Calls(jsObj, BsAccordionJsFunctions.COLLAPSE_ALL_BUT_ONE, accordionRef, itemRef);
+        AssertJsInterop.Calls(jsObj, BsAccordionJsInterop.COLLAPSE_ALL_BUT_ONE, accordionRef, itemRef);
     }
 
     [Theory]
@@ -60,14 +60,14 @@ public class BsAccordionJsFunctionsTests : BunitContext
     {
         // Arrange
         var jsObj = Substitute.For<IJSObjectReference>();
-        await using var sut = new BsAccordionJsFunctions(jsObj);
+        await using var sut = new BsAccordionJsInterop(jsObj);
         ElementReference itemRef = default;
 
         // Act
         await sut.ToggleAsync(itemRef, alwaysOpen);
 
         // Assert
-        AssertJsInterop.Calls(jsObj, BsAccordionJsFunctions.TOGGLE, itemRef, alwaysOpen);
+        AssertJsInterop.Calls(jsObj, BsAccordionJsInterop.TOGGLE, itemRef, alwaysOpen);
     }
 
     [Theory]
@@ -77,14 +77,14 @@ public class BsAccordionJsFunctionsTests : BunitContext
     {
         // Arrange
         var jsObj = Substitute.For<IJSObjectReference>();
-        await using var sut = new BsAccordionJsFunctions(jsObj);
+        await using var sut = new BsAccordionJsInterop(jsObj);
         ElementReference itemRef = default;
 
         // Act
         await sut.ShowAsync(itemRef, alwaysOpen);
 
         // Assert
-        AssertJsInterop.Calls(jsObj, BsAccordionJsFunctions.SHOW, itemRef, alwaysOpen);
+        AssertJsInterop.Calls(jsObj, BsAccordionJsInterop.SHOW, itemRef, alwaysOpen);
     }
 
     [Fact]
@@ -92,14 +92,14 @@ public class BsAccordionJsFunctionsTests : BunitContext
     {
         // Arrange
         var jsObj = Substitute.For<IJSObjectReference>();
-        await using var sut = new BsAccordionJsFunctions(jsObj);
+        await using var sut = new BsAccordionJsInterop(jsObj);
         ElementReference itemRef = default;
 
         // Act
         await sut.CollapseAsync(itemRef);
 
         // Assert
-        AssertJsInterop.Calls(jsObj, BsAccordionJsFunctions.COLLAPSE, itemRef);
+        AssertJsInterop.Calls(jsObj, BsAccordionJsInterop.COLLAPSE, itemRef);
     }
 
     [Fact]
@@ -107,7 +107,7 @@ public class BsAccordionJsFunctionsTests : BunitContext
     {
         // Arrange
         var jsObj = Substitute.For<IJSObjectReference>();
-        await using var sut = new BsAccordionJsFunctions(jsObj);
+        await using var sut = new BsAccordionJsInterop(jsObj);
         ElementReference buttonRef = default;
         DotNetObjectReference<IHasCollapseState> dotNetRef = null!;
 
@@ -115,7 +115,7 @@ public class BsAccordionJsFunctionsTests : BunitContext
         await sut.RegisterCollapseCallbackAsync(buttonRef, dotNetRef);
 
         // Assert
-        AssertJsInterop.Calls(jsObj, BsAccordionJsFunctions.REGISTER_COLLAPSE_CALLBACK, buttonRef, dotNetRef);
+        AssertJsInterop.Calls(jsObj, BsAccordionJsInterop.REGISTER_COLLAPSE_CALLBACK, buttonRef, dotNetRef);
     }
 
     [Fact]
@@ -123,13 +123,13 @@ public class BsAccordionJsFunctionsTests : BunitContext
     {
         // Arrange
         var jsObj = Substitute.For<IJSObjectReference>();
-        await using var sut = new BsAccordionJsFunctions(jsObj);
+        await using var sut = new BsAccordionJsInterop(jsObj);
         ElementReference accordionItemRef = default;
 
         // Act
         await sut.DisposeReferenceAsync(accordionItemRef);
 
         // Assert
-        AssertJsInterop.Calls(jsObj, BsAccordionJsFunctions.DISPOSE, accordionItemRef);
+        AssertJsInterop.Calls(jsObj, BsAccordionJsInterop.DISPOSE, accordionItemRef);
     }
 }

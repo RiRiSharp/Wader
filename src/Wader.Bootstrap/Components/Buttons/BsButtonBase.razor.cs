@@ -27,7 +27,7 @@ public partial class BsButtonBase : BsChildContentComponent, IAsyncDisposable
     public BsButtonType ButtonType { get; set; }
 
     [Inject]
-    private IBsButtonJsFunctions ButtonJsFunctions { get; set; } = null!;
+    private IBsButtonJsInterop ButtonJsInterop { get; set; } = null!;
 
     public async ValueTask DisposeAsync()
     {
@@ -37,7 +37,7 @@ public partial class BsButtonBase : BsChildContentComponent, IAsyncDisposable
 
     public async Task ToggleAsync()
     {
-        await ButtonJsFunctions.ToggleAsync(HtmlRef);
+        await ButtonJsInterop.ToggleAsync(HtmlRef);
     }
 
     private async ValueTask DisposeAsync(bool disposing)
@@ -47,6 +47,6 @@ public partial class BsButtonBase : BsChildContentComponent, IAsyncDisposable
             return;
         }
 
-        await ButtonJsFunctions.DisposeReferenceAsync(HtmlRef);
+        await ButtonJsInterop.DisposeReferenceAsync(HtmlRef);
     }
 }

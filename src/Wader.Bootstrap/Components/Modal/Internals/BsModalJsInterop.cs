@@ -4,7 +4,7 @@ using Wader.Bootstrap.Internals;
 
 namespace Wader.Bootstrap.Components.Modal.Internals;
 
-internal sealed class BsModalJsFunctions : IBsModalJsFunctions, IBsJsFunctionsWrapper, IAsyncDisposable
+internal sealed class BsModalJsInterop : IBsModalJsInterop, IBsJsFunctionsWrapper, IAsyncDisposable
 {
     internal const string TOGGLE = "toggle";
 
@@ -17,7 +17,7 @@ internal sealed class BsModalJsFunctions : IBsModalJsFunctions, IBsJsFunctionsWr
     internal const string DISPOSE = "dispose";
     private readonly IJSObjectReference _bsJsObjectRef;
 
-    public BsModalJsFunctions(IJSObjectReference bsJsObjectRef)
+    public BsModalJsInterop(IJSObjectReference bsJsObjectRef)
     {
         _bsJsObjectRef = bsJsObjectRef;
     }

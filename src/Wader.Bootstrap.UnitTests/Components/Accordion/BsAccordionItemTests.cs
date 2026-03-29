@@ -7,8 +7,8 @@ namespace Wader.Bootstrap.UnitTests.Components.Accordion;
 public class BsAccordionItemTests()
     : BsComponentTests<BsAccordionItem>("""<div class="accordion-item {0}" {1}></div>""")
 {
-    private readonly IBsAccordionJsFunctions _accordionJsFunctionsMock = Substitute.For<IBsAccordionJsFunctions>();
     private readonly IBsAccordionContext _accordionItemContextMock = Substitute.For<IBsAccordionContext>();
+    private readonly IBsAccordionJsInterop _accordionJsInteropMock = Substitute.For<IBsAccordionJsInterop>();
 
     protected override void BindParameters(ComponentParameterCollectionBuilder<BsAccordionItem> parameterBuilder)
     {
@@ -40,7 +40,7 @@ public class BsAccordionItemTests()
         await cut.InvokeAsync(cut.Instance.ToggleAsync);
 
         // Assert
-        await _accordionJsFunctionsMock.Received(1).ToggleAsync(cut.Instance.HtmlRef, Arg.Any<bool>());
+        await _accordionJsInteropMock.Received(1).ToggleAsync(cut.Instance.HtmlRef, Arg.Any<bool>());
     }
 
     [Fact]
@@ -54,7 +54,7 @@ public class BsAccordionItemTests()
         await cut.InvokeAsync(cut.Instance.ShowAsync);
 
         // Assert
-        await _accordionJsFunctionsMock.Received(1).ShowAsync(cut.Instance.HtmlRef, Arg.Any<bool>());
+        await _accordionJsInteropMock.Received(1).ShowAsync(cut.Instance.HtmlRef, Arg.Any<bool>());
     }
 
     [Fact]
@@ -67,7 +67,7 @@ public class BsAccordionItemTests()
         await cut.InvokeAsync(cut.Instance.CollapseAsync);
 
         // Assert
-        await _accordionJsFunctionsMock.Received(1).CollapseAsync(cut.Instance.HtmlRef);
+        await _accordionJsInteropMock.Received(1).CollapseAsync(cut.Instance.HtmlRef);
     }
 
     [Fact]
@@ -78,6 +78,6 @@ public class BsAccordionItemTests()
 
     protected override void ConfigureTestContext()
     {
-        _ = Services.AddSingleton(_accordionJsFunctionsMock);
+        _ = Services.AddSingleton(_accordionJsInteropMock);
     }
 }
