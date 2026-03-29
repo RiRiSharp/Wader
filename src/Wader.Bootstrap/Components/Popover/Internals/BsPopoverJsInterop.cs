@@ -13,6 +13,7 @@ public sealed class BsPopoverJsInterop : IBsPopoverJsInterop, IBsJsFunctionsWrap
     internal const string HIDE = "hide";
 
     internal const string UPDATE_POSITION = "updatePosition";
+    internal const string CREATE_OR_UPDATE = "createOrUpdate";
 
     internal const string DISPOSE = "dispose";
     private readonly IJSObjectReference _bsJsObjectRef;
@@ -29,9 +30,9 @@ public sealed class BsPopoverJsInterop : IBsPopoverJsInterop, IBsJsFunctionsWrap
 
     public static string JsFileName => "popoverFunctions.js";
 
-    public Task CreateOrUpdateAsync(ElementReference hostElementRef, PopoverJsOptions popoverOptions)
+    public async Task CreateOrUpdateAsync(ElementReference hostElementRef, PopoverJsOptions popoverOptions)
     {
-        throw new NotImplementedException();
+        await _bsJsObjectRef.InvokeVoidAsync(CREATE_OR_UPDATE, hostElementRef, popoverOptions);
     }
 
     public async Task ToggleAsync(ElementReference hostElementRef)

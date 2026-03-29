@@ -8,14 +8,33 @@ public partial class BsPopover : BsChildContentComponent
 {
     private ElementReference? _contentRef;
 
-    private string? _lastSignature;
     private ElementReference? _titleRef;
-    private ElementReference _wrapperHostElementRef;
+
     protected override string BsComponentClasses => "d-inline-block";
 
+    /// <summary>
+    ///     Gets or sets the popover title content.
+    /// </summary>
+    /// <remarks>
+    ///     This parameter accepts Razor markup for authoring convenience, but the rendered output is
+    ///     converted to HTML and passed to the underlying Bootstrap popover.
+    ///     Treat this content as presentational markup only. Interactive Blazor behavior inside
+    ///     <see cref="Title" />, including event handlers, bindings, forms, and nested interactive
+    ///     components, is not supported.
+    /// </remarks>
     [Parameter]
     public RenderFragment? Title { get; set; }
 
+    /// <summary>
+    ///     Gets or sets the popover title content.
+    /// </summary>
+    /// <remarks>
+    ///     This parameter accepts Razor markup for authoring convenience, but the rendered output is
+    ///     converted to HTML and passed to the underlying Bootstrap popover.
+    ///     Treat this content as presentational markup only. Interactive Blazor behavior inside
+    ///     <see cref="Content" />, including event handlers, bindings, forms, and nested interactive
+    ///     components, is not supported.
+    /// </remarks>
     [Parameter]
     public RenderFragment? Content { get; set; }
 
@@ -29,25 +48,18 @@ public partial class BsPopover : BsChildContentComponent
     [Parameter]
     public ElementReference? Attachment { get; set; }
 
-    private ElementReference HostElementRef => Attachment ?? _wrapperHostElementRef;
+    private ElementReference HostElementRef
+    {
+        get => Attachment ?? field;
+        set;
+    }
 
     [Inject]
     public IBsPopoverJsInterop BsPopoverJsInterop { get; set; } = null!;
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
-        var signature = BuildSignature();
-        if (_lastSignature == signature)
-        {
-            return;
-        }
-
         var jsOptions = Options.ToPopoverJsOptions(_titleRef, _contentRef);
         await BsPopoverJsInterop.CreateOrUpdateAsync(HostElementRef, jsOptions);
-    }
-
-    private string? BuildSignature()
-    {
-        return Title?.GetHashCode() + Options.ToString();
     }
 }
