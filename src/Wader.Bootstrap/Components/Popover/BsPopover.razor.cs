@@ -4,7 +4,7 @@ using Wader.Bootstrap.Components.Popover.Internals;
 
 namespace Wader.Bootstrap.Components.Popover;
 
-public partial class BsPopover : BsChildContentComponent
+public partial class BsPopover : BsChildContentComponent, IAsyncDisposable
 {
     private ElementReference? _contentRef;
 
@@ -57,9 +57,45 @@ public partial class BsPopover : BsChildContentComponent
     [Inject]
     public IBsPopoverJsInterop BsPopoverJsInterop { get; set; } = null!;
 
+    public async ValueTask DisposeAsync()
+    {
+        await Dispose(true);
+        GC.SuppressFinalize(this);
+    }
+
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         var jsOptions = Options.ToPopoverJsOptions(_titleRef, _contentRef);
         await BsPopoverJsInterop.CreateOrUpdateAsync(HostElementRef, jsOptions);
+    }
+
+    public async Task ToggleAsync()
+    {
+        await BsPopoverJsInterop.ToggleAsync(HostElementRef);
+    }
+
+    public async Task ShowAsync()
+    {
+        await BsPopoverJsInterop.ShowAsync(HostElementRef);
+    }
+
+    public async Task HideAsync()
+    {
+        await BsPopoverJsInterop.HideAsync(HostElementRef);
+    }
+
+    public async Task UpdatePositionAsync()
+    {
+        await BsPopoverJsInterop.UpdatePositionAsync(HostElementRef);
+    }
+
+    private async Task Dispose(bool disposing)
+    {
+        if (!disposing)
+        {
+            return;
+        }
+
+        await BsPopoverJsInterop.DisposeReferenceAsync(HostElementRef);
     }
 }

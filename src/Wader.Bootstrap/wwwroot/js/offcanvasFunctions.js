@@ -1,7 +1,7 @@
-﻿export function offcanvas(offcanvasRef) {
+﻿export function toggle(offcanvasRef) {
     const offcanvas = getOffcanvasInstance(offcanvasRef);
     if (offcanvas) {
-        offcanvas.hide();
+        offcanvas.toggle();
     }
 }
 
@@ -12,10 +12,10 @@ export function show(offcanvasRef) {
     }
 }
 
-export function toggle(offcanvasRef) {
+export function close(offcanvasRef) {
     const offcanvas = getOffcanvasInstance(offcanvasRef);
     if (offcanvas) {
-        offcanvas.toggle();
+        offcanvas.hide();
     }
 }
 

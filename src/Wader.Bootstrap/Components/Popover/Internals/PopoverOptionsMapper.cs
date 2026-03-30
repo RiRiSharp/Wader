@@ -16,14 +16,14 @@ public static class PopoverOptionsMapper
             Animation = popoverOptions.Animation,
             Boundary = popoverOptions.Boundary,
             ContainerString = popoverOptions.ContainerString,
-            Container = popoverOptions.ContainerRef,
-            Content = contentRef,
+            ContainerRef = popoverOptions.ContainerRef,
+            ContentRef = contentRef,
             CustomClass = popoverOptions.CustomClass ?? "",
             Delay = new PopoverDelayOptions { Hide = popoverOptions.HideDelay, Show = popoverOptions.ShowDelay },
             Html = true,
             Placement = popoverOptions.Placement.ToPopperPlacementParameter(),
             Sanitize = false,
-            Title = titleRef,
+            TitleRef = titleRef,
             Trigger = popoverOptions.Trigger.ToPopperTriggerString(),
         };
 
