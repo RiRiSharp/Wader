@@ -4,6 +4,7 @@
 @using Wader.Bootstrap.Components.Dropdown
 @using Wader.Bootstrap.Components.ListGroup
 @using Wader.Bootstrap.Components.Offcanvas
+@using Wader.Bootstrap.Components.Popover
 @using Wader.Icons.Bootstrap
 @using Wader.Icons.Phosphor
 
@@ -56,7 +57,15 @@
 <PhosphorIcon Name="@(PhosphorIconNames.Airplane)" Weight="PhosphorIconWeight.DuoTone"/>
 <PhosphorIcon Name="@(PhosphorIconNames.Airplane)" Weight="PhosphorIconWeight.Light"/>
 
+<BsPopover @ref="_popover">
+    <ChildContent>
+        <BsButton @onclick="() => _popover!.ShowAsync()">Click me for popovers!</BsButton>
+    </ChildContent>
+    <BsPopoverContent>An epic title</BsPopoverContent>
+</BsPopover>
+
 @code {
     private BsCollapse? _collapse;
     private BsOffcanvas? _offcanvas;
+    private BsPopover? _popover;
 }

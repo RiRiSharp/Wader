@@ -13,7 +13,7 @@ public class BsPopoverOptions
     public int HideDelay { get; set; }
     public ICollection<BsPopoverPlacement> FallbackPlacements { get; } = [];
     public int OffsetX { get; set; }
-    public int OffsetY { get; set; }
+    public int OffsetY { get; set; } = 8;
     public BsPopoverPlacement Placement { get; set; } = BsPopoverPlacement.Right;
     public BsPopoverTrigger Trigger { get; set; } = BsPopoverTrigger.Click;
 }

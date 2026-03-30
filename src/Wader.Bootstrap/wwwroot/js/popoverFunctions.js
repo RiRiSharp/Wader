@@ -48,11 +48,11 @@ export function dispose(hostElementRef) {
 
 function normalizeOptions(options) {
     const normalized = {...options};
-    
+
     normalized.container =
         options.containerRef ??
         options.containerString ??
-        options.container ??
+        'body' ??
         false;
 
 
@@ -63,6 +63,8 @@ function normalizeOptions(options) {
     normalized.title = normalized.titleRef
         ? normalized.titleRef.innerHTML
         : '';
+
+    normalized.boundary ??= 'clippingParents';
 
     return normalized;
 }

@@ -19,11 +19,11 @@ public partial class BsPopover : BsChildContentComponent, IAsyncDisposable
     ///     This parameter accepts Razor markup for authoring convenience, but the rendered output is
     ///     converted to HTML and passed to the underlying Bootstrap popover.
     ///     Treat this content as presentational markup only. Interactive Blazor behavior inside
-    ///     <see cref="Title" />, including event handlers, bindings, forms, and nested interactive
+    ///     <see cref="BsPopoverTitle" />, including event handlers, bindings, forms, and nested interactive
     ///     components, is not supported.
     /// </remarks>
     [Parameter]
-    public RenderFragment? Title { get; set; }
+    public RenderFragment? BsPopoverTitle { get; set; }
 
     /// <summary>
     ///     Gets or sets the popover title content.
@@ -32,11 +32,11 @@ public partial class BsPopover : BsChildContentComponent, IAsyncDisposable
     ///     This parameter accepts Razor markup for authoring convenience, but the rendered output is
     ///     converted to HTML and passed to the underlying Bootstrap popover.
     ///     Treat this content as presentational markup only. Interactive Blazor behavior inside
-    ///     <see cref="Content" />, including event handlers, bindings, forms, and nested interactive
+    ///     <see cref="BsPopoverContent" />, including event handlers, bindings, forms, and nested interactive
     ///     components, is not supported.
     /// </remarks>
     [Parameter]
-    public RenderFragment? Content { get; set; }
+    public RenderFragment? BsPopoverContent { get; set; }
 
     [Parameter]
     public BsPopoverOptions Options { get; set; } = new();
@@ -65,6 +65,11 @@ public partial class BsPopover : BsChildContentComponent, IAsyncDisposable
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
+        if (!firstRender)
+        {
+            return;
+        }
+
         var jsOptions = Options.ToPopoverJsOptions(_titleRef, _contentRef);
         await BsPopoverJsInterop.CreateOrUpdateAsync(HostElementRef, jsOptions);
     }
