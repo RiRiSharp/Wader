@@ -35,7 +35,7 @@ public partial class BsPopover : BsChildContentComponent, IAsyncDisposable
     ///     <see cref="BsPopoverContent" />, including event handlers, bindings, forms, and nested interactive
     ///     components, is not supported.
     /// </remarks>
-    [Parameter]
+    [Parameter, EditorRequired]
     public RenderFragment? BsPopoverContent { get; set; }
 
     [Parameter]

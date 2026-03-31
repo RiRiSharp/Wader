@@ -57,15 +57,59 @@
 <PhosphorIcon Name="@(PhosphorIconNames.Airplane)" Weight="PhosphorIconWeight.DuoTone"/>
 <PhosphorIcon Name="@(PhosphorIconNames.Airplane)" Weight="PhosphorIconWeight.Light"/>
 
+<BsButtonOutline Variant="BsButtonOutlineVariant.Danger" @onclick="() => _popover!.HideAsync()">Close</BsButtonOutline>
+
+@* 1. Default: Right placement, Click trigger *@
 <BsPopover @ref="_popover">
     <ChildContent>
-        <BsButton @onclick="() => _popover!.ShowAsync()">Click me for popovers!</BsButton>
+        <BsButton @onclick="() => _popover!.ToggleAsync()">Click me for popovers!</BsButton>
     </ChildContent>
-    <BsPopoverContent>An epic title</BsPopoverContent>
+    <BsPopoverTitle>An epic title</BsPopoverTitle>
+    <BsPopoverContent>Epic content</BsPopoverContent>
+</BsPopover>
+
+@* 2. Top placement, Hover+Focus trigger, animation disabled *@
+<BsPopover Options="new BsPopoverOptions { Placement = BsPopoverPlacement.Top, Trigger = BsPopoverTrigger.Hover | BsPopoverTrigger.Focus, Animation = false }">
+    <ChildContent>
+        <BsButton Variant="BsButtonVariant.Secondary">Hover/Focus (Top, no anim)</BsButton>
+    </ChildContent>
+    <BsPopoverTitle>Top Popover</BsPopoverTitle>
+    <BsPopoverContent>Appears above, triggered by hover or focus.</BsPopoverContent>
+</BsPopover>
+
+@* 3. Bottom placement, show/hide delays, custom CSS class *@
+<BsPopover Options="_opts1">
+    <ChildContent>
+        <BsButton Variant="BsButtonVariant.Warning">Click (Bottom, delayed)</BsButton>
+    </ChildContent>
+    <BsPopoverTitle>Slow Bottom</BsPopoverTitle>
+    <BsPopoverContent>500ms to show, 300ms to hide.</BsPopoverContent>
+</BsPopover>
+
+@* 4. Left placement, Manual trigger — controlled via external buttons *@
+<BsPopover @ref="_manualPopover" Options="new BsPopoverOptions { Placement = BsPopoverPlacement.Left, Trigger = BsPopoverTrigger.Manual }">
+    <ChildContent>
+        <BsButton Variant="BsButtonVariant.Info">Manual target</BsButton>
+    </ChildContent>
+    <BsPopoverTitle>Manual control</BsPopoverTitle>
+    <BsPopoverContent>Shown/hidden via external buttons only.</BsPopoverContent>
+</BsPopover>
+<BsButton @onclick="() => _manualPopover!.ShowAsync()">Show manual</BsButton>
+<BsButton @onclick="() => _manualPopover!.HideAsync()">Hide manual</BsButton>
+
+@* 5. Auto placement, custom X/Y offset *@
+<BsPopover Options="new BsPopoverOptions { Placement = BsPopoverPlacement.Auto, Skidding = 20, Distance = 50 }">
+    <ChildContent>
+        <BsButton Variant="BsButtonVariant.Dark">Auto placement + offset</BsButton>
+    </ChildContent>
+    <BsPopoverTitle>Auto + Offset</BsPopoverTitle>
+    <BsPopoverContent>OffsetX=20, OffsetY=10 from the trigger.</BsPopoverContent>
 </BsPopover>
 
 @code {
     private BsCollapse? _collapse;
     private BsOffcanvas? _offcanvas;
     private BsPopover? _popover;
+    private BsPopover? _manualPopover;
+    private BsPopoverOptions _opts1 = new() { Placement = BsPopoverPlacement.Bottom, ShowDelay = 500, HideDelay = 300, CustomClass = "text-bg-warning" };
 }

@@ -27,8 +27,8 @@ public static class PopoverOptionsMapper
             Trigger = popoverOptions.Trigger.ToPopperTriggerString(),
         };
 
-        options.Offset.Add(popoverOptions.OffsetX);
-        options.Offset.Add(popoverOptions.OffsetY);
+        options.Offset.Add(popoverOptions.Distance);
+        options.Offset.Add(popoverOptions.Skidding);
         options.FallbackPlacements.AddRange(
             popoverOptions.FallbackPlacements.Select(f => f.ToPopperPlacementParameter())
         );
