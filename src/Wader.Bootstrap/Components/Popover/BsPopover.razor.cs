@@ -51,7 +51,7 @@ public partial class BsPopover : BsChildContentComponent, IAsyncDisposable
     internal ElementReference HostElementRef
     {
         get => Attachment ?? field;
-        set;
+        private set;
     }
 
     [Inject]

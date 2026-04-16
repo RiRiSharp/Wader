@@ -1,0 +1,49 @@
+@using Wader.Bootstrap.Components.Popover
+@inherits BsComponentTests<Wader.Bootstrap.Components.Popover.BsPopover>
+
+@code
+{
+    [Fact]
+    public void PopoverTitleRendersCorrectHtml()
+    {
+        // Arrange
+        ConfigureTestContext();
+        RenderFragment titleFragment = @<div>This is a cool title</div>;
+        
+        // Act
+        var fragment = Render(@<BsPopover>
+                                  <BsPopoverTitle>
+                                      @titleFragment
+                                  </BsPopoverTitle>
+                              </BsPopover>);
+        var wrappers = fragment.FindAll("div.d-none[aria-hidden='true']");
+        
+        // Assert
+        Assert.Single(wrappers);
+        var titleWrapper = wrappers[0];
+
+        titleWrapper.MarkupMatches(@<div class="d-none" aria-hidden="true">@titleFragment</div>);
+    }
+    
+    [Fact]
+    public void PopoverContentRendersCorrectHtml()
+    {
+        // Arrange
+        ConfigureTestContext();
+        RenderFragment bodyFragment = @<div>This is an epic body</div>;
+        
+        // Act
+        var fragment = Render(@<BsPopover>
+                                  <BsPopoverContent>
+                                      @bodyFragment
+                                  </BsPopoverContent>
+                              </BsPopover>);
+        var wrappers = fragment.FindAll("div.d-none[aria-hidden='true']");
+        
+        // Assert
+        Assert.Single(wrappers);
+
+        var bodyWrapper = wrappers[0];
+        bodyWrapper.MarkupMatches(@<div class="d-none" aria-hidden="true">@bodyFragment</div>);
+    }
+}

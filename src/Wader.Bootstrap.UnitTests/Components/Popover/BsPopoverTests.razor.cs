@@ -4,10 +4,12 @@ using Wader.Bootstrap.Components.Popover.Internals;
 
 namespace Wader.Bootstrap.UnitTests.Components.Popover;
 
-public class BsPopoverTests() : BsComponentTests<BsPopover>("""<div class="{0}" {1}></div>""")
+public partial class BsPopoverTests() : BsComponentTests<BsPopover>("""<div class="{0}" {1}></div>""")
 {
     private readonly IBsPopoverJsInterop _offcanvasJsInteropMock = Substitute.For<IBsPopoverJsInterop>();
     protected override string ClassesForDefaultTests => "d-inline-block";
+
+    // TODO: Test Attachment, and the options object.
 
     [Fact]
     public async Task OnAfterRenderCallsJsCorrectlyAsync()
