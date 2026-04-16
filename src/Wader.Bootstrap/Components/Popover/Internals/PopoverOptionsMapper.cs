@@ -1,3 +1,4 @@
+using System.Diagnostics.Contracts;
 using Microsoft.AspNetCore.Components;
 using Wader.Bootstrap.Internals.Extensions;
 
@@ -5,6 +6,7 @@ namespace Wader.Bootstrap.Components.Popover.Internals;
 
 public static class PopoverOptionsMapper
 {
+    [Pure]
     public static PopoverJsOptions ToPopoverJsOptions(
         this BsPopoverOptions popoverOptions,
         ElementReference? titleRef,

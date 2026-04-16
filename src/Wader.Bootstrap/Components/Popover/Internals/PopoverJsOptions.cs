@@ -11,9 +11,9 @@ public class PopoverJsOptions
     public ElementReference? ContentRef { get; set; }
     public required string CustomClass { get; set; }
     public PopoverDelayOptions? Delay { get; set; }
-    public ICollection<string> FallbackPlacements { get; } = [];
+    public IList<string> FallbackPlacements { get; } = [];
     public bool Html { get; set; }
-    public ICollection<int> Offset { get; } = [];
+    public IList<int> Offset { get; } = [];
     public required string Placement { get; set; }
     public bool Sanitize { get; set; }
     public ElementReference? TitleRef { get; set; }
