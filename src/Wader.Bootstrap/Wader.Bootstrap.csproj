@@ -8,7 +8,7 @@
   </PropertyGroup>
   <ItemGroup>
     <SupportedPlatform Include="browser" />
-    <InternalsVisibleTo Include="$(MSBuildProjectName).UnitTests" />
+    <InternalsVisibleTo Include="$(MSBuildProjectName).Tests" />
     <!-- Enable NSubtitute to access internals -->
     <InternalsVisibleTo Include="DynamicProxyGenAssembly2" />
   </ItemGroup>
