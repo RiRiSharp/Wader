@@ -18,6 +18,6 @@ public class BsEditForm : EditForm, IBsComponent
 
     private void SetClasses()
     {
-        AdditionalAttributes = BsAttributeUtilities.AssignClassNames(AdditionalAttributes, Classes);
+        AdditionalAttributes = BsClassAttributeUtilities.AssignClassNames(AdditionalAttributes, Classes);
     }
 }

@@ -2,7 +2,7 @@ using System.Globalization;
 
 namespace Wader.Bootstrap.Internals;
 
-internal static class BsAttributeUtilities
+internal static class BsClassAttributeUtilities
 {
     /// <summary>
     /// Combines the class attribute given in the attribute dictionary with the classnames provided.
@@ -25,7 +25,7 @@ internal static class BsAttributeUtilities
     /// Taken from Microsoft.AspNetCore.Components.Forms.AttributeUtilities, licensed under MIT license
     /// </remark>
     /// <param name="additionalAttributes">Attributes, usually on a component</param>
-    /// <param name="classNames">Space seperated "list" of classes</param>
+    /// <param name="classNames">Space separated "list" of classes</param>
     /// <returns>A combination of the provided classNames and the class names present in the attributes dictionary</returns>
     private static string CombineClassNames(Dictionary<string, object>? additionalAttributes, string? classNames)
     {

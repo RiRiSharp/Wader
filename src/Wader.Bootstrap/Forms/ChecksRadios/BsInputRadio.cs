@@ -23,7 +23,7 @@ public class BsInputRadio<TValue> : InputRadio<TValue>, IBsComponent
     {
         var componentSpecificClasses = GetBsComponentSpecificClasses();
         var allClasses = $"{componentSpecificClasses} {Classes}";
-        AdditionalAttributes = BsAttributeUtilities.AssignClassNames(AdditionalAttributes, allClasses);
+        AdditionalAttributes = BsClassAttributeUtilities.AssignClassNames(AdditionalAttributes, allClasses);
     }
 
     private static string GetBsComponentSpecificClasses()

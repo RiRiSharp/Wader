@@ -22,7 +22,7 @@ public class BsInputFile : InputFile
     {
         var componentSpecificClasses = GetBsComponentSpecificClasses();
         var allClasses = $"{componentSpecificClasses} {Classes}";
-        AdditionalAttributes = BsAttributeUtilities.AssignClassNames(AdditionalAttributes, allClasses);
+        AdditionalAttributes = BsClassAttributeUtilities.AssignClassNames(AdditionalAttributes, allClasses);
     }
 
     private string GetBsComponentSpecificClasses()

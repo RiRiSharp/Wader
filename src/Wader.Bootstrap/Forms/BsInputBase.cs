@@ -15,9 +15,9 @@ public abstract class BsInputBase<TValue> : InputBase<TValue>, IBsComponent
     protected override void OnParametersSet()
     {
         base.OnParametersSet();
-        _renderAttributes = BsAttributeUtilities.AssignClassNames(AdditionalAttributes, BsComponentClasses);
+        _renderAttributes = BsClassAttributeUtilities.AssignClassNames(AdditionalAttributes, BsComponentClasses);
 
         var errorSuccessClass = EditContext?.FieldCssClass(FieldIdentifier);
-        _renderAttributes = BsAttributeUtilities.AssignClassNames(RenderAttributes, errorSuccessClass);
+        _renderAttributes = BsClassAttributeUtilities.AssignClassNames(RenderAttributes, errorSuccessClass);
     }
 }

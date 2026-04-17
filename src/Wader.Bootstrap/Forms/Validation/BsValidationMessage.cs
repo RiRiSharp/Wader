@@ -20,7 +20,7 @@ public class BsValidationMessage<TValue> : ValidationMessage<TValue>, IBsCompone
     {
         var componentSpecificClasses = GetBsComponentSpecificClasses();
         var allClasses = $"{componentSpecificClasses} {Classes}";
-        AdditionalAttributes = BsAttributeUtilities.AssignClassNames(AdditionalAttributes, allClasses);
+        AdditionalAttributes = BsClassAttributeUtilities.AssignClassNames(AdditionalAttributes, allClasses);
     }
 
     private static string GetBsComponentSpecificClasses()
