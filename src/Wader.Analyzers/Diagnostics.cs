@@ -14,7 +14,14 @@ internal static class Diagnostics
     public const string IdRequireNameCascadingParameter = "WADER002";
     public static readonly RazorDiagnosticDescriptor RequireNameCascadingParameter = new(
         IdRequireNameCascadingParameter,
-        () => "Razor expressions must be parenthesized",
+        () => $"Cascading parameter must have the {nameof(CascadingParameter.Name)} parameter set",
+        RazorDiagnosticSeverity.Warning
+    );
+
+    public const string IdRequireCodeInSeparateFile = "WADER003";
+    public static readonly RazorDiagnosticDescriptor RequireCodeInSeparateFile = new(
+        IdRequireNameCascadingParameter,
+        () => "All C# code must be in a separate .razor.cs file",
         RazorDiagnosticSeverity.Warning
     );
 }
