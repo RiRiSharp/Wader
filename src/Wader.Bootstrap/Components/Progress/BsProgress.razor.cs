@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Components;
 using Wader.Bootstrap.BaseComponents;
 using Wader.Bootstrap.Internals;
+using Wader.Bootstrap.Internals.Exceptions;
 
 namespace Wader.Bootstrap.Components.Progress;
 

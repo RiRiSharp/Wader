@@ -15,7 +15,7 @@ public partial class BsAccordionCollapse : BsChildContentComponent, IHasCollapse
     protected override string BsComponentClasses => $"accordion-collapse collapse {GetInitialCollapsedClass()}";
     public bool Collapsed { get; set; } = true;
 
-    [CascadingParameter]
+    [CascadingParameter(Name = nameof(BsAccordionItem))]
     public IBsAccordionItemContext? AccordionItemContext { get; set; }
 
     [Inject]
@@ -39,7 +39,7 @@ public partial class BsAccordionCollapse : BsChildContentComponent, IHasCollapse
         base.OnParametersSet();
         if (AccordionItemContext is null)
         {
-            throw new BsCascadingParameterNotProvidedException(typeof(IBsAccordionItemContext));
+            throw BsComponentUsageException.MustBeChildOf<BsAccordionCollapse, BsAccordionItem>();
         }
     }
 

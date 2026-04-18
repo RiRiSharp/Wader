@@ -14,7 +14,7 @@ public partial class BsAccordionItem : BsChildContentComponent, IAsyncDisposable
     [Parameter]
     public bool InitialCollapsed { get; set; } = true;
 
-    [CascadingParameter]
+    [CascadingParameter(Name = nameof(BsAccordion))]
     private IBsAccordionContext? AccordionContext { get; set; }
 
     [Inject]
@@ -31,7 +31,7 @@ public partial class BsAccordionItem : BsChildContentComponent, IAsyncDisposable
         base.OnParametersSet();
         if (AccordionContext is null)
         {
-            throw new BsCascadingParameterNotProvidedException(typeof(IBsAccordionContext));
+            throw BsComponentUsageException.MustBeChildOf<BsAccordionItem, BsAccordion>();
         }
 
         AccordionItemContext = new BsAccordionItemContext(this);

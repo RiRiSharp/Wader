@@ -55,7 +55,7 @@ public class BsAccordionButtonTests()
     protected override void BindParameters(ComponentParameterCollectionBuilder<BsAccordionButton> parameterBuilder)
     {
         base.BindParameters(parameterBuilder);
-        _ = parameterBuilder.AddCascadingValue(_accordionItemContextMock);
+        _ = parameterBuilder.AddCascadingValue(nameof(BsAccordionItem), _accordionItemContextMock);
     }
 
     protected override void ConfigureTestContext()

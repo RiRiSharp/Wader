@@ -1,19 +1,21 @@
 namespace Wader.Bootstrap.Internals.Exceptions;
 
-public class BsCascadingParameterNotProvidedException : Exception
+public class BsComponentUsageException : InvalidOperationException
 {
-    public BsCascadingParameterNotProvidedException()
-        : base("Cascading parameter was not provided.") { }
+    public BsComponentUsageException() { }
 
-    public BsCascadingParameterNotProvidedException(string message)
+    public BsComponentUsageException(string message)
         : base(message) { }
 
-    public BsCascadingParameterNotProvidedException(string message, Exception innerException)
+    public BsComponentUsageException(string message, Exception innerException)
         : base(message, innerException) { }
 
-    public BsCascadingParameterNotProvidedException(Type parameterType)
-        : base($"Cascading parameter of type {parameterType.AssemblyQualifiedName} was not provided.")
+    public static BsComponentUsageException MustBeChildOf<TChild, TParent>()
+        where TChild : notnull
+        where TParent : notnull
     {
-        ArgumentNullException.ThrowIfNull(parameterType);
+        return new BsComponentUsageException(
+            $"{typeof(TChild).Name} must be placed inside a {typeof(TParent).Name} component."
+        );
     }
 }

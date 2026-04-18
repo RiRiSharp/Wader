@@ -7,14 +7,8 @@ namespace Wader.Bootstrap.Tests.Components.Accordion;
 public class BsAccordionItemTests()
     : BsComponentTests<BsAccordionItem>("""<div class="accordion-item {0}" {1}></div>""")
 {
-    private readonly IBsAccordionContext _accordionItemContextMock = Substitute.For<IBsAccordionContext>();
+    private readonly IBsAccordionContext _accordionContextMock = Substitute.For<IBsAccordionContext>();
     private readonly IBsAccordionJsInterop _accordionJsInteropMock = Substitute.For<IBsAccordionJsInterop>();
-
-    protected override void BindParameters(ComponentParameterCollectionBuilder<BsAccordionItem> parameterBuilder)
-    {
-        base.BindParameters(parameterBuilder);
-        _ = parameterBuilder.AddCascadingValue(_accordionItemContextMock);
-    }
 
     [Fact]
     public void SettingInitialCollapsedCommunicatesToContext()
@@ -74,6 +68,12 @@ public class BsAccordionItemTests()
     public void AccordionItemContextIsCascading()
     {
         TestForCascadingValue<IBsAccordionItemContext>();
+    }
+
+    protected override void BindParameters(ComponentParameterCollectionBuilder<BsAccordionItem> parameterBuilder)
+    {
+        base.BindParameters(parameterBuilder);
+        _ = parameterBuilder.AddCascadingValue(nameof(BsAccordion), _accordionContextMock);
     }
 
     protected override void ConfigureTestContext()

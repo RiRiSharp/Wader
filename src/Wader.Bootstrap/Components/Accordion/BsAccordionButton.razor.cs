@@ -17,7 +17,7 @@ public partial class BsAccordionButton : BsChildContentComponent, IHasCollapseSt
     internal ElementReference HtmlRef;
     protected override string BsComponentClasses => $"accordion-button {GetInitialCollapsedClass()}";
 
-    [CascadingParameter]
+    [CascadingParameter(Name = nameof(BsAccordionItem))]
     internal IBsAccordionItemContext? AccordionItemContext { get; set; }
 
     [Inject]
@@ -40,7 +40,7 @@ public partial class BsAccordionButton : BsChildContentComponent, IHasCollapseSt
         base.OnParametersSet();
         if (AccordionItemContext is null)
         {
-            throw new BsCascadingParameterNotProvidedException(typeof(IBsAccordionItemContext));
+            throw BsComponentUsageException.MustBeChildOf<BsAccordionButton, BsAccordionItem>();
         }
     }
 

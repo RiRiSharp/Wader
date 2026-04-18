@@ -9,7 +9,7 @@ public partial class BsCarouselControlNext : BsChildContentComponent
 {
     protected override string BsComponentClasses => "carousel-control-next";
 
-    [CascadingParameter]
+    [CascadingParameter(Name = nameof(BsCarousel))]
     private IBsCarouselContext? CarouselContext { get; set; }
 
     protected override void OnParametersSet()
@@ -17,7 +17,7 @@ public partial class BsCarouselControlNext : BsChildContentComponent
         base.OnParametersSet();
         if (CarouselContext is null)
         {
-            throw new BsCascadingParameterNotProvidedException(typeof(IBsCarouselContext));
+            throw BsComponentUsageException.MustBeChildOf<BsCarouselControlNext, BsCarousel>();
         }
     }
 

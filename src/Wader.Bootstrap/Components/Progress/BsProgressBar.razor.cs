@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Components;
 using Wader.Bootstrap.BaseComponents;
+using Wader.Bootstrap.Internals.Exceptions;
 using Wader.Bootstrap.Primitives;
 
 namespace Wader.Bootstrap.Components.Progress;
@@ -13,7 +14,7 @@ public partial class BsProgressBar : BsChildContentComponent
     private bool IsStacked { get; set; }
 
     [CascadingParameter(Name = nameof(BsProgress))]
-    private double Width { get; set; }
+    private double? Width { get; set; }
 
     private string? WidthStyle => IsStacked ? null : $"width: {Width}%";
 
@@ -27,4 +28,14 @@ public partial class BsProgressBar : BsChildContentComponent
 
     [Parameter]
     public BsTextBackground Background { get; set; }
+
+    protected override void OnParametersSet()
+    {
+        if (!IsStacked && Width is null)
+        {
+            throw new BsComponentUsageException(
+                $"No parent element {nameof(BsProgress)} found, could not determine width"
+            );
+        }
+    }
 }

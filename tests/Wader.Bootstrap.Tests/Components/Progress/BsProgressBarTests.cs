@@ -23,7 +23,7 @@ public class BsProgressBarTests() : BsComponentTests<BsProgressBar>("""<div clas
         ConfigureTestContext();
 
         // Act
-        var cut = GetCut(parameters => parameters.AddCascadingValue(width));
+        var cut = GetCut(parameters => parameters.AddCascadingValue(nameof(BsProgress), width));
 
         // Assert
         cut.MarkupMatches($"""<div class="progress-bar" style="{expectedStyle}"></div>""");

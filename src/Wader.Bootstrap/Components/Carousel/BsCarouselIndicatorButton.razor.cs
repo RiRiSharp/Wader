@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Components;
 using Wader.Bootstrap.BaseComponents;
 using Wader.Bootstrap.Components.Carousel.Internals;
+using Wader.Bootstrap.Internals.Exceptions;
 
 namespace Wader.Bootstrap.Components.Carousel;
 
@@ -8,7 +9,7 @@ public partial class BsCarouselIndicatorButton : BsComponent, IBsChildContentCom
 {
     protected override string? BsComponentClasses => ActiveClass;
 
-    [CascadingParameter]
+    [CascadingParameter(Name = nameof(BsCarousel))]
     private IBsCarouselContext? CarouselContext { get; set; }
 
     [Parameter]
@@ -26,6 +27,11 @@ public partial class BsCarouselIndicatorButton : BsComponent, IBsChildContentCom
     protected override void OnParametersSet()
     {
         base.OnParametersSet();
+        if (CarouselContext is null)
+        {
+            throw BsComponentUsageException.MustBeChildOf<BsCarouselIndicatorButton, BsCarousel>();
+        }
+
         if (SlideNo is null or < 0)
         {
             throw new InvalidOperationException($"Slide number {SlideNo} is invalid");
