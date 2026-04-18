@@ -13,7 +13,7 @@ public class BsCarouselControlNextTests()
     protected override void BindParameters(ComponentParameterCollectionBuilder<BsCarouselControlNext> parameterBuilder)
     {
         base.BindParameters(parameterBuilder);
-        _ = parameterBuilder.AddCascadingValue(_carouselContextMock);
+        _ = parameterBuilder.AddCascadingValue(nameof(BsCarousel), _carouselContextMock);
     }
 
     [Fact]

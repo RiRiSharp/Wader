@@ -33,9 +33,7 @@ public partial class BsProgressBar : BsChildContentComponent
     {
         if (!IsStacked && Width is null)
         {
-            throw new BsComponentUsageException(
-                $"No parent element {nameof(BsProgress)} found, could not determine width"
-            );
+            throw BsComponentUsageException.MustBeChildOf<BsProgressBar, BsProgress>();
         }
     }
 }

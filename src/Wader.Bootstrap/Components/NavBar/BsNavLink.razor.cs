@@ -8,11 +8,10 @@ public partial class BsNavLink : BsChildContentComponent
 {
     protected override string BsComponentClasses => $"nav-link {DropdownOptionsClass}";
 
-    [CascadingParameter]
-    private BsDropdownOptions? DropdownOptions { get; set; }
+    [CascadingParameter(Name = nameof(BsNavItem))]
+    private BsNavItemOptions Mode { get; set; } = BsNavItemOptions.NoDropdown;
+    private string DropdownOptionsClass => Mode.ToNavLinkBootstrapClass() ?? "";
 
     [Parameter]
     public NavLinkMatch Match { get; set; }
-
-    private string DropdownOptionsClass => DropdownOptions?.ToNavLinkBootstrapClass() ?? "";
 }

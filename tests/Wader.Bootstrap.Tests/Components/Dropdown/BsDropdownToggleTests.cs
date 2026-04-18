@@ -33,7 +33,7 @@ public class BsDropdownToggleTests()
         ConfigureTestContext();
 
         // Act
-        var cut = GetCut(parameters => parameters.AddCascadingValue(dropdownMode));
+        var cut = GetCut(parameters => parameters.AddCascadingValue(nameof(BsDropdown), dropdownMode));
 
         // Assert
         var expectedMarkupString = GetExpectedHtml(

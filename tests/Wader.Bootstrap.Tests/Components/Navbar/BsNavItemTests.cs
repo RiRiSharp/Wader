@@ -5,15 +5,15 @@ namespace Wader.Bootstrap.Tests.Components.Navbar;
 public class BsNavItemTests() : BsComponentTests<BsNavItem>("""<li class="nav-item {0}" {1}></li>""")
 {
     [Theory]
-    [InlineData(BsDropdownOptions.NoDropdown, "")]
-    [InlineData(BsDropdownOptions.WithDropdown, "dropdown")]
-    public void OptionsAddsCorrectClass(BsDropdownOptions options, string? expectedClass)
+    [InlineData(BsNavItemOptions.NoDropdown, "")]
+    [InlineData(BsNavItemOptions.WithDropdown, "dropdown")]
+    public void OptionsAddsCorrectClass(BsNavItemOptions options, string? expectedClass)
     {
         // Arrange
         ConfigureTestContext();
 
         // Act
-        var cut = GetCut(parameters => parameters.Add(p => p.DropdownOptions, options));
+        var cut = GetCut(parameters => parameters.Add(p => p.Options, options));
 
         // Assert
         var expectedMarkupString = GetExpectedHtml(expectedClass, AttributesForDefaultTests);
@@ -23,6 +23,6 @@ public class BsNavItemTests() : BsComponentTests<BsNavItem>("""<li class="nav-it
     [Fact]
     public void DropdownOptionsIsCascading()
     {
-        TestForCascadingValue<BsDropdownOptions>();
+        TestForCascadingValue<BsNavItemOptions>();
     }
 }

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Razor.Language;
+﻿using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Razor.Language;
 
 namespace Wader.Analyzers;
 
@@ -14,7 +15,7 @@ internal static class Diagnostics
     public const string IdRequireNameCascadingParameter = "WADER002";
     public static readonly RazorDiagnosticDescriptor RequireNameCascadingParameter = new(
         IdRequireNameCascadingParameter,
-        () => $"Cascading parameter must have the {nameof(CascadingParameter.Name)} parameter set",
+        () => $"Cascading parameter must have the {nameof(CascadingParameterAttribute.Name)} parameter set",
         RazorDiagnosticSeverity.Warning
     );
 

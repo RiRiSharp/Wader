@@ -14,10 +14,10 @@ public partial class BsDropdownToggle : BsChildContentComponent
     [Inject]
     private ILogger<BsDropdownToggle> Logger { get; set; } = null!;
 
-    [CascadingParameter]
-    public BsDropdownMode? Mode { get; set; }
+    [CascadingParameter(Name = nameof(BsDropdown))]
+    public BsDropdownMode Mode { get; set; } = BsDropdownMode.Regular;
 
-    private string ModeClass => Mode?.ToBootstrapButtonClass() ?? "";
+    private string ModeClass => Mode.ToBootstrapButtonClass() ?? "";
 
     [Parameter]
     public BsButtonSize Size { get; set; }

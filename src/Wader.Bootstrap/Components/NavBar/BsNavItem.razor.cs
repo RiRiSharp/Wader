@@ -8,7 +8,7 @@ public partial class BsNavItem : BsChildContentComponent
     protected override string BsComponentClasses => $"nav-item {OptionsClass}";
 
     [Parameter]
-    public BsDropdownOptions DropdownOptions { get; set; }
+    public BsNavItemOptions Options { get; set; }
 
-    private string? OptionsClass => DropdownOptions.ToNavItemBootstrapClass();
+    private string? OptionsClass => Options.ToNavItemBootstrapClass();
 }

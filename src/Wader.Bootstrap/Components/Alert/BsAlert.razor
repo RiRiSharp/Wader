@@ -1,7 +1,7 @@
 @inherits Wader.Bootstrap.BaseComponents.BsChildContentComponent
 @if (_dismissed) return;
 <div role="alert" @attributes="RenderAttributes" @ref="HtmlRef">
-    <CascadingValue Value="AlertContext">
+    <CascadingValue Value="AlertContext" Name="@(nameof(BsAlert))">
         @(ChildContent) 
     </CascadingValue>
 </div>
