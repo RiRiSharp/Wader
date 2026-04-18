@@ -11,6 +11,7 @@
   <Folder Name="/Tests/">
     <Project Path="tests/Wader.Bootstrap.Tests/Wader.Bootstrap.Tests.csproj" />
   </Folder>
+  <Project Path="src/Wader.Analyzers/Wader.Analyzers.csproj" />
   <Project Path="src/Wader.Bootstrap/Wader.Bootstrap.csproj" />
   <Project Path="src/Wader.Icons/Wader.Icons.csproj" />
   <Project Path="src/Wader.Site/Wader.Site.csproj" />
