@@ -88,9 +88,31 @@ public class BsProgressTests() : BsComponentTests<BsProgress>("""<div class="pro
 
         // Act
         var cut = Render<BsProgress>(parameters =>
+            _ = parameters.Add(x => x.Width, width).AddCascadingValue(CascadingValueNames.PROGRESS_IS_STACKED, true)
+        );
+
+        // Assert
+        var expectedMarkupString = GetExpectedHtml(ClassesForDefaultTests, attributes);
+        cut.MarkupMatches(expectedMarkupString);
+    }
+
+    [Theory]
+    [InlineData("color: purple", "color: purple; width: 0%")]
+    [InlineData("width: 50%", "width: 0%")]
+    public void ExtraStylingCanBeAdded(string addedStyle, string expectedStyle)
+    {
+        // Arrange
+        ConfigureTestContext();
+        var attributes = AttributesForDefaultTests;
+        const string attributeKey = "style";
+        attributes["style"] = expectedStyle;
+
+        // Act
+        var cut = GetCut(parameters =>
         {
-            _ = parameters.AddCascadingValue(CascadingValueNames.PROGRESS_IS_STACKED, true);
-            _ = parameters.Add(x => x.Width, width);
+            _ = parameters
+                .AddUnmatched(attributeKey, addedStyle)
+                .AddCascadingValue(CascadingValueNames.PROGRESS_IS_STACKED, true);
         });
 
         // Assert

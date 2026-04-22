@@ -11,6 +11,8 @@ public partial class BsProgressBar : BsChildContentComponent
     protected override string BsComponentClasses =>
         $"progress-bar {StripedClass} {AnimatedClass} {Background.ToBootstrapClass()}";
 
+    protected override string? BsInlineStyles => WidthStyle;
+
     [CascadingParameter(Name = CascadingValueNames.PROGRESS_IS_STACKED)]
     private bool IsStacked { get; set; }
 

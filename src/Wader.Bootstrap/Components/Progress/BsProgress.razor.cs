@@ -9,11 +9,10 @@ namespace Wader.Bootstrap.Components.Progress;
 public partial class BsProgress : BsChildContentComponent
 {
     protected override string BsComponentClasses => "progress";
+    protected override string? BsInlineStyles => WidthStyle;
 
     [CascadingParameter(Name = CascadingValueNames.PROGRESS_IS_STACKED)]
     private bool IsStacked { get; set; }
-
-    private string? WidthStyle => IsStacked ? $"width: {Width}%" : null;
 
     /// <summary>
     /// The current value represented by the progress bar.
@@ -39,6 +38,7 @@ public partial class BsProgress : BsChildContentComponent
     /// </remarks>
     [Parameter]
     public double? Width { get; set; }
+    private string? WidthStyle => IsStacked ? $"width: {Width}%" : null;
 
     private double ActualWidth => Width ?? ((ValueNow - ValueMin) / (ValueMax - ValueMin)) ?? 0;
 

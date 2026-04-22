@@ -7,6 +7,7 @@ public abstract class BsComponent : ComponentBase, IBsComponent
 {
     private Dictionary<string, object>? _renderAttributes;
     protected abstract string? BsComponentClasses { get; }
+    protected virtual string? BsInlineStyles => null;
 
     protected IReadOnlyDictionary<string, object>? RenderAttributes => _renderAttributes;
 
@@ -16,6 +17,7 @@ public abstract class BsComponent : ComponentBase, IBsComponent
     protected override void OnParametersSet()
     {
         _renderAttributes = BsClassAttributeUtilities.AssignClassNames(AdditionalAttributes, BsComponentClasses);
+        _renderAttributes = BsStyleAttributeUtilities.AssignStyles(RenderAttributes, BsInlineStyles);
         base.OnParametersSet();
     }
 }

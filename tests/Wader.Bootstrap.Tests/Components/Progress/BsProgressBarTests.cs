@@ -8,12 +8,6 @@ public class BsProgressBarTests() : BsComponentTests<BsProgressBar>("""<div clas
 {
     protected override Dictionary<string, string> AttributesForDefaultTests => new() { ["style"] = "width: 0%" };
 
-    [Fact]
-    public void StyleCanBeOverridden()
-    {
-        TestForAllowingOverride("style");
-    }
-
     [Theory]
     [InlineData(0.0, "width: 0%")]
     [InlineData(50.0, "width: 50%")]
@@ -30,6 +24,24 @@ public class BsProgressBarTests() : BsComponentTests<BsProgressBar>("""<div clas
 
         // Assert
         cut.MarkupMatches($"""<div class="progress-bar" style="{expectedStyle}"></div>""");
+    }
+
+    [Theory]
+    [InlineData("color: purple", "color: purple; width: 0%")]
+    [InlineData("width: 50%", "width: 0%")]
+    public void ExtraStylingCanBeAdded(string addedStyle, string expectedStyle)
+    {
+        // Arrange
+        ConfigureTestContext();
+        var attributes = AttributesForDefaultTests;
+        const string attributeKey = "style";
+        attributes["style"] = expectedStyle;
+
+        // Act
+        var cut = GetCut(parameters => _ = parameters.AddUnmatched(attributeKey, addedStyle));
+
+        // Assert
+        cut.MarkupMatches(GetExpectedHtml(ClassesForDefaultTests, attributes));
     }
 
     [Fact]
