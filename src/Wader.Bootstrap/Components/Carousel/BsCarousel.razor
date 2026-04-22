@@ -1,7 +1,8 @@
+@using Wader.Bootstrap.Internals.Constants
 @inherits Wader.Bootstrap.BaseComponents.BsChildContentComponent
 
 <div @attributes="RenderAttributes" data-bs-touch="@(EnableTouchAttributeValue)" @ref="HtmlRef">
-    <CascadingValue Value="CarouselContext" Name="@(nameof(BsCarousel))">
+    <CascadingValue Value="CarouselContext" Name="@(CascadingValueNames.CAROUSEL_CONTEXT)">
         @(ChildContent)
     </CascadingValue>
 </div>

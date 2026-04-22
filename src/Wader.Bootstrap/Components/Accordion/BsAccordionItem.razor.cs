@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Components;
 using Wader.Bootstrap.BaseComponents;
 using Wader.Bootstrap.Components.Accordion.Internals;
+using Wader.Bootstrap.Internals.Constants;
 using Wader.Bootstrap.Internals.Exceptions;
 
 namespace Wader.Bootstrap.Components.Accordion;
@@ -14,7 +15,7 @@ public partial class BsAccordionItem : BsChildContentComponent, IAsyncDisposable
     [Parameter]
     public bool InitialCollapsed { get; set; } = true;
 
-    [CascadingParameter(Name = nameof(BsAccordion))]
+    [CascadingParameter(Name = CascadingValueNames.ACCORDION_CONTEXT)]
     private IBsAccordionContext? AccordionContext { get; set; }
 
     [Inject]

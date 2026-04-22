@@ -1,6 +1,7 @@
+@using Wader.Bootstrap.Internals.Constants
 @inherits Wader.Bootstrap.BaseComponents.BsChildContentComponent
 <li @attributes="RenderAttributes">
-    <CascadingValue Value="Options" Name="@(nameof(BsNavItem))">
+    <CascadingValue Value="Options" Name="@(CascadingValueNames.NAV_ITEM_OPTIONS)">
         @(ChildContent)
     </CascadingValue>
 </li>

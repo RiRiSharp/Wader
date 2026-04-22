@@ -1,7 +1,8 @@
+@using Wader.Bootstrap.Internals.Constants
 @inherits Wader.Bootstrap.BaseComponents.BsChildContentComponent
 
 <div @attributes="RenderAttributes">
-    <CascadingValue Value="Mode" Name="@(nameof(BsDropdown))">
+    <CascadingValue Value="Mode" Name="@(CascadingValueNames.DROPDOWN_MODE)">
         @(ChildContent)
     </CascadingValue>
 </div>

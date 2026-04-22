@@ -3,6 +3,7 @@ using Microsoft.Extensions.Logging;
 using Wader.Bootstrap.BaseComponents;
 using Wader.Bootstrap.Components.Buttons;
 using Wader.Bootstrap.Internals;
+using Wader.Bootstrap.Internals.Constants;
 using Wader.Bootstrap.Internals.Exceptions;
 
 namespace Wader.Bootstrap.Components.Dropdown;
@@ -14,7 +15,7 @@ public partial class BsDropdownToggle : BsChildContentComponent
     [Inject]
     private ILogger<BsDropdownToggle> Logger { get; set; } = null!;
 
-    [CascadingParameter(Name = nameof(BsDropdown))]
+    [CascadingParameter(Name = CascadingValueNames.DROPDOWN_MODE)]
     public BsDropdownMode Mode { get; set; } = BsDropdownMode.Regular;
 
     private string ModeClass => Mode.ToBootstrapButtonClass() ?? "";

@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Components;
 using Wader.Bootstrap.BaseComponents;
 using Wader.Bootstrap.Components.Carousel.Internals;
+using Wader.Bootstrap.Internals.Constants;
 using Wader.Bootstrap.Internals.Exceptions;
 
 namespace Wader.Bootstrap.Components.Carousel;
@@ -9,7 +10,7 @@ public partial class BsCarouselIndicatorButton : BsComponent, IBsChildContentCom
 {
     protected override string? BsComponentClasses => ActiveClass;
 
-    [CascadingParameter(Name = nameof(BsCarousel))]
+    [CascadingParameter(Name = CascadingValueNames.CAROUSEL_CONTEXT)]
     private IBsCarouselContext? CarouselContext { get; set; }
 
     [Parameter]

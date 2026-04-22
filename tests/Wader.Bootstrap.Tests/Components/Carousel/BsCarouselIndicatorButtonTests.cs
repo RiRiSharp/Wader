@@ -2,6 +2,7 @@ using System.Globalization;
 using NSubstitute;
 using Wader.Bootstrap.Components.Carousel;
 using Wader.Bootstrap.Components.Carousel.Internals;
+using Wader.Bootstrap.Internals.Constants;
 
 namespace Wader.Bootstrap.Tests.Components.Carousel;
 
@@ -25,7 +26,9 @@ public class BsCarouselIndicatorButtonTests()
     )
     {
         base.BindParameters(parameterBuilder);
-        _ = parameterBuilder.Add(a => a.SlideNo, SLIDE_NO).AddCascadingValue(nameof(BsCarousel), _carouselContextMock);
+        _ = parameterBuilder
+            .Add(a => a.SlideNo, SLIDE_NO)
+            .AddCascadingValue(CascadingValueNames.CAROUSEL_CONTEXT, _carouselContextMock);
     }
 
     [Fact]

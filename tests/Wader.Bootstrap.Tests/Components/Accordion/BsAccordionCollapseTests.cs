@@ -2,6 +2,7 @@
 using NSubstitute;
 using Wader.Bootstrap.Components.Accordion;
 using Wader.Bootstrap.Components.Accordion.Internals;
+using Wader.Bootstrap.Internals.Constants;
 
 namespace Wader.Bootstrap.Tests.Components.Accordion;
 
@@ -49,7 +50,7 @@ public class BsAccordionCollapseTests()
     protected override void BindParameters(ComponentParameterCollectionBuilder<BsAccordionCollapse> parameterBuilder)
     {
         base.BindParameters(parameterBuilder);
-        _ = parameterBuilder.AddCascadingValue(nameof(BsAccordionItem), _accordionItemContextMock);
+        _ = parameterBuilder.AddCascadingValue(CascadingValueNames.ACCORDION_ITEM_CONTEXT, _accordionItemContextMock);
     }
 
     protected override void ConfigureTestContext()

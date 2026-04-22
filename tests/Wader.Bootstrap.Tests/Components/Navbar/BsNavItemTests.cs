@@ -1,4 +1,5 @@
 using Wader.Bootstrap.Components.NavBar;
+using Wader.Bootstrap.Internals.Constants;
 
 namespace Wader.Bootstrap.Tests.Components.Navbar;
 
@@ -23,6 +24,6 @@ public class BsNavItemTests() : BsComponentTests<BsNavItem>("""<li class="nav-it
     [Fact]
     public void DropdownOptionsIsCascading()
     {
-        TestForCascadingValue<BsNavItemOptions>();
+        TestForCascadingValue<BsNavItemOptions>(CascadingValueNames.NAV_ITEM_OPTIONS);
     }
 }

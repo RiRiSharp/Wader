@@ -116,7 +116,7 @@ public abstract class BsComponentTests<TComponent>([StringSyntax("Html")] string
         cut.MarkupMatches(GetExpectedHtml(ClassesForDefaultTests, AttributesForDefaultTests));
     }
 
-    protected void TestForCascadingValue<T>()
+    protected void TestForCascadingValue<T>(string expectedCascadingValueName)
     {
         // Arrange
         ConfigureTestContext();
@@ -125,14 +125,17 @@ public abstract class BsComponentTests<TComponent>([StringSyntax("Html")] string
         var cut = GetCut();
 
         // Assert
+        string? cascadingValueName = null;
         try
         {
-            _ = cut.FindComponent<CascadingValue<T>>();
+            var component = cut.FindComponent<CascadingValue<T>>();
+            cascadingValueName = component.Instance.Name;
         }
         catch (ComponentNotFoundException)
         {
             Assert.Fail($"Cascading value for {typeof(T).Name} was not exposed");
         }
+        Assert.Equal(expectedCascadingValueName, cascadingValueName);
     }
 
     protected virtual IRenderedComponent<TComponent> GetCut(

@@ -1,6 +1,7 @@
 using NSubstitute;
 using Wader.Bootstrap.Components.Carousel;
 using Wader.Bootstrap.Components.Carousel.Internals;
+using Wader.Bootstrap.Internals.Constants;
 
 namespace Wader.Bootstrap.Tests.Components.Carousel;
 
@@ -13,7 +14,7 @@ public class BsCarouselControlNextTests()
     protected override void BindParameters(ComponentParameterCollectionBuilder<BsCarouselControlNext> parameterBuilder)
     {
         base.BindParameters(parameterBuilder);
-        _ = parameterBuilder.AddCascadingValue(nameof(BsCarousel), _carouselContextMock);
+        _ = parameterBuilder.AddCascadingValue(CascadingValueNames.CAROUSEL_CONTEXT, _carouselContextMock);
     }
 
     [Fact]

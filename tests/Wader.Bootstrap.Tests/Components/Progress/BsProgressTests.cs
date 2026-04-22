@@ -1,4 +1,5 @@
 using Wader.Bootstrap.Components.Progress;
+using Wader.Bootstrap.Internals.Constants;
 
 namespace Wader.Bootstrap.Tests.Components.Progress;
 
@@ -110,7 +111,7 @@ public class BsProgressTests() : BsComponentTests<BsProgress>("""<div class="pro
         // Act
         var cut = GetCut(parameters =>
         {
-            _ = parameters.AddCascadingValue(nameof(BsProgressStacked), true);
+            _ = parameters.AddCascadingValue(CascadingValueNames.PROGRESS_IS_STACKED, true);
             _ = parameters.Add(x => x.Width, width);
         });
 

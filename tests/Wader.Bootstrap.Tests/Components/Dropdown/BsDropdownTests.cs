@@ -1,4 +1,5 @@
 using Wader.Bootstrap.Components.Dropdown;
+using Wader.Bootstrap.Internals.Constants;
 using Wader.Bootstrap.Primitives;
 
 namespace Wader.Bootstrap.Tests.Components.Dropdown;
@@ -47,6 +48,6 @@ public class BsDropdownTests() : BsComponentTests<BsDropdown>("""<div class="{0}
     [Fact]
     public void DropdownModeIsCascading()
     {
-        TestForCascadingValue<BsDropdownMode>();
+        TestForCascadingValue<BsDropdownMode>(CascadingValueNames.DROPDOWN_MODE);
     }
 }

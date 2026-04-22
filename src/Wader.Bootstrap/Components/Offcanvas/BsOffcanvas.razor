@@ -1,8 +1,9 @@
+@using Wader.Bootstrap.Internals.Constants
 @inherits Wader.Bootstrap.BaseComponents.BsChildContentComponent
 
 <div tabindex="-1" @attributes="RenderAttributes" data-bs-scroll="@(DataBsScroll)"
      data-bs-backdrop="@(DataBsBackdrop)" @ref="HtmlRef">
-    <CascadingValue Value="OffcanvasContext" Name="@(nameof(BsOffcanvas))">
+    <CascadingValue Value="OffcanvasContext" Name="@(CascadingValueNames.OFFCANVAS_CONTEXT)">
         @(ChildContent)
     </CascadingValue>
 </div>

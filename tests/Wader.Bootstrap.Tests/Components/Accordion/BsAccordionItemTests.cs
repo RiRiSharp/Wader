@@ -1,6 +1,7 @@
 ﻿using NSubstitute;
 using Wader.Bootstrap.Components.Accordion;
 using Wader.Bootstrap.Components.Accordion.Internals;
+using Wader.Bootstrap.Internals.Constants;
 
 namespace Wader.Bootstrap.Tests.Components.Accordion;
 
@@ -67,13 +68,13 @@ public class BsAccordionItemTests()
     [Fact]
     public void AccordionItemContextIsCascading()
     {
-        TestForCascadingValue<IBsAccordionItemContext>();
+        TestForCascadingValue<IBsAccordionItemContext>(CascadingValueNames.ACCORDION_ITEM_CONTEXT);
     }
 
     protected override void BindParameters(ComponentParameterCollectionBuilder<BsAccordionItem> parameterBuilder)
     {
         base.BindParameters(parameterBuilder);
-        _ = parameterBuilder.AddCascadingValue(nameof(BsAccordion), _accordionContextMock);
+        _ = parameterBuilder.AddCascadingValue(CascadingValueNames.ACCORDION_CONTEXT, _accordionContextMock);
     }
 
     protected override void ConfigureTestContext()

@@ -1,6 +1,7 @@
 using NSubstitute;
 using Wader.Bootstrap.Components.Carousel;
 using Wader.Bootstrap.Components.Carousel.Internals;
+using Wader.Bootstrap.Internals.Constants;
 
 namespace Wader.Bootstrap.Tests.Components.Carousel;
 
@@ -194,7 +195,7 @@ public class BsCarouselTests() : BsComponentTests<BsCarousel>("""<div class="car
     [Fact]
     public void CarouselContextIsCascading()
     {
-        TestForCascadingValue<IBsCarouselContext>();
+        TestForCascadingValue<IBsCarouselContext>(CascadingValueNames.CAROUSEL_CONTEXT);
     }
 
     protected override void ConfigureTestContext()

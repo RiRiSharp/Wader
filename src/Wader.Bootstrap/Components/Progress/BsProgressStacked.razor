@@ -1,6 +1,7 @@
+@using Wader.Bootstrap.Internals.Constants
 @inherits Wader.Bootstrap.BaseComponents.BsChildContentComponent
 <div @attributes="RenderAttributes">
-    <CascadingValue Value="@(true)" Name="@(nameof(BsProgressStacked))">
+    <CascadingValue Value="@(true)" Name="@(CascadingValueNames.PROGRESS_IS_STACKED)">
         @(ChildContent)
     </CascadingValue>
 </div>

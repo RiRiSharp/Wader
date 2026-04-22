@@ -1,6 +1,7 @@
 using NSubstitute;
 using Wader.Bootstrap.Components.Modal;
 using Wader.Bootstrap.Components.Modal.Internals;
+using Wader.Bootstrap.Internals.Constants;
 using Wader.Bootstrap.Primitives;
 
 namespace Wader.Bootstrap.Tests.Components.Modal;
@@ -117,7 +118,7 @@ public class BsModalTests() : BsComponentTests<BsModal>("""<div class="modal {0}
     [Fact]
     public void ModalContextIsCascading()
     {
-        TestForCascadingValue<IBsModalContext>();
+        TestForCascadingValue<IBsModalContext>(CascadingValueNames.MODAL_CONTEXT);
     }
 
     protected override void ConfigureTestContext()

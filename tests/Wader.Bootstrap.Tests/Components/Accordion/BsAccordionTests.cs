@@ -1,6 +1,7 @@
 ﻿using NSubstitute;
 using Wader.Bootstrap.Components.Accordion;
 using Wader.Bootstrap.Components.Accordion.Internals;
+using Wader.Bootstrap.Internals.Constants;
 
 namespace Wader.Bootstrap.Tests.Components.Accordion;
 
@@ -82,7 +83,7 @@ public class BsAccordionTests() : BsComponentTests<BsAccordion>("""<div class="a
     [Fact]
     public void AccordionContextIsCascading()
     {
-        TestForCascadingValue<IBsAccordionContext>();
+        TestForCascadingValue<IBsAccordionContext>(CascadingValueNames.ACCORDION_CONTEXT);
     }
 
     protected override void ConfigureTestContext()

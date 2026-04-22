@@ -2,6 +2,7 @@ using NSubstitute;
 using Wader.Bootstrap.Components.Buttons;
 using Wader.Bootstrap.Components.Buttons.Internals;
 using Wader.Bootstrap.Components.Dropdown;
+using Wader.Bootstrap.Internals.Constants;
 using Wader.Bootstrap.Internals.Exceptions;
 
 namespace Wader.Bootstrap.Tests.Components.Dropdown;
@@ -33,7 +34,7 @@ public class BsDropdownToggleTests()
         ConfigureTestContext();
 
         // Act
-        var cut = GetCut(parameters => parameters.AddCascadingValue(nameof(BsDropdown), dropdownMode));
+        var cut = GetCut(parameters => parameters.AddCascadingValue(CascadingValueNames.DROPDOWN_MODE, dropdownMode));
 
         // Assert
         var expectedMarkupString = GetExpectedHtml(

@@ -1,6 +1,7 @@
-﻿@inherits Wader.Bootstrap.BaseComponents.BsChildContentComponent
+﻿@using Wader.Bootstrap.Internals.Constants
+@inherits Wader.Bootstrap.BaseComponents.BsChildContentComponent
 <div @attributes="RenderAttributes" @ref="HtmlRef">
-    <CascadingValue Value="AccordionItemContext" Name="@(nameof(BsAccordionItem))">
+    <CascadingValue Value="AccordionItemContext" Name="@(CascadingValueNames.ACCORDION_ITEM_CONTEXT)">
         @(ChildContent)
     </CascadingValue>
 </div>

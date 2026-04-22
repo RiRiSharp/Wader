@@ -1,6 +1,7 @@
 using NSubstitute;
 using Wader.Bootstrap.Components.Alert;
 using Wader.Bootstrap.Components.Alert.Internals;
+using Wader.Bootstrap.Internals.Constants;
 
 namespace Wader.Bootstrap.Tests.Components.Alert;
 
@@ -93,7 +94,7 @@ public class BsAlertTests() : BsComponentTests<BsAlert>("""<div class="alert {0}
     [Fact]
     public void AlertContextIsCascading()
     {
-        TestForCascadingValue<IBsAlertContext>();
+        TestForCascadingValue<IBsAlertContext>(CascadingValueNames.ALERT_CONTEXT);
     }
 
     protected override void ConfigureTestContext()
