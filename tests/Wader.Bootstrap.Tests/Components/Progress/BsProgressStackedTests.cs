@@ -7,7 +7,7 @@ public class BsProgressStackedTests()
     : BsComponentTests<BsProgressStacked>("""<div class="progress-stacked {0}" {1}></div>""")
 {
     [Fact]
-    public void ExposesCascadingValue()
+    public void IsStackedIsCascading()
     {
         TestForCascadingValue<bool>(CascadingValueNames.PROGRESS_IS_STACKED);
     }

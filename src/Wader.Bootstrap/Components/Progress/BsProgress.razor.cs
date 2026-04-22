@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Components;
 using Wader.Bootstrap.BaseComponents;
 using Wader.Bootstrap.Internals;
+using Wader.Bootstrap.Internals.Constants;
 using Wader.Bootstrap.Internals.Exceptions;
 
 namespace Wader.Bootstrap.Components.Progress;
@@ -9,7 +10,7 @@ public partial class BsProgress : BsChildContentComponent
 {
     protected override string BsComponentClasses => "progress";
 
-    [CascadingParameter(Name = nameof(BsProgressStacked))]
+    [CascadingParameter(Name = CascadingValueNames.PROGRESS_IS_STACKED)]
     private bool IsStacked { get; set; }
 
     private string? WidthStyle => IsStacked ? $"width: {Width}%" : null;

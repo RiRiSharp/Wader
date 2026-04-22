@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Components;
 using Wader.Bootstrap.BaseComponents;
+using Wader.Bootstrap.Internals.Constants;
 using Wader.Bootstrap.Internals.Exceptions;
 using Wader.Bootstrap.Primitives;
 
@@ -10,10 +11,10 @@ public partial class BsProgressBar : BsChildContentComponent
     protected override string BsComponentClasses =>
         $"progress-bar {StripedClass} {AnimatedClass} {Background.ToBootstrapClass()}";
 
-    [CascadingParameter(Name = nameof(BsProgressStacked))]
+    [CascadingParameter(Name = CascadingValueNames.PROGRESS_IS_STACKED)]
     private bool IsStacked { get; set; }
 
-    [CascadingParameter(Name = nameof(BsProgress))]
+    [CascadingParameter(Name = CascadingValueNames.PROGRESS_WIDTH)]
     private double? Width { get; set; }
 
     private string? WidthStyle => IsStacked ? null : $"width: {Width}%";
@@ -31,7 +32,8 @@ public partial class BsProgressBar : BsChildContentComponent
 
     protected override void OnParametersSet()
     {
-        if (!IsStacked && Width is null)
+        base.OnParametersSet();
+        if (Width is null)
         {
             throw BsComponentUsageException.MustBeChildOf<BsProgressBar, BsProgress>();
         }

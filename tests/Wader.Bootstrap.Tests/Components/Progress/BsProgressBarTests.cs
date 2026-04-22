@@ -24,7 +24,9 @@ public class BsProgressBarTests() : BsComponentTests<BsProgressBar>("""<div clas
         ConfigureTestContext();
 
         // Act
-        var cut = GetCut(parameters => parameters.AddCascadingValue(CascadingValueNames.PROGRESS_WIDTH, width));
+        var cut = Render<BsProgressBar>(parameters =>
+            parameters.AddCascadingValue(CascadingValueNames.PROGRESS_WIDTH, width)
+        );
 
         // Assert
         cut.MarkupMatches($"""<div class="progress-bar" style="{expectedStyle}"></div>""");
@@ -39,7 +41,9 @@ public class BsProgressBarTests() : BsComponentTests<BsProgressBar>("""<div clas
 
         // Act
         var cut = GetCut(parameters =>
-            _ = parameters.AddCascadingValue(CascadingValueNames.PROGRESS_IS_STACKED, true).AddCascadingValue(width)
+            _ = parameters
+                .AddCascadingValue(CascadingValueNames.PROGRESS_IS_STACKED, true)
+                .AddCascadingValue(CascadingValueNames.PROGRESS_WIDTH, width)
         );
 
         // Assert
@@ -95,5 +99,11 @@ public class BsProgressBarTests() : BsComponentTests<BsProgressBar>("""<div clas
         // Assert
         var expectedMarkupString = GetExpectedHtml(expectedClass, AttributesForDefaultTests);
         cut.MarkupMatches(expectedMarkupString);
+    }
+
+    protected override void BindParameters(ComponentParameterCollectionBuilder<BsProgressBar> parameterBuilder)
+    {
+        base.BindParameters(parameterBuilder);
+        _ = parameterBuilder.AddCascadingValue(CascadingValueNames.PROGRESS_WIDTH, 0d);
     }
 }

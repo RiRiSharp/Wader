@@ -8,45 +8,21 @@ public class BsProgressTests() : BsComponentTests<BsProgress>("""<div class="pro
     // TODO: Test for missing parameters, moreover, when width is set, max and min shouldn't be also set.
     protected override Dictionary<string, string> AttributesForDefaultTests => new() { ["role"] = "progressbar" };
 
-    [Fact]
-    public void RoleCanBeOverridden()
-    {
-        TestForAllowingOverride("role");
-    }
-
-    [Fact]
-    public void AriaValueNowCanBeOverridden()
-    {
-        TestForAllowingOverride("aria-valuenow");
-    }
-
-    [Fact]
-    public void AriaValueMinCanBeOverridden()
-    {
-        TestForAllowingOverride("aria-valuemin");
-    }
-
-    [Fact]
-    public void AriaValueMaxCanBeOverridden()
-    {
-        TestForAllowingOverride("aria-valuemax");
-    }
-
     [Theory]
     [InlineData(25.0, "25")]
     [InlineData(75.0, "75")]
     public void ValueNowRendersCorrectAriaAttribute(double valueNow, string expected)
     {
-        // Arrange
         ConfigureTestContext();
+        var attributes = AttributesForDefaultTests;
+        attributes["aria-valuenow"] = expected;
 
         // Act
         var cut = GetCut(parameters => parameters.Add(x => x.ValueNow, valueNow));
 
         // Assert
-        cut.MarkupMatches(
-            $"""<div class="progress" role="progressbar" aria-valuenow="{expected}" aria-valuemin="0" aria-valuemax="100"></div>"""
-        );
+        var expectedMarkupString = GetExpectedHtml(ClassesForDefaultTests, attributes);
+        cut.MarkupMatches(expectedMarkupString);
     }
 
     [Theory]
@@ -56,14 +32,15 @@ public class BsProgressTests() : BsComponentTests<BsProgress>("""<div class="pro
     {
         // Arrange
         ConfigureTestContext();
+        var attributes = AttributesForDefaultTests;
+        attributes["aria-valuemin"] = expected;
 
         // Act
         var cut = GetCut(parameters => parameters.Add(x => x.ValueMin, valueMin));
 
         // Assert
-        cut.MarkupMatches(
-            $"""<div class="progress" role="progressbar" aria-valuenow="0" aria-valuemin="{expected}" aria-valuemax="100"></div>"""
-        );
+        var expectedMarkupString = GetExpectedHtml(ClassesForDefaultTests, attributes);
+        cut.MarkupMatches(expectedMarkupString);
     }
 
     [Theory]
@@ -91,12 +68,11 @@ public class BsProgressTests() : BsComponentTests<BsProgress>("""<div class="pro
         ConfigureTestContext();
 
         // Act
-        var cut = GetCut(parameters => parameters.Add(x => x.Width, 50.0));
+        var cut = Render<BsProgress>(parameters => parameters.Add(x => x.Width, 50.0));
 
         // Assert
-        cut.MarkupMatches(
-            """<div class="progress" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>"""
-        );
+        var expectedMarkupString = GetExpectedHtml(ClassesForDefaultTests, AttributesForDefaultTests);
+        cut.MarkupMatches(expectedMarkupString);
     }
 
     [Theory]
@@ -107,18 +83,49 @@ public class BsProgressTests() : BsComponentTests<BsProgress>("""<div class="pro
     {
         // Arrange
         ConfigureTestContext();
+        var attributes = AttributesForDefaultTests;
+        attributes["style"] = expectedStyle;
 
         // Act
-        var cut = GetCut(parameters =>
+        var cut = Render<BsProgress>(parameters =>
         {
             _ = parameters.AddCascadingValue(CascadingValueNames.PROGRESS_IS_STACKED, true);
             _ = parameters.Add(x => x.Width, width);
         });
 
         // Assert
-        cut.MarkupMatches(
-            $"""<div class="progress" style="{expectedStyle}" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>"""
-        );
+        var expectedMarkupString = GetExpectedHtml(ClassesForDefaultTests, attributes);
+        cut.MarkupMatches(expectedMarkupString);
+    }
+
+    [Fact]
+    public void RoleCanBeOverridden()
+    {
+        TestForAllowingOverride("role");
+    }
+
+    [Fact]
+    public void AriaValueNowCanBeOverridden()
+    {
+        TestForAllowingOverride("aria-valuenow");
+    }
+
+    [Fact]
+    public void AriaValueMinCanBeOverridden()
+    {
+        TestForAllowingOverride("aria-valuemin");
+    }
+
+    [Fact]
+    public void AriaValueMaxCanBeOverridden()
+    {
+        TestForAllowingOverride("aria-valuemax");
+    }
+
+    [Fact]
+    public void WidthIsCascading()
+    {
+        TestForCascadingValue<double>(CascadingValueNames.PROGRESS_WIDTH);
     }
 
     protected override void BindParameters(ComponentParameterCollectionBuilder<BsProgress> parameterBuilder)
