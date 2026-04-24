@@ -2,7 +2,7 @@
   <PropertyGroup>
     <!--Disable forcing internal, most classes must be public (components) -->
     <NoWarn>$(NoWarn);CA1515</NoWarn>
-    <RootNamespace>Wader.Site</RootNamespace>
+    <DoNotPublishNuGet>true</DoNotPublishNuGet>
   </PropertyGroup>
   <ItemGroup>
     <SupportedPlatform Include="browser" />

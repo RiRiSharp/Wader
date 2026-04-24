@@ -1,0 +1,6 @@
+<Project>
+  <!-- Import the global defaults -->
+  <Import Project="../Directory.Build.props" />
+  <!-- And add test defaults -->
+  <Import Project="../eng/TestSetup.props" />
+</Project>

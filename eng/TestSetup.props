@@ -1,0 +1,24 @@
+<Project>
+  <PropertyGroup>
+    <IsPackable>false</IsPackable>
+    <IsTestProject>true</IsTestProject>
+    <OutputType>Exe</OutputType>
+    <UseMicrosoftTestingPlatformRunner>true</UseMicrosoftTestingPlatformRunner>
+  </PropertyGroup>
+  <PropertyGroup>
+    <!-- CA1515: Disable forcing internal, as test classes must be public -->
+    <!-- CA1707: Disable checking for underscores, as this is common in tests -->
+    <!-- CS1591: Disable checking for missing XML-docs, these are tests -->
+    <NoWarn>$(NoWarn);CA1515;CA1707;CS1591</NoWarn>
+  </PropertyGroup>
+  <ItemGroup>
+    <Using Include="Xunit" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Testing.Extensions.CodeCoverage" />
+    <PackageReference Include="Microsoft.Testing.Extensions.TrxReport" />
+    <PackageReference Include="NSubstitute" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" />
+    <PackageReference Include="xunit.v3.mtp-v2" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,7 @@
+<Project>
+  <!-- Import the global defaults -->
+  <Import Project="../Directory.Build.props" />
+  <!-- And add NuGet metadata and assets, as we don't want this for tests -->
+  <Import Project="../eng/NuGetMetadata.props" />
+  <Import Project="../eng/NuGetAssets.props" />
+</Project>

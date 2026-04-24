@@ -1,0 +1,30 @@
+<Project>
+  <PropertyGroup>
+    <!-- Default source markdown packed as README.md; override PackageReadmeSourceFile per project if needed. -->
+    <PackageReadmeSourceFile>$(RepoRoot)docs\projects\$(MSBuildProjectName).md</PackageReadmeSourceFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <!-- Every package should include a README -->
+    <None
+      Include="$(PackageReadmeSourceFile)"
+      Pack="true"
+      PackagePath="README.md"
+      Link="README.md"
+      Condition="Exists('$(PackageReadmeSourceFile)')"
+    />
+    <!-- Every package has the same logo -->
+    <None
+      Include="$(MSBuildThisFileDirectory)..\images\logo.png"
+      Pack="true"
+      PackagePath="logo.png"
+      Link="logo.png"
+      Condition="Exists('$(MSBuildThisFileDirectory)..\images\logo.png')"
+    />
+  </ItemGroup>
+  <Target Name="ValidatePackageAssets" BeforeTargets="Build">
+    <Error
+      Condition="!Exists('$(PackageReadmeSourceFile)') and !'$(DoNotPublishNuGet)' == 'true'"
+      Text="Package README source is missing for $(MSBuildProjectName). Expected: $(PackageReadmeSourceFile)"
+    />
+  </Target>
+</Project>

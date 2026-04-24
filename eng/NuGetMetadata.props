@@ -1,0 +1,20 @@
+<Project>
+  <PropertyGroup>
+    <Authors>RiRiSharp</Authors>
+    <RepositoryUrl>https://github.com/RiRiSharp/Wader</RepositoryUrl>
+    <PackageProjectUrl>https://www.nuget.org/packages/$(MsBuildProjectName)</PackageProjectUrl>
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
+    <ContinuousIntegrationBuild>$(CIBuild)</ContinuousIntegrationBuild>
+    <Deterministic>$(CIBuild)</Deterministic>
+    <PublishRepositoryUrl>$(CIBuild)</PublishRepositoryUrl>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    <PackageIcon>logo.png</PackageIcon>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <AssemblyMetadata Include="RepositoryUrl" Value="$(RepositoryUrl)" />
+    <AssemblyMetadata Include="PackageProjectUrl" Value="$(PackageProjectUrl)" />
+  </ItemGroup>
+</Project>

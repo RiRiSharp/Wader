@@ -1,0 +1,26 @@
+<Project>
+  <PropertyGroup>
+    <!-- Defaults for local -->
+    <BuildName>local</BuildName>
+    <BuildNumber>0</BuildNumber>
+    <BuildId>0</BuildId>
+    <Commit>0000000000000000000000000000000000000000</Commit>
+    <CommitShort>0000000</CommitShort>
+    <Branch>local</Branch>
+    <BranchRef>refs/heads/local</BranchRef>
+  </PropertyGroup>
+  <Import
+    Project="$(MSBuildThisFileDirectory)BuildInfo.CIBuild.props"
+    Condition="Exists('$(MSBuildThisFileDirectory)BuildInfo.CIBuild.props')"
+  />
+  <ItemGroup>
+    <AssemblyMetadata Include="BuildName" Value="$(BuildName)" />
+    <AssemblyMetadata Include="BuildNumber" Value="$(BuildNumber)" />
+    <AssemblyMetadata Include="BuildId" Value="$(BuildId)" />
+    <AssemblyMetadata Include="Branch" Value="$(Branch)" />
+    <AssemblyMetadata Include="Commit" Value="$(Commit)" />
+    <AssemblyMetadata Include="CommitShort" Value="$(CommitShort)" />
+    <AssemblyMetadata Include="Branch" Value="$(Branch)" />
+    <AssemblyMetadata Include="BranchRef" Value="$(BranchRef)" />
+  </ItemGroup>
+</Project>

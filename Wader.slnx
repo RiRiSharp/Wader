@@ -8,6 +8,20 @@
     <File Path=".editorconfig" />
     <File Path="global.json" />
   </Folder>
+  <Folder Name="/Solution Items/Engineering/">
+    <File Path="eng/BuildInfo.props" />
+    <File Path="eng/DefaultPackages.props" />
+    <File Path="eng/NuGetAssets.props" />
+    <File Path="eng/NuGetMetadata.props" />
+    <File Path="eng/TestSetup.props" />
+    <File Path="eng/VersionNumber.props" />
+  </Folder>
+  <Folder Name="/Solution Items/Engineering/src/">
+    <File Path="src/Directory.Build.props" />
+  </Folder>
+  <Folder Name="/Solution Items/Engineering/tests/">
+    <File Path="tests/Directory.Build.props" />
+  </Folder>
   <Folder Name="/Tests/">
     <Project Path="tests/Wader.Bootstrap.Tests/Wader.Bootstrap.Tests.csproj" />
   </Folder>

@@ -1,0 +1,24 @@
+<Project>
+  <PropertyGroup>
+    <VersionMajor>1</VersionMajor>
+    <!-- Use this for breaking changes -->
+    <VersionMinor>0</VersionMinor>
+    <!-- Use this for new features -->
+    <VersionFix>0</VersionFix>
+    <!-- Use this for fixes -->
+    <!-- - -->
+    <!-- Final base versions -->
+    <VersionPrefix>$(VersionMajor).$(VersionMinor).$(VersionFix)</VersionPrefix>
+    <AssemblyVersion>$(VersionMajor).$(VersionMinor).$(VersionFix).0</AssemblyVersion>
+    <FileVersion>$(VersionMajor).$(VersionMinor).$(VersionFix).0</FileVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <AssemblyMetadata Include="TargetFramework" Value="$(TargetFramework)" />
+    <AssemblyMetadata Include="DotNetVersion" Value="$(DotNetVersion)" />
+    <AssemblyMetadata Include="VersionMajor" Value="$(VersionMajor)" />
+    <AssemblyMetadata Include="VersionMinor" Value="$(VersionMinor)" />
+    <AssemblyMetadata Include="VersionPrefix" Value="$(VersionPrefix)" />
+    <AssemblyMetadata Include="AssemblyVersion" Value="$(AssemblyVersion)" />
+    <AssemblyMetadata Include="FileVersion" Value="$(FileVersion)" />
+  </ItemGroup>
+</Project>
