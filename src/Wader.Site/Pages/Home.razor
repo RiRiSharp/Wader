@@ -1,115 +1,46 @@
 ﻿@page "/"
-@using Wader.Bootstrap.Components.Buttons
 @using Wader.Bootstrap.Components.Collapse
-@using Wader.Bootstrap.Components.Dropdown
-@using Wader.Bootstrap.Components.ListGroup
-@using Wader.Bootstrap.Components.Offcanvas
-@using Wader.Bootstrap.Components.Popover
-@using Wader.Icons.Bootstrap
-@using Wader.Icons.Phosphor
+@using Wader.Bootstrap.Components.Scrollspy
+@using Wader.Bootstrap.Layout.Columns
+@using Wader.Bootstrap.Layout.Rows
 
 <PageTitle>Home</PageTitle>
 
-<BsCollapse Show="true" @ref="_collapse">
-    Hello world!
-</BsCollapse>
-<BsButton Variant="BsButtonVariant.Primary" @onclick="() => _collapse?.ToggleAsync() ?? Task.CompletedTask">Toggle
-</BsButton>
-<BsButton Variant="BsButtonVariant.Secondary" @onclick="() => _collapse?.ShowAsync() ?? Task.CompletedTask">Show
-</BsButton>
-<BsButtonOutline Variant="BsButtonOutlineVariant.Primary"
-                 @onclick="() => _collapse?.CollapseAsync() ?? Task.CompletedTask">
-    Hide
-</BsButtonOutline>
-
-<BsDropdown>
-    <BsDropdownToggle OutlineVariant="BsButtonOutlineVariant.Primary" Size="BsButtonSize.Large">
-        Dropdown button
-    </BsDropdownToggle>
-    <BsDropdownMenu>
-        <BsDropdownItem>Action!</BsDropdownItem>
-        <BsDropdownItem>Action2!</BsDropdownItem>
-        <BsDropdownDivider/>
-        <BsDropdownItem>Action3!</BsDropdownItem>
-    </BsDropdownMenu>
-</BsDropdown>
-
-<BsListGroup>
-    <BsListGroupItem ElType="BsListGroupItemType.Button" Variant="BsListGroupItemVariant.Primary">Super cool
-    </BsListGroupItem>
-    <BsListGroupItem ElType="BsListGroupItemType.Button" Variant="BsListGroupItemVariant.Primary">Super cool
-    </BsListGroupItem>
-    <BsListGroupItem ElType="BsListGroupItemType.Link" Variant="BsListGroupItemVariant.Success"
-                     href="https://duckduckgo.com">Linkert
-    </BsListGroupItem>
-</BsListGroup>
-<BsButton @onclick="() => _offcanvas!.ShowAsync()">Offcanvas!</BsButton>
-<BsOffcanvas @ref="_offcanvas">
-    <BsOffcanvasTitle>Title!</BsOffcanvasTitle>
-    <BsOffcanvasBody>Body!</BsOffcanvasBody>
-</BsOffcanvas>
-
-<h3>
-    Icons!
-</h3>
-<BsIcon Name="@(BsIconNames.Airplane)"/>
-<PhosphorIcon Name="@(PhosphorIconNames.Airplane)"/>
-<PhosphorIcon Name="@(PhosphorIconNames.Airplane)" Weight="PhosphorIconWeight.DuoTone"/>
-<PhosphorIcon Name="@(PhosphorIconNames.Airplane)" Weight="PhosphorIconWeight.Light"/>
-
-<BsButtonOutline Variant="BsButtonOutlineVariant.Danger" @onclick="() => _popover!.HideAsync()">Close</BsButtonOutline>
-
-@* 1. Default: Right placement, Click trigger *@
-<BsPopover @ref="_popover">
-    <ChildContent>
-        <BsButton @onclick="() => _popover!.ToggleAsync()">Click me for popovers!</BsButton>
-    </ChildContent>
-    <BsPopoverTitle>An epic title</BsPopoverTitle>
-    <BsPopoverContent>Epic content</BsPopoverContent>
-</BsPopover>
-
-@* 2. Top placement, Hover+Focus trigger, animation disabled *@
-<BsPopover Options="new BsPopoverOptions { Placement = BsPopoverPlacement.Top, Trigger = BsPopoverTrigger.Hover | BsPopoverTrigger.Focus, Animation = false }">
-    <ChildContent>
-        <BsButton Variant="BsButtonVariant.Secondary">Hover/Focus (Top, no anim)</BsButton>
-    </ChildContent>
-    <BsPopoverTitle>Top Popover</BsPopoverTitle>
-    <BsPopoverContent>Appears above, triggered by hover or focus.</BsPopoverContent>
-</BsPopover>
-
-@* 3. Bottom placement, show/hide delays, custom CSS class *@
-<BsPopover Options="_opts1">
-    <ChildContent>
-        <BsButton Variant="BsButtonVariant.Warning">Click (Bottom, delayed)</BsButton>
-    </ChildContent>
-    <BsPopoverTitle>Slow Bottom</BsPopoverTitle>
-    <BsPopoverContent>500ms to show, 300ms to hide.</BsPopoverContent>
-</BsPopover>
-
-@* 4. Left placement, Manual trigger — controlled via external buttons *@
-<BsPopover @ref="_manualPopover" Options="new BsPopoverOptions { Placement = BsPopoverPlacement.Left, Trigger = BsPopoverTrigger.Manual }">
-    <ChildContent>
-        <BsButton Variant="BsButtonVariant.Info">Manual target</BsButton>
-    </ChildContent>
-    <BsPopoverTitle>Manual control</BsPopoverTitle>
-    <BsPopoverContent>Shown/hidden via external buttons only.</BsPopoverContent>
-</BsPopover>
-<BsButton @onclick="() => _manualPopover!.ShowAsync()">Show manual</BsButton>
-<BsButton @onclick="() => _manualPopover!.HideAsync()">Hide manual</BsButton>
-
-@* 5. Auto placement, custom X/Y offset *@
-<BsPopover Options="new BsPopoverOptions { Placement = BsPopoverPlacement.Auto, Skidding = 20, Distance = 50 }">
-    <ChildContent>
-        <BsButton Variant="BsButtonVariant.Dark">Auto placement + offset</BsButton>
-    </ChildContent>
-    <BsPopoverTitle>Auto + Offset</BsPopoverTitle>
-    <BsPopoverContent>OffsetX=20, OffsetY=10 from the trigger.</BsPopoverContent>
-</BsPopover>
-
+Hello world!
+<BsRow style="height: 200px;">
+<BsColumn ColOption="BsColumnOptions.Col4">
+    <div class="list-group" @ref="_reference">
+        <a class="list-group-item list-group-item-action" href="#list-item-1">Item 1</a>
+        <a class="list-group-item list-group-item-action" href="#list-item-2">Item 2</a>
+        <a class="list-group-item list-group-item-action" href="#list-item-3">Item 3</a>
+        <a class="list-group-item list-group-item-action" href="#list-item-4">Item 4</a>
+    </div>
+</BsColumn>
+<BsColumn ColOption="BsColumnOptions.Col8" class="h-100 overflow-y-auto">
+    <BsScrollspy Target="@(_reference)">
+    <h4 id="list-item-1">Item 1</h4>
+    <p>
+        This is some placeholder content for the scrollspy page. Note that as you scroll down the page, the appropriate navigation link is highlighted. It’s repeated throughout the component example. We keep adding some more example copy here to emphasize the scrolling and highlighting.
+    </p>
+    <h4 id="list-item-2">
+        Item 2
+    </h4>
+    <p>
+        This is some placeholder content for the scrollspy page. Note that as you scroll down the page, the appropriate navigation link is highlighted. It’s repeated throughout the component example. We keep adding some more example copy here to emphasize the scrolling and highlighting.
+    </p>
+    <h4 id="list-item-3">
+        Item 3
+    </h4>
+    <p>
+        This is some placeholder content for the scrollspy page. Note that as you scroll down the page, the appropriate navigation link is highlighted. It’s repeated throughout the component example. We keep adding some more example copy here to emphasize the scrolling and highlighting.
+    </p>
+    <h4 id="list-item-4">Item 4</h4>
+    <p>
+        This is some placeholder content for the scrollspy page. Note that as you scroll down the page, the appropriate navigation link is highlighted. It’s repeated throughout the component example. We keep adding some more example copy here to emphasize the scrolling and highlighting.
+    </p>
+    </BsScrollspy>
+</BsColumn>
+</BsRow>
 @code {
-    private BsCollapse? _collapse;
-    private BsOffcanvas? _offcanvas;
-    private BsPopover? _popover;
-    private BsPopover? _manualPopover;
-    private BsPopoverOptions _opts1 = new() { Placement = BsPopoverPlacement.Bottom, ShowDelay = 500, HideDelay = 300, CustomClass = "text-bg-warning" };
+    private ElementReference _reference;
 }

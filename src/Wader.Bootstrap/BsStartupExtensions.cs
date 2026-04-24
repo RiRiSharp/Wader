@@ -8,6 +8,7 @@ using Wader.Bootstrap.Components.Collapse.Internals;
 using Wader.Bootstrap.Components.Modal.Internals;
 using Wader.Bootstrap.Components.Offcanvas.Internals;
 using Wader.Bootstrap.Components.Popover.Internals;
+using Wader.Bootstrap.Components.Scrollspy.Internals;
 using Wader.Bootstrap.Forms.ChecksRadios.Internals;
 using Wader.Bootstrap.Internals;
 
@@ -36,7 +37,8 @@ public static class BsStartupExtensions
             .AddWaderJsInterop<IBsCollapseJsInterop, BsCollapseJsInterop>(useNoOp)
             .AddWaderJsInterop<IBsModalJsInterop, BsModalJsInterop>(useNoOp)
             .AddWaderJsInterop<IBsOffcanvasJsInterop, BsOffcanvasJsInterop>(useNoOp)
-            .AddWaderJsInterop<IBsPopoverJsInterop, BsPopoverJsInterop>(useNoOp);
+            .AddWaderJsInterop<IBsPopoverJsInterop, BsPopoverJsInterop>(useNoOp)
+            .AddWaderJsInterop<IBsScrollspyJsInterop, BsScrollspyJsInterop>(useNoOp);
     }
 
     private static IServiceCollection AddWaderJsInterop<TService, TImpl>(this IServiceCollection services, bool useNoOp)
