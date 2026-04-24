@@ -5,16 +5,20 @@ namespace Wader.Bootstrap.Components.ListGroup;
 
 public partial class BsListGroupItem : BsChildContentComponent
 {
-    protected override string BsComponentClasses => $"list-group-item {VariantClass} {ActiveClass} {DisabledClass}";
+    protected override string BsComponentClasses =>
+        $"list-group-item {TypeActionClass} {VariantClass} {ActiveClass} {DisabledClass}";
 
     /// <summary>
     /// Decides what html-tag should be used for drawing this component.
     /// </summary>
     /// <remark>
     /// Has a different name because button also has a type tag, and those two cannot coexist.
+    /// Also adds the `list-group-item-action` class to the element to give a :hover-background.
     /// </remark>
     [Parameter]
     public BsListGroupItemType ElType { get; set; }
+
+    public string? TypeActionClass => ElType == BsListGroupItemType.ListItem ? null : "list-group-item-action";
 
     [Parameter]
     public BsListGroupItemVariant Variant { get; set; }

@@ -21,6 +21,23 @@ public class BsListGroupItemTests() : BsComponentTests<BsListGroupItem>("""<li c
     }
 
     [Theory]
+    [InlineData(BsListGroupItemType.ListItem, false)]
+    [InlineData(BsListGroupItemType.Button, true)]
+    [InlineData(BsListGroupItemType.Link, true)]
+    public void ItemTypeAddsCorrectActionClass(BsListGroupItemType type, bool classShouldBeThere)
+    {
+        // Arrange
+        ConfigureTestContext();
+
+        // Act
+        var cut = GetCut(parameters => parameters.Add(x => x.ElType, type));
+        var element = cut.Find("*");
+
+        // Assert
+        Assert.Equal(classShouldBeThere, element.ClassList.Contains("list-group-item-action"));
+    }
+
+    [Theory]
     [InlineData(BsListGroupItemVariant.None, "")]
     [InlineData(BsListGroupItemVariant.Primary, "list-group-item-primary")]
     [InlineData(BsListGroupItemVariant.Secondary, "list-group-item-secondary")]
