@@ -1,9 +1,5 @@
 <Project Sdk="Microsoft.NET.Sdk.Razor">
   <PropertyGroup>
-    <IsPackable>false</IsPackable>
-    <IsTestProject>true</IsTestProject>
-  </PropertyGroup>
-  <PropertyGroup>
     <!--Disables checking for a required property, because we are testing one parameter at a time-->
     <!--And disable forcing internal, as test classes must be public-->
     <NoWarn>$(NoWarn);RZ2012;CA1515</NoWarn>
