@@ -23,7 +23,7 @@
     />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Wader.Icons\Wader.Icons.csproj"/>
-    <ProjectReference Include="..\Wader.Bootstrap\Wader.Bootstrap.csproj"/>
+    <ProjectReference Include="..\Wader.Icons\Wader.Icons.csproj" />
+    <ProjectReference Include="..\Wader.Bootstrap\Wader.Bootstrap.csproj" />
   </ItemGroup>
 </Project>

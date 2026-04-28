@@ -26,13 +26,23 @@ public partial class BsScrollspy : BsChildContentComponent
     public IBsScrollspyJsInterop BsScrollspyJsInterop { get; set; } = null!;
 
     internal ElementReference HtmlRef;
+    private bool _recreate;
 
-    protected override async Task OnParametersSetAsync()
+    protected override void OnParametersSet()
     {
-        await base.OnParametersSetAsync();
+        base.OnParametersSet();
         if (_oldTarget is null || _oldTarget.Value.Id != Target.Id)
         {
-            await BsScrollspyJsInterop.CreateAsync(HtmlRef, new ScrollspyJsOptions { TargetRef = Target });
+            _recreate = true;
+        }
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        await base.OnAfterRenderAsync(firstRender);
+        if (_recreate)
+        {
+            await BsScrollspyJsInterop.CreateAsync(HtmlRef, new ScrollspyJsOptions { Target = Target });
             _oldTarget = Target;
         }
     }
