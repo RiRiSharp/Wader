@@ -1,5 +1,8 @@
-﻿export function create(hostElementRef, options) {
+﻿export function create(hostElementRef, targetElementRef, options) {
     if (!hostElementRef) return;
+    if(!targetElementRef) return;
+    
+    options.target = targetElementRef;
 
     const existing = bootstrap.ScrollSpy.getInstance(hostElementRef);
     if (existing) {

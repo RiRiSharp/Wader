@@ -3,10 +3,12 @@ using Wader.Bootstrap.BaseComponents;
 
 namespace Wader.Bootstrap.Layout.Columns;
 
-public partial class BsColumn : BsChildContentComponent
+public partial class BsColumn : BsChildContentComponent, IContainerComponent
 {
     protected override string BsComponentClasses =>
         $"{ColumnOptionsBootstrapClasses()} {ColumnOffsetBootstrapClasses()} {ColumnOrder.ToBootstrapClass()}";
+
+    public ElementReference ElementRef { get; private set; }
 
     [Parameter]
     public BsColumnOptions ColOption { get; set; }

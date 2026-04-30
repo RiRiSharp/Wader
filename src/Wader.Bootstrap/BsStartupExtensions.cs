@@ -8,6 +8,7 @@ using Wader.Bootstrap.Components.Collapse.Internals;
 using Wader.Bootstrap.Components.Modal.Internals;
 using Wader.Bootstrap.Components.Offcanvas.Internals;
 using Wader.Bootstrap.Components.Popover.Internals;
+using Wader.Bootstrap.Components.Scrollspy;
 using Wader.Bootstrap.Components.Scrollspy.Internals;
 using Wader.Bootstrap.Forms.ChecksRadios.Internals;
 using Wader.Bootstrap.Internals;

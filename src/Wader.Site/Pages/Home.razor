@@ -1,8 +1,9 @@
 ﻿@page "/"
-@using Wader.Bootstrap.Components.Collapse
 @using Wader.Bootstrap.Components.Scrollspy
+@using Wader.Bootstrap.Components.Scrollspy.Internals
 @using Wader.Bootstrap.Layout.Columns
 @using Wader.Bootstrap.Layout.Rows
+@inject IBsScrollspyJsInterop ScrollspyJsInterop
 
 <PageTitle>Home</PageTitle>
 
@@ -16,63 +17,109 @@ Hello world!
             <a class="list-group-item list-group-item-action" href="#list-item-4">Item 4</a>
         </div>
     </BsColumn>
-    <BsColumn ColOption="BsColumnOptions.Col8" class="h-100 overflow-y-auto">
-        <BsScrollspy Target="@(_reference)">
-            <h4 id="list-item-1">Item 1</h4>
-            <p>
-                This is some placeholder content for the scrollspy page. Note that as you scroll down the page, the appropriate navigation link is highlighted. It’s repeated throughout the component example. We keep adding some more example copy here to emphasize the scrolling and highlighting.
-            </p>
-            <h4 id="list-item-2">
-                Item 2
-            </h4>
-            <p>
-                This is some placeholder content for the scrollspy page. Note that as you scroll down the page, the appropriate navigation link is highlighted. It’s repeated throughout the component example. We keep adding some more example copy here to emphasize the scrolling and highlighting.
-            </p>
-            <h4 id="list-item-3">
-                Item 3
-            </h4>
-            <p>
-                This is some placeholder content for the scrollspy page. Note that as you scroll down the page, the appropriate navigation link is highlighted. It’s repeated throughout the component example. We keep adding some more example copy here to emphasize the scrolling and highlighting.
-            </p>
-            <h4 id="list-item-4">Item 4</h4>
-            <p>
-                This is some placeholder content for the scrollspy page. Note that as you scroll down the page, the appropriate navigation link is highlighted. It’s repeated throughout the component example. We keep adding some more example copy here to emphasize the scrolling and highlighting.
-            </p>
-        </BsScrollspy>
+    <BsColumn ColOption="BsColumnOptions.Col8" class="h-100 overflow-y-auto" @ref="_columnHost">
+        <h4 id="list-item-1">Item 1</h4>
+        <p>
+            This is some placeholder content for the scrollspy page. Note that as you scroll down the page, the
+            appropriate navigation link is highlighted. It’s repeated throughout the component example. We keep adding
+            some more example copy here to emphasize the scrolling and highlighting.
+        </p>
+        <p>
+            This is some placeholder content for the scrollspy page. Note that as you scroll down the page, the
+            appropriate navigation link is highlighted. It’s repeated throughout the component example. We keep adding
+            some more example copy here to emphasize the scrolling and highlighting.
+        </p>
+        <h4 id="list-item-2">
+            Item 2
+        </h4>
+        <p>
+            This is some placeholder content for the scrollspy page. Note that as you scroll down the page, the
+            appropriate navigation link is highlighted. It’s repeated throughout the component example. We keep adding
+            some more example copy here to emphasize the scrolling and highlighting.
+        </p>
+        <p>
+            This is some placeholder content for the scrollspy page. Note that as you scroll down the page, the
+            appropriate navigation link is highlighted. It’s repeated throughout the component example. We keep adding
+            some more example copy here to emphasize the scrolling and highlighting.
+        </p>
+        <h4 id="list-item-3">
+            Item 3
+        </h4>
+        <p>
+            This is some placeholder content for the scrollspy page. Note that as you scroll down the page, the
+            appropriate navigation link is highlighted. It’s repeated throughout the component example. We keep adding
+            some more example copy here to emphasize the scrolling and highlighting.
+        </p>
+        <p>
+            This is some placeholder content for the scrollspy page. Note that as you scroll down the page, the
+            appropriate navigation link is highlighted. It’s repeated throughout the component example. We keep adding
+            some more example copy here to emphasize the scrolling and highlighting.
+        </p>
+        <h4 id="list-item-4">Item 4</h4>
+        <p>
+            This is some placeholder content for the scrollspy page. Note that as you scroll down the page, the
+            appropriate navigation link is highlighted. It’s repeated throughout the component example. We keep adding
+            some more example copy here to emphasize the scrolling and highlighting.
+        </p>
+        <p>
+            This is some placeholder content for the scrollspy page. Note that as you scroll down the page, the
+            appropriate navigation link is highlighted. It’s repeated throughout the component example. We keep adding
+            some more example copy here to emphasize the scrolling and highlighting.
+        </p>
+        
     </BsColumn>
 </BsRow>
 <BsRow style="height: 200px;" data-bs-spy="scroll" data-bs-target="#list-thing">
-<BsColumn ColOption="BsColumnOptions.Col4">
-    <div class="list-group" id="list-thing">
-        <a class="list-group-item list-group-item-action" href="#list-item-21">Item 1</a>
-        <a class="list-group-item list-group-item-action" href="#list-item-22">Item 2</a>
-        <a class="list-group-item list-group-item-action" href="#list-item-23">Item 3</a>
-        <a class="list-group-item list-group-item-action" href="#list-item-24">Item 4</a>
-    </div>
-</BsColumn>
-<BsColumn ColOption="BsColumnOptions.Col8" class="h-100 overflow-y-auto">
-    <h4 id="list-item-21">Item 1</h4>
-    <p>
-        This is some placeholder content for the scrollspy page. Note that as you scroll down the page, the appropriate navigation link is highlighted. It’s repeated throughout the component example. We keep adding some more example copy here to emphasize the scrolling and highlighting.
-    </p>
-    <h4 id="list-item-22">
-        Item 2
-    </h4>
-    <p>
-        This is some placeholder content for the scrollspy page. Note that as you scroll down the page, the appropriate navigation link is highlighted. It’s repeated throughout the component example. We keep adding some more example copy here to emphasize the scrolling and highlighting.
-    </p>
-    <h4 id="list-item-23">
-        Item 3
-    </h4>
-    <p>
-        This is some placeholder content for the scrollspy page. Note that as you scroll down the page, the appropriate navigation link is highlighted. It’s repeated throughout the component example. We keep adding some more example copy here to emphasize the scrolling and highlighting.
-    </p>
-    <h4 id="list-item-24">Item 4</h4>
-    <p>
-        This is some placeholder content for the scrollspy page. Note that as you scroll down the page, the appropriate navigation link is highlighted. It’s repeated throughout the component example. We keep adding some more example copy here to emphasize the scrolling and highlighting.
-    </p>
-</BsColumn>
+    <BsColumn ColOption="BsColumnOptions.Col4">
+        <div class="list-group" id="list-thing">
+            <a class="list-group-item list-group-item-action" href="#list-item-21">Item 1</a>
+            <a class="list-group-item list-group-item-action" href="#list-item-22">Item 2</a>
+            <a class="list-group-item list-group-item-action" href="#list-item-23">Item 3</a>
+            <a class="list-group-item list-group-item-action" href="#list-item-24">Item 4</a>
+        </div>
+    </BsColumn>
+    <BsColumn ColOption="BsColumnOptions.Col8" class="h-100 overflow-y-auto">
+        <h4 id="list-item-21">Item 1</h4>
+        <p>
+            This is some placeholder content for the scrollspy page. Note that as you scroll down the page, the
+            appropriate navigation link is highlighted. It’s repeated throughout the component example. We keep adding
+            some more example copy here to emphasize the scrolling and highlighting.
+        </p>
+        <h4 id="list-item-22">
+            Item 2
+        </h4>
+        <p>
+            This is some placeholder content for the scrollspy page. Note that as you scroll down the page, the
+            appropriate navigation link is highlighted. It’s repeated throughout the component example. We keep adding
+            some more example copy here to emphasize the scrolling and highlighting.
+        </p>
+        <h4 id="list-item-23">
+            Item 3
+        </h4>
+        <p>
+            This is some placeholder content for the scrollspy page. Note that as you scroll down the page, the
+            appropriate navigation link is highlighted. It’s repeated throughout the component example. We keep adding
+            some more example copy here to emphasize the scrolling and highlighting.
+        </p>
+        <h4 id="list-item-24">Item 4</h4>
+        <p>
+            This is some placeholder content for the scrollspy page. Note that as you scroll down the page, the
+            appropriate navigation link is highlighted. It’s repeated throughout the component example. We keep adding
+            some more example copy here to emphasize the scrolling and highlighting.
+        </p>
+    </BsColumn>
 </BsRow>
+
 @code {
     private ElementReference _reference;
+    private BsColumn? _columnHost;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        await base.OnAfterRenderAsync(firstRender);
+        if (firstRender && _columnHost is not null)
+        {
+            await ScrollspyJsInterop.CreateAsync(_columnHost.ElementRef, _reference);
+        }
+    }
 }

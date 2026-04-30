@@ -20,9 +20,14 @@ public sealed class BsScrollspyJsInterop : IBsScrollspyJsInterop, IBsJsFunctions
 
     internal const string CREATE = "create";
 
-    public async ValueTask CreateAsync(ElementReference hostElementRef, ScrollspyJsOptions? options = null)
+    public async ValueTask CreateAsync(
+        ElementReference hostElementRef,
+        ElementReference targetElementRef,
+        ScrollspyJsOptions? options = null
+    )
     {
-        await _bsJsObjectRef.InvokeVoidAsync(CREATE, hostElementRef, options);
+        options ??= new ScrollspyJsOptions();
+        await _bsJsObjectRef.InvokeVoidAsync(CREATE, hostElementRef, targetElementRef, options);
     }
 
     internal const string DISPOSE = "dispose";
