@@ -10,7 +10,7 @@ public partial class BsPopoverTests() : BsComponentTests<BsPopover>("""<div clas
     protected override string ClassesForDefaultTests => "d-inline-block";
 
     [Fact]
-    public async Task OnAfterRenderCallsJsCorrectlyAsync()
+    public async Task OnAfterRender_CallsCreateOrUpdateJsInterop()
     {
         // Arrange
         ConfigureTestContext();
@@ -25,7 +25,7 @@ public partial class BsPopoverTests() : BsComponentTests<BsPopover>("""<div clas
     }
 
     [Fact]
-    public async Task ToggleCallsJsCorrectlyAsync()
+    public async Task Toggle_CallsToggleJsInterop()
     {
         // Arrange
         ConfigureTestContext();
@@ -39,7 +39,7 @@ public partial class BsPopoverTests() : BsComponentTests<BsPopover>("""<div clas
     }
 
     [Fact]
-    public async Task ShowCallsJsCorrectlyAsync()
+    public async Task Show_CallsShowJsInterop()
     {
         // Arrange
         ConfigureTestContext();
@@ -53,7 +53,7 @@ public partial class BsPopoverTests() : BsComponentTests<BsPopover>("""<div clas
     }
 
     [Fact]
-    public async Task HideCallsJsCorrectlyAsync()
+    public async Task Hide_CallsHideJsInterop()
     {
         // Arrange
         ConfigureTestContext();
@@ -67,7 +67,7 @@ public partial class BsPopoverTests() : BsComponentTests<BsPopover>("""<div clas
     }
 
     [Fact]
-    public async Task UpdatePositionCallsJsCorrectlyAsync()
+    public async Task UpdatePosition_CallsUpdatePositionJsInterop()
     {
         // Arrange
         ConfigureTestContext();

@@ -32,7 +32,7 @@ public class BsOffcanvasTests() : BsComponentTests<BsOffcanvas>("""<div class="o
     }
 
     [Fact]
-    public async Task ToggleCallsJsCorrectlyAsync()
+    public async Task Toggle_CallsToggleJsInterop()
     {
         // Arrange
         ConfigureTestContext();
@@ -46,7 +46,7 @@ public class BsOffcanvasTests() : BsComponentTests<BsOffcanvas>("""<div class="o
     }
 
     [Fact]
-    public async Task ShowCallsJsCorrectlyAsync()
+    public async Task Show_CallsShowJsInterop()
     {
         // Arrange
         ConfigureTestContext();
@@ -60,7 +60,7 @@ public class BsOffcanvasTests() : BsComponentTests<BsOffcanvas>("""<div class="o
     }
 
     [Fact]
-    public async Task CloseCallsJsCorrectlyAsync()
+    public async Task Close_CallsCloseJsInterop()
     {
         // Arrange
         ConfigureTestContext();

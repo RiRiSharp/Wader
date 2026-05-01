@@ -8,7 +8,7 @@ namespace Wader.Bootstrap.Tests.Components.Buttons.Internals;
 public class BsButtonJsInteropTests
 {
     [Fact]
-    public async Task ToggleCallsCorrectJsFunctionAsync()
+    public async Task Toggle_CallsToggleJsFunction()
     {
         // Arrange
         var jsObj = Substitute.For<IJSObjectReference>();
@@ -23,7 +23,7 @@ public class BsButtonJsInteropTests
     }
 
     [Fact]
-    public async Task DisposeReferenceCallsCorrectJsFunctionAsync()
+    public async Task DisposeReference_CallsDisposeJsFunction()
     {
         // Arrange
         var jsObj = Substitute.For<IJSObjectReference>();
@@ -38,13 +38,13 @@ public class BsButtonJsInteropTests
     }
 
     [Fact]
-    public async Task DisposeDisposesUnderlyingJsReferenceAsync()
+    public async Task Dispose_CallsJsDisposeAsync()
     {
         // Arrange
         var jsObj = Substitute.For<IJSObjectReference>();
         var sut = new BsButtonJsInterop(jsObj);
 
         // Act + Assert
-        await AssertJsInterop.DisposeDisposesUnderlyingJsReferenceAsync(sut, jsObj);
+        await AssertJsInterop.Dispose_CallsJsDisposeAsync(sut, jsObj);
     }
 }

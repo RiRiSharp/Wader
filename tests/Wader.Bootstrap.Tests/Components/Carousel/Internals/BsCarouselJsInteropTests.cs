@@ -8,7 +8,7 @@ namespace Wader.Bootstrap.Tests.Components.Carousel.Internals;
 public class BsCarouselJsInteropTests
 {
     [Fact]
-    public async Task MoveToSlideCallsCorrectJsFunctionAsync()
+    public async Task MoveToSlide_CallsMoveToSlideJsFunction()
     {
         // Arrange
         var jsObj = Substitute.For<IJSObjectReference>();
@@ -24,7 +24,7 @@ public class BsCarouselJsInteropTests
     }
 
     [Fact]
-    public async Task MovePrevCallsCorrectJsFunctionAsync()
+    public async Task MovePrev_CallsMovePrevJsFunction()
     {
         // Arrange
         var jsObj = Substitute.For<IJSObjectReference>();
@@ -39,7 +39,7 @@ public class BsCarouselJsInteropTests
     }
 
     [Fact]
-    public async Task MoveNextCallsCorrectJsFunctionAsync()
+    public async Task MoveNext_CallsMoveNextJsFunction()
     {
         // Arrange
         var jsObj = Substitute.For<IJSObjectReference>();
@@ -54,7 +54,7 @@ public class BsCarouselJsInteropTests
     }
 
     [Fact]
-    public async Task CycleCallsCorrectJsFunctionAsync()
+    public async Task Cycle_CallsCycleJsFunction()
     {
         // Arrange
         var jsObj = Substitute.For<IJSObjectReference>();
@@ -69,7 +69,7 @@ public class BsCarouselJsInteropTests
     }
 
     [Fact]
-    public async Task PauseCallsCorrectJsFunctionAsync()
+    public async Task Pause_CallsPauseJsFunction()
     {
         // Arrange
         var jsObj = Substitute.For<IJSObjectReference>();
@@ -84,7 +84,7 @@ public class BsCarouselJsInteropTests
     }
 
     [Fact]
-    public async Task AddCycleCallbackCallsCorrectJsFunctionAsync()
+    public async Task AddCycleCallback_CallsAddCycleCallbackJsFunction()
     {
         // Arrange
         var jsObj = Substitute.For<IJSObjectReference>();
@@ -99,7 +99,7 @@ public class BsCarouselJsInteropTests
     }
 
     [Fact]
-    public async Task RemoveCycleCallbackCallsCorrectJsFunctionAsync()
+    public async Task RemoveCycleCallback_CallsRemoveCycleCallbackJsFunction()
     {
         // Arrange
         var jsObj = Substitute.For<IJSObjectReference>();
@@ -114,7 +114,7 @@ public class BsCarouselJsInteropTests
     }
 
     [Fact]
-    public async Task DisposeReferenceCallsCorrectJsFunctionAsync()
+    public async Task DisposeReference_CallsDisposeJsFunction()
     {
         // Arrange
         var jsObj = Substitute.For<IJSObjectReference>();
@@ -129,13 +129,13 @@ public class BsCarouselJsInteropTests
     }
 
     [Fact]
-    public async Task DisposeDisposesUnderlyingJsReferenceAsync()
+    public async Task Dispose_CallsJsDisposeAsync()
     {
         // Arrange
         var jsObj = Substitute.For<IJSObjectReference>();
         var sut = new BsCarouselJsInterop(jsObj);
 
         // Act + Assert
-        await AssertJsInterop.DisposeDisposesUnderlyingJsReferenceAsync(sut, jsObj);
+        await AssertJsInterop.Dispose_CallsJsDisposeAsync(sut, jsObj);
     }
 }

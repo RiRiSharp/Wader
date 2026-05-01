@@ -62,7 +62,7 @@ public class BsModalTests() : BsComponentTests<BsModal>("""<div class="modal {0}
     }
 
     [Fact]
-    public async Task ToggleCallsJsCorrectlyAsync()
+    public async Task Toggle_CallsToggleJsInterop()
     {
         // Arrange
         ConfigureTestContext();
@@ -76,7 +76,7 @@ public class BsModalTests() : BsComponentTests<BsModal>("""<div class="modal {0}
     }
 
     [Fact]
-    public async Task ShowCallsJsCorrectlyAsync()
+    public async Task Show_CallsShowJsInterop()
     {
         // Arrange
         ConfigureTestContext();
@@ -90,7 +90,7 @@ public class BsModalTests() : BsComponentTests<BsModal>("""<div class="modal {0}
     }
 
     [Fact]
-    public async Task CloseCallsJsCorrectlyAsync()
+    public async Task Close_CallsCloseJsInterop()
     {
         // Arrange
         ConfigureTestContext();

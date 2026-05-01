@@ -8,7 +8,7 @@ namespace Wader.Bootstrap.Tests.Components.Collapse.Internals;
 public class BsCollapseJsInteropTests
 {
     [Fact]
-    public async Task ToggleCallsCorrectJsFunctionAsync()
+    public async Task Toggle_CallsToggleJsFunction()
     {
         // Arrange
         var jsObj = Substitute.For<IJSObjectReference>();
@@ -23,7 +23,7 @@ public class BsCollapseJsInteropTests
     }
 
     [Fact]
-    public async Task ShowCallsCorrectJsFunctionAsync()
+    public async Task Show_CallsShowJsFunction()
     {
         // Arrange
         var jsObj = Substitute.For<IJSObjectReference>();
@@ -38,7 +38,7 @@ public class BsCollapseJsInteropTests
     }
 
     [Fact]
-    public async Task CollapseCallsCorrectJsFunctionAsync()
+    public async Task Collapse_CallsCollapseJsFunction()
     {
         // Arrange
         var jsObj = Substitute.For<IJSObjectReference>();
@@ -53,7 +53,7 @@ public class BsCollapseJsInteropTests
     }
 
     [Fact]
-    public async Task DisposeReferenceCallsCorrectJsFunctionAsync()
+    public async Task DisposeReference_CallsDisposeJsFunction()
     {
         // Arrange
         var jsObj = Substitute.For<IJSObjectReference>();
@@ -68,13 +68,13 @@ public class BsCollapseJsInteropTests
     }
 
     [Fact]
-    public async Task DisposeDisposesUnderlyingJsReferenceAsync()
+    public async Task Dispose_CallsJsDisposeAsync()
     {
         // Arrange
         var jsObj = Substitute.For<IJSObjectReference>();
         var sut = new BsCollapseJsInterop(jsObj);
 
         // Act + Assert
-        await AssertJsInterop.DisposeDisposesUnderlyingJsReferenceAsync(sut, jsObj);
+        await AssertJsInterop.Dispose_CallsJsDisposeAsync(sut, jsObj);
     }
 }

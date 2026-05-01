@@ -33,7 +33,7 @@ public class BsAccordionCollapseTests()
     }
 
     [Fact]
-    public async Task OnAfterRenderCallsJsCorrectlyAsync()
+    public async Task OnAfterRender_RegistersCollapseCallbackJsInterop()
     {
         // Arrange
         ConfigureTestContext();

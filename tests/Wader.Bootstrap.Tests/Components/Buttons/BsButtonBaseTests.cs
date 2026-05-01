@@ -86,7 +86,7 @@ public class BsButtonBaseTests() : BsComponentTests<BsButtonBase>("""<button cla
     }
 
     [Fact]
-    public async Task ToggleCallsJsCorrectlyAsync()
+    public async Task Toggle_CallsToggleJsInterop()
     {
         // Arrange
         ConfigureTestContext();

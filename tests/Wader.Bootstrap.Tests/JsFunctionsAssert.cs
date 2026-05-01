@@ -15,7 +15,7 @@ public static class AssertJsInterop
         Assert.Equal(expectedArgs, (IEnumerable<object>)call.GetArguments()[1]!);
     }
 
-    public static async Task DisposeDisposesUnderlyingJsReferenceAsync(IAsyncDisposable sut, IJSObjectReference jsObj)
+    public static async Task Dispose_CallsJsDisposeAsync(IAsyncDisposable sut, IJSObjectReference jsObj)
     {
         // Act
         await sut.DisposeAsync();

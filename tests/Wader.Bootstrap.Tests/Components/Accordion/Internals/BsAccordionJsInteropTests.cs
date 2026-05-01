@@ -8,7 +8,7 @@ namespace Wader.Bootstrap.Tests.Components.Accordion.Internals;
 public class BsAccordionJsInteropTests : BunitContext
 {
     [Fact]
-    public async Task CollapseAllCallsCorrectJsFunctionAsync()
+    public async Task CollapseAll_CallsCollapseJsFunction()
     {
         // Arrange
         var jsObj = Substitute.For<IJSObjectReference>();
@@ -23,7 +23,7 @@ public class BsAccordionJsInteropTests : BunitContext
     }
 
     [Fact]
-    public async Task ShowAllCallsCorrectJsFunctionAsync()
+    public async Task ShowAll_CallsShowAllJsFunction()
     {
         // Arrange
         var jsObj = Substitute.For<IJSObjectReference>();
@@ -38,7 +38,7 @@ public class BsAccordionJsInteropTests : BunitContext
     }
 
     [Fact]
-    public async Task CollapseAllButOneCallsCorrectJsFunctionAsync()
+    public async Task CollapseAllButOne_CallsCollapseAllButOneJsFunction()
     {
         // Arrange
         var jsObj = Substitute.For<IJSObjectReference>();
@@ -56,7 +56,7 @@ public class BsAccordionJsInteropTests : BunitContext
     [Theory]
     [InlineData(true)]
     [InlineData(false)]
-    public async Task ToggleCallsCorrectJsFunctionAsync(bool alwaysOpen)
+    public async Task Toggle_CallsToggleJsFunction(bool alwaysOpen)
     {
         // Arrange
         var jsObj = Substitute.For<IJSObjectReference>();
@@ -73,7 +73,7 @@ public class BsAccordionJsInteropTests : BunitContext
     [Theory]
     [InlineData(true)]
     [InlineData(false)]
-    public async Task ShowCallsCorrectJsFunctionAsync(bool alwaysOpen)
+    public async Task Show_CallsShowJsFunction(bool alwaysOpen)
     {
         // Arrange
         var jsObj = Substitute.For<IJSObjectReference>();
@@ -88,7 +88,7 @@ public class BsAccordionJsInteropTests : BunitContext
     }
 
     [Fact]
-    public async Task CollapseCallsCorrectJsFunctionAsync()
+    public async Task Collapse_CallsCollapseJsFunction()
     {
         // Arrange
         var jsObj = Substitute.For<IJSObjectReference>();
@@ -103,7 +103,7 @@ public class BsAccordionJsInteropTests : BunitContext
     }
 
     [Fact]
-    public async Task RegisterCollapseCallbackCallsCorrectJsFunctionAsync()
+    public async Task RegisterCollapseCallback_CallsRegisterCollapseCallbackJsFunction()
     {
         // Arrange
         var jsObj = Substitute.For<IJSObjectReference>();
@@ -119,7 +119,7 @@ public class BsAccordionJsInteropTests : BunitContext
     }
 
     [Fact]
-    public async Task DisposeReferenceCallsCorrectJsFunctionAsync()
+    public async Task DisposeReference_CallsDisposeJsFunction()
     {
         // Arrange
         var jsObj = Substitute.For<IJSObjectReference>();
@@ -134,13 +134,13 @@ public class BsAccordionJsInteropTests : BunitContext
     }
 
     [Fact]
-    public async Task DisposeDisposesUnderlyingJsReferenceAsync()
+    public async Task Dispose_CallsJsDispose()
     {
         // Arrange
         var jsObj = Substitute.For<IJSObjectReference>();
         var sut = new BsAccordionJsInterop(jsObj);
 
         // Act + Assert
-        await AssertJsInterop.DisposeDisposesUnderlyingJsReferenceAsync(sut, jsObj);
+        await AssertJsInterop.Dispose_CallsJsDisposeAsync(sut, jsObj);
     }
 }

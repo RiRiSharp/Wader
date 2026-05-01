@@ -10,7 +10,7 @@ public class BsNavbarCollapseTests()
     private readonly IBsCollapseJsInterop _collapseJsInteropMock = Substitute.For<IBsCollapseJsInterop>();
 
     [Fact]
-    public async Task ToggleCallsJsCorrectlyAsync()
+    public async Task Toggle_CallsToggleJsInterop()
     {
         // Arrange
         ConfigureTestContext();
@@ -24,7 +24,7 @@ public class BsNavbarCollapseTests()
     }
 
     [Fact]
-    public async Task ShowCallsJsCorrectlyAsync()
+    public async Task Show_CallsShowJsInterop()
     {
         // Arrange
         ConfigureTestContext();
@@ -38,7 +38,7 @@ public class BsNavbarCollapseTests()
     }
 
     [Fact]
-    public async Task CollapseCallsJsCorrectlyAsync()
+    public async Task Collapse_CallsCollapseJsInterop()
     {
         // Arrange
         ConfigureTestContext();

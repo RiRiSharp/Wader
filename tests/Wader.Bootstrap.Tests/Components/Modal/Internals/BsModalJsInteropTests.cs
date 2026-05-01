@@ -8,7 +8,7 @@ namespace Wader.Bootstrap.Tests.Components.Modal.Internals;
 public class BsModalJsInteropTests
 {
     [Fact]
-    public async Task ToggleCallsCorrectJsFunctionAsync()
+    public async Task Toggle_CallsToggleJsFunction()
     {
         // Arrange
         var jsObj = Substitute.For<IJSObjectReference>();
@@ -23,7 +23,7 @@ public class BsModalJsInteropTests
     }
 
     [Fact]
-    public async Task ShowCallsCorrectJsFunctionAsync()
+    public async Task Show_CallsShowJsFunction()
     {
         // Arrange
         var jsObj = Substitute.For<IJSObjectReference>();
@@ -38,7 +38,7 @@ public class BsModalJsInteropTests
     }
 
     [Fact]
-    public async Task CloseCallsCorrectJsFunctionAsync()
+    public async Task Close_CallsCloseJsFunction()
     {
         // Arrange
         var jsObj = Substitute.For<IJSObjectReference>();
@@ -53,7 +53,7 @@ public class BsModalJsInteropTests
     }
 
     [Fact]
-    public async Task HandleUpdateCallsCorrectJsFunctionAsync()
+    public async Task HandleUpdate_CallsHandleUpdateJsFunction()
     {
         // Arrange
         var jsObj = Substitute.For<IJSObjectReference>();
@@ -68,7 +68,7 @@ public class BsModalJsInteropTests
     }
 
     [Fact]
-    public async Task DisposeCallsCorrectJsFunctionAsync()
+    public async Task Dispose_CallsDisposeJsFunction()
     {
         // Arrange
         var jsObj = Substitute.For<IJSObjectReference>();
@@ -83,13 +83,13 @@ public class BsModalJsInteropTests
     }
 
     [Fact]
-    public async Task DisposeDisposesUnderlyingJsReferenceAsync()
+    public async Task Dispose_CallsJsDisposeAsync()
     {
         // Arrange
         var jsObj = Substitute.For<IJSObjectReference>();
         var sut = new BsModalJsInterop(jsObj);
 
         // Act + Assert
-        await AssertJsInterop.DisposeDisposesUnderlyingJsReferenceAsync(sut, jsObj);
+        await AssertJsInterop.Dispose_CallsJsDisposeAsync(sut, jsObj);
     }
 }

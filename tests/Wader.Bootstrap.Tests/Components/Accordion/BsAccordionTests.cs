@@ -38,7 +38,7 @@ public class BsAccordionTests() : BsComponentTests<BsAccordion>("""<div class="a
     }
 
     [Fact]
-    public async Task CollapseAllCallsJsCorrectlyAsync()
+    public async Task CollapseAll_CallsCollapseAllJsInterop()
     {
         // Arrange
         ConfigureTestContext();
@@ -52,7 +52,7 @@ public class BsAccordionTests() : BsComponentTests<BsAccordion>("""<div class="a
     }
 
     [Fact]
-    public async Task ShowAllCallsJsCorrectlyAsync()
+    public async Task ShowAll_CallsShowAllJsInterop()
     {
         // Arrange
         ConfigureTestContext();
@@ -66,7 +66,7 @@ public class BsAccordionTests() : BsComponentTests<BsAccordion>("""<div class="a
     }
 
     [Fact]
-    public async Task CollapseAllButOneCallsJsCorrectlyAsync()
+    public async Task CollapseAllButOne_CallsCollapseAllButOneJsInterop()
     {
         // Arrange
         ConfigureTestContext();

@@ -9,7 +9,7 @@ namespace Wader.Bootstrap.Tests.Components.Alert.Internals;
 public class BsAlertJsInteropTests
 {
     [Fact]
-    public async Task DismissCallsCorrectJsFunctionAsync()
+    public async Task Dismiss_CallsDismissJsFunction()
     {
         // Arrange
         var jsObj = Substitute.For<IJSObjectReference>();
@@ -24,7 +24,7 @@ public class BsAlertJsInteropTests
     }
 
     [Fact]
-    public async Task RegisterDismissCallbackCallsCorrectJsFunctionAsync()
+    public async Task RegisterDismissCallback_CallsRegisterDismissCallbackJsFunction()
     {
         // Arrange
         var jsObj = Substitute.For<IJSObjectReference>();
@@ -40,7 +40,7 @@ public class BsAlertJsInteropTests
     }
 
     [Fact]
-    public async Task DisposeReferenceCallsCorrectJsFunctionAsync()
+    public async Task DisposeReference_CallsDisposeJsFunction()
     {
         // Arrange
         var jsObj = Substitute.For<IJSObjectReference>();
@@ -55,13 +55,13 @@ public class BsAlertJsInteropTests
     }
 
     [Fact]
-    public async Task DisposeDisposesUnderlyingJsReferenceAsync()
+    public async Task Dispose_CallsJsDisposeAsync()
     {
         // Arrange
         var jsObj = Substitute.For<IJSObjectReference>();
         var sut = new BsAlertJsInterop(jsObj);
 
         // Act + Assert
-        await AssertJsInterop.DisposeDisposesUnderlyingJsReferenceAsync(sut, jsObj);
+        await AssertJsInterop.Dispose_CallsJsDisposeAsync(sut, jsObj);
     }
 }

@@ -27,7 +27,7 @@ public class BsCollapseTests() : BsComponentTests<BsCollapse>("""<div class="{0}
     }
 
     [Fact]
-    public async Task ToggleCallsJsCorrectlyAsync()
+    public async Task Toggle_CallsToggleJsInterop()
     {
         // Arrange
         ConfigureTestContext();

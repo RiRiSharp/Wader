@@ -72,7 +72,7 @@ public class BsAlertTests() : BsComponentTests<BsAlert>("""<div class="alert {0}
     }
 
     [Fact]
-    public async Task ToggleCallsJsCorrectlyAsync()
+    public async Task Dismiss_CallsDismissJsInterop()
     {
         // Arrange
         ConfigureTestContext();

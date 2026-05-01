@@ -8,7 +8,7 @@ namespace Wader.Bootstrap.Tests.Components.Scrollspy;
 public class ScrollspyJsInteropTests
 {
     [Fact]
-    public async Task CreateCallsCorrectJsFunctionAsync()
+    public async Task Create_CallsCreateJsFunction()
     {
         // Arrange
         var jsObj = Substitute.For<IJSObjectReference>();
@@ -73,7 +73,7 @@ public class ScrollspyJsInteropTests
     }
 
     [Fact]
-    public async Task DisposeCallsCorrectJsFunctionAsync()
+    public async Task DisposeReference_CallsCorrectJsFunction()
     {
         // Arrange
         var jsObj = Substitute.For<IJSObjectReference>();
@@ -88,13 +88,13 @@ public class ScrollspyJsInteropTests
     }
 
     [Fact]
-    public async Task DisposeDisposesUnderlyingJsReferenceAsync()
+    public async Task Dispose_CallsJsDispose()
     {
         // Arrange
         var jsObj = Substitute.For<IJSObjectReference>();
         var sut = new BsScrollspyJsInterop(jsObj);
 
         // Act + Assert
-        await AssertJsInterop.DisposeDisposesUnderlyingJsReferenceAsync(sut, jsObj);
+        await AssertJsInterop.Dispose_CallsJsDisposeAsync(sut, jsObj);
     }
 }
