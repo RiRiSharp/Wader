@@ -13,7 +13,7 @@ public class BsModalJsInteropTests
         // Arrange
         var jsObj = Substitute.For<IJSObjectReference>();
         await using var sut = new BsModalJsInterop(jsObj);
-        ElementReference modalRef = default;
+        var modalRef = new ElementReference("modal");
 
         // Act
         await sut.ToggleAsync(modalRef);
@@ -28,7 +28,7 @@ public class BsModalJsInteropTests
         // Arrange
         var jsObj = Substitute.For<IJSObjectReference>();
         await using var sut = new BsModalJsInterop(jsObj);
-        ElementReference modalRef = default;
+        var modalRef = new ElementReference("modal");
 
         // Act
         await sut.ShowAsync(modalRef);
@@ -43,7 +43,7 @@ public class BsModalJsInteropTests
         // Arrange
         var jsObj = Substitute.For<IJSObjectReference>();
         await using var sut = new BsModalJsInterop(jsObj);
-        ElementReference modalRef = default;
+        var modalRef = new ElementReference("modal");
 
         // Act
         await sut.CloseAsync(modalRef);
@@ -58,7 +58,7 @@ public class BsModalJsInteropTests
         // Arrange
         var jsObj = Substitute.For<IJSObjectReference>();
         await using var sut = new BsModalJsInterop(jsObj);
-        ElementReference modalRef = default;
+        var modalRef = new ElementReference("modal");
 
         // Act
         await sut.HandleUpdateAsync(modalRef);
@@ -73,7 +73,7 @@ public class BsModalJsInteropTests
         // Arrange
         var jsObj = Substitute.For<IJSObjectReference>();
         await using var sut = new BsModalJsInterop(jsObj);
-        ElementReference modalRef = default;
+        var modalRef = new ElementReference("modal");
 
         // Act
         await sut.DisposeReferenceAsync(modalRef);

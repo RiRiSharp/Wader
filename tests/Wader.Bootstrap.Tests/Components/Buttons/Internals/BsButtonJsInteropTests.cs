@@ -13,7 +13,7 @@ public class BsButtonJsInteropTests
         // Arrange
         var jsObj = Substitute.For<IJSObjectReference>();
         await using var sut = new BsButtonJsInterop(jsObj);
-        ElementReference alertRef = default;
+        var alertRef = new ElementReference("alert");
 
         // Act
         await sut.ToggleAsync(alertRef);
@@ -28,7 +28,7 @@ public class BsButtonJsInteropTests
         // Arrange
         var jsObj = Substitute.For<IJSObjectReference>();
         await using var sut = new BsButtonJsInterop(jsObj);
-        ElementReference alertRef = default;
+        var alertRef = new ElementReference("alert");
 
         // Act
         await sut.DisposeReferenceAsync(alertRef);

@@ -13,7 +13,7 @@ public class BsAccordionJsInteropTests : BunitContext
         // Arrange
         var jsObj = Substitute.For<IJSObjectReference>();
         await using var sut = new BsAccordionJsInterop(jsObj);
-        ElementReference accordionRef = default;
+        var accordionRef = new ElementReference("accordion");
 
         // Act
         await sut.CollapseAllAsync(accordionRef);
@@ -28,7 +28,7 @@ public class BsAccordionJsInteropTests : BunitContext
         // Arrange
         var jsObj = Substitute.For<IJSObjectReference>();
         await using var sut = new BsAccordionJsInterop(jsObj);
-        ElementReference accordionRef = default;
+        var accordionRef = new ElementReference("accordion");
 
         // Act
         await sut.ShowAllAsync(accordionRef);
@@ -43,8 +43,8 @@ public class BsAccordionJsInteropTests : BunitContext
         // Arrange
         var jsObj = Substitute.For<IJSObjectReference>();
         await using var sut = new BsAccordionJsInterop(jsObj);
-        ElementReference accordionRef = default;
-        ElementReference itemRef = default;
+        var accordionRef = new ElementReference("accordion");
+        var itemRef = new ElementReference("item");
 
         // Act
         await sut.CollapseAllButOneAsync(accordionRef, itemRef);
@@ -61,7 +61,7 @@ public class BsAccordionJsInteropTests : BunitContext
         // Arrange
         var jsObj = Substitute.For<IJSObjectReference>();
         await using var sut = new BsAccordionJsInterop(jsObj);
-        ElementReference itemRef = default;
+        var itemRef = new ElementReference("item");
 
         // Act
         await sut.ToggleAsync(itemRef, alwaysOpen);
@@ -78,7 +78,7 @@ public class BsAccordionJsInteropTests : BunitContext
         // Arrange
         var jsObj = Substitute.For<IJSObjectReference>();
         await using var sut = new BsAccordionJsInterop(jsObj);
-        ElementReference itemRef = default;
+        var itemRef = new ElementReference("item");
 
         // Act
         await sut.ShowAsync(itemRef, alwaysOpen);
@@ -93,7 +93,7 @@ public class BsAccordionJsInteropTests : BunitContext
         // Arrange
         var jsObj = Substitute.For<IJSObjectReference>();
         await using var sut = new BsAccordionJsInterop(jsObj);
-        ElementReference itemRef = default;
+        var itemRef = new ElementReference("item");
 
         // Act
         await sut.CollapseAsync(itemRef);
@@ -108,7 +108,7 @@ public class BsAccordionJsInteropTests : BunitContext
         // Arrange
         var jsObj = Substitute.For<IJSObjectReference>();
         await using var sut = new BsAccordionJsInterop(jsObj);
-        ElementReference buttonRef = default;
+        var buttonRef = new ElementReference("button");
         DotNetObjectReference<IHasCollapseState> dotNetRef = null!;
 
         // Act
@@ -124,7 +124,7 @@ public class BsAccordionJsInteropTests : BunitContext
         // Arrange
         var jsObj = Substitute.For<IJSObjectReference>();
         await using var sut = new BsAccordionJsInterop(jsObj);
-        ElementReference accordionItemRef = default;
+        var accordionItemRef = new ElementReference("accordionItem");
 
         // Act
         await sut.DisposeReferenceAsync(accordionItemRef);

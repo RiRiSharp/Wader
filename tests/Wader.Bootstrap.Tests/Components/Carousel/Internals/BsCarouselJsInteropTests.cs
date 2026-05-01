@@ -13,7 +13,7 @@ public class BsCarouselJsInteropTests
         // Arrange
         var jsObj = Substitute.For<IJSObjectReference>();
         await using var sut = new BsCarouselJsInterop(jsObj);
-        ElementReference carouselRef = default;
+        var carouselRef = new ElementReference("carousel");
         const int slideNumber = 1337;
 
         // Act
@@ -29,7 +29,7 @@ public class BsCarouselJsInteropTests
         // Arrange
         var jsObj = Substitute.For<IJSObjectReference>();
         await using var sut = new BsCarouselJsInterop(jsObj);
-        ElementReference carouselRef = default;
+        var carouselRef = new ElementReference("carousel");
 
         // Act
         await sut.MovePrevAsync(carouselRef);
@@ -44,7 +44,7 @@ public class BsCarouselJsInteropTests
         // Arrange
         var jsObj = Substitute.For<IJSObjectReference>();
         await using var sut = new BsCarouselJsInterop(jsObj);
-        ElementReference carouselRef = default;
+        var carouselRef = new ElementReference("carousel");
 
         // Act
         await sut.MoveNextAsync(carouselRef);
@@ -59,7 +59,7 @@ public class BsCarouselJsInteropTests
         // Arrange
         var jsObj = Substitute.For<IJSObjectReference>();
         await using var sut = new BsCarouselJsInterop(jsObj);
-        ElementReference carouselRef = default;
+        var carouselRef = new ElementReference("carousel");
 
         // Act
         await sut.CycleAsync(carouselRef);
@@ -74,7 +74,7 @@ public class BsCarouselJsInteropTests
         // Arrange
         var jsObj = Substitute.For<IJSObjectReference>();
         await using var sut = new BsCarouselJsInterop(jsObj);
-        ElementReference carouselRef = default;
+        var carouselRef = new ElementReference("carousel");
 
         // Act
         await sut.PauseAsync(carouselRef);
@@ -89,7 +89,7 @@ public class BsCarouselJsInteropTests
         // Arrange
         var jsObj = Substitute.For<IJSObjectReference>();
         await using var sut = new BsCarouselJsInterop(jsObj);
-        ElementReference carouselRef = default;
+        var carouselRef = new ElementReference("carousel");
 
         // Act
         await sut.AddCycleCallbackAsync(carouselRef);
@@ -104,7 +104,7 @@ public class BsCarouselJsInteropTests
         // Arrange
         var jsObj = Substitute.For<IJSObjectReference>();
         await using var sut = new BsCarouselJsInterop(jsObj);
-        ElementReference carouselRef = default;
+        var carouselRef = new ElementReference("carousel");
 
         // Act
         await sut.RemoveCycleCallbackAsync(carouselRef);
@@ -119,7 +119,7 @@ public class BsCarouselJsInteropTests
         // Arrange
         var jsObj = Substitute.For<IJSObjectReference>();
         await using var sut = new BsCarouselJsInterop(jsObj);
-        ElementReference carouselRef = default;
+        var carouselRef = new ElementReference("carousel");
 
         // Act
         await sut.DisposeReferenceAsync(carouselRef);

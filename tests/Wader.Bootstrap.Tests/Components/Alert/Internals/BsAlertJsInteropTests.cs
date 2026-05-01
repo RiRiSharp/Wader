@@ -14,7 +14,7 @@ public class BsAlertJsInteropTests
         // Arrange
         var jsObj = Substitute.For<IJSObjectReference>();
         await using var sut = new BsAlertJsInterop(jsObj);
-        ElementReference alertRef = default;
+        var alertRef = new ElementReference("alert");
 
         // Act
         await sut.DismissAsync(alertRef);
@@ -29,7 +29,7 @@ public class BsAlertJsInteropTests
         // Arrange
         var jsObj = Substitute.For<IJSObjectReference>();
         await using var sut = new BsAlertJsInterop(jsObj);
-        ElementReference alertRef = default;
+        var alertRef = new ElementReference("alert");
         DotNetObjectReference<BsAlert> dotNetRef = null!;
 
         // Act
@@ -45,7 +45,7 @@ public class BsAlertJsInteropTests
         // Arrange
         var jsObj = Substitute.For<IJSObjectReference>();
         await using var sut = new BsAlertJsInterop(jsObj);
-        ElementReference alertRef = default;
+        var alertRef = new ElementReference("alert");
 
         // Act
         await sut.DisposeReferenceAsync(alertRef);

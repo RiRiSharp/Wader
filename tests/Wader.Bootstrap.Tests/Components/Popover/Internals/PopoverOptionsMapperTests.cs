@@ -23,8 +23,8 @@ public class PopoverOptionsMapperTests
             Trigger = BsPopoverTrigger.Click,
         };
 
-        ElementReference titleRef = default;
-        ElementReference contentRef = default;
+        var titleRef = new ElementReference("title");
+        var contentRef = new ElementReference("content");
 
         var result = input.ToPopoverJsOptions(titleRef, contentRef);
 

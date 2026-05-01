@@ -13,7 +13,7 @@ public class BsCheckboxJsInteropTests : BunitContext
         // Arrange
         var jsObj = Substitute.For<IJSObjectReference>();
         await using var sut = new BsCheckboxJsInterop(jsObj);
-        ElementReference checkboxRef = default;
+        var checkboxRef = new ElementReference("checkbox");
 
         // Act
         await sut.InitializeIndeterminateAsync(checkboxRef);

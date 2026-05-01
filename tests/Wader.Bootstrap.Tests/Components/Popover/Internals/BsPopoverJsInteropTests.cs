@@ -13,7 +13,7 @@ public class BsPopoverJsInteropTests
         // Arrange
         var jsObj = Substitute.For<IJSObjectReference>();
         await using var sut = new BsPopoverJsInterop(jsObj);
-        ElementReference hostElementRef = default;
+        var hostElementRef = new ElementReference("hostElement");
         var options = new PopoverJsOptions
         {
             CustomClass = "",
@@ -34,7 +34,7 @@ public class BsPopoverJsInteropTests
         // Arrange
         var jsObj = Substitute.For<IJSObjectReference>();
         await using var sut = new BsPopoverJsInterop(jsObj);
-        ElementReference hostElementRef = default;
+        var hostElementRef = new ElementReference("hostElement");
 
         // Act
         await sut.ToggleAsync(hostElementRef);
@@ -49,7 +49,7 @@ public class BsPopoverJsInteropTests
         // Arrange
         var jsObj = Substitute.For<IJSObjectReference>();
         await using var sut = new BsPopoverJsInterop(jsObj);
-        ElementReference hostElementRef = default;
+        var hostElementRef = new ElementReference("hostElement");
 
         // Act
         await sut.ShowAsync(hostElementRef);
@@ -64,7 +64,7 @@ public class BsPopoverJsInteropTests
         // Arrange
         var jsObj = Substitute.For<IJSObjectReference>();
         await using var sut = new BsPopoverJsInterop(jsObj);
-        ElementReference hostElementRef = default;
+        var hostElementRef = new ElementReference("hostElement");
 
         // Act
         await sut.HideAsync(hostElementRef);
@@ -79,7 +79,7 @@ public class BsPopoverJsInteropTests
         // Arrange
         var jsObj = Substitute.For<IJSObjectReference>();
         await using var sut = new BsPopoverJsInterop(jsObj);
-        ElementReference hostElementRef = default;
+        var hostElementRef = new ElementReference("hostElement");
 
         // Act
         await sut.UpdatePositionAsync(hostElementRef);
@@ -94,12 +94,23 @@ public class BsPopoverJsInteropTests
         // Arrange
         var jsObj = Substitute.For<IJSObjectReference>();
         await using var sut = new BsPopoverJsInterop(jsObj);
-        ElementReference elementRef = default;
+        var elementRef = new ElementReference("element");
 
         // Act
         await sut.DisposeReferenceAsync(elementRef);
 
         // Assert
         AssertJsInterop.Calls(jsObj, BsPopoverJsInterop.DISPOSE, elementRef);
+    }
+
+    [Fact]
+    public async Task DisposeDisposesUnderlyingJsReferenceAsync()
+    {
+        // Arrange
+        var jsObj = Substitute.For<IJSObjectReference>();
+        var sut = new BsPopoverJsInterop(jsObj);
+
+        // Act + Assert
+        await AssertJsInterop.DisposeDisposesUnderlyingJsReferenceAsync(sut, jsObj);
     }
 }

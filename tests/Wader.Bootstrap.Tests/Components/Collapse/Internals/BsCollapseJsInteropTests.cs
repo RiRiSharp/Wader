@@ -13,7 +13,7 @@ public class BsCollapseJsInteropTests
         // Arrange
         var jsObj = Substitute.For<IJSObjectReference>();
         await using var sut = new BsCollapseJsInterop(jsObj);
-        ElementReference collapseRef = default;
+        var collapseRef = new ElementReference("collapse");
 
         // Act
         await sut.ToggleAsync(collapseRef);
@@ -28,7 +28,7 @@ public class BsCollapseJsInteropTests
         // Arrange
         var jsObj = Substitute.For<IJSObjectReference>();
         await using var sut = new BsCollapseJsInterop(jsObj);
-        ElementReference collapseRef = default;
+        var collapseRef = new ElementReference("collapse");
 
         // Act
         await sut.ShowAsync(collapseRef);
@@ -43,7 +43,7 @@ public class BsCollapseJsInteropTests
         // Arrange
         var jsObj = Substitute.For<IJSObjectReference>();
         await using var sut = new BsCollapseJsInterop(jsObj);
-        ElementReference collapseRef = default;
+        var collapseRef = new ElementReference("collapse");
 
         // Act
         await sut.CollapseAsync(collapseRef);
@@ -58,7 +58,7 @@ public class BsCollapseJsInteropTests
         // Arrange
         var jsObj = Substitute.For<IJSObjectReference>();
         await using var sut = new BsCollapseJsInterop(jsObj);
-        ElementReference collapseRef = default;
+        var collapseRef = new ElementReference("collapse");
 
         // Act
         await sut.DisposeReferenceAsync(collapseRef);

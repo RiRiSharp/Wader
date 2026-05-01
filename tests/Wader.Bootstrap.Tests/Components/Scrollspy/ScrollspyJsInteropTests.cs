@@ -102,7 +102,7 @@ public class ScrollspyJsInteropTests
         // Arrange
         var jsObj = Substitute.For<IJSObjectReference>();
         await using var sut = new BsScrollspyJsInterop(jsObj);
-        ElementReference hostElementRef = default;
+        var hostElementRef = new ElementReference("hostElement");
 
         // Act
         await sut.DisposeReferenceAsync(hostElementRef);
