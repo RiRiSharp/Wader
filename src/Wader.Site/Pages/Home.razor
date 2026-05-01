@@ -1,6 +1,5 @@
 ﻿@page "/"
 @using Wader.Bootstrap.Components.Scrollspy
-@using Wader.Bootstrap.Components.Scrollspy.Internals
 @using Wader.Bootstrap.Layout.Columns
 @using Wader.Bootstrap.Layout.Rows
 @inject IBsScrollspyJsInterop ScrollspyJsInterop
@@ -10,7 +9,7 @@
 Hello world!
 <BsRow style="height: 200px;">
     <BsColumn ColOption="BsColumnOptions.Col4">
-        <div class="list-group" @ref="_reference">
+        <div class="list-group" @ref="_targetReference">
             <a class="list-group-item list-group-item-action" href="#list-item-1">Item 1</a>
             <a class="list-group-item list-group-item-action" href="#list-item-2">Item 2</a>
             <a class="list-group-item list-group-item-action" href="#list-item-3">Item 3</a>
@@ -66,7 +65,7 @@ Hello world!
             appropriate navigation link is highlighted. It’s repeated throughout the component example. We keep adding
             some more example copy here to emphasize the scrolling and highlighting.
         </p>
-        
+
     </BsColumn>
 </BsRow>
 <BsRow style="height: 200px;" data-bs-spy="scroll" data-bs-target="#list-thing">
@@ -111,7 +110,7 @@ Hello world!
 </BsRow>
 
 @code {
-    private ElementReference _reference;
+    private ElementReference _targetReference;
     private BsColumn? _columnHost;
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
@@ -119,7 +118,7 @@ Hello world!
         await base.OnAfterRenderAsync(firstRender);
         if (firstRender && _columnHost is not null)
         {
-            await ScrollspyJsInterop.CreateAsync(_columnHost.ElementRef, _reference);
+            await ScrollspyJsInterop.CreateAsync(_columnHost.ElementRef, _targetReference);
         }
     }
 }

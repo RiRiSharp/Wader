@@ -1,6 +1,4 @@
-﻿using Microsoft.AspNetCore.Components;
-
-namespace Wader.Bootstrap.Components.Scrollspy.Internals;
+﻿namespace Wader.Bootstrap.Components.Scrollspy;
 
 public class ScrollspyJsOptions
 {

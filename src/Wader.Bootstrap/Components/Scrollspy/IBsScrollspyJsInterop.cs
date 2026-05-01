@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Components;
-using Wader.Bootstrap.Components.Scrollspy.Internals;
 
 namespace Wader.Bootstrap.Components.Scrollspy;
 

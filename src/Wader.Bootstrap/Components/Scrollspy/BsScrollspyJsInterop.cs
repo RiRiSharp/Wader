@@ -2,10 +2,13 @@
 using Microsoft.JSInterop;
 using Wader.Bootstrap.Internals;
 
-namespace Wader.Bootstrap.Components.Scrollspy.Internals;
+namespace Wader.Bootstrap.Components.Scrollspy;
 
 public sealed class BsScrollspyJsInterop : IBsScrollspyJsInterop, IBsJsFunctionsWrapper, IAsyncDisposable
 {
+    internal const string CREATE = "create";
+
+    internal const string DISPOSE = "dispose";
     private readonly IJSObjectReference _bsJsObjectRef;
 
     public BsScrollspyJsInterop(IJSObjectReference bsJsObjectRef)
@@ -18,7 +21,7 @@ public sealed class BsScrollspyJsInterop : IBsScrollspyJsInterop, IBsJsFunctions
         await _bsJsObjectRef.DisposeAsync();
     }
 
-    internal const string CREATE = "create";
+    public static string JsFileName => "scrollspyFunctions.js";
 
     public async ValueTask CreateAsync(
         ElementReference hostElementRef,
@@ -30,12 +33,8 @@ public sealed class BsScrollspyJsInterop : IBsScrollspyJsInterop, IBsJsFunctions
         await _bsJsObjectRef.InvokeVoidAsync(CREATE, hostElementRef, targetElementRef, options);
     }
 
-    internal const string DISPOSE = "dispose";
-
     public async Task DisposeReferenceAsync(ElementReference elementRef)
     {
         await _bsJsObjectRef.InvokeVoidAsync(DISPOSE, elementRef);
     }
-
-    public static string JsFileName => "scrollspyFunctions.js";
 }
