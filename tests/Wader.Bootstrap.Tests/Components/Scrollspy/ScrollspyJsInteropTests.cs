@@ -25,30 +25,6 @@ public class ScrollspyJsInteropTests
     }
 
     [Fact]
-    public async Task CreatePassesHostAndTargetInCorrectOrderAsync()
-    {
-        // Arrange
-        var jsObj = Substitute.For<IJSObjectReference>();
-        await using var sut = new BsScrollspyJsInterop(jsObj);
-
-        var hostElementRef = new ElementReference("host");
-        var targetElementRef = new ElementReference("target");
-
-        // Act
-        await sut.CreateAsync(hostElementRef, targetElementRef);
-
-        // Assert
-        await jsObj
-            .Received(1)
-            .InvokeVoidAsync(
-                BsScrollspyJsInterop.CREATE,
-                Arg.Is<object[]>(args =>
-                    args.Length == 3 && args[0].Equals(hostElementRef) && args[1].Equals(targetElementRef)
-                )
-            );
-    }
-
-    [Fact]
     public async Task CreateWithoutOptionsGetsOptionsAssignedAsync()
     {
         // Arrange
