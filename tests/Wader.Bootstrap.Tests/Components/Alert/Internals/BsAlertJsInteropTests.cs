@@ -40,7 +40,7 @@ public class BsAlertJsInteropTests
     }
 
     [Fact]
-    public async Task DisposeCallsCorrectJsFunctionAsync()
+    public async Task DisposeReferenceCallsCorrectJsFunctionAsync()
     {
         // Arrange
         var jsObj = Substitute.For<IJSObjectReference>();
@@ -52,5 +52,16 @@ public class BsAlertJsInteropTests
 
         // Assert
         AssertJsInterop.Calls(jsObj, BsAlertJsInterop.DISPOSE, alertRef);
+    }
+
+    [Fact]
+    public async Task DisposeDisposesUnderlyingJsReferenceAsync()
+    {
+        // Arrange
+        var jsObj = Substitute.For<IJSObjectReference>();
+        var sut = new BsAlertJsInterop(jsObj);
+
+        // Act + Assert
+        await AssertJsInterop.DisposeDisposesUnderlyingJsReferenceAsync(sut, jsObj);
     }
 }

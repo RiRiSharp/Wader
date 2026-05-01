@@ -119,7 +119,7 @@ public class BsAccordionJsInteropTests : BunitContext
     }
 
     [Fact]
-    public async Task DisposeCallsCorrectJsFunctionAsync()
+    public async Task DisposeReferenceCallsCorrectJsFunctionAsync()
     {
         // Arrange
         var jsObj = Substitute.For<IJSObjectReference>();
@@ -131,5 +131,16 @@ public class BsAccordionJsInteropTests : BunitContext
 
         // Assert
         AssertJsInterop.Calls(jsObj, BsAccordionJsInterop.DISPOSE, accordionItemRef);
+    }
+
+    [Fact]
+    public async Task DisposeDisposesUnderlyingJsReferenceAsync()
+    {
+        // Arrange
+        var jsObj = Substitute.For<IJSObjectReference>();
+        var sut = new BsAccordionJsInterop(jsObj);
+
+        // Act + Assert
+        await AssertJsInterop.DisposeDisposesUnderlyingJsReferenceAsync(sut, jsObj);
     }
 }

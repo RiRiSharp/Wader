@@ -81,4 +81,15 @@ public class BsModalJsInteropTests
         // Assert
         AssertJsInterop.Calls(jsObj, BsModalJsInterop.DISPOSE, modalRef);
     }
+
+    [Fact]
+    public async Task DisposeDisposesUnderlyingJsReferenceAsync()
+    {
+        // Arrange
+        var jsObj = Substitute.For<IJSObjectReference>();
+        var sut = new BsModalJsInterop(jsObj);
+
+        // Act + Assert
+        await AssertJsInterop.DisposeDisposesUnderlyingJsReferenceAsync(sut, jsObj);
+    }
 }

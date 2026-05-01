@@ -114,7 +114,7 @@ public class BsCarouselJsInteropTests
     }
 
     [Fact]
-    public async Task DisposeCallsCorrectJsFunctionAsync()
+    public async Task DisposeReferenceCallsCorrectJsFunctionAsync()
     {
         // Arrange
         var jsObj = Substitute.For<IJSObjectReference>();
@@ -126,5 +126,16 @@ public class BsCarouselJsInteropTests
 
         // Assert
         AssertJsInterop.Calls(jsObj, BsCarouselJsInterop.DISPOSE, carouselRef);
+    }
+
+    [Fact]
+    public async Task DisposeDisposesUnderlyingJsReferenceAsync()
+    {
+        // Arrange
+        var jsObj = Substitute.For<IJSObjectReference>();
+        var sut = new BsCarouselJsInterop(jsObj);
+
+        // Act + Assert
+        await AssertJsInterop.DisposeDisposesUnderlyingJsReferenceAsync(sut, jsObj);
     }
 }
