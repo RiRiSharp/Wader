@@ -9,6 +9,7 @@ using Wader.Bootstrap.Components.Modal.Internals;
 using Wader.Bootstrap.Components.Offcanvas.Internals;
 using Wader.Bootstrap.Components.Popover.Internals;
 using Wader.Bootstrap.Components.Scrollspy;
+using Wader.Bootstrap.Components.Toasts.Internals;
 using Wader.Bootstrap.Forms.ChecksRadios.Internals;
 using Wader.Bootstrap.Internals;
 
@@ -18,12 +19,12 @@ public static class BsStartupExtensions
 {
     public static IServiceCollection AddWaderServerJsFallbacks(this IServiceCollection services)
     {
-        return services.AddWaderJsInterop(true);
+        return services.AddWaderJsInterop(useNoOp: true);
     }
 
     public static IServiceCollection AddWaderWasmJsInterop(this IServiceCollection services)
     {
-        return services.AddWaderJsInterop(false);
+        return services.AddWaderJsInterop(useNoOp: false);
     }
 
     private static IServiceCollection AddWaderJsInterop(this IServiceCollection services, bool useNoOp)
@@ -38,7 +39,8 @@ public static class BsStartupExtensions
             .AddWaderJsInterop<IBsModalJsInterop, BsModalJsInterop>(useNoOp)
             .AddWaderJsInterop<IBsOffcanvasJsInterop, BsOffcanvasJsInterop>(useNoOp)
             .AddWaderJsInterop<IBsPopoverJsInterop, BsPopoverJsInterop>(useNoOp)
-            .AddWaderJsInterop<IBsScrollspyJsInterop, BsScrollspyJsInterop>(useNoOp);
+            .AddWaderJsInterop<IBsScrollspyJsInterop, BsScrollspyJsInterop>(useNoOp)
+            .AddWaderJsInterop<IBsToastJsInterop, BsToastJsInterop>(useNoOp);
     }
 
     private static IServiceCollection AddWaderJsInterop<TService, TImpl>(this IServiceCollection services, bool useNoOp)
@@ -53,10 +55,12 @@ public static class BsStartupExtensions
         where TImpl : class, TService, IBsJsFunctionsWrapper
     {
         var filePath = $"./_content/{typeof(TImpl).Assembly.GetName().Name}/js/{TImpl.JsFileName}";
+
         return services.AddSingleton<TService>(sp =>
         {
             var jsRuntime = sp.GetRequiredService<IJSRuntime>();
             var bsJsObjectRef = new BsJsObjectReference(jsRuntime, filePath);
+
             return ActivatorUtilities.CreateInstance<TImpl>(sp, bsJsObjectRef);
         });
     }

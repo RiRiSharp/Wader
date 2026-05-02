@@ -1,14 +1,15 @@
 ﻿export function create(hostElementRef, targetElementRef, options) {
     if (!hostElementRef) return;
-    if(!targetElementRef) return;
-    
+    if (!targetElementRef) return;
+
     options.target = targetElementRef;
 
+    // Makes settings immutable
     const existing = bootstrap.ScrollSpy.getInstance(hostElementRef);
     if (existing) {
         existing.dispose();
     }
-    
+
     return bootstrap.ScrollSpy.getOrCreateInstance(hostElementRef, options)
 }
 

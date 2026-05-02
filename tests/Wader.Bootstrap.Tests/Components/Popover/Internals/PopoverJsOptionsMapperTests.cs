@@ -4,7 +4,7 @@ using Wader.Bootstrap.Components.Popover.Internals;
 
 namespace Wader.Bootstrap.Tests.Components.Popover.Internals;
 
-public class PopoverOptionsMapperTests
+public class PopoverJsOptionsMapperTests
 {
     [Fact]
     public void PopoverMapperMapsSimplePropertiesCorrectly()

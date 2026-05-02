@@ -4,7 +4,7 @@ using Wader.Bootstrap.Internals;
 
 namespace Wader.Bootstrap.Components.Scrollspy;
 
-public sealed class BsScrollspyJsInterop : IBsScrollspyJsInterop, IBsJsFunctionsWrapper, IAsyncDisposable
+internal sealed class BsScrollspyJsInterop : IBsScrollspyJsInterop, IBsJsFunctionsWrapper, IAsyncDisposable
 {
     internal const string CREATE = "create";
 

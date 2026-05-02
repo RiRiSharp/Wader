@@ -4,10 +4,10 @@ using Wader.Bootstrap.Internals.Extensions;
 
 namespace Wader.Bootstrap.Components.Popover.Internals;
 
-public static class PopoverOptionsMapper
+internal static class PopoverJsOptionsMapper
 {
     [Pure]
-    public static PopoverJsOptions ToPopoverJsOptions(
+    internal static PopoverJsOptions ToPopoverJsOptions(
         this BsPopoverOptions popoverOptions,
         ElementReference? titleRef,
         ElementReference? contentRef
@@ -21,7 +21,7 @@ public static class PopoverOptionsMapper
             ContainerRef = popoverOptions.ContainerRef,
             ContentRef = contentRef,
             CustomClass = popoverOptions.CustomClass ?? "",
-            Delay = new PopoverDelayOptions { Hide = popoverOptions.HideDelay, Show = popoverOptions.ShowDelay },
+            Delay = new PopoverDelayJsOptions { Hide = popoverOptions.HideDelay, Show = popoverOptions.ShowDelay },
             Html = true,
             Placement = popoverOptions.Placement.ToPopperPlacementParameter(),
             Sanitize = false,

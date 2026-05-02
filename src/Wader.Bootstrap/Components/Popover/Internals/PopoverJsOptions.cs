@@ -10,7 +10,7 @@ public class PopoverJsOptions
     public ElementReference? ContainerRef { get; set; }
     public ElementReference? ContentRef { get; set; }
     public required string CustomClass { get; set; }
-    public PopoverDelayOptions? Delay { get; set; }
+    public PopoverDelayJsOptions? Delay { get; set; }
     public IList<string> FallbackPlacements { get; } = [];
     public bool Html { get; set; }
     public IList<int> Offset { get; } = [];

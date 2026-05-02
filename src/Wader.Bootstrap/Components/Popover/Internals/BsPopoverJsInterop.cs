@@ -4,18 +4,15 @@ using Wader.Bootstrap.Internals;
 
 namespace Wader.Bootstrap.Components.Popover.Internals;
 
-public sealed class BsPopoverJsInterop : IBsPopoverJsInterop, IBsJsFunctionsWrapper, IAsyncDisposable
+internal sealed class BsPopoverJsInterop : IBsPopoverJsInterop, IBsJsFunctionsWrapper, IAsyncDisposable
 {
-    internal const string TOGGLE = "toggle";
-
-    internal const string SHOW = "show";
-
-    internal const string HIDE = "hide";
-
-    internal const string UPDATE_POSITION = "updatePosition";
     internal const string CREATE_OR_UPDATE = "createOrUpdate";
-
+    internal const string TOGGLE = "toggle";
+    internal const string SHOW = "show";
+    internal const string HIDE = "hide";
+    internal const string UPDATE_POSITION = "updatePosition";
     internal const string DISPOSE = "dispose";
+
     private readonly IJSObjectReference _bsJsObjectRef;
 
     public BsPopoverJsInterop(IJSObjectReference bsJsObjectRef)
