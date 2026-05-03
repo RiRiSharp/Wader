@@ -23,7 +23,7 @@ internal sealed class BsToastJsInterop : IBsToastJsInterop, IBsJsFunctionsWrappe
         await _bsJsObjectRef.DisposeAsync();
     }
 
-    public static string JsFileName => "popoverFunctions.js";
+    public static string JsFileName => "toastFunctions.js";
 
     public async Task CreateAsync(ElementReference toastRef, ToastJsOptions? options = null)
     {

@@ -1,5 +1,8 @@
 ﻿@page "/"
+@using Wader.Bootstrap.Components.Buttons
+@using Wader.Bootstrap.Components.CloseButton
 @using Wader.Bootstrap.Components.Scrollspy
+@using Wader.Bootstrap.Components.Toasts
 @using Wader.Bootstrap.Layout.Columns
 @using Wader.Bootstrap.Layout.Rows
 @inject IBsScrollspyJsInterop ScrollspyJsInterop
@@ -68,50 +71,22 @@ Hello world!
 
     </BsColumn>
 </BsRow>
-<BsRow style="height: 200px;" data-bs-spy="scroll" data-bs-target="#list-thing">
-    <BsColumn ColOption="BsColumnOptions.Col4">
-        <div class="list-group" id="list-thing">
-            <a class="list-group-item list-group-item-action" href="#list-item-21">Item 1</a>
-            <a class="list-group-item list-group-item-action" href="#list-item-22">Item 2</a>
-            <a class="list-group-item list-group-item-action" href="#list-item-23">Item 3</a>
-            <a class="list-group-item list-group-item-action" href="#list-item-24">Item 4</a>
-        </div>
-    </BsColumn>
-    <BsColumn ColOption="BsColumnOptions.Col8" class="h-100 overflow-y-auto">
-        <h4 id="list-item-21">Item 1</h4>
-        <p>
-            This is some placeholder content for the scrollspy page. Note that as you scroll down the page, the
-            appropriate navigation link is highlighted. It’s repeated throughout the component example. We keep adding
-            some more example copy here to emphasize the scrolling and highlighting.
-        </p>
-        <h4 id="list-item-22">
-            Item 2
-        </h4>
-        <p>
-            This is some placeholder content for the scrollspy page. Note that as you scroll down the page, the
-            appropriate navigation link is highlighted. It’s repeated throughout the component example. We keep adding
-            some more example copy here to emphasize the scrolling and highlighting.
-        </p>
-        <h4 id="list-item-23">
-            Item 3
-        </h4>
-        <p>
-            This is some placeholder content for the scrollspy page. Note that as you scroll down the page, the
-            appropriate navigation link is highlighted. It’s repeated throughout the component example. We keep adding
-            some more example copy here to emphasize the scrolling and highlighting.
-        </p>
-        <h4 id="list-item-24">Item 4</h4>
-        <p>
-            This is some placeholder content for the scrollspy page. Note that as you scroll down the page, the
-            appropriate navigation link is highlighted. It’s repeated throughout the component example. We keep adding
-            some more example copy here to emphasize the scrolling and highlighting.
-        </p>
-    </BsColumn>
-</BsRow>
+<BsButton @onclick="() => _toastRef!.ShowAsync()">Show toast</BsButton>
+<BsToast @ref="_toastRef">
+    <BsToastHeader>
+        <strong>Bootstrap</strong>
+        <small>11 mins ago</small>
+        <BsCloseButton data-bs-dismiss="toast"/>
+    </BsToastHeader>
+    <BsToastBody>
+        Hello world! This is a toast message.
+    </BsToastBody>
+</BsToast>
 
 @code {
     private ElementReference _targetReference;
     private BsColumn? _columnHost;
+    private BsToast? _toastRef;
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {

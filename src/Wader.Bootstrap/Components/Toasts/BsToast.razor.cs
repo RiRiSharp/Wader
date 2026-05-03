@@ -40,6 +40,7 @@ public partial class BsToast : BsChildContentComponent, IAsyncDisposable
 
     protected override void OnParametersSet()
     {
+        base.OnParametersSet();
         if (_oldOptions == ToastJsOptions)
         {
             return;
@@ -51,6 +52,7 @@ public partial class BsToast : BsChildContentComponent, IAsyncDisposable
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
+        await base.OnAfterRenderAsync(firstRender);
         if (_reinitialize)
         {
             await BsToastJsInterop.CreateAsync(HtmlRef, ToastJsOptions);
