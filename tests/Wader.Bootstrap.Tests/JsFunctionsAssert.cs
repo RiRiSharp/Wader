@@ -5,7 +5,7 @@ namespace Wader.Bootstrap.Tests;
 
 public static class AssertJsInterop
 {
-    public static void Calls(IJSObjectReference jsObj, string expectedIdentifier, params object[] expectedArgs)
+    public static void Calls(IJSObjectReference jsObj, string expectedIdentifier, params object?[] expectedArgs)
     {
         var calls = jsObj.ReceivedCalls().ToList();
         _ = Assert.Single(calls);

@@ -25,34 +25,14 @@ public class ScrollspyJsInteropTests
     }
 
     [Fact]
-    public async Task CreateWithoutOptionsGetsOptionsAssignedAsync()
+    public async Task Create_WithoutOptions_UsesDefaultOptionValues()
     {
         // Arrange
         var jsObj = Substitute.For<IJSObjectReference>();
         await using var sut = new BsScrollspyJsInterop(jsObj);
         var hostElementRef = new ElementReference("host");
         var targetElementRef = new ElementReference("target");
-
-        // Act
-        await sut.CreateAsync(hostElementRef, targetElementRef);
-
-        // Assert
-        await jsObj
-            .Received(1)
-            .InvokeVoidAsync(
-                BsScrollspyJsInterop.CREATE,
-                Arg.Is<object[]>(args => args.Length == 3 && args[2] is ScrollspyJsOptions)
-            );
-    }
-
-    [Fact]
-    public async Task CreateWithoutOptionsUsesExpectedDefaultOptionValuesAsync()
-    {
-        // Arrange
-        var jsObj = Substitute.For<IJSObjectReference>();
-        await using var sut = new BsScrollspyJsInterop(jsObj);
-        var hostElementRef = new ElementReference("host");
-        var targetElementRef = new ElementReference("target");
+        var defaultOptions = new ScrollspyJsOptions();
 
         ScrollspyJsOptions? capturedOptions = null;
         jsObj
@@ -68,12 +48,45 @@ public class ScrollspyJsInteropTests
 
         // Assert
         Assert.NotNull(capturedOptions);
-        Assert.Equal("0px 0px -25%", capturedOptions!.RootMargin);
-        Assert.Equal([0.1, 0.5, 1], capturedOptions.Threshold);
+        Assert.Equivalent(capturedOptions, defaultOptions);
     }
 
     [Fact]
-    public async Task DisposeReference_CallsCorrectJsFunction()
+    public async Task Create_WithOptions_DoesNotModifyOptions()
+    {
+        // Arrange
+        var jsObj = Substitute.For<IJSObjectReference>();
+        await using var sut = new BsScrollspyJsInterop(jsObj);
+        var hostElementRef = new ElementReference("host");
+        var targetElementRef = new ElementReference("target");
+        var options = new ScrollspyJsOptions
+        {
+            RootMargin = "Epic margin",
+            Threshold = [1, 3, 3, 7],
+            SmoothScroll = true,
+        };
+
+        ScrollspyJsOptions? capturedOptions = null;
+        jsObj
+            .When(async x => await x.InvokeVoidAsync(Arg.Any<string>(), Arg.Any<object[]>()))
+            .Do(call =>
+            {
+                var args = call.Arg<object[]>();
+                capturedOptions = args[2] as ScrollspyJsOptions;
+            });
+
+        // Act
+        await sut.CreateAsync(hostElementRef, targetElementRef, options);
+
+        // Assert
+        Assert.NotNull(capturedOptions);
+        Assert.Equal("Epic margin", capturedOptions.RootMargin);
+        Assert.Equal([1, 3, 3, 7], capturedOptions.Threshold);
+        Assert.True(capturedOptions!.SmoothScroll);
+    }
+
+    [Fact]
+    public async Task DisposeReference_CallsDisposeJsFunction()
     {
         // Arrange
         var jsObj = Substitute.For<IJSObjectReference>();

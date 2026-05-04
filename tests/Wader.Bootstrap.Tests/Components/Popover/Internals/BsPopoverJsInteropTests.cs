@@ -94,7 +94,7 @@ public class BsPopoverJsInteropTests
         // Arrange
         var jsObj = Substitute.For<IJSObjectReference>();
         await using var sut = new BsPopoverJsInterop(jsObj);
-        var elementRef = new ElementReference("element");
+        var elementRef = new ElementReference("hostElement");
 
         // Act
         await sut.DisposeReferenceAsync(elementRef);

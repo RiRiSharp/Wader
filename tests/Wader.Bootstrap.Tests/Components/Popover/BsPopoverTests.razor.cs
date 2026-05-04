@@ -6,7 +6,7 @@ namespace Wader.Bootstrap.Tests.Components.Popover;
 
 public partial class BsPopoverTests() : BsComponentTests<BsPopover>("""<div class="{0}" {1}></div>""")
 {
-    private readonly IBsPopoverJsInterop _offcanvasJsInteropMock = Substitute.For<IBsPopoverJsInterop>();
+    private readonly IBsPopoverJsInterop _popoverJsInteropMock = Substitute.For<IBsPopoverJsInterop>();
     protected override string ClassesForDefaultTests => "d-inline-block";
 
     [Fact]
@@ -19,7 +19,7 @@ public partial class BsPopoverTests() : BsComponentTests<BsPopover>("""<div clas
         var cut = GetCut();
 
         // Assert
-        await _offcanvasJsInteropMock
+        await _popoverJsInteropMock
             .Received(1)
             .CreateOrUpdateAsync(cut.Instance.HostElementRef, Arg.Any<PopoverJsOptions>());
     }
@@ -35,7 +35,7 @@ public partial class BsPopoverTests() : BsComponentTests<BsPopover>("""<div clas
         await cut.Instance.ToggleAsync();
 
         // Assert
-        await _offcanvasJsInteropMock.Received(1).ToggleAsync(cut.Instance.HostElementRef);
+        await _popoverJsInteropMock.Received(1).ToggleAsync(cut.Instance.HostElementRef);
     }
 
     [Fact]
@@ -49,7 +49,7 @@ public partial class BsPopoverTests() : BsComponentTests<BsPopover>("""<div clas
         await cut.Instance.ShowAsync();
 
         // Assert
-        await _offcanvasJsInteropMock.Received(1).ShowAsync(cut.Instance.HostElementRef);
+        await _popoverJsInteropMock.Received(1).ShowAsync(cut.Instance.HostElementRef);
     }
 
     [Fact]
@@ -63,7 +63,7 @@ public partial class BsPopoverTests() : BsComponentTests<BsPopover>("""<div clas
         await cut.Instance.HideAsync();
 
         // Assert
-        await _offcanvasJsInteropMock.Received(1).HideAsync(cut.Instance.HostElementRef);
+        await _popoverJsInteropMock.Received(1).HideAsync(cut.Instance.HostElementRef);
     }
 
     [Fact]
@@ -77,11 +77,25 @@ public partial class BsPopoverTests() : BsComponentTests<BsPopover>("""<div clas
         await cut.Instance.UpdatePositionAsync();
 
         // Assert
-        await _offcanvasJsInteropMock.Received(1).UpdatePositionAsync(cut.Instance.HostElementRef);
+        await _popoverJsInteropMock.Received(1).UpdatePositionAsync(cut.Instance.HostElementRef);
+    }
+
+    [Fact]
+    public async Task Dispose_CallsDisposeElementJsInterop()
+    {
+        // Arrange
+        ConfigureTestContext();
+
+        // Act
+        var cut = GetCut();
+        await cut.Instance.DisposeAsync();
+
+        // Assert
+        await _popoverJsInteropMock.Received(1).DisposeReferenceAsync(cut.Instance.HostElementRef);
     }
 
     protected override void ConfigureTestContext()
     {
-        _ = Services.AddSingleton(_offcanvasJsInteropMock);
+        _ = Services.AddSingleton(_popoverJsInteropMock);
     }
 }

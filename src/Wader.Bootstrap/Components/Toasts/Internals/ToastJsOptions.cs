@@ -4,5 +4,5 @@ public record ToastJsOptions
 {
     public bool Animation { get; set; }
     public bool AutoHide { get; set; }
-    public int Delay { get; set; }
+    public int Delay { get; set; } = 5000;
 }

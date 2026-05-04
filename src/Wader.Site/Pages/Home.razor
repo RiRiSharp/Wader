@@ -72,21 +72,36 @@ Hello world!
     </BsColumn>
 </BsRow>
 <BsButton @onclick="() => _toastRef!.ShowAsync()">Show toast</BsButton>
-<BsToast @ref="_toastRef">
-    <BsToastHeader>
-        <strong>Bootstrap</strong>
-        <small>11 mins ago</small>
-        <BsCloseButton data-bs-dismiss="toast"/>
-    </BsToastHeader>
-    <BsToastBody>
-        Hello world! This is a toast message.
-    </BsToastBody>
-</BsToast>
+<BsButton Variant="BsButtonVariant.Success" @onclick="() => _toastRef2!.ShowAsync()">Show toast2</BsButton>
+
+<BsToastContainer class="toast-container position-fixed bottom-0 end-0 p-3">
+    <BsToast @ref="_toastRef" class="top-0 end-0">
+        <BsToastHeader>
+            <strong class="me-auto">Bootstrap</strong>
+            <small>11 mins ago</small>
+            <BsCloseButton data-bs-dismiss="toast"/>
+        </BsToastHeader>
+        <BsToastBody>
+            Hello world! This is a toast message.
+        </BsToastBody>
+    </BsToast>
+    <BsToast @ref="_toastRef2" class="top-0 end-0">
+        <BsToastHeader>
+            <strong class="me-auto">Bootstrap</strong>
+            <small>12 mins ago</small>
+            <BsCloseButton data-bs-dismiss="toast"/>
+        </BsToastHeader>
+        <BsToastBody>
+            Hello world! This is another toast message.
+        </BsToastBody>
+    </BsToast>
+</BsToastContainer>
 
 @code {
     private ElementReference _targetReference;
     private BsColumn? _columnHost;
     private BsToast? _toastRef;
+    private BsToast? _toastRef2;
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
