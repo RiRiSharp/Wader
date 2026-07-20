@@ -1,7 +1,7 @@
 using NSubstitute;
 using Wader.Bootstrap.Components.Modal;
 using Wader.Bootstrap.Components.Modal.Internals;
-using Wader.Bootstrap.Internals.Constants;
+using Wader.Bootstrap.Infrastructure.Constants;
 using Wader.Bootstrap.Primitives;
 
 namespace Wader.Bootstrap.Tests.Components.Modal;

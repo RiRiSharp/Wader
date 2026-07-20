@@ -1,7 +1,7 @@
 using NSubstitute;
 using Wader.Bootstrap.Components.Carousel;
 using Wader.Bootstrap.Components.Carousel.Internals;
-using Wader.Bootstrap.Internals.Constants;
+using Wader.Bootstrap.Infrastructure.Constants;
 
 namespace Wader.Bootstrap.Tests.Components.Carousel;
 

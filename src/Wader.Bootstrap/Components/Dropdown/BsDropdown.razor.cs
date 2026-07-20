@@ -6,7 +6,7 @@ namespace Wader.Bootstrap.Components.Dropdown;
 
 public partial class BsDropdown : BsChildContentComponent
 {
-    protected override string BsComponentClasses => $"{DropdownDirectionClass} {DropdownClass}";
+    protected override string? BsComponentClasses => $"{DropdownDirectionClass} {DropdownClass}";
 
     [Parameter]
     public BsDirection Drop { get; set; }

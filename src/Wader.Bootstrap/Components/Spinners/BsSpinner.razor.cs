@@ -5,7 +5,7 @@ namespace Wader.Bootstrap.Components.Spinners;
 
 public partial class BsSpinner : BsChildContentComponent
 {
-    protected override string BsComponentClasses => VariantClass;
+    protected override string? BsComponentClasses => VariantClass;
 
     [Parameter]
     public BsSpinnerVariant Variant { get; set; }

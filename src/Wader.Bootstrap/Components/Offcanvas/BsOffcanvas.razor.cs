@@ -8,7 +8,7 @@ namespace Wader.Bootstrap.Components.Offcanvas;
 public partial class BsOffcanvas : BsChildContentComponent, IAsyncDisposable
 {
     internal ElementReference HtmlRef;
-    protected override string BsComponentClasses => $"offcanvas {DirectionClass}";
+    protected override string? BsComponentClasses => $"offcanvas {DirectionClass}";
     public IBsOffcanvasContext? OffcanvasContext { get; private set; }
 
     [Parameter]

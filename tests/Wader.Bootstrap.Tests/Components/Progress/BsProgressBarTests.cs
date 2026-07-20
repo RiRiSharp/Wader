@@ -1,5 +1,5 @@
 using Wader.Bootstrap.Components.Progress;
-using Wader.Bootstrap.Internals.Constants;
+using Wader.Bootstrap.Infrastructure.Constants;
 using Wader.Bootstrap.Primitives;
 
 namespace Wader.Bootstrap.Tests.Components.Progress;
@@ -54,7 +54,7 @@ public class BsProgressBarTests() : BsComponentTests<BsProgressBar>("""<div clas
         // Act
         var cut = GetCut(parameters =>
             _ = parameters
-                .AddCascadingValue(CascadingValueNames.PROGRESS_IS_STACKED, true)
+                .AddCascadingValue(CascadingValueNames.PROGRESS_IS_STACKED, cascadingValue: true)
                 .AddCascadingValue(CascadingValueNames.PROGRESS_WIDTH, width)
         );
 
@@ -116,6 +116,6 @@ public class BsProgressBarTests() : BsComponentTests<BsProgressBar>("""<div clas
     protected override void BindParameters(ComponentParameterCollectionBuilder<BsProgressBar> parameterBuilder)
     {
         base.BindParameters(parameterBuilder);
-        _ = parameterBuilder.AddCascadingValue(CascadingValueNames.PROGRESS_WIDTH, 0d);
+        _ = parameterBuilder.AddCascadingValue(CascadingValueNames.PROGRESS_WIDTH, cascadingValue: 0d);
     }
 }

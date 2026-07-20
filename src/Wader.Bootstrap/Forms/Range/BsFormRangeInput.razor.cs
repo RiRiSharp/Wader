@@ -6,7 +6,7 @@ namespace Wader.Bootstrap.Forms.Range;
 public partial class BsFormRangeInput<TValue> : BsInputBase<TValue>
     where TValue : INumber<TValue>
 {
-    protected override string BsComponentClasses => "form-range";
+    protected override string? BsComponentClasses => "form-range";
 
     protected override bool TryParseValueFromString(
         string? value,
@@ -14,13 +14,15 @@ public partial class BsFormRangeInput<TValue> : BsInputBase<TValue>
         [NotNullWhen(false)] out string? validationErrorMessage
     )
     {
-        if (TValue.TryParse(value, null, out result))
+        if (TValue.TryParse(value, provider: null, out result))
         {
             validationErrorMessage = null;
+
             return true;
         }
 
         validationErrorMessage = $"The value '{value}' is not valid for type {typeof(TValue).Name}.";
+
         return false;
     }
 }

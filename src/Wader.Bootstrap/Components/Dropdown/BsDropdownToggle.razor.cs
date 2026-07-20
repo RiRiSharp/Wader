@@ -2,15 +2,15 @@ using Microsoft.AspNetCore.Components;
 using Microsoft.Extensions.Logging;
 using Wader.Bootstrap.BaseComponents;
 using Wader.Bootstrap.Components.Buttons;
-using Wader.Bootstrap.Internals;
-using Wader.Bootstrap.Internals.Constants;
-using Wader.Bootstrap.Internals.Exceptions;
+using Wader.Bootstrap.Infrastructure.Constants;
+using Wader.Bootstrap.Infrastructure.Exceptions;
+using BsLog = Wader.Bootstrap.Infrastructure.BsLog;
 
 namespace Wader.Bootstrap.Components.Dropdown;
 
 public partial class BsDropdownToggle : BsChildContentComponent
 {
-    protected override string BsComponentClasses => $"dropdown-toggle {ModeClass}";
+    protected override string? BsComponentClasses => $"dropdown-toggle {ModeClass}";
 
     [Inject]
     private ILogger<BsDropdownToggle> Logger { get; set; } = null!;

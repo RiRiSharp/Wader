@@ -1,12 +1,12 @@
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Forms;
 using Wader.Bootstrap.BaseComponents;
-using Wader.Bootstrap.Internals;
+using Wader.Bootstrap.Infrastructure;
 
 namespace Wader.Bootstrap.Forms.Selects;
 
 /// <summary>
-/// Renders an input select list
+///     Renders an input select list
 /// </summary>
 /// <typeparam name="TValue">The value type you want to select</typeparam>
 public class BsInputSelect<TValue> : InputSelect<TValue>, IBsChildContentComponent

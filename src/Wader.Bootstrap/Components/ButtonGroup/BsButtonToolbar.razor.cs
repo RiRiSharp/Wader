@@ -4,5 +4,5 @@ namespace Wader.Bootstrap.Components.ButtonGroup;
 
 public partial class BsButtonToolbar : BsChildContentComponent
 {
-    protected override string BsComponentClasses => "btn-toolbar";
+    protected override string? BsComponentClasses => "btn-toolbar";
 }

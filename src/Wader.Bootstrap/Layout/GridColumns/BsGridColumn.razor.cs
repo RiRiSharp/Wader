@@ -5,7 +5,7 @@ namespace Wader.Bootstrap.Layout.GridColumns;
 
 public partial class BsGridColumn : BsChildContentComponent
 {
-    protected override string BsComponentClasses =>
+    protected override string? BsComponentClasses =>
         $"{ColumnOptionsBootstrapClasses()} {StartOption.ToBootstrapClass()}";
 
     [Parameter]
@@ -26,6 +26,7 @@ public partial class BsGridColumn : BsChildContentComponent
         }
 
         var classes = GridOptions.Select(b => b.ToBootstrapClass());
-        return string.Join(' ', classes);
+
+        return string.Join(separator: ' ', classes);
     }
 }

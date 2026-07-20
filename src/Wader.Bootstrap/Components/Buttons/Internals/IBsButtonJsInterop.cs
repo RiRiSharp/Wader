@@ -1,5 +1,5 @@
 using Microsoft.AspNetCore.Components;
-using Wader.Bootstrap.Internals;
+using Wader.Bootstrap.Infrastructure.JsInterop;
 
 namespace Wader.Bootstrap.Components.Buttons.Internals;
 

@@ -5,7 +5,7 @@ namespace Wader.Bootstrap.Components.Modal;
 
 public partial class BsModalDialog : BsChildContentComponent
 {
-    protected override string BsComponentClasses =>
+    protected override string? BsComponentClasses =>
         $"modal-dialog {ScrollOptionsClass} {PositionClass} {FullScreenClass}";
 
     [Parameter]

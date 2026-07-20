@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Components;
 
-namespace Wader.Bootstrap.Internals;
+namespace Wader.Bootstrap.Infrastructure.JsInterop;
 
 public interface IBsJsDisposable
 {

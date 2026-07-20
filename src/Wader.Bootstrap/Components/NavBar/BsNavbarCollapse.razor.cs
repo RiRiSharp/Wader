@@ -7,7 +7,7 @@ namespace Wader.Bootstrap.Components.NavBar;
 public partial class BsNavbarCollapse : BsChildContentComponent, IAsyncDisposable
 {
     internal ElementReference HtmlRef;
-    protected override string BsComponentClasses => "collapse navbar-collapse";
+    protected override string? BsComponentClasses => "collapse navbar-collapse";
 
     [Inject]
     private IBsCollapseJsInterop CollapseJsInterop { get; set; } = null!;

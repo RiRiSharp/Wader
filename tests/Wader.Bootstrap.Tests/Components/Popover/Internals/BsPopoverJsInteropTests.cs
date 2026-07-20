@@ -89,6 +89,51 @@ public class BsPopoverJsInteropTests
     }
 
     [Fact]
+    public async Task Enable_CallsUpdatePositionJsFunction()
+    {
+        // Arrange
+        var jsObj = Substitute.For<IJSObjectReference>();
+        await using var sut = new BsPopoverJsInterop(jsObj);
+        var hostElementRef = new ElementReference("hostElement");
+
+        // Act
+        await sut.EnableAsync(hostElementRef);
+
+        // Assert
+        AssertJsInterop.Calls(jsObj, BsPopoverJsInterop.ENABLE, hostElementRef);
+    }
+
+    [Fact]
+    public async Task Disable_CallsUpdatePositionJsFunction()
+    {
+        // Arrange
+        var jsObj = Substitute.For<IJSObjectReference>();
+        await using var sut = new BsPopoverJsInterop(jsObj);
+        var hostElementRef = new ElementReference("hostElement");
+
+        // Act
+        await sut.DisableAsync(hostElementRef);
+
+        // Assert
+        AssertJsInterop.Calls(jsObj, BsPopoverJsInterop.DISABLE, hostElementRef);
+    }
+
+    [Fact]
+    public async Task ToggleEnable_CallsUpdatePositionJsFunction()
+    {
+        // Arrange
+        var jsObj = Substitute.For<IJSObjectReference>();
+        await using var sut = new BsPopoverJsInterop(jsObj);
+        var hostElementRef = new ElementReference("hostElement");
+
+        // Act
+        await sut.ToggleEnableAsync(hostElementRef);
+
+        // Assert
+        AssertJsInterop.Calls(jsObj, BsPopoverJsInterop.TOGGLE_ENABLE, hostElementRef);
+    }
+
+    [Fact]
     public async Task DisposeReference_CallsDisposeJsFunction()
     {
         // Arrange

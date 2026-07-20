@@ -5,7 +5,7 @@ namespace Wader.Bootstrap.Components.NavBar;
 
 public partial class BsNavbarNav : BsChildContentComponent
 {
-    protected override string BsComponentClasses => $"navbar-nav {ModeClass}";
+    protected override string? BsComponentClasses => $"navbar-nav {ModeClass}";
 
     [Parameter]
     public NavbarScrollingMode ScrollingMode { get; set; }

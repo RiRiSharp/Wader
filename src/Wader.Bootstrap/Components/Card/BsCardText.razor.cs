@@ -4,5 +4,5 @@ namespace Wader.Bootstrap.Components.Card;
 
 public partial class BsCardText : BsChildContentComponent
 {
-    protected override string BsComponentClasses => "card-text";
+    protected override string? BsComponentClasses => "card-text";
 }

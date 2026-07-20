@@ -12,7 +12,7 @@ public partial class BsAlert : BsChildContentComponent, IAsyncDisposable
     private DotNetObjectReference<BsAlert>? _dotNetRef;
     internal ElementReference HtmlRef;
 
-    protected override string BsComponentClasses =>
+    protected override string? BsComponentClasses =>
         $"alert {Variant.ToBootstrapClass()} {DismissableClass} {AnimationClass}";
 
     private string? DismissableClass => Dismissable ? "alert-dismissible" : null;

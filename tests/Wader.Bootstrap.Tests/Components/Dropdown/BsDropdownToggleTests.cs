@@ -2,8 +2,8 @@ using NSubstitute;
 using Wader.Bootstrap.Components.Buttons;
 using Wader.Bootstrap.Components.Buttons.Internals;
 using Wader.Bootstrap.Components.Dropdown;
-using Wader.Bootstrap.Internals.Constants;
-using Wader.Bootstrap.Internals.Exceptions;
+using Wader.Bootstrap.Infrastructure.Constants;
+using Wader.Bootstrap.Infrastructure.Exceptions;
 
 namespace Wader.Bootstrap.Tests.Components.Dropdown;
 
@@ -56,7 +56,7 @@ public class BsDropdownToggleTests()
         );
 
         // Assert
-        var expectedMarkupString = GetExpectedHtml("btn-outline-primary", AttributesForDefaultTests);
+        var expectedMarkupString = GetExpectedHtml(classes: "btn-outline-primary", AttributesForDefaultTests);
         cut.MarkupMatches(expectedMarkupString);
     }
 
@@ -87,7 +87,7 @@ public class BsDropdownToggleTests()
         // Act + Assert
         _ = Assert.Throws<BsMissingParameterException>(() =>
             Render<BsDropdownToggle>(parameters =>
-                parameters.Add(p => p.OutlineVariant, null).Add(p => p.Variant, null)
+                parameters.Add(p => p.OutlineVariant, value: null).Add(p => p.Variant, value: null)
             )
         );
     }

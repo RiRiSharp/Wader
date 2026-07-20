@@ -8,7 +8,7 @@ public partial class BsButtonBase : BsChildContentComponent, IAsyncDisposable
 {
     internal ElementReference HtmlRef;
 
-    protected override string BsComponentClasses => $"btn {Size.ToBootstrapClass()} {ActiveClass} {DisabledClass}";
+    protected override string? BsComponentClasses => $"btn {Size.ToBootstrapClass()} {ActiveClass} {DisabledClass}";
 
     [Parameter]
     public BsButtonSize Size { get; set; }

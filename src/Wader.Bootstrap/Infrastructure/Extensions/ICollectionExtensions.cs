@@ -1,4 +1,4 @@
-namespace Wader.Bootstrap.Internals.Extensions;
+namespace Wader.Bootstrap.Infrastructure.Extensions;
 
 internal static class ICollectionExtensions
 {

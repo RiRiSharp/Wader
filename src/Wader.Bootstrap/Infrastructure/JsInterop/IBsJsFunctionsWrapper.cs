@@ -1,4 +1,4 @@
-namespace Wader.Bootstrap.Internals;
+namespace Wader.Bootstrap.Infrastructure.JsInterop;
 
 internal interface IBsJsFunctionsWrapper
 {

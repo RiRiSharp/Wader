@@ -1,6 +1,6 @@
 using System.Diagnostics.Contracts;
 using Microsoft.AspNetCore.Components;
-using Wader.Bootstrap.Internals.Extensions;
+using Wader.Bootstrap.Infrastructure.Extensions;
 
 namespace Wader.Bootstrap.Components.Popover.Internals;
 

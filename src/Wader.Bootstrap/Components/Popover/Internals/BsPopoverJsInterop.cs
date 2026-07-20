@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
-using Wader.Bootstrap.Internals;
+using Wader.Bootstrap.Infrastructure.JsInterop;
 
 namespace Wader.Bootstrap.Components.Popover.Internals;
 
@@ -12,6 +12,9 @@ internal sealed class BsPopoverJsInterop : IBsPopoverJsInterop, IBsJsFunctionsWr
     internal const string HIDE = "hide";
     internal const string UPDATE_POSITION = "updatePosition";
     internal const string DISPOSE = "dispose";
+    internal const string ENABLE = "enable";
+    internal const string DISABLE = "disable";
+    internal const string TOGGLE_ENABLE = "toggleEnable";
 
     private readonly IJSObjectReference _bsJsObjectRef;
 
@@ -50,6 +53,21 @@ internal sealed class BsPopoverJsInterop : IBsPopoverJsInterop, IBsJsFunctionsWr
     public async Task UpdatePositionAsync(ElementReference hostElementRef)
     {
         await _bsJsObjectRef.InvokeVoidAsync(UPDATE_POSITION, hostElementRef);
+    }
+
+    public async Task EnableAsync(ElementReference hostElementRef)
+    {
+        await _bsJsObjectRef.InvokeVoidAsync(ENABLE, hostElementRef);
+    }
+
+    public async Task DisableAsync(ElementReference hostElementRef)
+    {
+        await _bsJsObjectRef.InvokeVoidAsync(DISABLE, hostElementRef);
+    }
+
+    public async Task ToggleEnableAsync(ElementReference hostElementRef)
+    {
+        await _bsJsObjectRef.InvokeVoidAsync(TOGGLE_ENABLE, hostElementRef);
     }
 
     public async Task DisposeReferenceAsync(ElementReference elementRef)

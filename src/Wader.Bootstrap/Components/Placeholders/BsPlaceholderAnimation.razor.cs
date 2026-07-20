@@ -5,7 +5,7 @@ namespace Wader.Bootstrap.Components.Placeholders;
 
 public partial class BsPlaceholderAnimation : BsChildContentComponent
 {
-    protected override string BsComponentClasses => AnimationClass;
+    protected override string? BsComponentClasses => AnimationClass;
 
     [Parameter]
     public BsPlaceholderAnimationType Animation { get; set; } = BsPlaceholderAnimationType.Glow;

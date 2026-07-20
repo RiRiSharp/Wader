@@ -1,8 +1,8 @@
 using Microsoft.AspNetCore.Components;
 using Wader.Bootstrap.BaseComponents;
 using Wader.Bootstrap.Components.Carousel.Internals;
-using Wader.Bootstrap.Internals.Constants;
-using Wader.Bootstrap.Internals.Exceptions;
+using Wader.Bootstrap.Infrastructure.Constants;
+using Wader.Bootstrap.Infrastructure.Exceptions;
 
 namespace Wader.Bootstrap.Components.Carousel;
 
@@ -14,9 +14,6 @@ public partial class BsCarouselIndicatorButton : BsComponent, IBsChildContentCom
     private IBsCarouselContext? CarouselContext { get; set; }
 
     [Parameter]
-    public RenderFragment? ChildContent { get; set; }
-
-    [Parameter]
     public bool Active { get; set; }
 
     private string? ActiveClass => Active ? "active" : null;
@@ -24,6 +21,9 @@ public partial class BsCarouselIndicatorButton : BsComponent, IBsChildContentCom
     [Parameter]
     // Zero based index
     public int? SlideNo { get; set; }
+
+    [Parameter]
+    public RenderFragment? ChildContent { get; set; }
 
     protected override void OnParametersSet()
     {

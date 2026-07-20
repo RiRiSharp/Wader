@@ -7,7 +7,7 @@ namespace Wader.Bootstrap.Components.Collapse;
 public partial class BsCollapse : BsChildContentComponent, IAsyncDisposable
 {
     internal ElementReference HtmlRef;
-    protected override string BsComponentClasses => $"collapse {ShowClass} {DirectionClass}";
+    protected override string? BsComponentClasses => $"collapse {ShowClass} {DirectionClass}";
 
     [Parameter]
     public BsCollapseDirection Direction { get; set; }

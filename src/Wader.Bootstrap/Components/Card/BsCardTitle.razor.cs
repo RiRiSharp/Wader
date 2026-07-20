@@ -5,7 +5,7 @@ namespace Wader.Bootstrap.Components.Card;
 
 public partial class BsCardTitle : BsChildContentComponent
 {
-    protected override string BsComponentClasses => "card-title";
+    protected override string? BsComponentClasses => "card-title";
 
     [Parameter]
     public int Heading { get; set; } = 5;

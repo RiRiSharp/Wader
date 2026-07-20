@@ -10,7 +10,7 @@ public partial class BsCarousel : BsChildContentComponent, IAsyncDisposable
 
     private BsCarouselAutoPlayMode? _lastAutoPlay;
     internal ElementReference HtmlRef;
-    protected override string BsComponentClasses => $"carousel slide {TransitionTypeClass}";
+    protected override string? BsComponentClasses => $"carousel slide {TransitionTypeClass}";
 
     public IBsCarouselContext? CarouselContext { get; private set; }
 

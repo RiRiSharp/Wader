@@ -1,4 +1,4 @@
-namespace Wader.Bootstrap.Internals.Exceptions;
+namespace Wader.Bootstrap.Infrastructure.Exceptions;
 
 public class BsMissingParameterException : Exception
 {

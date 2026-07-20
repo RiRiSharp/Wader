@@ -1,6 +1,6 @@
 using Microsoft.Extensions.Logging;
 
-namespace Wader.Bootstrap.Internals;
+namespace Wader.Bootstrap.Infrastructure;
 
 internal static partial class BsLog
 {

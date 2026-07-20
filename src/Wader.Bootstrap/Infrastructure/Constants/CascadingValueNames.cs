@@ -1,4 +1,4 @@
-﻿namespace Wader.Bootstrap.Internals.Constants;
+﻿namespace Wader.Bootstrap.Infrastructure.Constants;
 
 internal static class CascadingValueNames
 {

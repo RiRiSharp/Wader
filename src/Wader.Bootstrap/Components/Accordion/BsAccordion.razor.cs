@@ -7,7 +7,7 @@ namespace Wader.Bootstrap.Components.Accordion;
 public partial class BsAccordion : BsChildContentComponent
 {
     internal ElementReference HtmlRef;
-    protected override string BsComponentClasses => $"accordion {DisplayStyle.ToBootstrapClass()}";
+    protected override string? BsComponentClasses => $"accordion {DisplayStyle.ToBootstrapClass()}";
     public IBsAccordionContext AccordionContext { get; private set; } = null!;
 
     [Parameter]

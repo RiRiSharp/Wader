@@ -1,5 +1,5 @@
 using Wader.Bootstrap.Components.NavBar;
-using Wader.Bootstrap.Internals.Constants;
+using Wader.Bootstrap.Infrastructure.Constants;
 
 namespace Wader.Bootstrap.Tests.Components.Navbar;
 

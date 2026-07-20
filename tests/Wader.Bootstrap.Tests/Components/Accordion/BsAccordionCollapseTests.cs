@@ -2,7 +2,7 @@
 using NSubstitute;
 using Wader.Bootstrap.Components.Accordion;
 using Wader.Bootstrap.Components.Accordion.Internals;
-using Wader.Bootstrap.Internals.Constants;
+using Wader.Bootstrap.Infrastructure.Constants;
 
 namespace Wader.Bootstrap.Tests.Components.Accordion;
 
@@ -29,7 +29,7 @@ public class BsAccordionCollapseTests()
 
         // Assert
         var collapsingClass = isCollapsed ? "" : "show";
-        cut.MarkupMatches(GetExpectedHtml(collapsingClass, ""));
+        cut.MarkupMatches(GetExpectedHtml(collapsingClass, attributes: ""));
     }
 
     [Fact]

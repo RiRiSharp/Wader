@@ -1,14 +1,14 @@
 using Microsoft.AspNetCore.Components;
 using Wader.Bootstrap.BaseComponents;
 using Wader.Bootstrap.Components.Carousel.Internals;
-using Wader.Bootstrap.Internals.Constants;
-using Wader.Bootstrap.Internals.Exceptions;
+using Wader.Bootstrap.Infrastructure.Constants;
+using Wader.Bootstrap.Infrastructure.Exceptions;
 
 namespace Wader.Bootstrap.Components.Carousel;
 
 public partial class BsCarouselControlPrev : BsChildContentComponent
 {
-    protected override string BsComponentClasses => "carousel-control-prev";
+    protected override string? BsComponentClasses => "carousel-control-prev";
 
     [CascadingParameter(Name = CascadingValueNames.CAROUSEL_CONTEXT)]
     private IBsCarouselContext? CarouselContext { get; set; }

@@ -2,8 +2,8 @@ using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
 using Wader.Bootstrap.BaseComponents;
 using Wader.Bootstrap.Components.Accordion.Internals;
-using Wader.Bootstrap.Internals.Constants;
-using Wader.Bootstrap.Internals.Exceptions;
+using Wader.Bootstrap.Infrastructure.Constants;
+using Wader.Bootstrap.Infrastructure.Exceptions;
 
 namespace Wader.Bootstrap.Components.Accordion;
 
@@ -16,7 +16,7 @@ public partial class BsAccordionButton : BsChildContentComponent, IHasCollapseSt
 
     private bool _initialCollapse;
     internal ElementReference HtmlRef;
-    protected override string BsComponentClasses => $"accordion-button {GetInitialCollapsedClass()}";
+    protected override string? BsComponentClasses => $"accordion-button {GetInitialCollapsedClass()}";
 
     [CascadingParameter(Name = CascadingValueNames.ACCORDION_ITEM_CONTEXT)]
     internal IBsAccordionItemContext? AccordionItemContext { get; set; }

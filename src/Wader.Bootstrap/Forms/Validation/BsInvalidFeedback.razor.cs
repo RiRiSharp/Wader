@@ -4,5 +4,5 @@ namespace Wader.Bootstrap.Forms.Validation;
 
 public partial class BsInvalidFeedback : BsChildContentComponent
 {
-    protected override string BsComponentClasses => "invalid-feedback";
+    protected override string? BsComponentClasses => "invalid-feedback";
 }

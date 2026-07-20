@@ -63,7 +63,7 @@ public class BsToastJsInteropTests
             .Do(call =>
             {
                 var args = call.Arg<object[]>();
-                capturedOptions = args[1] as ToastJsOptions;
+                capturedOptions = args?[1] as ToastJsOptions;
             });
 
         // Act

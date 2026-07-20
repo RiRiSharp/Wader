@@ -1,5 +1,5 @@
 using System.Text;
-using Wader.Bootstrap.Internals.Exceptions;
+using Wader.Bootstrap.Infrastructure.Exceptions;
 
 namespace Wader.Bootstrap.Content.Tables;
 
@@ -43,33 +43,6 @@ public enum BsTableOptions : long
 
 internal static class TableOptionsExtensions
 {
-    private static readonly Dictionary<BsTableOptions, string> _classMapping = new()
-    {
-        { BsTableOptions.TablePrimary, "table-primary" },
-        { BsTableOptions.TableSecondary, "table-secondary" },
-        { BsTableOptions.TableSuccess, "table-success" },
-        { BsTableOptions.TableDanger, "table-danger" },
-        { BsTableOptions.TableWarning, "table-warning" },
-        { BsTableOptions.TableInfo, "table-info" },
-        { BsTableOptions.TableLight, "table-light" },
-        { BsTableOptions.TableDark, "table-dark" },
-        { BsTableOptions.TableStriped, "table-striped" },
-        { BsTableOptions.TableStripedColumns, "table-striped-columns" },
-        { BsTableOptions.TableHover, "table-hover" },
-        { BsTableOptions.TableBordered, "table-bordered" },
-        { BsTableOptions.TableBorderless, "table-borderless" },
-        { BsTableOptions.BorderPrimary, "border-primary" },
-        { BsTableOptions.BorderSecondary, "border-secondary" },
-        { BsTableOptions.BorderSuccess, "border-success" },
-        { BsTableOptions.BorderDanger, "border-danger" },
-        { BsTableOptions.BorderWarning, "border-warning" },
-        { BsTableOptions.BorderInfo, "border-info" },
-        { BsTableOptions.BorderLight, "border-light" },
-        { BsTableOptions.BorderDark, "border-dark" },
-        { BsTableOptions.TableSmall, "table-sm" },
-        { BsTableOptions.CaptionTop, "caption-top" },
-    };
-
     private const BsTableOptions COLOR_MASK =
         BsTableOptions.TablePrimary
         | BsTableOptions.TableSecondary
@@ -96,7 +69,7 @@ internal static class TableOptionsExtensions
         | BsTableOptions.BorderDark;
 
     /// <summary>
-    /// For table everything is an allowable option, except table active
+    ///     For table everything is an allowable option, except table active
     /// </summary>
     private const BsTableOptions TABLE_MASK = ~BsTableOptions.TableActive;
 
@@ -120,6 +93,33 @@ internal static class TableOptionsExtensions
         | BsTableOptions.TableInfo
         | BsTableOptions.TableLight
         | BsTableOptions.TableDark;
+
+    private static readonly Dictionary<BsTableOptions, string> _classMapping = new()
+    {
+        { BsTableOptions.TablePrimary, "table-primary" },
+        { BsTableOptions.TableSecondary, "table-secondary" },
+        { BsTableOptions.TableSuccess, "table-success" },
+        { BsTableOptions.TableDanger, "table-danger" },
+        { BsTableOptions.TableWarning, "table-warning" },
+        { BsTableOptions.TableInfo, "table-info" },
+        { BsTableOptions.TableLight, "table-light" },
+        { BsTableOptions.TableDark, "table-dark" },
+        { BsTableOptions.TableStriped, "table-striped" },
+        { BsTableOptions.TableStripedColumns, "table-striped-columns" },
+        { BsTableOptions.TableHover, "table-hover" },
+        { BsTableOptions.TableBordered, "table-bordered" },
+        { BsTableOptions.TableBorderless, "table-borderless" },
+        { BsTableOptions.BorderPrimary, "border-primary" },
+        { BsTableOptions.BorderSecondary, "border-secondary" },
+        { BsTableOptions.BorderSuccess, "border-success" },
+        { BsTableOptions.BorderDanger, "border-danger" },
+        { BsTableOptions.BorderWarning, "border-warning" },
+        { BsTableOptions.BorderInfo, "border-info" },
+        { BsTableOptions.BorderLight, "border-light" },
+        { BsTableOptions.BorderDark, "border-dark" },
+        { BsTableOptions.TableSmall, "table-sm" },
+        { BsTableOptions.CaptionTop, "caption-top" },
+    };
 
     internal static string ToBootstrapTableClass(this BsTableOptions options)
     {

@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Components;
 using Wader.Bootstrap.BaseComponents;
 
-namespace Wader.Bootstrap.Internals;
+namespace Wader.Bootstrap.Infrastructure;
 
 public partial class BsHeading : BsChildContentComponent
 {

@@ -1,5 +1,5 @@
 using Wader.Bootstrap.Components.Progress;
-using Wader.Bootstrap.Internals.Constants;
+using Wader.Bootstrap.Infrastructure.Constants;
 
 namespace Wader.Bootstrap.Tests.Components.Progress;
 
@@ -68,7 +68,7 @@ public class BsProgressTests() : BsComponentTests<BsProgress>("""<div class="pro
         ConfigureTestContext();
 
         // Act
-        var cut = Render<BsProgress>(parameters => parameters.Add(x => x.Width, 50.0));
+        var cut = Render<BsProgress>(parameters => parameters.Add(x => x.Width, value: 50.0));
 
         // Assert
         var expectedMarkupString = GetExpectedHtml(ClassesForDefaultTests, AttributesForDefaultTests);
@@ -88,7 +88,9 @@ public class BsProgressTests() : BsComponentTests<BsProgress>("""<div class="pro
 
         // Act
         var cut = Render<BsProgress>(parameters =>
-            _ = parameters.Add(x => x.Width, width).AddCascadingValue(CascadingValueNames.PROGRESS_IS_STACKED, true)
+            _ = parameters
+                .Add(x => x.Width, width)
+                .AddCascadingValue(CascadingValueNames.PROGRESS_IS_STACKED, cascadingValue: true)
         );
 
         // Assert
@@ -112,7 +114,7 @@ public class BsProgressTests() : BsComponentTests<BsProgress>("""<div class="pro
         {
             _ = parameters
                 .AddUnmatched(attributeKey, addedStyle)
-                .AddCascadingValue(CascadingValueNames.PROGRESS_IS_STACKED, true);
+                .AddCascadingValue(CascadingValueNames.PROGRESS_IS_STACKED, cascadingValue: true);
         });
 
         // Assert
@@ -153,6 +155,6 @@ public class BsProgressTests() : BsComponentTests<BsProgress>("""<div class="pro
     protected override void BindParameters(ComponentParameterCollectionBuilder<BsProgress> parameterBuilder)
     {
         base.BindParameters(parameterBuilder);
-        _ = parameterBuilder.Add(b => b.Width, 0);
+        _ = parameterBuilder.Add(b => b.Width, value: 0);
     }
 }

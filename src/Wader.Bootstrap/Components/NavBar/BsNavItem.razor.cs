@@ -5,7 +5,7 @@ namespace Wader.Bootstrap.Components.NavBar;
 
 public partial class BsNavItem : BsChildContentComponent
 {
-    protected override string BsComponentClasses => $"nav-item {OptionsClass}";
+    protected override string? BsComponentClasses => $"nav-item {OptionsClass}";
 
     [Parameter]
     public BsNavItemOptions Options { get; set; }

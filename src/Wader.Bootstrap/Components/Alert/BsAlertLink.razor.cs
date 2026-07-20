@@ -4,5 +4,5 @@ namespace Wader.Bootstrap.Components.Alert;
 
 public partial class BsAlertLink : BsChildContentComponent
 {
-    protected override string BsComponentClasses => "alert-link";
+    protected override string? BsComponentClasses => "alert-link";
 }

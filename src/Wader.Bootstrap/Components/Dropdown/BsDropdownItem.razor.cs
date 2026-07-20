@@ -5,7 +5,7 @@ namespace Wader.Bootstrap.Components.Dropdown;
 
 public partial class BsDropdownItem : BsChildContentComponent
 {
-    protected override string BsComponentClasses => $"dropdown-item {ActiveClass} {DisabledClass}";
+    protected override string? BsComponentClasses => $"dropdown-item {ActiveClass} {DisabledClass}";
 
     [Parameter]
     public BsDropdownItemType ElType { get; set; }

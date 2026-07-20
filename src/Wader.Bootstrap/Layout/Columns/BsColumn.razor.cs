@@ -5,10 +5,8 @@ namespace Wader.Bootstrap.Layout.Columns;
 
 public partial class BsColumn : BsChildContentComponent, IContainerComponent
 {
-    protected override string BsComponentClasses =>
+    protected override string? BsComponentClasses =>
         $"{ColumnOptionsBootstrapClasses()} {ColumnOffsetBootstrapClasses()} {ColumnOrder.ToBootstrapClass()}";
-
-    public ElementReference ElementRef { get; private set; }
 
     [Parameter]
     public BsColumnOptions ColOption { get; set; }
@@ -25,6 +23,8 @@ public partial class BsColumn : BsChildContentComponent, IContainerComponent
     [Parameter]
     public BsColumnOrder ColumnOrder { get; set; }
 
+    public ElementReference ElementRef { get; private set; }
+
     private string ColumnOptionsBootstrapClasses()
     {
         var colOptionsList = ColOptions.ToList();
@@ -34,7 +34,8 @@ public partial class BsColumn : BsChildContentComponent, IContainerComponent
         }
 
         var classes = colOptionsList.Select(b => b.ToBootstrapColClass());
-        return string.Join(' ', classes);
+
+        return string.Join(separator: ' ', classes);
     }
 
     private string ColumnOffsetBootstrapClasses()
@@ -46,6 +47,7 @@ public partial class BsColumn : BsChildContentComponent, IContainerComponent
         }
 
         var classes = offsetOptionsList.Select(b => b.ToBootstrapOffsetClass());
-        return string.Join(' ', classes);
+
+        return string.Join(separator: ' ', classes);
     }
 }

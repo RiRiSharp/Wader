@@ -1,14 +1,14 @@
 using Microsoft.AspNetCore.Components;
 using Wader.Bootstrap.BaseComponents;
-using Wader.Bootstrap.Internals.Constants;
-using Wader.Bootstrap.Internals.Exceptions;
+using Wader.Bootstrap.Infrastructure.Constants;
+using Wader.Bootstrap.Infrastructure.Exceptions;
 using Wader.Bootstrap.Primitives;
 
 namespace Wader.Bootstrap.Components.Progress;
 
 public partial class BsProgressBar : BsChildContentComponent
 {
-    protected override string BsComponentClasses =>
+    protected override string? BsComponentClasses =>
         $"progress-bar {StripedClass} {AnimatedClass} {Background.ToBootstrapClass()}";
 
     protected override string? BsInlineStyles => WidthStyle;
@@ -23,10 +23,12 @@ public partial class BsProgressBar : BsChildContentComponent
 
     [Parameter]
     public bool Striped { get; set; }
+
     private string? StripedClass => Striped ? "progress-bar-striped" : null;
 
     [Parameter]
     public bool Animated { get; set; }
+
     private string? AnimatedClass => Animated ? "progress-bar-animated" : null;
 
     [Parameter]

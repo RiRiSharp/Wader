@@ -1,15 +1,15 @@
 using Microsoft.AspNetCore.Components;
 using Wader.Bootstrap.BaseComponents;
 using Wader.Bootstrap.Components.Accordion.Internals;
-using Wader.Bootstrap.Internals.Constants;
-using Wader.Bootstrap.Internals.Exceptions;
+using Wader.Bootstrap.Infrastructure.Constants;
+using Wader.Bootstrap.Infrastructure.Exceptions;
 
 namespace Wader.Bootstrap.Components.Accordion;
 
 public partial class BsAccordionItem : BsChildContentComponent, IAsyncDisposable
 {
     internal ElementReference HtmlRef;
-    protected override string BsComponentClasses => "accordion-item";
+    protected override string? BsComponentClasses => "accordion-item";
     public IBsAccordionItemContext AccordionItemContext { get; private set; } = null!;
 
     [Parameter]

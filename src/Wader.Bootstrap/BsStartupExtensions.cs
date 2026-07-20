@@ -11,7 +11,7 @@ using Wader.Bootstrap.Components.Popover.Internals;
 using Wader.Bootstrap.Components.Scrollspy;
 using Wader.Bootstrap.Components.Toasts.Internals;
 using Wader.Bootstrap.Forms.ChecksRadios.Internals;
-using Wader.Bootstrap.Internals;
+using Wader.Bootstrap.Infrastructure.JsInterop;
 
 namespace Wader.Bootstrap;
 

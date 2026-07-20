@@ -1,14 +1,13 @@
 using Microsoft.AspNetCore.Components.Forms;
 using Wader.Bootstrap.BaseComponents;
-using Wader.Bootstrap.Internals;
+using Wader.Bootstrap.Infrastructure;
 
 namespace Wader.Bootstrap.Forms;
 
 public abstract class BsInputBase<TValue> : InputBase<TValue>, IBsComponent
 {
-    protected abstract string BsComponentClasses { get; }
-
     private Dictionary<string, object>? _renderAttributes;
+    protected abstract string? BsComponentClasses { get; }
 
     protected IReadOnlyDictionary<string, object>? RenderAttributes => _renderAttributes;
 

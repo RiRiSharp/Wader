@@ -1,6 +1,6 @@
 using Microsoft.JSInterop;
 
-namespace Wader.Bootstrap.Internals;
+namespace Wader.Bootstrap.Infrastructure.JsInterop;
 
 internal class BsJsObjectReference : IJSObjectReference
 {
@@ -8,7 +8,9 @@ internal class BsJsObjectReference : IJSObjectReference
 
     internal BsJsObjectReference(IJSRuntime jsRuntime, string filePath)
     {
-        _moduleTask = new(() => jsRuntime.InvokeAsync<IJSObjectReference>("import", filePath).AsTask());
+        _moduleTask = new Lazy<Task<IJSObjectReference>>(() =>
+            jsRuntime.InvokeAsync<IJSObjectReference>(identifier: "import", filePath).AsTask()
+        );
     }
 
     public async ValueTask<TValue> InvokeAsync<TValue>(string identifier, params object?[]? args)

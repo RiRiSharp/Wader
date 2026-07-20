@@ -40,7 +40,7 @@ public class ScrollspyJsInteropTests
             .Do(call =>
             {
                 var args = call.Arg<object[]>();
-                capturedOptions = args[2] as ScrollspyJsOptions;
+                capturedOptions = args?[2] as ScrollspyJsOptions;
             });
 
         // Act
@@ -72,7 +72,7 @@ public class ScrollspyJsInteropTests
             .Do(call =>
             {
                 var args = call.Arg<object[]>();
-                capturedOptions = args[2] as ScrollspyJsOptions;
+                capturedOptions = args?[2] as ScrollspyJsOptions;
             });
 
         // Act
@@ -80,7 +80,7 @@ public class ScrollspyJsInteropTests
 
         // Assert
         Assert.NotNull(capturedOptions);
-        Assert.Equal("Epic margin", capturedOptions.RootMargin);
+        Assert.Equal(expected: "Epic margin", capturedOptions.RootMargin);
         Assert.Equal([1, 3, 3, 7], capturedOptions.Threshold);
         Assert.True(capturedOptions!.SmoothScroll);
     }

@@ -10,7 +10,7 @@ public partial class BsPopover : BsChildContentComponent, IAsyncDisposable
 
     private ElementReference? _titleRef;
 
-    protected override string BsComponentClasses => "d-inline-block";
+    protected override string? BsComponentClasses => "d-inline-block";
 
     /// <summary>
     ///     Gets or sets the popover title content.

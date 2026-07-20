@@ -8,7 +8,7 @@ namespace Wader.Bootstrap.Components.Modal;
 public partial class BsModal : BsChildContentComponent, IAsyncDisposable
 {
     internal ElementReference HtmlRef;
-    protected override string BsComponentClasses => $"modal {FadeClass}";
+    protected override string? BsComponentClasses => $"modal {FadeClass}";
 
     public IBsModalContext? ModalContext { get; private set; }
 

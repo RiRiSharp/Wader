@@ -1,17 +1,17 @@
 ﻿using System.Globalization;
 
-namespace Wader.Bootstrap.Internals;
+namespace Wader.Bootstrap.Infrastructure;
 
 internal static class BsStyleAttributeUtilities
 {
     /// <summary>
-    /// Combines the style attribute given in the attribute dictionary with the provided style declarations.
+    ///     Combines the style attribute given in the attribute dictionary with the provided style declarations.
     /// </summary>
     /// <typeparam name="TValue">Type of attributes</typeparam>
     /// <param name="additionalAttributes">The attribute dictionary</param>
     /// <param name="styles">CSS declarations to add</param>
     /// <returns>
-    /// A CSS style string containing the combination of the provided styles and the styles present in the dictionary.
+    ///     A CSS style string containing the combination of the provided styles and the styles present in the dictionary.
     /// </returns>
     internal static string CombineStyles<TValue>(TValue? additionalAttributes, string styles)
         where TValue : IEnumerable<KeyValuePair<string, object>>
@@ -21,16 +21,16 @@ internal static class BsStyleAttributeUtilities
     }
 
     /// <summary>
-    /// Combines the style declarations with the style attribute in the dictionary, if present.
+    ///     Combines the style declarations with the style attribute in the dictionary, if present.
     /// </summary>
     /// <param name="additionalAttributes">Attributes, usually on a component</param>
     /// <param name="styles">CSS declaration list</param>
     /// <returns>
-    /// A combined CSS declaration list where later values override earlier ones.
+    ///     A combined CSS declaration list where later values override earlier ones.
     /// </returns>
     private static string CombineStyles(Dictionary<string, object>? additionalAttributes, string? styles)
     {
-        if (additionalAttributes is null || !additionalAttributes.TryGetValue("style", out var styleObj))
+        if (additionalAttributes is null || !additionalAttributes.TryGetValue(key: "style", out var styleObj))
         {
             return styles ?? "";
         }
@@ -52,8 +52,8 @@ internal static class BsStyleAttributeUtilities
     }
 
     /// <summary>
-    /// Creates a copy of the attribute dictionary where the style attribute is overwritten
-    /// by the combined and normalized style declarations.
+    ///     Creates a copy of the attribute dictionary where the style attribute is overwritten
+    ///     by the combined and normalized style declarations.
     /// </summary>
     /// <param name="additionalAttributes">Attributes, usually on a component</param>
     /// <param name="styles">CSS declaration list</param>
@@ -68,8 +68,8 @@ internal static class BsStyleAttributeUtilities
     }
 
     /// <summary>
-    /// Creates a copy of the attribute dictionary where the style attribute is overwritten
-    /// by the combined and normalized style declarations.
+    ///     Creates a copy of the attribute dictionary where the style attribute is overwritten
+    ///     by the combined and normalized style declarations.
     /// </summary>
     /// <param name="additionalAttributes">Attributes, usually on a component</param>
     /// <param name="styles">CSS declaration list</param>
@@ -100,9 +100,9 @@ internal static class BsStyleAttributeUtilities
         // - Last declaration wins
         // - Make sure it is sorted for determinism reasons
         var styleMap = new SortedDictionary<string, string>(StringComparer.OrdinalIgnoreCase);
-        foreach (var declaration in allStyles.Split(';', StringSplitOptions.RemoveEmptyEntries))
+        foreach (var declaration in allStyles.Split(separator: ';', StringSplitOptions.RemoveEmptyEntries))
         {
-            var parts = declaration.Split(':', 2, StringSplitOptions.TrimEntries);
+            var parts = declaration.Split(separator: ':', count: 2, StringSplitOptions.TrimEntries);
             if (parts.Length != 2 || string.IsNullOrWhiteSpace(parts[0]))
             {
                 continue;
@@ -112,6 +112,6 @@ internal static class BsStyleAttributeUtilities
             styleMap[property] = parts[1];
         }
 
-        additionalAttributes["style"] = string.Join("; ", styleMap.Select(kvp => $"{kvp.Key}: {kvp.Value}"));
+        additionalAttributes["style"] = string.Join(separator: "; ", styleMap.Select(kvp => $"{kvp.Key}: {kvp.Value}"));
     }
 }

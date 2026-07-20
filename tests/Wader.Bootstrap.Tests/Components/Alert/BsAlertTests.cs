@@ -1,7 +1,7 @@
 using NSubstitute;
 using Wader.Bootstrap.Components.Alert;
 using Wader.Bootstrap.Components.Alert.Internals;
-using Wader.Bootstrap.Internals.Constants;
+using Wader.Bootstrap.Infrastructure.Constants;
 
 namespace Wader.Bootstrap.Tests.Components.Alert;
 
@@ -78,7 +78,7 @@ public class BsAlertTests() : BsComponentTests<BsAlert>("""<div class="alert {0}
         ConfigureTestContext();
 
         // Act
-        var cut = GetCut(parameters => parameters.Add(p => p.Dismissable, true));
+        var cut = GetCut(parameters => parameters.Add(p => p.Dismissable, value: true));
         await cut.InvokeAsync(cut.Instance.DismissAsync);
 
         // Assert

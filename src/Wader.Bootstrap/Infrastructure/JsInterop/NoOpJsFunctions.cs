@@ -1,7 +1,7 @@
 ﻿using System.Reflection;
 
 // Non-generic outer facade to satisfy CA1000
-namespace Wader.Bootstrap.Internals;
+namespace Wader.Bootstrap.Infrastructure.JsInterop;
 
 public static class NoOpJsFunctions
 {
@@ -40,7 +40,7 @@ public static class NoOpJsFunctions
                     .First(m => m is { Name: nameof(Task.FromResult), IsGenericMethod: true })
                     .MakeGenericMethod(t);
 
-                return taskFromResult.Invoke(null, [defaultValue]);
+                return taskFromResult.Invoke(obj: null, [defaultValue]);
             }
 
             // void or reference returns → null, value returns → default

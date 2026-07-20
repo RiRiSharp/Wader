@@ -2,7 +2,7 @@ using System.Globalization;
 using NSubstitute;
 using Wader.Bootstrap.Components.Carousel;
 using Wader.Bootstrap.Components.Carousel.Internals;
-using Wader.Bootstrap.Internals.Constants;
+using Wader.Bootstrap.Infrastructure.Constants;
 
 namespace Wader.Bootstrap.Tests.Components.Carousel;
 
@@ -11,6 +11,8 @@ public class BsCarouselIndicatorButtonTests()
 {
     private const int SLIDE_NO = 1;
 
+    private readonly IBsCarouselContext _carouselContextMock = Substitute.For<IBsCarouselContext>();
+
     protected override Dictionary<string, string> AttributesForDefaultTests =>
         new()
         {
@@ -18,8 +20,6 @@ public class BsCarouselIndicatorButtonTests()
             ["data-bs-slide-to"] = SLIDE_NO.ToString(CultureInfo.InvariantCulture),
             ["type"] = "button",
         };
-
-    private readonly IBsCarouselContext _carouselContextMock = Substitute.For<IBsCarouselContext>();
 
     protected override void BindParameters(
         ComponentParameterCollectionBuilder<BsCarouselIndicatorButton> parameterBuilder

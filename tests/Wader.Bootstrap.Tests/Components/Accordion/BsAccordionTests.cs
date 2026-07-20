@@ -1,7 +1,7 @@
 ﻿using NSubstitute;
 using Wader.Bootstrap.Components.Accordion;
 using Wader.Bootstrap.Components.Accordion.Internals;
-using Wader.Bootstrap.Internals.Constants;
+using Wader.Bootstrap.Infrastructure.Constants;
 
 namespace Wader.Bootstrap.Tests.Components.Accordion;
 
@@ -31,7 +31,7 @@ public class BsAccordionTests() : BsComponentTests<BsAccordion>("""<div class="a
         ConfigureTestContext();
 
         // Act
-        var cut = GetCut(parameters => parameters.Add(p => p.AlwaysOpen, true));
+        var cut = GetCut(parameters => parameters.Add(p => p.AlwaysOpen, value: true));
 
         // Assert
         Assert.True(cut.Instance.AccordionContext.AlwaysOpen);

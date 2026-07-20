@@ -5,7 +5,7 @@ namespace Wader.Bootstrap.Components.Placeholders;
 
 public partial class BsPlaceholder : BsChildContentComponent
 {
-    protected override string BsComponentClasses => $"placeholder {SizeClass}";
+    protected override string? BsComponentClasses => $"placeholder {SizeClass}";
 
     [Parameter]
     public BsPlaceholderSize Size { get; set; } = BsPlaceholderSize.Regular;

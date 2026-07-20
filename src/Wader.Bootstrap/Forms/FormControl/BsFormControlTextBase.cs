@@ -22,7 +22,7 @@ public abstract class BsFormControlTextBase<TValue> : BsInputBase<TValue>
     [Parameter]
     public bool ReadonlyPlaintext { get; set; }
 
-    protected override string BsComponentClasses => $"{FormControlClass} {SizeClass} {_additionalClasses}";
+    protected override string? BsComponentClasses => $"{FormControlClass} {SizeClass} {_additionalClasses}";
 
     private string? SizeClass => Size.ToBootstrapClass();
 

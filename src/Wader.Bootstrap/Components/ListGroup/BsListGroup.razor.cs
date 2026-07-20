@@ -5,7 +5,7 @@ namespace Wader.Bootstrap.Components.ListGroup;
 
 public partial class BsListGroup : BsChildContentComponent
 {
-    protected override string BsComponentClasses => $"list-group {TypeClass} {DirectionClass} {ModeClass}";
+    protected override string? BsComponentClasses => $"list-group {TypeClass} {DirectionClass} {ModeClass}";
 
     [Parameter]
     public BsListType Type { get; set; }

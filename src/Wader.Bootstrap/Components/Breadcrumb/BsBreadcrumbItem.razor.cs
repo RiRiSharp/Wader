@@ -5,7 +5,7 @@ namespace Wader.Bootstrap.Components.Breadcrumb;
 
 public partial class BsBreadcrumbItem : BsChildContentComponent
 {
-    protected override string BsComponentClasses => $"breadcrumb-item {ActiveClass}";
+    protected override string? BsComponentClasses => $"breadcrumb-item {ActiveClass}";
 
     [Parameter]
     public bool Active { get; set; }

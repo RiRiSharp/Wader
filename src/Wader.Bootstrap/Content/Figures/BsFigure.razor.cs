@@ -4,5 +4,5 @@ namespace Wader.Bootstrap.Content.Figures;
 
 public partial class BsFigure : BsChildContentComponent
 {
-    protected override string BsComponentClasses => "figure";
+    protected override string? BsComponentClasses => "figure";
 }

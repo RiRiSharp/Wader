@@ -1,5 +1,5 @@
 using Wader.Bootstrap.Components.Progress;
-using Wader.Bootstrap.Internals.Constants;
+using Wader.Bootstrap.Infrastructure.Constants;
 
 namespace Wader.Bootstrap.Tests.Components.Progress;
 

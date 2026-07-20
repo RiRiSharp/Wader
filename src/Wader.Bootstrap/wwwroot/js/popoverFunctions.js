@@ -39,6 +39,27 @@ export function updatePosition(hostElementRef) {
     }
 }
 
+export function enable(hostElementRef) {
+    const popover = bootstrap.Popover.getInstance(hostElementRef);
+    if (popover) {
+        popover.enable();
+    }
+}
+
+export function disable(hostElementRef) {
+    const popover = bootstrap.Popover.getInstance(hostElementRef);
+    if (popover) {
+        popover.disable();
+    }
+}
+
+export function toggleEnable(hostElementRef) {
+    const popover = bootstrap.Popover.getInstance(hostElementRef);
+    if (popover) {
+        popover.toggleEnable();
+    }
+}
+
 export function dispose(hostElementRef) {
     const popover = bootstrap.Popover.getInstance(hostElementRef);
     if (popover) {
@@ -52,8 +73,7 @@ function normalizeOptions(options) {
     normalized.container =
         options.containerRef ??
         options.containerString ??
-        'body' ??
-        false;
+        'body';
 
 
     normalized.content = normalized.contentRef

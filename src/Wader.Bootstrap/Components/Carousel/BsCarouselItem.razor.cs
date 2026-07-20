@@ -5,7 +5,7 @@ namespace Wader.Bootstrap.Components.Carousel;
 
 public sealed partial class BsCarouselItem : BsChildContentComponent
 {
-    protected override string BsComponentClasses => $"carousel-item {ActiveClass}";
+    protected override string? BsComponentClasses => $"carousel-item {ActiveClass}";
 
     [Parameter]
     public bool Active { get; set; }

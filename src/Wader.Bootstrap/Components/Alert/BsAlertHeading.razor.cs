@@ -5,7 +5,7 @@ namespace Wader.Bootstrap.Components.Alert;
 
 public partial class BsAlertHeading : BsChildContentComponent
 {
-    protected override string BsComponentClasses => "alert-heading";
+    protected override string? BsComponentClasses => "alert-heading";
 
     [Parameter]
     public int Heading { get; set; } = 4;

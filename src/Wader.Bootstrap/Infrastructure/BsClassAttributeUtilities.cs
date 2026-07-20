@@ -1,16 +1,19 @@
 using System.Globalization;
 
-namespace Wader.Bootstrap.Internals;
+namespace Wader.Bootstrap.Infrastructure;
 
 internal static class BsClassAttributeUtilities
 {
     /// <summary>
-    /// Combines the class attribute given in the attribute dictionary with the classnames provided.
+    ///     Combines the class attribute given in the attribute dictionary with the classnames provided.
     /// </summary>
     /// <typeparam name="TValue">Type of attributes</typeparam>
     /// <param name="additionalAttributes">The attribute dictionary</param>
     /// <param name="classNames">CSS classes to add</param>
-    /// <returns>A CSS class string containing the combination of the provided classnames and the classes present in the dictionary.</returns>
+    /// <returns>
+    ///     A CSS class string containing the combination of the provided classnames and the classes present in the
+    ///     dictionary.
+    /// </returns>
     internal static string CombineClassNames<TValue>(TValue? additionalAttributes, string classNames)
         where TValue : IEnumerable<KeyValuePair<string, object>>
     {
@@ -19,17 +22,17 @@ internal static class BsClassAttributeUtilities
     }
 
     /// <summary>
-    /// Combines the classnames with the class attribute in the dictionary, if present
+    ///     Combines the classnames with the class attribute in the dictionary, if present
     /// </summary>
     /// <remark>
-    /// Taken from Microsoft.AspNetCore.Components.Forms.AttributeUtilities, licensed under MIT license
+    ///     Taken from Microsoft.AspNetCore.Components.Forms.AttributeUtilities, licensed under MIT license
     /// </remark>
     /// <param name="additionalAttributes">Attributes, usually on a component</param>
     /// <param name="classNames">Space separated "list" of classes</param>
     /// <returns>A combination of the provided classNames and the class names present in the attributes dictionary</returns>
     private static string CombineClassNames(Dictionary<string, object>? additionalAttributes, string? classNames)
     {
-        if (additionalAttributes is null || !additionalAttributes.TryGetValue("class", out var @class))
+        if (additionalAttributes is null || !additionalAttributes.TryGetValue(key: "class", out var @class))
         {
             return classNames ?? "";
         }
@@ -45,7 +48,8 @@ internal static class BsClassAttributeUtilities
     }
 
     /// <summary>
-    /// Creates a copy of the attribute dictionary where the classes attribute is overwritten by the provided string class names.
+    ///     Creates a copy of the attribute dictionary where the classes attribute is overwritten by the provided string class
+    ///     names.
     /// </summary>
     /// <param name="additionalAttributes">The attribute dictionary to create a copy of.</param>
     /// <param name="classNames">The classes which will overwrite to the class attribute of the attribute dictionary</param>
@@ -66,7 +70,8 @@ internal static class BsClassAttributeUtilities
     }
 
     /// <summary>
-    /// Creates a copy of the attribute dictionary where the classes attribute is overwritten by the provided string class names.
+    ///     Creates a copy of the attribute dictionary where the classes attribute is overwritten by the provided string class
+    ///     names.
     /// </summary>
     /// <param name="additionalAttributes">The attribute dictionary to create a copy of.</param>
     /// <param name="classNames">The classes which will overwrite to the class attribute of the attribute dictionary</param>
@@ -86,7 +91,7 @@ internal static class BsClassAttributeUtilities
         additionalAttributes ??= [];
         var allClasses = CombineClassNames(additionalAttributes, classNames);
         // Make sure every class is only mentioned once, otherwise every parameterSet call will re-add some classes
-        var classSet = allClasses.Split(' ', StringSplitOptions.RemoveEmptyEntries).ToHashSet();
-        additionalAttributes["class"] = string.Join(" ", classSet);
+        var classSet = allClasses.Split(separator: ' ', StringSplitOptions.RemoveEmptyEntries).ToHashSet();
+        additionalAttributes["class"] = string.Join(separator: " ", classSet);
     }
 }

@@ -10,7 +10,7 @@ public partial class BsToast : BsChildContentComponent, IAsyncDisposable
     private bool _reinitialize;
 
     internal ElementReference HtmlRef;
-    protected override string BsComponentClasses => "toast";
+    protected override string? BsComponentClasses => "toast";
 
     [Inject]
     public IBsToastJsInterop BsToastJsInterop { get; set; } = null!;

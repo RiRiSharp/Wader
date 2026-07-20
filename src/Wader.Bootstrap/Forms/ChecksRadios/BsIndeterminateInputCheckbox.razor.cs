@@ -13,7 +13,7 @@ public partial class BsIndeterminateInputCheckbox : BsInputBase<bool?>
         _bsCheckboxJsInterop = bsCheckboxJsInterop;
     }
 
-    protected override string BsComponentClasses => "form-check-input";
+    protected override string? BsComponentClasses => "form-check-input";
 
     protected override async Task OnParametersSetAsync()
     {

@@ -1,5 +1,5 @@
 using Wader.Bootstrap.Components.Dropdown;
-using Wader.Bootstrap.Internals.Constants;
+using Wader.Bootstrap.Infrastructure.Constants;
 using Wader.Bootstrap.Primitives;
 
 namespace Wader.Bootstrap.Tests.Components.Dropdown;
