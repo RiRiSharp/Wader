@@ -1,6 +1,6 @@
 using System.Diagnostics.Contracts;
 using Microsoft.AspNetCore.Components;
-using Wader.Bootstrap.Infrastructure.Extensions;
+using Wader.Bootstrap.Infrastructure.JsInterop.Unions;
 
 namespace Wader.Bootstrap.Components.Popover.Internals;
 
@@ -13,28 +13,32 @@ internal static class PopoverJsOptionsMapper
         ElementReference? contentRef
     )
     {
-        var options = new PopoverJsOptions
+        HtmlStringOrElementRef content = "";
+        if (contentRef is not null)
         {
+            content = contentRef;
+        }
+
+        HtmlStringOrElementRef title = "";
+        if (titleRef is not null)
+        {
+            title = titleRef;
+        }
+
+        return new PopoverJsOptions
+        {
+            AllowList = popoverOptions.AllowList,
             Animation = popoverOptions.Animation,
             Boundary = popoverOptions.Boundary,
-            ContainerString = popoverOptions.ContainerString,
-            ContainerRef = popoverOptions.ContainerRef,
-            ContentRef = contentRef,
-            CustomClass = popoverOptions.CustomClass ?? "",
-            Delay = new PopoverDelayJsOptions { Hide = popoverOptions.HideDelay, Show = popoverOptions.ShowDelay },
+            Container = popoverOptions.Container,
+            Content = content,
+            CustomClass = popoverOptions.CustomClass,
+            Delay = popoverOptions.Delay,
             Html = true,
-            Placement = popoverOptions.Placement.ToPopperPlacementParameter(),
+            Placement = popoverOptions.Placement,
             Sanitize = false,
-            TitleRef = titleRef,
+            Title = title,
             Trigger = popoverOptions.Trigger.ToPopperTriggerString(),
         };
-
-        options.Offset.Add(popoverOptions.Distance);
-        options.Offset.Add(popoverOptions.Skidding);
-        options.FallbackPlacements.AddRange(
-            popoverOptions.FallbackPlacements.Select(f => f.ToPopperPlacementParameter())
-        );
-
-        return options;
     }
 }

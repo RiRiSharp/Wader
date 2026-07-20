@@ -30,8 +30,8 @@ public class PopoverJsOptionsMapperTests
 
         Assert.True(result.Animation);
         Assert.Equal("body", result.ContainerString);
-        Assert.Equal("my-class", result.CustomClass);
-        Assert.Equal(titleRef, result.TitleRef);
+        Assert.Equal(expected: "my-class", result.CustomClass);
+        Assert.Equal(titleRef, result.Title);
         Assert.Equal(contentRef, result.ContentRef);
     }
 
@@ -40,12 +40,12 @@ public class PopoverJsOptionsMapperTests
     {
         var input = new BsPopoverOptions();
 
-        var result = input.ToPopoverJsOptions(null, null);
+        var result = input.ToPopoverJsOptions(titleRef: null, contentRef: null);
 
         Assert.True(result.Html);
         Assert.False(result.Sanitize);
         Assert.NotNull(result.Delay);
-        Assert.Equal("", result.CustomClass);
+        Assert.Equal(expected: "", result.CustomClass);
     }
 
     [Fact]
@@ -53,11 +53,11 @@ public class PopoverJsOptionsMapperTests
     {
         var input = new BsPopoverOptions { HideDelay = 100, ShowDelay = 200 };
 
-        var result = input.ToPopoverJsOptions(null, null);
+        var result = input.ToPopoverJsOptions(titleRef: null, contentRef: null);
 
         Assert.NotNull(result.Delay);
-        Assert.Equal(100, result.Delay.Hide);
-        Assert.Equal(200, result.Delay.Show);
+        Assert.Equal(expected: 100, result.Delay.Hide);
+        Assert.Equal(expected: 200, result.Delay.Show);
     }
 
     [Fact]
@@ -65,11 +65,11 @@ public class PopoverJsOptionsMapperTests
     {
         var input = new BsPopoverOptions { Distance = 12, Skidding = 7 };
 
-        var result = input.ToPopoverJsOptions(null, null);
+        var result = input.ToPopoverJsOptions(titleRef: null, contentRef: null);
 
-        Assert.Equal(2, result.Offset.Count);
-        Assert.Equal(12, result.Offset[0]);
-        Assert.Equal(7, result.Offset[1]);
+        Assert.Equal(expected: 2, result.Offset.Count);
+        Assert.Equal(expected: 12, result.Offset[0]);
+        Assert.Equal(expected: 7, result.Offset[1]);
     }
 
     [Fact]
@@ -77,9 +77,9 @@ public class PopoverJsOptionsMapperTests
     {
         var input = new BsPopoverOptions { Distance = 10, Skidding = 5 };
 
-        _ = input.ToPopoverJsOptions(null, null);
+        _ = input.ToPopoverJsOptions(titleRef: null, contentRef: null);
 
-        Assert.Equal(10, input.Distance);
-        Assert.Equal(5, input.Skidding);
+        Assert.Equal(expected: 10, input.Distance);
+        Assert.Equal(expected: 5, input.Skidding);
     }
 }
