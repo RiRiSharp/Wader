@@ -3,7 +3,7 @@
 // Non-generic outer facade to satisfy CA1000
 namespace Wader.Bootstrap.Infrastructure.JsInterop;
 
-public static class NoOpJsFunctions
+internal static class NoOpJsFunctions
 {
     public static T Create<T>()
         where T : class

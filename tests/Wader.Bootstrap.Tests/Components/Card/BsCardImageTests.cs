@@ -1,4 +1,5 @@
 using Wader.Bootstrap.Components.Card;
+using Wader.Bootstrap.Tests.TestUtilities;
 
 namespace Wader.Bootstrap.Tests.Components.Card;
 
@@ -75,7 +76,7 @@ public class BsCardImageTests() : BsComponentTests<BsCardImage>("""<img class="{
         attributeDict["src"] = src;
 
         // Act
-        var cut = GetCut(parameters => parameters.AddUnmatched("src", unmatchedSrc).Add(p => p.Src, src));
+        var cut = GetCut(parameters => parameters.AddUnmatched(name: "src", unmatchedSrc).Add(p => p.Src, src));
 
         // Assert
         cut.MarkupMatches(GetExpectedHtml(ClassesForDefaultTests, attributeDict));
@@ -92,7 +93,7 @@ public class BsCardImageTests() : BsComponentTests<BsCardImage>("""<img class="{
         attributeDict["alt"] = alt;
 
         // Act
-        var cut = GetCut(parameters => parameters.AddUnmatched("alt", unmatchedAlt).Add(p => p.Alt, alt));
+        var cut = GetCut(parameters => parameters.AddUnmatched(name: "alt", unmatchedAlt).Add(p => p.Alt, alt));
 
         // Assert
         cut.MarkupMatches(GetExpectedHtml(ClassesForDefaultTests, attributeDict));

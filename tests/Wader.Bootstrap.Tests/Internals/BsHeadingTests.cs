@@ -1,4 +1,5 @@
 using Wader.Bootstrap.Infrastructure;
+using Wader.Bootstrap.Tests.TestUtilities;
 
 namespace Wader.Bootstrap.Tests.Internals;
 

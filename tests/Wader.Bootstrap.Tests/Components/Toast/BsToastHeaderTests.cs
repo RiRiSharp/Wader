@@ -1,4 +1,5 @@
 using Wader.Bootstrap.Components.Toasts;
+using Wader.Bootstrap.Tests.TestUtilities;
 
 namespace Wader.Bootstrap.Tests.Components.Toast;
 

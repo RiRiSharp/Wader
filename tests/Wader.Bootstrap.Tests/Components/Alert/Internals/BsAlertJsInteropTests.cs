@@ -3,6 +3,7 @@ using Microsoft.JSInterop;
 using NSubstitute;
 using Wader.Bootstrap.Components.Alert;
 using Wader.Bootstrap.Components.Alert.Internals;
+using Wader.Bootstrap.Tests.TestUtilities;
 
 namespace Wader.Bootstrap.Tests.Components.Alert.Internals;
 

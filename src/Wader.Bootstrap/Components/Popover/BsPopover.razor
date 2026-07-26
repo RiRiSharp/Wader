@@ -6,14 +6,14 @@
 @* These wrapper elements only exist to render the sent render fragments, without showing them to the user *@
 @if (BsPopoverTitle is not null)
 {
-    <div class="d-none" aria-hidden="true" @ref="_titleRef">
+    <div class="d-none" data-wd-remove-wrapper="true" aria-hidden="true" @ref="_titleRef">
         @(BsPopoverTitle)
     </div>
 }
 
 @if (BsPopoverContent is not null)
 {
-    <div class="d-none" aria-hidden="true" @ref="_contentRef">
+    <div class="d-none" data-wd-remove-wrapper="true" aria-hidden="true" @ref="_contentRef">
         @(BsPopoverContent)
     </div>
 }

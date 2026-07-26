@@ -1,4 +1,5 @@
 using Wader.Bootstrap.Layout.GridColumns;
+using Wader.Bootstrap.Tests.TestUtilities;
 
 namespace Wader.Bootstrap.Tests.Layout.GridColumns;
 
@@ -11,7 +12,7 @@ public class BsGridColumnTests() : BsComponentTests<BsGridColumn>("""<div class=
         var cut = GetCut(parameters => parameters.Add(p => p.GridOption, BsGridColumnOptions.GCol1));
 
         // Assert
-        cut.MarkupMatches(GetExpectedHtml("g-col-1", ""));
+        cut.MarkupMatches(GetExpectedHtml(classes: "g-col-1", attributes: ""));
     }
 
     [Fact]
@@ -23,7 +24,7 @@ public class BsGridColumnTests() : BsComponentTests<BsGridColumn>("""<div class=
         );
 
         // Assert
-        cut.MarkupMatches(GetExpectedHtml("g-col-sm-4 g-col-md-6", ""));
+        cut.MarkupMatches(GetExpectedHtml(classes: "g-col-sm-4 g-col-md-6", attributes: ""));
     }
 
     [Fact]
@@ -37,6 +38,6 @@ public class BsGridColumnTests() : BsComponentTests<BsGridColumn>("""<div class=
         );
 
         // Assert
-        cut.MarkupMatches(GetExpectedHtml("g-col-sm-4 g-col-md-6", ""));
+        cut.MarkupMatches(GetExpectedHtml(classes: "g-col-sm-4 g-col-md-6", attributes: ""));
     }
 }

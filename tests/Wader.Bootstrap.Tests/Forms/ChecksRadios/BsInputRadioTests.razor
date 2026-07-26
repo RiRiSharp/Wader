@@ -1,5 +1,5 @@
 ﻿@using Wader.Bootstrap.Forms.ChecksRadios
-@inherits BsComponentTests<Wader.Bootstrap.Forms.ChecksRadios.BsInputRadio<string>>
+@inherits Wader.Bootstrap.Tests.TestUtilities.BsComponentTests<Wader.Bootstrap.Forms.ChecksRadios.BsInputRadio<string>>
 
 @code{
     [Theory]
@@ -8,10 +8,12 @@
     public void ClickingRadioSetsCorrectValue(string idToClick, string expectedBoundValue)
     {
         // Arrange
-        var fragment = Render(@<BsInputRadioGroup @bind-Value="_boundValue">
-            <BsInputRadio Value="SOME_VALUE_VAR" id="someValueId"/>
-            <BsInputRadio Value="DIFFERENT_VALUE_VAR" id="differentValueId"/>
-            </BsInputRadioGroup>);
+        var fragment = Render(
+            @<BsInputRadioGroup @bind-Value="_boundValue">
+                <BsInputRadio Value="SOME_VALUE_VAR" id="someValueId"/>
+                <BsInputRadio Value="DIFFERENT_VALUE_VAR" id="differentValueId"/>
+            </BsInputRadioGroup>
+        );
 
         // Act
         var cut = fragment.Find($"#{idToClick}");

@@ -1,4 +1,5 @@
 using Wader.Bootstrap.Layout.Columns;
+using Wader.Bootstrap.Tests.TestUtilities;
 
 namespace Wader.Bootstrap.Tests.Layout.Columns;
 
@@ -45,7 +46,7 @@ public class BsColumnTests() : BsComponentTests<BsColumn>("""<div class="{0}" {1
     {
         var cut = GetCut(parameters => parameters.Add(p => p.OffsetOption, BsColumnOptions.Col1));
 
-        cut.MarkupMatches(GetExpectedHtml($"{ClassesForDefaultTests} offset-1", ""));
+        cut.MarkupMatches(GetExpectedHtml($"{ClassesForDefaultTests} offset-1", attributes: ""));
     }
 
     [Fact]
@@ -55,7 +56,7 @@ public class BsColumnTests() : BsComponentTests<BsColumn>("""<div class="{0}" {1
             parameters.Add(p => p.OffsetOptionsList, [BsColumnOptions.ColSm4, BsColumnOptions.ColMd6])
         );
 
-        cut.MarkupMatches(GetExpectedHtml($"{ClassesForDefaultTests} offset-sm-4 offset-md-6", ""));
+        cut.MarkupMatches(GetExpectedHtml($"{ClassesForDefaultTests} offset-sm-4 offset-md-6", attributes: ""));
     }
 
     [Fact]
@@ -67,6 +68,6 @@ public class BsColumnTests() : BsComponentTests<BsColumn>("""<div class="{0}" {1
                 .Add(p => p.OffsetOptionsList, [BsColumnOptions.ColSm4, BsColumnOptions.ColMd6])
         );
 
-        cut.MarkupMatches(GetExpectedHtml($"{ClassesForDefaultTests} offset-sm-4 offset-md-6", ""));
+        cut.MarkupMatches(GetExpectedHtml($"{ClassesForDefaultTests} offset-sm-4 offset-md-6", attributes: ""));
     }
 }

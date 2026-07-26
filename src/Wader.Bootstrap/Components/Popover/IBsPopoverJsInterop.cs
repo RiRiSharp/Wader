@@ -5,7 +5,7 @@ namespace Wader.Bootstrap.Components.Popover.Internals;
 
 public interface IBsPopoverJsInterop : IBsJsDisposable
 {
-    Task CreateOrUpdateAsync(ElementReference hostElementRef, PopoverJsOptions popoverOptions);
+    Task CreateOrUpdateAsync(ElementReference hostElementRef, BsPopoverJsOptions bsPopoverJsOptions);
     Task ToggleAsync(ElementReference hostElementRef);
     Task ShowAsync(ElementReference hostElementRef);
     Task HideAsync(ElementReference hostElementRef);

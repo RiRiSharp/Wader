@@ -2,6 +2,7 @@ using NSubstitute;
 using Wader.Bootstrap.Components.Alert;
 using Wader.Bootstrap.Components.Alert.Internals;
 using Wader.Bootstrap.Infrastructure.Constants;
+using Wader.Bootstrap.Tests.TestUtilities;
 
 namespace Wader.Bootstrap.Tests.Components.Alert;
 

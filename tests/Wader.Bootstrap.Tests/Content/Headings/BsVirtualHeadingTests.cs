@@ -1,4 +1,5 @@
 using Wader.Bootstrap.Content.Headings;
+using Wader.Bootstrap.Tests.TestUtilities;
 
 namespace Wader.Bootstrap.Tests.Content.Headings;
 

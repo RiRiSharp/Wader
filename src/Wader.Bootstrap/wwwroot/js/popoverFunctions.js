@@ -1,7 +1,7 @@
-﻿export function createOrUpdate(hostElementRef, options) {
-    if (!hostElementRef || !options) return;
+﻿export function createOrUpdate(hostElementRef, jsonOptions) {
+    if (!hostElementRef || !jsonOptions) return;
 
-    const normalizedOptions = normalizeOptions(options);
+    const normalizedOptions = normalizeOptions(jsonOptions);
 
     const existing = bootstrap.Popover.getInstance(hostElementRef);
     if (existing) {
@@ -68,23 +68,17 @@ export function dispose(hostElementRef) {
 }
 
 function normalizeOptions(options) {
-    const normalized = {...options};
+    const normalized = Object.fromEntries(
+        Object.entries(options)
+            .filter(([, value]) => value !== null && value !== undefined));
 
-    normalized.container =
-        options.containerRef ??
-        options.containerString ??
-        'body';
+    if (options.content?.dataset?.wdRemoveWrapper === "true") {
+        normalized.content = normalized.content.innerHTML;
+    }
 
-
-    normalized.content = normalized.contentRef
-        ? normalized.contentRef.innerHTML
-        : '';
-
-    normalized.title = normalized.titleRef
-        ? normalized.titleRef.innerHTML
-        : '';
-
-    normalized.boundary ??= 'clippingParents';
+    if (options.title?.dataset?.wdRemoveWrapper === "true") {
+        normalized.title = normalized.title.innerHTML;
+    }
 
     return normalized;
 }

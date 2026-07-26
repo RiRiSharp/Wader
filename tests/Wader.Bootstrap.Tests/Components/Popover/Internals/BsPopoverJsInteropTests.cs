@@ -1,7 +1,9 @@
 using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
 using NSubstitute;
+using Wader.Bootstrap.Components.Popover;
 using Wader.Bootstrap.Components.Popover.Internals;
+using Wader.Bootstrap.Tests.TestUtilities;
 
 namespace Wader.Bootstrap.Tests.Components.Popover.Internals;
 
@@ -14,18 +16,19 @@ public class BsPopoverJsInteropTests
         var jsObj = Substitute.For<IJSObjectReference>();
         await using var sut = new BsPopoverJsInterop(jsObj);
         var hostElementRef = new ElementReference("hostElement");
-        var options = new PopoverJsOptions
+        var options = new BsPopoverJsOptions
         {
             CustomClass = "",
-            Placement = "top",
-            Trigger = "click",
+            Placement = BsPopoverPlacement.Top,
+            Trigger = BsPopoverTrigger.Click,
         };
+        var serializedOptions = options.ToSerializedOptions();
 
         // Act
         await sut.CreateOrUpdateAsync(hostElementRef, options);
 
         // Assert
-        AssertJsInterop.Calls(jsObj, BsPopoverJsInterop.CREATE_OR_UPDATE, hostElementRef, options);
+        AssertJsInterop.Calls(jsObj, BsPopoverJsInterop.CREATE_OR_UPDATE, hostElementRef, serializedOptions);
     }
 
     [Fact]

@@ -1,6 +1,7 @@
 using NSubstitute;
 using Wader.Bootstrap.Components.Popover;
 using Wader.Bootstrap.Components.Popover.Internals;
+using Wader.Bootstrap.Tests.TestUtilities;
 
 namespace Wader.Bootstrap.Tests.Components.Popover;
 
@@ -21,7 +22,7 @@ public partial class BsPopoverTests() : BsComponentTests<BsPopover>("""<div clas
         // Assert
         await _popoverJsInteropMock
             .Received(1)
-            .CreateOrUpdateAsync(cut.Instance.HostElementRef, Arg.Any<PopoverJsOptions>());
+            .CreateOrUpdateAsync(cut.Instance.HostElementRef, Arg.Any<BsPopoverJsOptions>());
     }
 
     [Fact]

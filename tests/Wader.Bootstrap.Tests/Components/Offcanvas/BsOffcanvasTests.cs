@@ -2,6 +2,7 @@ using NSubstitute;
 using Wader.Bootstrap.Components.Offcanvas;
 using Wader.Bootstrap.Components.Offcanvas.Internals;
 using Wader.Bootstrap.Primitives;
+using Wader.Bootstrap.Tests.TestUtilities;
 
 namespace Wader.Bootstrap.Tests.Components.Offcanvas;
 

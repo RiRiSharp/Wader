@@ -1,4 +1,5 @@
 using Wader.Bootstrap.Forms.ChecksRadios;
+using Wader.Bootstrap.Tests.TestUtilities;
 
 namespace Wader.Bootstrap.Tests.Forms.ChecksRadios;
 
@@ -16,6 +17,6 @@ public class BsFormCheckTests() : BsComponentTests<BsFormCheck>("""<div class="f
         // Act
         var cut = GetCut(parameters => parameters.Add(p => p.FormCheckOptions, formCheckOptions));
         // Assert
-        cut.MarkupMatches(GetExpectedHtml(expected, ""));
+        cut.MarkupMatches(GetExpectedHtml(expected, attributes: ""));
     }
 }

@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Components;
 using Wader.Bootstrap.Components.Popover;
+using Wader.Bootstrap.Infrastructure.JsInterop.Unions;
 
 namespace Wader.Bootstrap.Components.Tooltips;
 
@@ -28,5 +29,5 @@ public class BsTooltipOptions
     public int Skidding { get; set; } = 8;
     public int Distance { get; set; }
     public BsPopoverPlacement Placement { get; set; } = BsPopoverPlacement.Top;
-    public BsPopoverTrigger Trigger { get; set; } = BsPopoverTrigger.Hover | BsPopoverTrigger.Focus;
+    public OneOrMore<BsPopoverTrigger> Trigger { get; set; } = [BsPopoverTrigger.Hover, BsPopoverTrigger.Focus];
 }

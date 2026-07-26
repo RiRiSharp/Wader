@@ -11,16 +11,10 @@ public class BsEditContextBuilderTests
         var obj = new TestObject();
 
         // Act
-        try
-        {
-            _ = BsEditContextBuilder.Build(obj);
-        }
-        catch (Exception ex)
-        {
-            // Assert
-            Assert.Fail($"Exception of type {ex.GetType()} occured with message {ex.Message}");
-            throw;
-        }
+        var exception = Record.Exception(() => BsEditContextBuilder.Build(obj));
+
+        // Assert
+        Assert.Null(exception);
     }
 
     [Fact]

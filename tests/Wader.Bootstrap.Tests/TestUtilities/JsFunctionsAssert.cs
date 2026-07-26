@@ -1,7 +1,7 @@
 using Microsoft.JSInterop;
 using NSubstitute;
 
-namespace Wader.Bootstrap.Tests;
+namespace Wader.Bootstrap.Tests.TestUtilities;
 
 public static class AssertJsInterop
 {
@@ -12,7 +12,7 @@ public static class AssertJsInterop
 
         var call = calls.Single();
         Assert.Equal(expectedIdentifier, call.GetArguments()[0]);
-        Assert.Equal(expectedArgs, (IEnumerable<object>)call.GetArguments()[1]!);
+        Assert.Equivalent(expectedArgs, (IEnumerable<object>)call.GetArguments()[1]!);
     }
 
     public static async Task Dispose_CallsJsDisposeAsync(IAsyncDisposable sut, IJSObjectReference jsObj)

@@ -1,6 +1,7 @@
 ﻿@page "/"
 @using Wader.Bootstrap.Components.Buttons
 @using Wader.Bootstrap.Components.CloseButton
+@using Wader.Bootstrap.Components.Popover
 @using Wader.Bootstrap.Components.Scrollspy
 @using Wader.Bootstrap.Components.Toasts
 @using Wader.Bootstrap.Layout.Columns
@@ -97,11 +98,20 @@ Hello world!
     </BsToast>
 </BsToastContainer>
 
+<BsPopover @ref="_popover">
+    <ChildContent>
+        <h3>Some content needing popover</h3>
+    </ChildContent>
+    <BsPopoverContent>Hello <b>World!</b></BsPopoverContent>
+</BsPopover>
+<BsButton @onclick="() => _popover!.ShowAsync()">Click</BsButton>
+
 @code {
     private ElementReference _targetReference;
     private BsColumn? _columnHost;
     private BsToast? _toastRef;
     private BsToast? _toastRef2;
+    private BsPopover? _popover;
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {

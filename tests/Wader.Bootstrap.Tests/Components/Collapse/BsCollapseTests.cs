@@ -1,6 +1,7 @@
 using NSubstitute;
 using Wader.Bootstrap.Components.Collapse;
 using Wader.Bootstrap.Components.Collapse.Internals;
+using Wader.Bootstrap.Tests.TestUtilities;
 
 namespace Wader.Bootstrap.Tests.Components.Collapse;
 

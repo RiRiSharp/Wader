@@ -1,5 +1,5 @@
 @using Wader.Bootstrap.Components.Popover
-@inherits BsComponentTests<Wader.Bootstrap.Components.Popover.BsPopover>
+@inherits Wader.Bootstrap.Tests.TestUtilities.BsComponentTests<Wader.Bootstrap.Components.Popover.BsPopover>
 
 @code
 {
@@ -40,18 +40,22 @@
         RenderFragment titleFragment = @<div>This is a cool title</div>;
 
         // Act
-        var fragment = Render(@<BsPopover>
-                                  <BsPopoverTitle>
-                                      @titleFragment
-                                  </BsPopoverTitle>
-                              </BsPopover>);
+        var fragment = Render(
+            @<BsPopover>
+                <BsPopoverTitle>
+                    @titleFragment
+                </BsPopoverTitle>
+            </BsPopover>
+        );
         var wrappers = fragment.FindAll("div.d-none[aria-hidden='true']");
 
         // Assert
         Assert.Single(wrappers);
         var titleWrapper = wrappers[0];
 
-        titleWrapper.MarkupMatches(@<div class="d-none" aria-hidden="true">@titleFragment</div>);
+        titleWrapper.MarkupMatches(
+            @<div class="d-none" data-wd-remove-wrapper="true" aria-hidden="true">@titleFragment</div>
+        );
     }
 
     [Fact]
@@ -62,17 +66,21 @@
         RenderFragment bodyFragment = @<div>This is an epic body</div>;
 
         // Act
-        var fragment = Render(@<BsPopover>
-                                  <BsPopoverContent>
-                                      @bodyFragment
-                                  </BsPopoverContent>
-                              </BsPopover>);
+        var fragment = Render(
+            @<BsPopover>
+                <BsPopoverContent>
+                    @bodyFragment
+                </BsPopoverContent>
+            </BsPopover>
+        );
         var wrappers = fragment.FindAll("div.d-none[aria-hidden='true']");
 
         // Assert
         Assert.Single(wrappers);
 
         var bodyWrapper = wrappers[0];
-        bodyWrapper.MarkupMatches(@<div class="d-none" aria-hidden="true">@bodyFragment</div>);
+        bodyWrapper.MarkupMatches(
+            @<div class="d-none" data-wd-remove-wrapper="true" aria-hidden="true">@bodyFragment</div>
+        );
     }
 }

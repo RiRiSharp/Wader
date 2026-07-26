@@ -3,6 +3,7 @@ using NSubstitute;
 using Wader.Bootstrap.Components.Accordion;
 using Wader.Bootstrap.Components.Accordion.Internals;
 using Wader.Bootstrap.Infrastructure.Constants;
+using Wader.Bootstrap.Tests.TestUtilities;
 
 namespace Wader.Bootstrap.Tests.Components.Accordion;
 

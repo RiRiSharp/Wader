@@ -30,9 +30,10 @@ internal sealed class BsPopoverJsInterop : IBsPopoverJsInterop, IBsJsFunctionsWr
 
     public static string JsFileName => "popoverFunctions.js";
 
-    public async Task CreateOrUpdateAsync(ElementReference hostElementRef, PopoverJsOptions popoverOptions)
+    public async Task CreateOrUpdateAsync(ElementReference hostElementRef, BsPopoverJsOptions bsPopoverJsOptions)
     {
-        await _bsJsObjectRef.InvokeVoidAsync(CREATE_OR_UPDATE, hostElementRef, popoverOptions);
+        var serializedOptions = bsPopoverJsOptions.ToSerializedOptions();
+        await _bsJsObjectRef.InvokeVoidAsync(CREATE_OR_UPDATE, hostElementRef, serializedOptions);
     }
 
     public async Task ToggleAsync(ElementReference hostElementRef)

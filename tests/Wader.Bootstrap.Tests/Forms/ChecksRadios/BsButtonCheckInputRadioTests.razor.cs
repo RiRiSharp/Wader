@@ -1,4 +1,5 @@
 using Wader.Bootstrap.Forms.ChecksRadios;
+using Wader.Bootstrap.Tests.TestUtilities;
 
 namespace Wader.Bootstrap.Tests.Forms.ChecksRadios;
 
@@ -30,7 +31,7 @@ public partial class BsButtonCheckInputRadioTests : BsComponentTests<BsButtonChe
 
         // Assert
 
-        var expectedMarkupString = GetExpectedHtml("", attributeDict);
+        var expectedMarkupString = GetExpectedHtml(classes: "", attributeDict);
         cut.MarkupMatches(expectedMarkupString);
     }
 

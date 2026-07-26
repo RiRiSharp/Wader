@@ -1,4 +1,5 @@
 using Wader.Bootstrap.Content.Abbreviations;
+using Wader.Bootstrap.Tests.TestUtilities;
 
 namespace Wader.Bootstrap.Tests.Content.Abbreviations;
 
@@ -11,10 +12,10 @@ public class BsAbbreviationTests() : BsComponentTests<BsAbbreviation>("""<abbr c
         ConfigureTestContext();
 
         // Act
-        var cut = GetCut(parameters => parameters.Add(p => p.FullName, null));
+        var cut = GetCut(parameters => parameters.Add(p => p.FullName, value: null));
 
         // Assert
-        cut.MarkupMatches(GetExpectedHtml("", ""));
+        cut.MarkupMatches(GetExpectedHtml(classes: "", attributes: ""));
     }
 
     [Theory]
@@ -33,7 +34,7 @@ public class BsAbbreviationTests() : BsComponentTests<BsAbbreviation>("""<abbr c
         var cut = GetCut(parameters => parameters.Add(p => p.FullName, fullName));
 
         // Assert
-        cut.MarkupMatches(GetExpectedHtml("", attributeDict));
+        cut.MarkupMatches(GetExpectedHtml(classes: "", attributeDict));
     }
 
     [Fact]

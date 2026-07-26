@@ -1,5 +1,6 @@
 using Wader.Bootstrap.Forms;
 using Wader.Bootstrap.Forms.FormControl;
+using Wader.Bootstrap.Tests.TestUtilities;
 
 namespace Wader.Bootstrap.Tests.Forms.FormControl;
 
@@ -21,7 +22,7 @@ public class BsInputTextAreaTests()
         var cut = GetCut(parameters => parameters.Add(p => p.Size, formSize));
 
         // Assert
-        cut.MarkupMatches(GetExpectedHtml($"{expected} {ClassesForDefaultTests}", "value=\"\""));
+        cut.MarkupMatches(GetExpectedHtml($"{expected} {ClassesForDefaultTests}", attributes: "value=\"\""));
     }
 
     [Fact]
@@ -31,9 +32,9 @@ public class BsInputTextAreaTests()
         Value = "";
 
         // Act
-        var cut = GetCut(parameters => parameters.Add(p => p.ReadonlyPlaintext, true));
+        var cut = GetCut(parameters => parameters.Add(p => p.ReadonlyPlaintext, value: true));
 
         // Assert
-        cut.MarkupMatches(GetExpectedHtml("form-control-plaintext", "value=\"\" readonly=\"\""));
+        cut.MarkupMatches(GetExpectedHtml(classes: "form-control-plaintext", attributes: "value=\"\" readonly=\"\""));
     }
 }

@@ -1,4 +1,5 @@
 using Wader.Bootstrap.Content.Images;
+using Wader.Bootstrap.Tests.TestUtilities;
 
 namespace Wader.Bootstrap.Tests.Content.Images;
 
@@ -11,10 +12,10 @@ public class BsImageTests() : BsComponentTests<BsImage>("""<img class=" {0}" {1}
         ConfigureTestContext();
 
         // Act
-        var cut = GetCut(parameters => parameters.Add(p => p.Src, null));
+        var cut = GetCut(parameters => parameters.Add(p => p.Src, value: null));
 
         // Assert
-        cut.MarkupMatches(GetExpectedHtml("", ""));
+        cut.MarkupMatches(GetExpectedHtml(classes: "", attributes: ""));
     }
 
     [Theory]
@@ -34,7 +35,7 @@ public class BsImageTests() : BsComponentTests<BsImage>("""<img class=" {0}" {1}
         var cut = GetCut(parameters => parameters.Add(p => p.Src, src));
 
         // Assert
-        cut.MarkupMatches(GetExpectedHtml("", attributeDict));
+        cut.MarkupMatches(GetExpectedHtml(classes: "", attributeDict));
     }
 
     [Theory]
@@ -54,7 +55,7 @@ public class BsImageTests() : BsComponentTests<BsImage>("""<img class=" {0}" {1}
         var cut = GetCut(parameters => parameters.Add(p => p.Alt, alt));
 
         // Assert
-        cut.MarkupMatches(GetExpectedHtml("", attributeDict));
+        cut.MarkupMatches(GetExpectedHtml(classes: "", attributeDict));
     }
 
     [Fact]
@@ -68,7 +69,7 @@ public class BsImageTests() : BsComponentTests<BsImage>("""<img class=" {0}" {1}
         attributeDict["src"] = src;
 
         // Act
-        var cut = GetCut(parameters => parameters.AddUnmatched("src", unmatchedSrc).Add(p => p.Src, src));
+        var cut = GetCut(parameters => parameters.AddUnmatched(name: "src", unmatchedSrc).Add(p => p.Src, src));
 
         // Assert
         cut.MarkupMatches(GetExpectedHtml(ClassesForDefaultTests, attributeDict));
@@ -85,7 +86,7 @@ public class BsImageTests() : BsComponentTests<BsImage>("""<img class=" {0}" {1}
         attributeDict["alt"] = alt;
 
         // Act
-        var cut = GetCut(parameters => parameters.AddUnmatched("alt", unmatchedAlt).Add(p => p.Alt, alt));
+        var cut = GetCut(parameters => parameters.AddUnmatched(name: "alt", unmatchedAlt).Add(p => p.Alt, alt));
 
         // Assert
         cut.MarkupMatches(GetExpectedHtml(ClassesForDefaultTests, attributeDict));

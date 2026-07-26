@@ -1,4 +1,5 @@
 using Wader.Bootstrap.Content.Blockquotes;
+using Wader.Bootstrap.Tests.TestUtilities;
 
 namespace Wader.Bootstrap.Tests.Content.Blockquotes;
 

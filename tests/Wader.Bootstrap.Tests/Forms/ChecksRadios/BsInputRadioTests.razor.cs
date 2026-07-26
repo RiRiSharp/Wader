@@ -1,17 +1,18 @@
 using Wader.Bootstrap.Forms.ChecksRadios;
+using Wader.Bootstrap.Tests.TestUtilities;
 
 namespace Wader.Bootstrap.Tests.Forms.ChecksRadios;
 
 public partial class BsInputRadioTests : BsComponentTests<BsInputRadio<string>>
 {
-    private string? _boundValue = "";
     private const string SOME_VALUE_VAR = "someValue";
     private const string DIFFERENT_VALUE_VAR = "differentValue";
-
-    protected override Dictionary<string, string> AttributesForDefaultTests => new() { ["type"] = "radio" };
+    private string? _boundValue = "";
 
     public BsInputRadioTests()
         : base($$"""<input class="form-check-input {0}" name="{{nameof(_boundValue)}}" {1}>""") { }
+
+    protected override Dictionary<string, string> AttributesForDefaultTests => new() { ["type"] = "radio" };
 
     [Fact]
     public void MatchingValuesChecksTheRadio()
@@ -28,7 +29,7 @@ public partial class BsInputRadioTests : BsComponentTests<BsInputRadio<string>>
         var cut = GetCut(parameters => parameters.Add(p => p.Value, SOME_VALUE_VAR));
 
         // Assert
-        var expectedMarkupString = GetExpectedHtml("", attributeDict);
+        var expectedMarkupString = GetExpectedHtml(classes: "", attributeDict);
         cut.MarkupMatches(expectedMarkupString);
     }
 

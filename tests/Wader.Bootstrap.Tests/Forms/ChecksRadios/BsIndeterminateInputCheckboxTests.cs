@@ -1,6 +1,7 @@
 using NSubstitute;
 using Wader.Bootstrap.Forms.ChecksRadios;
 using Wader.Bootstrap.Forms.ChecksRadios.Internals;
+using Wader.Bootstrap.Tests.TestUtilities;
 
 namespace Wader.Bootstrap.Tests.Forms.ChecksRadios;
 
@@ -50,7 +51,7 @@ public class BsIndeterminateInputCheckboxTests()
         inputElement.Change(afterValue);
 
         // Assert
-        cut.MarkupMatches(GetExpectedHtml("", attributeDict));
+        cut.MarkupMatches(GetExpectedHtml(classes: "", attributeDict));
     }
 
     [Fact]

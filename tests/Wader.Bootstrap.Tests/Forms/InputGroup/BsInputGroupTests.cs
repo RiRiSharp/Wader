@@ -1,4 +1,5 @@
 using Wader.Bootstrap.Forms.InputGroup;
+using Wader.Bootstrap.Tests.TestUtilities;
 
 namespace Wader.Bootstrap.Tests.Forms.InputGroup;
 
@@ -15,6 +16,6 @@ public class BsInputGroupTests()
         var cut = GetCut(parameters => parameters.Add(p => p.Size, formSize));
 
         // Assert
-        cut.MarkupMatches(GetExpectedHtml(expected, ""));
+        cut.MarkupMatches(GetExpectedHtml(expected, attributes: ""));
     }
 }

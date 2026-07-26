@@ -1,4 +1,5 @@
 using Wader.Bootstrap.Components.Pagination;
+using Wader.Bootstrap.Tests.TestUtilities;
 
 namespace Wader.Bootstrap.Tests.Components.Pagination;
 

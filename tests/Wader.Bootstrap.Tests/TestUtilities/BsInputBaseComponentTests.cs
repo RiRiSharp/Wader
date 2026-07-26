@@ -2,7 +2,7 @@ using System.Diagnostics.CodeAnalysis;
 using Microsoft.AspNetCore.Components.Forms;
 using Wader.Bootstrap.BaseComponents;
 
-namespace Wader.Bootstrap.Tests;
+namespace Wader.Bootstrap.Tests.TestUtilities;
 
 public abstract class BsInputBaseComponentTests<TComponent, TValue>([StringSyntax("Html")] string htmlFormat)
     : BsComponentTests<TComponent>(htmlFormat)

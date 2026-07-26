@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
-using Wader.Bootstrap.Components.Popover.Internals;
+using Wader.Bootstrap.Components.Popover;
 using Wader.Bootstrap.Infrastructure.JsInterop;
 
 namespace Wader.Bootstrap.Components.Tooltips.Internals;
@@ -31,9 +31,9 @@ internal sealed class BsTooltipJsInterop : IBsTooltipJsInterop, IBsJsFunctionsWr
 
     public static string JsFileName => "tooltipFunctions.js";
 
-    public async Task CreateOrUpdateAsync(ElementReference hostElementRef, PopoverJsOptions popoverOptions)
+    public async Task CreateOrUpdateAsync(ElementReference hostElementRef, BsPopoverJsOptions bsPopoverJsOptions)
     {
-        await _bsJsObjectRef.InvokeVoidAsync(CREATE_OR_UPDATE, hostElementRef, popoverOptions);
+        await _bsJsObjectRef.InvokeVoidAsync(CREATE_OR_UPDATE, hostElementRef, bsPopoverJsOptions);
     }
 
     public async Task ToggleAsync(ElementReference hostElementRef)

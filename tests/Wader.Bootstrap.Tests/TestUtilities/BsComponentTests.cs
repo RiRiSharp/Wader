@@ -5,7 +5,7 @@ using Bunit.Rendering;
 using Microsoft.AspNetCore.Components;
 using Wader.Bootstrap.BaseComponents;
 
-namespace Wader.Bootstrap.Tests;
+namespace Wader.Bootstrap.Tests.TestUtilities;
 
 public abstract class BsComponentTests<TComponent>([StringSyntax("Html")] string htmlFormat) : BunitContext
     where TComponent : ComponentBase, IBsComponent
@@ -40,7 +40,7 @@ public abstract class BsComponentTests<TComponent>([StringSyntax("Html")] string
         classes += " " + ClassesForDefaultTests;
 
         // Act
-        var cut = GetCut(parameters => parameters.AddUnmatched("class", classes));
+        var cut = GetCut(parameters => parameters.AddUnmatched(name: "class", classes));
 
         // Assert
         var expectedMarkupString = GetExpectedHtml(classes, AttributesForDefaultTests);

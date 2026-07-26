@@ -7,7 +7,7 @@ namespace Wader.Bootstrap.Components.Popover.Internals;
 internal static class PopoverJsOptionsMapper
 {
     [Pure]
-    internal static PopoverJsOptions ToPopoverJsOptions(
+    internal static BsPopoverJsOptions ToPopoverJsOptions(
         this BsPopoverOptions popoverOptions,
         ElementReference? titleRef,
         ElementReference? contentRef
@@ -25,7 +25,7 @@ internal static class PopoverJsOptionsMapper
             title = titleRef;
         }
 
-        return new PopoverJsOptions
+        return new BsPopoverJsOptions
         {
             AllowList = popoverOptions.AllowList,
             Animation = popoverOptions.Animation,
@@ -34,11 +34,15 @@ internal static class PopoverJsOptionsMapper
             Content = content,
             CustomClass = popoverOptions.CustomClass,
             Delay = popoverOptions.Delay,
+            FallbackPlacements = popoverOptions.FallbackPlacements,
             Html = true,
+            Offset = popoverOptions.Offset,
             Placement = popoverOptions.Placement,
+            PopperConfig = popoverOptions.PopperConfig,
             Sanitize = false,
+            Selector = popoverOptions.Selector,
             Title = title,
-            Trigger = popoverOptions.Trigger.ToPopperTriggerString(),
+            Trigger = popoverOptions.Trigger,
         };
     }
 }

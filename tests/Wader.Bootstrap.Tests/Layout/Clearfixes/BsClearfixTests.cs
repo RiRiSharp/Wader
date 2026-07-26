@@ -1,4 +1,5 @@
 using Wader.Bootstrap.Layout.Clearfixes;
+using Wader.Bootstrap.Tests.TestUtilities;
 
 namespace Wader.Bootstrap.Tests.Layout.Clearfixes;
 

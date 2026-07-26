@@ -2,6 +2,7 @@
 using Microsoft.JSInterop;
 using NSubstitute;
 using Wader.Bootstrap.Components.Toasts.Internals;
+using Wader.Bootstrap.Tests.TestUtilities;
 
 namespace Wader.Bootstrap.Tests.Components.Toast.Internals;
 

@@ -1,4 +1,5 @@
 using Wader.Bootstrap.Content.Tables;
+using Wader.Bootstrap.Tests.TestUtilities;
 
 namespace Wader.Bootstrap.Tests.Content.Tables;
 
@@ -16,6 +17,6 @@ public class BsTableBodyTests() : BsComponentTests<BsTableBody>("""<tbody class=
         var cut = GetCut(parameters => parameters.Add(p => p.TableGroupDivider, hasDivider));
 
         // Assert
-        cut.MarkupMatches(GetExpectedHtml(expectedClass, ""));
+        cut.MarkupMatches(GetExpectedHtml(expectedClass, attributes: ""));
     }
 }

@@ -1,4 +1,5 @@
 using Wader.Bootstrap.Content.TextDecorations;
+using Wader.Bootstrap.Tests.TestUtilities;
 
 namespace Wader.Bootstrap.Tests.Content.TextDecorations;
 

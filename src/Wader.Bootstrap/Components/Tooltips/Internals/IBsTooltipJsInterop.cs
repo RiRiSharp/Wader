@@ -1,12 +1,12 @@
 using Microsoft.AspNetCore.Components;
-using Wader.Bootstrap.Components.Popover.Internals;
+using Wader.Bootstrap.Components.Popover;
 using Wader.Bootstrap.Infrastructure.JsInterop;
 
 namespace Wader.Bootstrap.Components.Tooltips.Internals;
 
 public interface IBsTooltipJsInterop : IBsJsDisposable
 {
-    Task CreateOrUpdateAsync(ElementReference hostElementRef, PopoverJsOptions popoverOptions);
+    Task CreateOrUpdateAsync(ElementReference hostElementRef, BsPopoverJsOptions bsPopoverJsOptions);
     Task ToggleAsync(ElementReference hostElementRef);
     Task ShowAsync(ElementReference hostElementRef);
     Task HideAsync(ElementReference hostElementRef);

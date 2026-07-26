@@ -1,5 +1,6 @@
 using Wader.Bootstrap.Forms;
 using Wader.Bootstrap.Forms.FormControl;
+using Wader.Bootstrap.Tests.TestUtilities;
 
 namespace Wader.Bootstrap.Tests.Forms.FormControl;
 
@@ -29,10 +30,10 @@ public class BsInputTextTests() : BsInputBaseComponentTests<BsInputText, string?
         attributeDict["readonly"] = "";
 
         // Act
-        var cut = GetCut(parameters => parameters.Add(p => p.ReadonlyPlaintext, true));
+        var cut = GetCut(parameters => parameters.Add(p => p.ReadonlyPlaintext, value: true));
 
         // Assert
-        cut.MarkupMatches(GetExpectedHtml("form-control-plaintext", attributeDict));
+        cut.MarkupMatches(GetExpectedHtml(classes: "form-control-plaintext", attributeDict));
     }
 
     [Fact]

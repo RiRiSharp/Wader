@@ -1,4 +1,5 @@
 using Wader.Bootstrap.Content.Figures;
+using Wader.Bootstrap.Tests.TestUtilities;
 
 namespace Wader.Bootstrap.Tests.Content.Figures;
 

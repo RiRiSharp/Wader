@@ -1,4 +1,5 @@
 using Wader.Bootstrap.Forms.ChecksRadios;
+using Wader.Bootstrap.Tests.TestUtilities;
 
 namespace Wader.Bootstrap.Tests.Forms.ChecksRadios;
 
@@ -21,7 +22,7 @@ public class BsButtonCheckInputCheckboxTests()
         );
 
         // Assert
-        var expectedMarkupString = GetExpectedHtml("", attributeDict);
+        var expectedMarkupString = GetExpectedHtml(classes: "", attributeDict);
         cut.MarkupMatches(expectedMarkupString);
     }
 
@@ -48,7 +49,7 @@ public class BsButtonCheckInputCheckboxTests()
         inputElement.Change(afterValue);
 
         // Assert
-        var expectedMarkupString = GetExpectedHtml("", attributeDict);
+        var expectedMarkupString = GetExpectedHtml(classes: "", attributeDict);
         cut.MarkupMatches(expectedMarkupString);
     }
 
