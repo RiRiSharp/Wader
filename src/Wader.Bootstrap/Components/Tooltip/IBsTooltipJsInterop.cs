@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Components;
 using Wader.Bootstrap.Infrastructure.JsInterop;
 
-namespace Wader.Bootstrap.Components.Tooltips;
+namespace Wader.Bootstrap.Components.Tooltip;
 
 public interface IBsTooltipJsInterop : IBsJsDisposable
 {

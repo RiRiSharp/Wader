@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Components;
 using Wader.Bootstrap.BaseComponents;
-using Wader.Bootstrap.Components.Tooltips.Internals;
+using Wader.Bootstrap.Components.Tooltip.Internals;
 
-namespace Wader.Bootstrap.Components.Tooltips;
+namespace Wader.Bootstrap.Components.Tooltip;
 
 public partial class BsTooltip : BsChildContentComponent, IAsyncDisposable
 {

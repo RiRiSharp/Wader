@@ -2,7 +2,7 @@ using System.Diagnostics.Contracts;
 using Microsoft.AspNetCore.Components;
 using Wader.Bootstrap.Infrastructure.JsInterop.Unions;
 
-namespace Wader.Bootstrap.Components.Tooltips.Internals;
+namespace Wader.Bootstrap.Components.Tooltip.Internals;
 
 internal static class TooltipJsOptionsMapper
 {

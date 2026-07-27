@@ -2,7 +2,7 @@ using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
 using Wader.Bootstrap.Infrastructure.JsInterop;
 
-namespace Wader.Bootstrap.Components.Tooltips.Internals;
+namespace Wader.Bootstrap.Components.Tooltip.Internals;
 
 internal sealed class BsTooltipJsInterop : IBsTooltipJsInterop, IBsJsFunctionsWrapper, IAsyncDisposable
 {

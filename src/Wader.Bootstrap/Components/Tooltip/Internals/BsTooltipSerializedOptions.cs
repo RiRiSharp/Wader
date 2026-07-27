@@ -1,6 +1,6 @@
 ﻿using Wader.Bootstrap.Components.Popover;
 
-namespace Wader.Bootstrap.Components.Tooltips.Internals;
+namespace Wader.Bootstrap.Components.Tooltip.Internals;
 
 internal class BsTooltipSerializedOptions
 {

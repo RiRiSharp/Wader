@@ -2,7 +2,7 @@ using System.Diagnostics.CodeAnalysis;
 using Wader.Bootstrap.Components.Popover;
 using Wader.Bootstrap.Infrastructure.JsInterop.Unions;
 
-namespace Wader.Bootstrap.Components.Tooltips;
+namespace Wader.Bootstrap.Components.Tooltip;
 
 /// <summary>
 ///     The options, including defaults, to display a Tooltip.

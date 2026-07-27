@@ -3,7 +3,7 @@ using Wader.Bootstrap.Components.Popover;
 using Wader.Bootstrap.Infrastructure.Exceptions;
 using Wader.Bootstrap.Infrastructure.JsInterop.Unions;
 
-namespace Wader.Bootstrap.Components.Tooltips;
+namespace Wader.Bootstrap.Components.Tooltip;
 
 public class BsTooltipJsOptions
 {

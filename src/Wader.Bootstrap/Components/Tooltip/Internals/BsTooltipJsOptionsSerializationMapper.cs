@@ -1,6 +1,6 @@
 ﻿using System.Diagnostics.Contracts;
 
-namespace Wader.Bootstrap.Components.Tooltips.Internals;
+namespace Wader.Bootstrap.Components.Tooltip.Internals;
 
 internal static class BsTooltipJsOptionsSerializationMapper
 {

@@ -1,0 +1,60 @@
+@using Wader.Bootstrap.Components.Tooltip
+@inherits Wader.Bootstrap.Tests.TestUtilities.BsComponentTests<Wader.Bootstrap.Components.Tooltip.BsTooltip>
+
+@code
+{
+    [Theory]
+    [InlineData(true)]
+    [InlineData(false)]
+    public void HostElementRefIsAlwaysSet(bool useAttachment)
+    {
+        // Arrange
+        ConfigureTestContext();
+
+        ElementReference? attachmentRef = null;
+        if (useAttachment)
+        {
+            RenderFragment attachment = @<div @ref="attachmentRef">This is a sick attachment point</div>;
+            Render(attachment);
+        }
+
+        // Act
+        var cut = GetCut(parameters => parameters.Add(x => x.Attachment, attachmentRef));
+
+        // Assert
+        if (useAttachment)
+        {
+            Assert.Equal(attachmentRef, cut.Instance.HostElementRef);
+        }
+        else
+        {
+            Assert.NotEqual(attachmentRef, cut.Instance.HostElementRef);
+        }
+    }
+
+    [Fact]
+    public void TooltipContentRendersCorrectHtml()
+    {
+        // Arrange
+        ConfigureTestContext();
+        RenderFragment bodyFragment = @<div>This is an epic body</div>;
+
+        // Act
+        var fragment = Render(
+            @<BsTooltip>
+                <BsTooltipContent>
+                    @bodyFragment
+                </BsTooltipContent>
+            </BsTooltip>
+        );
+        var wrappers = fragment.FindAll("div.d-none[aria-hidden='true']");
+
+        // Assert
+        Assert.Single(wrappers);
+
+        var bodyWrapper = wrappers[0];
+        bodyWrapper.MarkupMatches(
+            @<div class="d-none" data-wd-remove-wrapper="true" aria-hidden="true">@bodyFragment</div>
+        );
+    }
+}
