@@ -4,6 +4,7 @@
 @using Wader.Bootstrap.Components.Popover
 @using Wader.Bootstrap.Components.Scrollspy
 @using Wader.Bootstrap.Components.Toasts
+@using Wader.Bootstrap.Components.Tooltips
 @using Wader.Bootstrap.Layout.Columns
 @using Wader.Bootstrap.Layout.Rows
 @inject IBsScrollspyJsInterop ScrollspyJsInterop
@@ -104,7 +105,16 @@ Hello world!
     </ChildContent>
     <BsPopoverContent>Hello <b>World!</b></BsPopoverContent>
 </BsPopover>
-<BsButton @onclick="() => _popover!.ShowAsync()">Click</BsButton>
+<BsButton @onclick="() => _popover!.ShowAsync()">
+    <BsTooltip>
+        <ChildContent>
+            Click
+        </ChildContent>
+        <BsTooltipContent>
+            This one has a tooltip, awesome!
+        </BsTooltipContent>
+    </BsTooltip>
+</BsButton>
 
 @code {
     private ElementReference _targetReference;

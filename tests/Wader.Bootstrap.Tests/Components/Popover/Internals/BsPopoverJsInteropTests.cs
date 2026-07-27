@@ -130,7 +130,7 @@ public class BsPopoverJsInteropTests
         var hostElementRef = new ElementReference("hostElement");
 
         // Act
-        await sut.ToggleEnableAsync(hostElementRef);
+        await sut.ToggleEnabledAsync(hostElementRef);
 
         // Assert
         AssertJsInterop.Calls(jsObj, BsPopoverJsInterop.TOGGLE_ENABLE, hostElementRef);

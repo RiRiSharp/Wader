@@ -1,4 +1,4 @@
-using Microsoft.AspNetCore.Components;
+using System.Diagnostics.CodeAnalysis;
 using Wader.Bootstrap.Components.Popover;
 using Wader.Bootstrap.Infrastructure.JsInterop.Unions;
 
@@ -10,24 +10,19 @@ namespace Wader.Bootstrap.Components.Tooltips;
 /// <remarks>Looks awfully similar to <see cref="Scrollspy.ScrollspyJsOptions" />, might change in the future.</remarks>
 public class BsTooltipOptions
 {
-    public bool Animation { get; set; } = true;
-    public ElementReference? Boundary { get; set; }
-    public string? ContainerString { get; set; }
-    public ElementReference? ContainerRef { get; set; }
+    public Dictionary<string, string[]>? AllowList { get; set; }
+    public bool? Animation { get; set; }
+    public HtmlStringOrElementRef? Boundary { get; set; }
+    public HtmlStringElementRefOrBool? Container { get; set; }
     public string? CustomClass { get; set; }
-    public int ShowDelay { get; set; }
-    public int HideDelay { get; set; }
+    public Union<int, BsPopoverDelayJsOptions>? Delay { get; set; }
+    public OneOrMore<BsPopoverPlacement>? FallbackPlacements { get; set; }
+    public OneOrMore<int>? Offset { get; set; }
+    public BsPopoverPlacement? Placement { get; set; }
 
-    /// <summary>
-    ///     A list of placements in order of preference.
-    /// </summary>
-    /// <remarks>
-    ///     Order matters, that's why we use a collection here.
-    /// </remarks>
-    public ICollection<BsPopoverPlacement> FallbackPlacements { get; } = [];
+    [StringSyntax(StringSyntaxAttribute.Json)]
+    public string? PopperConfig { get; set; }
 
-    public int Skidding { get; set; } = 8;
-    public int Distance { get; set; }
-    public BsPopoverPlacement Placement { get; set; } = BsPopoverPlacement.Top;
-    public OneOrMore<BsPopoverTrigger> Trigger { get; set; } = [BsPopoverTrigger.Hover, BsPopoverTrigger.Focus];
+    public StringOrBool? Selector { get; set; }
+    public BsPopoverTrigger? Trigger { get; set; }
 }

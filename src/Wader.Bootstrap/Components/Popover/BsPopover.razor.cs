@@ -94,6 +94,21 @@ public partial class BsPopover : BsChildContentComponent, IAsyncDisposable
         await BsPopoverJsInterop.UpdatePositionAsync(HostElementRef);
     }
 
+    public async Task ToggleEnabledAsync()
+    {
+        await BsPopoverJsInterop.ToggleEnabledAsync(HostElementRef);
+    }
+
+    public async Task EnableAsync()
+    {
+        await BsPopoverJsInterop.EnableAsync(HostElementRef);
+    }
+
+    public async Task DisableAsync()
+    {
+        await BsPopoverJsInterop.DisableAsync(HostElementRef);
+    }
+
     private async Task Dispose(bool disposing)
     {
         if (!disposing)

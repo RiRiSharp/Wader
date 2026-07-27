@@ -39,6 +39,13 @@ export function updatePosition(hostElementRef) {
     }
 }
 
+export function toggleEnabled(hostElementRef) {
+    const popover = bootstrap.Popover.getInstance(hostElementRef);
+    if (popover) {
+        popover.toggleEnabled();
+    }
+}
+
 export function enable(hostElementRef) {
     const popover = bootstrap.Popover.getInstance(hostElementRef);
     if (popover) {
@@ -50,13 +57,6 @@ export function disable(hostElementRef) {
     const popover = bootstrap.Popover.getInstance(hostElementRef);
     if (popover) {
         popover.disable();
-    }
-}
-
-export function toggleEnable(hostElementRef) {
-    const popover = bootstrap.Popover.getInstance(hostElementRef);
-    if (popover) {
-        popover.toggleEnable();
     }
 }
 
@@ -78,6 +78,10 @@ function normalizeOptions(options) {
 
     if (options.title?.dataset?.wdRemoveWrapper === "true") {
         normalized.title = normalized.title.innerHTML;
+    }
+
+    if (options.popoverOptions) {
+        options.popperConfig = JSON.parse(options.popoverOptions);
     }
 
     return normalized;

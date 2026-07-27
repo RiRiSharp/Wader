@@ -1,6 +1,5 @@
 using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
-using Wader.Bootstrap.Components.Popover;
 using Wader.Bootstrap.Infrastructure.JsInterop;
 
 namespace Wader.Bootstrap.Components.Tooltips.Internals;
@@ -15,7 +14,7 @@ internal sealed class BsTooltipJsInterop : IBsTooltipJsInterop, IBsJsFunctionsWr
     internal const string DISPOSE = "dispose";
     internal const string ENABLE = "enable";
     internal const string DISABLE = "disable";
-    internal const string TOGGLE_ENABLE = "toggleEnable";
+    internal const string TOGGLE_ENABLE = "toggleEnabled";
 
     private readonly IJSObjectReference _bsJsObjectRef;
 
@@ -31,9 +30,10 @@ internal sealed class BsTooltipJsInterop : IBsTooltipJsInterop, IBsJsFunctionsWr
 
     public static string JsFileName => "tooltipFunctions.js";
 
-    public async Task CreateOrUpdateAsync(ElementReference hostElementRef, BsPopoverJsOptions bsPopoverJsOptions)
+    public async Task CreateOrUpdateAsync(ElementReference hostElementRef, BsTooltipJsOptions bsPopoverJsOptions)
     {
-        await _bsJsObjectRef.InvokeVoidAsync(CREATE_OR_UPDATE, hostElementRef, bsPopoverJsOptions);
+        var serializedOptions = bsPopoverJsOptions.ToSerializedOptions();
+        await _bsJsObjectRef.InvokeVoidAsync(CREATE_OR_UPDATE, hostElementRef, serializedOptions);
     }
 
     public async Task ToggleAsync(ElementReference hostElementRef)
@@ -66,7 +66,7 @@ internal sealed class BsTooltipJsInterop : IBsTooltipJsInterop, IBsJsFunctionsWr
         await _bsJsObjectRef.InvokeVoidAsync(DISABLE, hostElementRef);
     }
 
-    public async Task ToggleEnableAsync(ElementReference hostElementRef)
+    public async Task ToggleEnabledAsync(ElementReference hostElementRef)
     {
         await _bsJsObjectRef.InvokeVoidAsync(TOGGLE_ENABLE, hostElementRef);
     }

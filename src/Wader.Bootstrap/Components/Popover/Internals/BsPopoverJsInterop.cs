@@ -14,7 +14,7 @@ internal sealed class BsPopoverJsInterop : IBsPopoverJsInterop, IBsJsFunctionsWr
     internal const string DISPOSE = "dispose";
     internal const string ENABLE = "enable";
     internal const string DISABLE = "disable";
-    internal const string TOGGLE_ENABLE = "toggleEnable";
+    internal const string TOGGLE_ENABLE = "toggleEnabled";
 
     private readonly IJSObjectReference _bsJsObjectRef;
 
@@ -66,7 +66,7 @@ internal sealed class BsPopoverJsInterop : IBsPopoverJsInterop, IBsJsFunctionsWr
         await _bsJsObjectRef.InvokeVoidAsync(DISABLE, hostElementRef);
     }
 
-    public async Task ToggleEnableAsync(ElementReference hostElementRef)
+    public async Task ToggleEnabledAsync(ElementReference hostElementRef)
     {
         await _bsJsObjectRef.InvokeVoidAsync(TOGGLE_ENABLE, hostElementRef);
     }

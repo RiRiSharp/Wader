@@ -1,6 +1,5 @@
 using NSubstitute;
 using Wader.Bootstrap.Components.Popover;
-using Wader.Bootstrap.Components.Popover.Internals;
 using Wader.Bootstrap.Tests.TestUtilities;
 
 namespace Wader.Bootstrap.Tests.Components.Popover;
@@ -79,6 +78,48 @@ public partial class BsPopoverTests() : BsComponentTests<BsPopover>("""<div clas
 
         // Assert
         await _popoverJsInteropMock.Received(1).UpdatePositionAsync(cut.Instance.HostElementRef);
+    }
+
+    [Fact]
+    public async Task ToggleEnabled_CallsToggleEnabledJsInterop()
+    {
+        // Arrange
+        ConfigureTestContext();
+
+        // Act
+        var cut = GetCut();
+        await cut.Instance.ToggleEnabledAsync();
+
+        // Assert
+        await _popoverJsInteropMock.Received(1).ToggleEnabledAsync(cut.Instance.HostElementRef);
+    }
+
+    [Fact]
+    public async Task Enable_CallsUpdatePositionJsInterop()
+    {
+        // Arrange
+        ConfigureTestContext();
+
+        // Act
+        var cut = GetCut();
+        await cut.Instance.EnableAsync();
+
+        // Assert
+        await _popoverJsInteropMock.Received(1).EnableAsync(cut.Instance.HostElementRef);
+    }
+
+    [Fact]
+    public async Task Disable_CallsUpdatePositionJsInterop()
+    {
+        // Arrange
+        ConfigureTestContext();
+
+        // Act
+        var cut = GetCut();
+        await cut.Instance.DisableAsync();
+
+        // Assert
+        await _popoverJsInteropMock.Received(1).DisableAsync(cut.Instance.HostElementRef);
     }
 
     [Fact]

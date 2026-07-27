@@ -1,12 +1,12 @@
 ﻿@inherits Wader.Bootstrap.BaseComponents.BsChildContentComponent
 
-<span @attributes="RenderAttributes">
+<span @ref="HostElementRef" @attributes="RenderAttributes">
     @(ChildContent)
 </span>
 
 @if (BsTooltipContent is not null)
 {
-    <div class="d-none" aria-hidden="true" @ref="_contentRef">
+    <div class="d-none" data-wd-remove-wrapper="true" aria-hidden="true" @ref="_titleRef">
         @(BsTooltipContent)
     </div>
 }
