@@ -1,6 +1,6 @@
 using Wader.Bootstrap.Components.Progress;
 using Wader.Bootstrap.Infrastructure.Constants;
-using Wader.Bootstrap.Primitives;
+using Wader.Bootstrap.Infrastructure.Primitives;
 using Wader.Bootstrap.Tests.TestUtilities;
 
 namespace Wader.Bootstrap.Tests.Components.Progress;

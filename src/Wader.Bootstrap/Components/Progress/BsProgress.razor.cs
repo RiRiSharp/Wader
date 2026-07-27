@@ -1,5 +1,5 @@
 using Microsoft.AspNetCore.Components;
-using Wader.Bootstrap.BaseComponents;
+using Wader.Bootstrap.Infrastructure.BaseComponents;
 using Wader.Bootstrap.Infrastructure.Constants;
 
 namespace Wader.Bootstrap.Components.Progress;

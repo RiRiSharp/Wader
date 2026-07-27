@@ -1,4 +1,4 @@
-namespace Wader.Bootstrap.BaseComponents;
+namespace Wader.Bootstrap.Infrastructure.BaseComponents;
 
 public interface IBsComponent
 {

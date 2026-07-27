@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Components;
 using Microsoft.Extensions.Logging;
-using Wader.Bootstrap.BaseComponents;
 using Wader.Bootstrap.Components.Buttons;
+using Wader.Bootstrap.Infrastructure.BaseComponents;
 using Wader.Bootstrap.Infrastructure.Constants;
 using Wader.Bootstrap.Infrastructure.Exceptions;
 using BsLog = Wader.Bootstrap.Infrastructure.BsLog;

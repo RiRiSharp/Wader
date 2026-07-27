@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Components;
 
-namespace Wader.Bootstrap.BaseComponents;
+namespace Wader.Bootstrap.Infrastructure.BaseComponents;
 
 public interface IBsChildContentComponent : IBsComponent
 {

@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Components;
-using Wader.Bootstrap.BaseComponents;
 using Wader.Bootstrap.Components.Tooltip.Internals;
+using Wader.Bootstrap.Infrastructure.BaseComponents;
 
 namespace Wader.Bootstrap.Components.Tooltip;
 

@@ -1,7 +1,6 @@
 using Microsoft.AspNetCore.Components;
-using Wader.Bootstrap.Infrastructure;
 
-namespace Wader.Bootstrap.BaseComponents;
+namespace Wader.Bootstrap.Infrastructure.BaseComponents;
 
 public abstract class BsComponent : ComponentBase, IBsComponent
 {

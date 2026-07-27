@@ -1,4 +1,4 @@
-﻿using Wader.Bootstrap.BaseComponents;
+﻿using Wader.Bootstrap.Infrastructure.BaseComponents;
 
 namespace Wader.Bootstrap.Components.Toasts;
 

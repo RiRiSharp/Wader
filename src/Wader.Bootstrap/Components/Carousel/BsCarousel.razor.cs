@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Components;
-using Wader.Bootstrap.BaseComponents;
 using Wader.Bootstrap.Components.Carousel.Internals;
+using Wader.Bootstrap.Infrastructure.BaseComponents;
 
 namespace Wader.Bootstrap.Components.Carousel;
 

@@ -3,7 +3,7 @@ using System.Globalization;
 using System.Text;
 using Bunit.Rendering;
 using Microsoft.AspNetCore.Components;
-using Wader.Bootstrap.BaseComponents;
+using Wader.Bootstrap.Infrastructure.BaseComponents;
 
 namespace Wader.Bootstrap.Tests.TestUtilities;
 

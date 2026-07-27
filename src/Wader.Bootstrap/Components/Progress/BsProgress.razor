@@ -1,5 +1,5 @@
 @using Wader.Bootstrap.Infrastructure.Constants
-@inherits Wader.Bootstrap.BaseComponents.BsChildContentComponent
+@inherits Wader.Bootstrap.Infrastructure.BaseComponents.BsChildContentComponent
 <div role="progressbar" aria-valuenow="@(ValueNow)" aria-valuemin="@(ValueMin)" aria-valuemax="@(ValueMax)"
      @attributes="RenderAttributes">
     <CascadingValue Value="ActualWidth" Name="@(CascadingValueNames.PROGRESS_WIDTH)">

@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Components;
-using Wader.Bootstrap.BaseComponents;
-using Wader.Bootstrap.Primitives;
+using Wader.Bootstrap.Infrastructure.BaseComponents;
+using Wader.Bootstrap.Infrastructure.Primitives;
 
 namespace Wader.Bootstrap.Layout.Containers;
 

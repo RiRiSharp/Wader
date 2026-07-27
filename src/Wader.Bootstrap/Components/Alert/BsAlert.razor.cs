@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
-using Wader.Bootstrap.BaseComponents;
 using Wader.Bootstrap.Components.Alert.Internals;
+using Wader.Bootstrap.Infrastructure.BaseComponents;
 
 namespace Wader.Bootstrap.Components.Alert;
 

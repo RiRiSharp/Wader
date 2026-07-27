@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Components;
-using Wader.Bootstrap.BaseComponents;
 using Wader.Bootstrap.Components.Accordion.Internals;
+using Wader.Bootstrap.Infrastructure.BaseComponents;
 using Wader.Bootstrap.Infrastructure.Constants;
 using Wader.Bootstrap.Infrastructure.Exceptions;
 

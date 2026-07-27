@@ -1,4 +1,4 @@
-﻿namespace Wader.Bootstrap.Primitives;
+﻿namespace Wader.Bootstrap.Infrastructure.Primitives;
 
 public enum BsTextBackground
 {

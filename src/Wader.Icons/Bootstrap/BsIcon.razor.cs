@@ -1,5 +1,5 @@
 using Microsoft.AspNetCore.Components;
-using Wader.Bootstrap.BaseComponents;
+using Wader.Bootstrap.Infrastructure.BaseComponents;
 using Wader.Icons.Internals;
 
 namespace Wader.Icons.Bootstrap;
