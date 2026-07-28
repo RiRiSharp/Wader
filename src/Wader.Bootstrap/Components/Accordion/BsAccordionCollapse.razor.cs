@@ -1,17 +1,17 @@
 using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
 using Wader.Bootstrap.Components.Accordion.Internals;
-using Wader.Bootstrap.Infrastructure.BaseComponents;
-using Wader.Bootstrap.Infrastructure.Constants;
-using Wader.Bootstrap.Infrastructure.Exceptions;
+using Wader.Bootstrap.Internal.BaseComponents;
+using Wader.Bootstrap.Internal.Constants;
+using Wader.Bootstrap.Internal.Exceptions;
 
 namespace Wader.Bootstrap.Components.Accordion;
 
 public partial class BsAccordionCollapse : BsChildContentComponent, IHasCollapseState
 {
+    internal ElementReference HtmlRef;
     private DotNetObjectReference<BsAccordionCollapse> _dotNetRef = null!;
     private bool _initialCollapse;
-    internal ElementReference HtmlRef;
 
     protected override string? BsComponentClasses => $"accordion-collapse collapse {GetInitialCollapsedClass()}";
     public bool Collapsed { get; set; } = true;

@@ -1,15 +1,17 @@
 @using Wader.Bootstrap.Components.Buttons
-@inherits Wader.Bootstrap.Infrastructure.BaseComponents.BsChildContentComponent
+@inherits Wader.Bootstrap.Internal.BaseComponents.BsChildContentComponent
 
 @if (Variant is not null)
 {
-    <BsButton Size="Size" Variant="Variant.Value" aria-expanded="false" @attributes="RenderAttributes" data-bs-toggle="dropdown">
+    <BsButton Size="Size" Variant="Variant.Value" aria-expanded="false" @attributes="RenderAttributes"
+              data-bs-toggle="dropdown">
         @(ChildContent)
     </BsButton>
 }
 else @* We've checked elsewhere that at least one of them is not null *@
 {
-    <BsButtonOutline Size="Size" Variant="OutlineVariant!.Value" aria-expanded="false" @attributes="RenderAttributes" data-bs-toggle="dropdown">
+    <BsButtonOutline Size="Size" Variant="OutlineVariant!.Value" aria-expanded="false" @attributes="RenderAttributes"
+                     data-bs-toggle="dropdown">
         @(ChildContent)
     </BsButtonOutline>
 }

@@ -1,5 +1,5 @@
 using Microsoft.AspNetCore.Components;
-using Wader.Bootstrap.Infrastructure.BaseComponents;
+using Wader.Bootstrap.Internal.BaseComponents;
 
 namespace Wader.Bootstrap.Helpers;
 
@@ -8,5 +8,5 @@ public partial class BsDisplayFlex : BsChildContentComponent
     protected override string? BsComponentClasses => $"d-flex {Justify.ToBootstrapClass()}";
 
     [Parameter]
-    public BsJustification Justify { get; set; }
+    public BsJustify Justify { get; set; }
 }

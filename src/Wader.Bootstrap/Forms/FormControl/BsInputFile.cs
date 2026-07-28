@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Forms;
-using Wader.Bootstrap.Infrastructure;
+using Wader.Bootstrap.Internal;
 
 namespace Wader.Bootstrap.Forms.FormControl;
 

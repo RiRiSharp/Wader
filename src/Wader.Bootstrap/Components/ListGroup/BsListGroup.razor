@@ -1,4 +1,4 @@
-@inherits Wader.Bootstrap.Infrastructure.BaseComponents.BsChildContentComponent
+@inherits Wader.Bootstrap.Internal.BaseComponents.BsChildContentComponent
 
 @switch (Type)
 {
@@ -6,17 +6,20 @@
         <div @attributes="RenderAttributes">
             @(ChildContent)
         </div>
+
         break;
     case BsListType.UnorderedList:
         <ul @attributes="RenderAttributes">
             @(ChildContent)
         </ul>
+
         break;
     case BsListType.OrderedList:
         <ol @attributes="RenderAttributes">
             @(ChildContent)
         </ol>
+
         break;
     default:
-        throw new ArgumentOutOfRangeException();
+            throw new ArgumentOutOfRangeException();
 }

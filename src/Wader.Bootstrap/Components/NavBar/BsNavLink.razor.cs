@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Routing;
-using Wader.Bootstrap.Infrastructure.BaseComponents;
-using Wader.Bootstrap.Infrastructure.Constants;
+using Wader.Bootstrap.Internal.BaseComponents;
+using Wader.Bootstrap.Internal.Constants;
 
 namespace Wader.Bootstrap.Components.NavBar;
 

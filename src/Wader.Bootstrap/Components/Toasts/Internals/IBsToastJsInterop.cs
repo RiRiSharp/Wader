@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Components;
-using Wader.Bootstrap.Infrastructure.JsInterop;
+using Wader.Bootstrap.Internal.JsInterop;
 
 namespace Wader.Bootstrap.Components.Toasts.Internals;
 

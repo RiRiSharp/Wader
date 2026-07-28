@@ -1,6 +1,6 @@
 using System.Diagnostics.Contracts;
 using Microsoft.AspNetCore.Components;
-using Wader.Bootstrap.Infrastructure.JsInterop.Unions;
+using Wader.Bootstrap.Internal.JsInterop.Unions;
 
 namespace Wader.Bootstrap.Components.Popover.Internals;
 

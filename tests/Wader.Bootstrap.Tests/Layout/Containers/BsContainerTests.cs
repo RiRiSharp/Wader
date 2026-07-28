@@ -1,4 +1,4 @@
-using Wader.Bootstrap.Infrastructure.Primitives;
+using Wader.Bootstrap.Internal.Primitives;
 using Wader.Bootstrap.Layout.Containers;
 using Wader.Bootstrap.Tests.TestUtilities;
 

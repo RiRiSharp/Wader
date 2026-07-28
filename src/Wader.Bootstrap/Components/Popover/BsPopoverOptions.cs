@@ -1,5 +1,5 @@
 using System.Diagnostics.CodeAnalysis;
-using Wader.Bootstrap.Infrastructure.JsInterop.Unions;
+using Wader.Bootstrap.Internal.JsInterop.Unions;
 
 namespace Wader.Bootstrap.Components.Popover;
 

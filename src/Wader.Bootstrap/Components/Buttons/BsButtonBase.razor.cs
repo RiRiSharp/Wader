@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Components;
 using Wader.Bootstrap.Components.Buttons.Internals;
-using Wader.Bootstrap.Infrastructure.BaseComponents;
+using Wader.Bootstrap.Internal.BaseComponents;
 
 namespace Wader.Bootstrap.Components.Buttons;
 

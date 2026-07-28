@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Components;
 using Wader.Bootstrap.Components.Offcanvas.Internals;
-using Wader.Bootstrap.Infrastructure.BaseComponents;
-using Wader.Bootstrap.Infrastructure.Primitives;
+using Wader.Bootstrap.Internal.BaseComponents;
+using Wader.Bootstrap.Internal.Primitives;
 
 namespace Wader.Bootstrap.Components.Offcanvas;
 

@@ -14,7 +14,7 @@ using Wader.Bootstrap.Components.Toasts.Internals;
 using Wader.Bootstrap.Components.Tooltip;
 using Wader.Bootstrap.Components.Tooltip.Internals;
 using Wader.Bootstrap.Forms.ChecksRadios.Internals;
-using Wader.Bootstrap.Infrastructure.JsInterop;
+using Wader.Bootstrap.Internal.JsInterop;
 
 namespace Wader.Bootstrap;
 

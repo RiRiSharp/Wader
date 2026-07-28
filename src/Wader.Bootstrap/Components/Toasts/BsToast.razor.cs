@@ -1,15 +1,14 @@
 ﻿using Microsoft.AspNetCore.Components;
 using Wader.Bootstrap.Components.Toasts.Internals;
-using Wader.Bootstrap.Infrastructure.BaseComponents;
+using Wader.Bootstrap.Internal.BaseComponents;
 
 namespace Wader.Bootstrap.Components.Toasts;
 
 public partial class BsToast : BsChildContentComponent, IAsyncDisposable
 {
+    internal ElementReference HtmlRef;
     private ToastJsOptions? _oldOptions;
     private bool _reinitialize;
-
-    internal ElementReference HtmlRef;
     protected override string? BsComponentClasses => "toast";
 
     [Inject]

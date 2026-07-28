@@ -2,8 +2,8 @@ using NSubstitute;
 using Wader.Bootstrap.Components.Buttons;
 using Wader.Bootstrap.Components.Buttons.Internals;
 using Wader.Bootstrap.Components.Dropdown;
-using Wader.Bootstrap.Infrastructure.Constants;
-using Wader.Bootstrap.Infrastructure.Exceptions;
+using Wader.Bootstrap.Internal.Constants;
+using Wader.Bootstrap.Internal.Exceptions;
 using Wader.Bootstrap.Tests.TestUtilities;
 
 namespace Wader.Bootstrap.Tests.Components.Dropdown;

@@ -1,4 +1,4 @@
-@inherits Wader.Bootstrap.Infrastructure.BaseComponents.BsChildContentComponent
+@inherits Wader.Bootstrap.Internal.BaseComponents.BsChildContentComponent
 
 <li>
     @switch (ElType)
@@ -7,11 +7,13 @@
             <a @attributes="RenderAttributes">
                 @(ChildContent)
             </a>
+
             break;
         case BsDropdownItemType.Button:
             <button type="button" @attributes="RenderAttributes">
                 @(ChildContent)
             </button>
+
             break;
         default:
                 throw new ArgumentOutOfRangeException();

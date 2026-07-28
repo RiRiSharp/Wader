@@ -1,6 +1,6 @@
 using System.Diagnostics.CodeAnalysis;
 using Microsoft.AspNetCore.Components.Forms;
-using Wader.Bootstrap.Infrastructure.BaseComponents;
+using Wader.Bootstrap.Internal.BaseComponents;
 
 namespace Wader.Bootstrap.Tests.TestUtilities;
 

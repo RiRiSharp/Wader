@@ -1,4 +1,4 @@
-@inherits Wader.Bootstrap.Infrastructure.BaseComponents.BsChildContentComponent
+@inherits Wader.Bootstrap.Internal.BaseComponents.BsChildContentComponent
 
 @switch (ElType)
 {
@@ -6,17 +6,20 @@
         <li @attributes="RenderAttributes">
             @(ChildContent)
         </li>
+
         break;
     case BsListGroupItemType.Button:
         <button type="button" @attributes="RenderAttributes">
             @(ChildContent)
         </button>
+
         break;
     case BsListGroupItemType.Link:
         <a @attributes="RenderAttributes">
             @(ChildContent)
         </a>
+
         break;
     default:
-        throw new ArgumentOutOfRangeException();
+            throw new ArgumentOutOfRangeException();
 }

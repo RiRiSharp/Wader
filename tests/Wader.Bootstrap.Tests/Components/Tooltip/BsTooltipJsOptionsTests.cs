@@ -1,6 +1,6 @@
 using Wader.Bootstrap.Components.Popover;
 using Wader.Bootstrap.Components.Tooltip;
-using Wader.Bootstrap.Infrastructure.Exceptions;
+using Wader.Bootstrap.Internal.Exceptions;
 using Wader.Bootstrap.Tests.TestUtilities;
 
 namespace Wader.Bootstrap.Tests.Components.Tooltip;

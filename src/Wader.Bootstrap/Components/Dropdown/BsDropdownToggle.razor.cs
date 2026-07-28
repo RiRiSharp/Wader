@@ -1,10 +1,10 @@
 using Microsoft.AspNetCore.Components;
 using Microsoft.Extensions.Logging;
 using Wader.Bootstrap.Components.Buttons;
-using Wader.Bootstrap.Infrastructure.BaseComponents;
-using Wader.Bootstrap.Infrastructure.Constants;
-using Wader.Bootstrap.Infrastructure.Exceptions;
-using BsLog = Wader.Bootstrap.Infrastructure.BsLog;
+using Wader.Bootstrap.Internal.BaseComponents;
+using Wader.Bootstrap.Internal.Constants;
+using Wader.Bootstrap.Internal.Exceptions;
+using BsLog = Wader.Bootstrap.Internal.BsLog;
 
 namespace Wader.Bootstrap.Components.Dropdown;
 

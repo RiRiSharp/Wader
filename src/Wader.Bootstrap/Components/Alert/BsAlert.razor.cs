@@ -1,16 +1,16 @@
 using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
 using Wader.Bootstrap.Components.Alert.Internals;
-using Wader.Bootstrap.Infrastructure.BaseComponents;
+using Wader.Bootstrap.Internal.BaseComponents;
 
 namespace Wader.Bootstrap.Components.Alert;
 
 public partial class BsAlert : BsChildContentComponent, IAsyncDisposable
 {
+    internal ElementReference HtmlRef;
     private BsAlertContext _alertContext = null!;
     private bool _dismissed;
     private DotNetObjectReference<BsAlert>? _dotNetRef;
-    internal ElementReference HtmlRef;
 
     protected override string? BsComponentClasses =>
         $"alert {Variant.ToBootstrapClass()} {DismissableClass} {AnimationClass}";

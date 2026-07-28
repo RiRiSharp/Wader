@@ -1,5 +1,5 @@
 using System.Text;
-using Wader.Bootstrap.Infrastructure.Exceptions;
+using Wader.Bootstrap.Internal.Exceptions;
 
 namespace Wader.Bootstrap.Content.Tables;
 

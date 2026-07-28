@@ -1,5 +1,5 @@
 using Microsoft.AspNetCore.Components;
-using Wader.Bootstrap.Infrastructure.BaseComponents;
+using Wader.Bootstrap.Internal.BaseComponents;
 
 namespace Wader.Bootstrap.Forms;
 
@@ -9,6 +9,7 @@ public partial class BsOption<TValue> : BsChildContentComponent
 
     [Parameter]
     public TValue? Value { get; set; }
+
     protected string ValueAsString => FormatValueAsString(Value);
 
     protected virtual string FormatValueAsString(TValue? value)

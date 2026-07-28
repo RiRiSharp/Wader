@@ -1,15 +1,15 @@
 using Microsoft.AspNetCore.Components;
 using Wader.Bootstrap.Components.Carousel.Internals;
-using Wader.Bootstrap.Infrastructure.BaseComponents;
+using Wader.Bootstrap.Internal.BaseComponents;
 
 namespace Wader.Bootstrap.Components.Carousel;
 
 public partial class BsCarousel : BsChildContentComponent, IAsyncDisposable
 {
+    internal ElementReference HtmlRef;
     private bool _autoPlayChanged;
 
     private BsCarouselAutoPlayMode? _lastAutoPlay;
-    internal ElementReference HtmlRef;
     protected override string? BsComponentClasses => $"carousel slide {TransitionTypeClass}";
 
     public IBsCarouselContext? CarouselContext { get; private set; }
