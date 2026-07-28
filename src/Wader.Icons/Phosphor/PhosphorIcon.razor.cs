@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Components;
 using Wader.Bootstrap.Internal.BaseComponents;
-using Wader.Icons.Internals;
+using Wader.Icons.Internal;
 
 namespace Wader.Icons.Phosphor;
 

@@ -1,4 +1,4 @@
-namespace Wader.Icons.Internals;
+namespace Wader.Icons.Internal;
 
 internal static class LibraryInfo
 {
