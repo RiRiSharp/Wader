@@ -2,6 +2,7 @@ using NSubstitute;
 using Wader.Bootstrap.Components.Alert;
 using Wader.Bootstrap.Components.Alert.Internals;
 using Wader.Bootstrap.Internal.Constants;
+using Wader.Bootstrap.Internal.Primitives;
 using Wader.Bootstrap.Tests.TestUtilities;
 
 namespace Wader.Bootstrap.Tests.Components.Alert;
@@ -14,15 +15,15 @@ public class BsAlertTests() : BsComponentTests<BsAlert>("""<div class="alert {0}
     protected override Dictionary<string, string> AttributesForDefaultTests => new() { ["role"] = "alert" };
 
     [Theory]
-    [InlineData(BsAlertVariant.Primary, "alert-primary")]
-    [InlineData(BsAlertVariant.Secondary, "alert-secondary")]
-    [InlineData(BsAlertVariant.Success, "alert-success")]
-    [InlineData(BsAlertVariant.Danger, "alert-danger")]
-    [InlineData(BsAlertVariant.Warning, "alert-warning")]
-    [InlineData(BsAlertVariant.Info, "alert-info")]
-    [InlineData(BsAlertVariant.Light, "alert-light")]
-    [InlineData(BsAlertVariant.Dark, "alert-dark")]
-    public void VariantAddsCorrectClass(BsAlertVariant variant, string? expectedClass)
+    [InlineData(BsColor.Primary, "alert-primary")]
+    [InlineData(BsColor.Secondary, "alert-secondary")]
+    [InlineData(BsColor.Success, "alert-success")]
+    [InlineData(BsColor.Danger, "alert-danger")]
+    [InlineData(BsColor.Warning, "alert-warning")]
+    [InlineData(BsColor.Info, "alert-info")]
+    [InlineData(BsColor.Light, "alert-light")]
+    [InlineData(BsColor.Dark, "alert-dark")]
+    public void VariantAddsCorrectClass(BsColor variant, string? expectedClass)
     {
         // Arrange
         ConfigureTestContext();

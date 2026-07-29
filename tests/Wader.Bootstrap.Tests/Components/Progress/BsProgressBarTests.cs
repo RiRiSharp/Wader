@@ -7,6 +7,7 @@ namespace Wader.Bootstrap.Tests.Components.Progress;
 
 public class BsProgressBarTests() : BsComponentTests<BsProgressBar>("""<div class="progress-bar {0}" {1}></div>""")
 {
+    protected override string ClassesForDefaultTests => "bg-primary";
     protected override Dictionary<string, string> AttributesForDefaultTests => new() { ["style"] = "width: 0%" };
 
     [Theory]
@@ -24,7 +25,7 @@ public class BsProgressBarTests() : BsComponentTests<BsProgressBar>("""<div clas
         );
 
         // Assert
-        cut.MarkupMatches($"""<div class="progress-bar" style="{expectedStyle}"></div>""");
+        cut.MarkupMatches($"""<div class="progress-bar {ClassesForDefaultTests}" style="{expectedStyle}"></div>""");
     }
 
     [Theory]
@@ -60,7 +61,7 @@ public class BsProgressBarTests() : BsComponentTests<BsProgressBar>("""<div clas
         );
 
         // Assert
-        cut.MarkupMatches("""<div class="progress-bar"></div>""");
+        cut.MarkupMatches($"""<div class="progress-bar {ClassesForDefaultTests}"></div>""");
     }
 
     [Theory]
@@ -75,7 +76,10 @@ public class BsProgressBarTests() : BsComponentTests<BsProgressBar>("""<div clas
         var cut = GetCut(parameters => parameters.Add(x => x.Striped, striped));
 
         // Assert
-        var expectedMarkupString = GetExpectedHtml(expectedClass, AttributesForDefaultTests);
+        var expectedMarkupString = GetExpectedHtml(
+            $"{ClassesForDefaultTests} {expectedClass}",
+            AttributesForDefaultTests
+        );
         cut.MarkupMatches(expectedMarkupString);
     }
 
@@ -91,23 +95,26 @@ public class BsProgressBarTests() : BsComponentTests<BsProgressBar>("""<div clas
         var cut = GetCut(parameters => parameters.Add(x => x.Animated, animated));
 
         // Assert
-        var expectedMarkupString = GetExpectedHtml(expectedClass, AttributesForDefaultTests);
+        var expectedMarkupString = GetExpectedHtml(
+            $"{ClassesForDefaultTests} {expectedClass}",
+            AttributesForDefaultTests
+        );
         cut.MarkupMatches(expectedMarkupString);
     }
 
     [Theory]
-    [InlineData(BsTextBackground.Default, null)]
-    [InlineData(BsTextBackground.Success, "bg-success")]
-    [InlineData(BsTextBackground.Info, "bg-info")]
-    [InlineData(BsTextBackground.Warning, "bg-warning")]
-    [InlineData(BsTextBackground.Danger, "bg-danger")]
-    public void BackgroundRendersCorrectClass(BsTextBackground background, string? expectedClass)
+    [InlineData(BsColor.Primary, "bg-primary")]
+    [InlineData(BsColor.Success, "bg-success")]
+    [InlineData(BsColor.Info, "bg-info")]
+    [InlineData(BsColor.Warning, "bg-warning")]
+    [InlineData(BsColor.Danger, "bg-danger")]
+    public void VariantRendersCorrectClass(BsColor variant, string? expectedClass)
     {
         // Arrange
         ConfigureTestContext();
 
         // Act
-        var cut = GetCut(parameters => parameters.Add(x => x.Background, background));
+        var cut = GetCut(parameters => parameters.Add(x => x.Variant, variant));
 
         // Assert
         var expectedMarkupString = GetExpectedHtml(expectedClass, AttributesForDefaultTests);

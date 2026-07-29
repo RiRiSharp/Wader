@@ -9,7 +9,7 @@ namespace Wader.Bootstrap.Components.Progress;
 public partial class BsProgressBar : BsChildContentComponent
 {
     protected override string? BsComponentClasses =>
-        $"progress-bar {StripedClass} {AnimatedClass} {Background.ToBootstrapClass()}";
+        $"progress-bar {StripedClass} {AnimatedClass} {Variant.ToBackgroundClass()}";
 
     protected override string? BsInlineStyles => WidthStyle;
 
@@ -32,7 +32,7 @@ public partial class BsProgressBar : BsChildContentComponent
     private string? AnimatedClass => Animated ? "progress-bar-animated" : null;
 
     [Parameter]
-    public BsTextBackground Background { get; set; }
+    public BsColor Variant { get; set; }
 
     protected override void OnParametersSet()
     {

@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
 using Wader.Bootstrap.Components.Alert.Internals;
 using Wader.Bootstrap.Internal.BaseComponents;
+using Wader.Bootstrap.Internal.Primitives;
 
 namespace Wader.Bootstrap.Components.Alert;
 
@@ -13,7 +14,7 @@ public partial class BsAlert : BsChildContentComponent, IAsyncDisposable
     private DotNetObjectReference<BsAlert>? _dotNetRef;
 
     protected override string? BsComponentClasses =>
-        $"alert {Variant.ToBootstrapClass()} {DismissableClass} {AnimationClass}";
+        $"alert {Variant.ToAlertClass()} {DismissableClass} {AnimationClass}";
 
     private string? DismissableClass => Dismissable ? "alert-dismissible" : null;
     private string? AnimationClass => Animate ? "fade show" : null;
@@ -24,7 +25,7 @@ public partial class BsAlert : BsChildContentComponent, IAsyncDisposable
     private IBsAlertJsInterop AlertJsInterop { get; set; } = null!;
 
     [Parameter]
-    public BsAlertVariant Variant { get; set; }
+    public BsColor Variant { get; set; }
 
     [Parameter]
     public bool Dismissable { get; set; }
