@@ -296,6 +296,7 @@ dotnet_diagnostic.CA5394.severity = none # We are not working in a security cont
 dotnet_analyzer_diagnostic.category-roslynator.severity = warning
 roslynator_empty_string_style = literal
 roslynator_null_check_style = pattern_matching
+roslynator_enum_flag_value_style = shift_operator
 
 # RCS1078: Use "" instead of 'string.Empty'
 dotnet_diagnostic.RCS1078.severity = warning
@@ -306,3 +307,8 @@ dotnet_diagnostic.RCS1213.severity = warning
 # RCS1078: Normalize null check
 dotnet_diagnostic.RCS1248.severity = warning
 
+# RCS1237: Use bit shift operator
+dotnet_diagnostic_RCS1237.severity = none # deprecated, replaced by the one below
+
+# RCS1254: Normalize format of enum flag value
+dotnet_diagnostic.RCS1254.severity = warning

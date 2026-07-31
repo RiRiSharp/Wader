@@ -10,8 +10,6 @@
     <Using Include="Microsoft.Extensions.DependencyInjection" />
   </ItemGroup>
   <ItemGroup>
-    <!-- bUnit 2.8.4-preview references AngleSharp 1.4.0 containing a moderate CVE -->
-    <PackageReference Include="AngleSharp" />
     <PackageReference Include="bunit" />
   </ItemGroup>
   <ItemGroup>
