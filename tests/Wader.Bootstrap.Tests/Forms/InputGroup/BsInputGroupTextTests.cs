@@ -4,4 +4,4 @@ using Wader.Bootstrap.Tests.TestUtilities;
 namespace Wader.Bootstrap.Tests.Forms.InputGroup;
 
 public class BsInputGroupTextTests()
-    : BsComponentTests<BsInputGroupText>("""<div class="input-group-text {0}" {1}></div>""");
+    : BsComponentTests<BsInputGroupText>("""<span class="input-group-text has-validation {0}" {1}></span>""");

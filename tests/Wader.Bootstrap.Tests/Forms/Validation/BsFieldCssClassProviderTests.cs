@@ -4,50 +4,57 @@ namespace Wader.Bootstrap.Tests.Forms.Validation;
 
 public class BsFieldCssClassProviderTests
 {
+    public static TheoryData<
+        BsFieldCssClassProvider.InteractionMode,
+        ValidationMessageShowMode,
+        bool
+    > BsFieldCssClassProviderTestsData =>
+        [
+            (BsFieldCssClassProvider.InteractionMode.Touched, ValidationMessageShowMode.Never, false),
+            (BsFieldCssClassProvider.InteractionMode.Touched, ValidationMessageShowMode.WhenTouched, true),
+            (BsFieldCssClassProvider.InteractionMode.Touched, ValidationMessageShowMode.WhenModified, false),
+            (BsFieldCssClassProvider.InteractionMode.Touched, ValidationMessageShowMode.WhenTouchedOrModified, true),
+            (BsFieldCssClassProvider.InteractionMode.Modified, ValidationMessageShowMode.Never, false),
+            (BsFieldCssClassProvider.InteractionMode.Modified, ValidationMessageShowMode.WhenTouched, false),
+            (BsFieldCssClassProvider.InteractionMode.Modified, ValidationMessageShowMode.WhenModified, true),
+            (BsFieldCssClassProvider.InteractionMode.Modified, ValidationMessageShowMode.WhenTouchedOrModified, true),
+        ];
+
     [Theory]
-    [InlineData(true, true)]
-    [InlineData(true, false)]
-    [InlineData(false, true)]
-    [InlineData(false, false)]
-    public void UneditedFieldsReturnNoClass(bool isInvalid, bool showValidInput)
+    [MemberData(nameof(BsFieldCssClassProviderTestsData))]
+    public void FieldCssClassProvider_ShowsInvalidClass_WhenInteractionSpecified(
+        BsFieldCssClassProvider.InteractionMode interaction,
+        ValidationMessageShowMode invalidMessagesMode,
+        bool showCssClass
+    )
     {
         // Arrange
-        var sut = new BsFieldCssClassProvider(showValidInput);
+        var sut = new BsFieldCssClassProvider(invalidMessages: invalidMessagesMode);
+        var expectedClass = showCssClass ? "is-invalid" : "";
 
         // Act
-        var res = sut.DetermineClass(isModified: false, isInvalid: isInvalid);
+        var res = sut.DetermineClass(isInvalid: true, interaction);
 
         // Assert
-        Assert.Equal("", res);
+        Assert.Equal(expectedClass, res);
     }
 
     [Theory]
-    [InlineData(true)]
-    [InlineData(false)]
-    public void WrongFieldsReturnCorrectClass(bool showValidInput)
+    [MemberData(nameof(BsFieldCssClassProviderTestsData))]
+    public void FieldCssClassProvider_ShowsValidClass_WhenInteractionSpecified(
+        BsFieldCssClassProvider.InteractionMode interaction,
+        ValidationMessageShowMode invalidMessagesMode,
+        bool showCssClass
+    )
     {
         // Arrange
-        var sut = new BsFieldCssClassProvider(showValidInput);
+        var sut = new BsFieldCssClassProvider(validMessages: invalidMessagesMode);
+        var expectedClass = showCssClass ? "is-valid" : "";
 
         // Act
-        var res = sut.DetermineClass(isModified: true, isInvalid: true);
+        var res = sut.DetermineClass(isInvalid: false, interaction);
 
         // Assert
-        Assert.Equal("is-invalid", res);
-    }
-
-    [Theory]
-    [InlineData(true, "is-valid")]
-    [InlineData(false, "")]
-    public void ValidatedFieldsReturnCorrectClass(bool showValidInput, string expected)
-    {
-        // Arrange
-        var sut = new BsFieldCssClassProvider(showValidInput);
-
-        // Act
-        var res = sut.DetermineClass(isModified: true, isInvalid: false);
-
-        // Assert
-        Assert.Equal(expected, res);
+        Assert.Equal(expectedClass, res);
     }
 }

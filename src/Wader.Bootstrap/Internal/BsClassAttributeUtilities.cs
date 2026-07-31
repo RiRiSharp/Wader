@@ -48,11 +48,10 @@ internal static class BsClassAttributeUtilities
     }
 
     /// <summary>
-    ///     Creates a copy of the attribute dictionary where the classes attribute is overwritten by the provided string class
-    ///     names.
+    ///     Creates a copy of the attribute dictionary where the classes attribute is merged with the provided string class
     /// </summary>
-    /// <param name="additionalAttributes">The attribute dictionary to create a copy of.</param>
-    /// <param name="classNames">The classes which will overwrite to the class attribute of the attribute dictionary</param>
+    /// <param name="additionalAttributes">The attribute dictionary which will be copied.</param>
+    /// <param name="classNames">The classes which will get merged with the class attribute of the attribute dictionary.</param>
     /// <returns>A copy of the attribute dictionary where the classes attribute is overwritten.</returns>
     internal static IDictionary<string, object> AssignClassNames(
         IDictionary<string, object>? additionalAttributes,
@@ -70,11 +69,10 @@ internal static class BsClassAttributeUtilities
     }
 
     /// <summary>
-    ///     Creates a copy of the attribute dictionary where the classes attribute is overwritten by the provided string class
-    ///     names.
+    ///     Creates a copy of the attribute dictionary where the classes attribute is merged with the provided string class
     /// </summary>
-    /// <param name="additionalAttributes">The attribute dictionary to create a copy of.</param>
-    /// <param name="classNames">The classes which will overwrite to the class attribute of the attribute dictionary</param>
+    /// <param name="additionalAttributes">The attribute dictionary which will be copied.</param>
+    /// <param name="classNames">The classes which will get merged with the class attribute of the attribute dictionary.</param>
     /// <returns>A copy of the attribute dictionary where the classes attribute is overwritten.</returns>
     internal static Dictionary<string, object> AssignClassNames(
         IReadOnlyDictionary<string, object>? additionalAttributes,
