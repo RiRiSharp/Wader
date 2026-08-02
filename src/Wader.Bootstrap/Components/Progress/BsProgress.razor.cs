@@ -27,12 +27,12 @@ public partial class BsProgress : BsChildContentComponent
     ///     Explicit width of the progress bar, expressed as a percentage.
     /// </summary>
     /// <remarks>
-    ///     When specified, this value takes precedence; no value-based
-    ///     calculation is performed and <see cref="ValueNow" />,
+    ///     When specified, this value takes precedence; no value-based calculation is performed and <see cref="ValueNow" />,
     ///     <see cref="ValueMin" />, and <see cref="ValueMax" /> are ignored.
-    ///     The width is cascaded to child <see cref="BsProgressBar" /> components,
-    ///     unlike Bootstrap's default approach where widths are typically
-    ///     applied per progress bar.
+    /// </remarks>
+    /// <remarks>
+    ///     The width is cascaded to child <see cref="BsProgressBar" /> components, unlike Bootstrap's default approach where
+    ///     widths are typically applied per progress bar.
     /// </remarks>
     [Parameter]
     public double? Width { get; set; }
@@ -46,6 +46,8 @@ public partial class BsProgress : BsChildContentComponent
     /// </summary>
     /// <remarks>
     ///     Required when <see cref="Width" /> is not specified.
+    /// </remarks>
+    /// <remarks>
     ///     Must be less than <see cref="ValueMax" />.
     /// </remarks>
     [Parameter]
@@ -56,6 +58,8 @@ public partial class BsProgress : BsChildContentComponent
     /// </summary>
     /// <remarks>
     ///     Required when <see cref="Width" /> is not specified.
+    /// </remarks>
+    /// <remarks>
     ///     Must be greater than <see cref="ValueMin" />.
     /// </remarks>
     [Parameter]
