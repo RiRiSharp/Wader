@@ -8,7 +8,7 @@ namespace Wader.Bootstrap.Helpers.ColoredLinks;
 
 public partial class BsLink : BsChildContentComponent
 {
-#if DOTNET_10_OR_GREATER
+#if NET10_0_OR_GREATER
     private readonly FrozenSet<int> _allowedOffsets = [1, 2, 3];
     private readonly FrozenSet<int> _allowedOpacities = [10, 25, 50, 75, 100];
     private readonly FrozenSet<int> _allowedUnderlineOpacities = [0, 10, 25, 50, 75, 100];

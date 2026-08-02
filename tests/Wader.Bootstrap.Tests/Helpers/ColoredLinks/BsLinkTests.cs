@@ -8,6 +8,7 @@ namespace Wader.Bootstrap.Tests.Helpers.ColoredLinks;
 public class BsLinkTests() : BsComponentTests<BsLink>("""<a class="{0}" {1}></div>""")
 {
     public static TheoryData<int?> AllowedOpacities => [10, 25, 50, 75, 100];
+    public static TheoryData<int?> AllowedOffsets => [1, 2, 3];
     public static TheoryData<int?> AllowedUnderlineOpacities => [0, 10, 25, 50, 75, 100];
     protected override string ClassesForDefaultTests => "link-primary";
 
@@ -114,8 +115,35 @@ public class BsLinkTests() : BsComponentTests<BsLink>("""<a class="{0}" {1}></di
     }
 
     [Theory]
+    [MemberData(nameof(AllowedOffsets))]
+    public void OffsetRendersCorrectClass(int? offset)
+    {
+        // Arrange
+        ConfigureTestContext();
+        var expectedClass = $"{ClassesForDefaultTests} link-offset-{offset}";
+
+        // Act
+        var cut = GetCut(parameters => parameters.Add(p => p.Offset, offset));
+
+        // Assert
+        var expectedMarkupString = GetExpectedHtml(expectedClass, AttributesForDefaultTests);
+        cut.MarkupMatches(expectedMarkupString);
+    }
+
+    [Fact]
+    public void UnsupportedOffsetThrows()
+    {
+        // Arrange
+        ConfigureTestContext();
+
+        // Act + Assert
+        var ex = Assert.Throws<BsParameterException>(() => GetCut(parameters => parameters.Add(p => p.Offset, -1)));
+        Assert.Contains(nameof(BsLink.Offset), ex.Message);
+    }
+
+    [Theory]
     [MemberData(nameof(AllowedUnderlineOpacities))]
-    public void OffsetRendersCorrectClass(int? underlineOpacity)
+    public void UnderlineOpacityRendersCorrectClass(int? underlineOpacity)
     {
         // Arrange
         ConfigureTestContext();
