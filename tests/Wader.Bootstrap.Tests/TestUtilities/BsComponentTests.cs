@@ -11,7 +11,7 @@ public abstract class BsComponentTests<TComponent>([StringSyntax("Html")] string
     where TComponent : ComponentBase, IBsComponent
 {
     private CompositeFormat HtmlFormatCache => CompositeFormat.Parse(htmlFormat);
-    protected virtual string ClassesForDefaultTests => "";
+    protected virtual string? ClassesForDefaultTests => null;
     protected virtual Dictionary<string, string> AttributesForDefaultTests => [];
 
     [Fact]
