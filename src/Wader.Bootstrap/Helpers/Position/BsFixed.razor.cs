@@ -3,9 +3,9 @@ using Wader.Bootstrap.Internal.BaseComponents;
 
 namespace Wader.Bootstrap.Helpers.Position;
 
-public partial class BsSticky : BsChildContentComponent
+public partial class BsFixed : BsChildContentComponent
 {
-    protected override string BsComponentClasses => Position.ToStickyClass();
+    protected override string BsComponentClasses => Position.ToFixedClass();
 
     [Parameter]
     public BsGluePosition Position { get; set; }

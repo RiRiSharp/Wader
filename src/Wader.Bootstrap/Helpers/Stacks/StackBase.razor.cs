@@ -5,14 +5,14 @@ using Wader.Bootstrap.Internal.Exceptions;
 
 namespace Wader.Bootstrap.Helpers.Stacks;
 
-public abstract partial class StackBase(string stackClass) : BsChildContentComponent
+public partial class StackBase : BsChildContentComponent
 {
 #if NET10_0_OR_GREATER
     private readonly FrozenSet<int> _allowedGaps = [1, 2, 3, 4, 5];
 #else
     private readonly FrozenSet<int> _allowedGaps = FrozenSet.ToFrozenSet([1, 2, 3, 4, 5]);
 #endif
-    protected override string BsComponentClasses => $"{stackClass} {GapClass}";
+    protected override string BsComponentClasses => GapClass;
 
     [Parameter]
     public int? Gap { get; set; }
@@ -21,6 +21,7 @@ public abstract partial class StackBase(string stackClass) : BsChildContentCompo
 
     protected override void OnParametersSet()
     {
+        base.OnParametersSet();
         if (Gap.HasValue && !_allowedGaps.Contains(Gap.Value))
         {
             throw new BsParameterException($"{nameof(Gap)} must be one of [{string.Join(", ", _allowedGaps)}]");

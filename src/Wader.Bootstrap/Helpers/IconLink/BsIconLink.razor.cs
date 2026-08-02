@@ -10,5 +10,5 @@ public partial class BsIconLink : BsChildContentComponent
     [Parameter]
     public bool HoverAnimate { get; set; }
 
-    public string? AnimateClass => HoverAnimate ? "icon-link-hover" : null;
+    private string? AnimateClass => HoverAnimate ? "icon-link-hover" : null;
 }
