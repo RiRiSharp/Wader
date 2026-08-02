@@ -57,7 +57,8 @@ public class BsLinkTests() : BsComponentTests<BsLink>("""<a class="{0}" {1}></di
         ConfigureTestContext();
 
         // Act + Assert
-        Assert.Throws<BsParameterException>(() => GetCut(parameters => parameters.Add(p => p.Opacity, -1)));
+        var ex = Assert.Throws<BsParameterException>(() => GetCut(parameters => parameters.Add(p => p.Opacity, -1)));
+        Assert.Contains(nameof(BsLink.Opacity), ex.Message);
     }
 
     [Theory]
@@ -83,7 +84,10 @@ public class BsLinkTests() : BsComponentTests<BsLink>("""<a class="{0}" {1}></di
         ConfigureTestContext();
 
         // Act + Assert
-        Assert.Throws<BsParameterException>(() => GetCut(parameters => parameters.Add(p => p.HoverOpacity, -1)));
+        var ex = Assert.Throws<BsParameterException>(() =>
+            GetCut(parameters => parameters.Add(p => p.HoverOpacity, -1))
+        );
+        Assert.Contains(nameof(BsLink.HoverOpacity), ex.Message);
     }
 
     [Theory]
@@ -132,6 +136,9 @@ public class BsLinkTests() : BsComponentTests<BsLink>("""<a class="{0}" {1}></di
         ConfigureTestContext();
 
         // Act + Assert
-        Assert.Throws<BsParameterException>(() => GetCut(parameters => parameters.Add(p => p.UnderlineOpacity, -1)));
+        var ex = Assert.Throws<BsParameterException>(() =>
+            GetCut(parameters => parameters.Add(p => p.UnderlineOpacity, -1))
+        );
+        Assert.Contains(nameof(BsLink.UnderlineOpacity), ex.Message);
     }
 }
