@@ -312,3 +312,6 @@ dotnet_diagnostic_RCS1237.severity = none # deprecated, replaced by the one belo
 
 # RCS1254: Normalize format of enum flag value
 dotnet_diagnostic.RCS1254.severity = warning
+
+# RCS1255: Simplify argument null check
+dotnet_diagnostic.RCS1255.severity = warning
