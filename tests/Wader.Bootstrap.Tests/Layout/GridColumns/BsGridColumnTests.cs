@@ -12,7 +12,7 @@ public class BsGridColumnTests() : BsComponentTests<BsGridColumn>("""<div class=
         var cut = GetCut(parameters => parameters.Add(p => p.GridOption, BsGridColumnOptions.GCol1));
 
         // Assert
-        cut.MarkupMatches(GetExpectedHtml(classes: "g-col-1", attributes: ""));
+        cut.MarkupMatches(GetExpectedHtml(classes: "g-col-1"));
     }
 
     [Fact]
@@ -24,7 +24,7 @@ public class BsGridColumnTests() : BsComponentTests<BsGridColumn>("""<div class=
         );
 
         // Assert
-        cut.MarkupMatches(GetExpectedHtml(classes: "g-col-sm-4 g-col-md-6", attributes: ""));
+        cut.MarkupMatches(GetExpectedHtml(classes: "g-col-sm-4 g-col-md-6"));
     }
 
     [Fact]
@@ -38,6 +38,6 @@ public class BsGridColumnTests() : BsComponentTests<BsGridColumn>("""<div class=
         );
 
         // Assert
-        cut.MarkupMatches(GetExpectedHtml(classes: "g-col-sm-4 g-col-md-6", attributes: ""));
+        cut.MarkupMatches(GetExpectedHtml(classes: "g-col-sm-4 g-col-md-6"));
     }
 }

@@ -16,6 +16,6 @@ public class BsInputGroupTests()
         var cut = GetCut(parameters => parameters.Add(p => p.Size, formSize));
 
         // Assert
-        cut.MarkupMatches(GetExpectedHtml(expected, attributes: ""));
+        cut.MarkupMatches(GetExpectedHtml(expected));
     }
 }

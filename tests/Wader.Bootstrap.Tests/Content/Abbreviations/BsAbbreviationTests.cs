@@ -15,7 +15,7 @@ public class BsAbbreviationTests() : BsComponentTests<BsAbbreviation>("""<abbr c
         var cut = GetCut(parameters => parameters.Add(p => p.FullName, value: null));
 
         // Assert
-        cut.MarkupMatches(GetExpectedHtml(classes: "", attributes: ""));
+        cut.MarkupMatches(GetExpectedHtml());
     }
 
     [Theory]

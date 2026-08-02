@@ -17,6 +17,6 @@ public class BsTableBodyTests() : BsComponentTests<BsTableBody>("""<tbody class=
         var cut = GetCut(parameters => parameters.Add(p => p.TableGroupDivider, hasDivider));
 
         // Assert
-        cut.MarkupMatches(GetExpectedHtml(expectedClass, attributes: ""));
+        cut.MarkupMatches(GetExpectedHtml(expectedClass, AttributesForDefaultTests));
     }
 }

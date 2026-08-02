@@ -30,7 +30,7 @@ public class BsAccordionCollapseTests()
 
         // Assert
         var collapsingClass = isCollapsed ? "" : "show";
-        cut.MarkupMatches(GetExpectedHtml(collapsingClass, attributes: ""));
+        cut.MarkupMatches(GetExpectedHtml(collapsingClass));
     }
 
     [Fact]

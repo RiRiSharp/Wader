@@ -48,17 +48,17 @@ public abstract class BsComponentTests<TComponent>([StringSyntax("Html")] string
     }
 
     [Theory]
-    [InlineData(new[] { "attributeKey" }, new[] { "attributeValue" }, """attributeKey="attributeValue" """)]
-    [InlineData(
-        new[] { "attributeKey1", "attributeKey2" },
-        new[] { "attributeValue1", "attributeValue2" },
-        """ attributeKey1="attributeValue1" attributeKey2="attributeValue2" """
-    )]
-    public void ExtraAttributesWorks(string[] attributeKeys, string[] attributeValues, string expected)
+    [InlineData(new[] { "attributeKey" }, new[] { "attributeValue" })]
+    [InlineData(new[] { "attributeKey1", "attributeKey2" }, new[] { "attributeValue1", "attributeValue2" })]
+    public void ExtraAttributesWorks(string[] attributeKeys, string[] attributeValues)
     {
         // Arrange
         ConfigureTestContext();
-        expected += " " + AttributesForDefaultTests.ToAttributeKeyValueString();
+        var attributes = AttributesForDefaultTests;
+        for (var i = 0; i < attributeKeys.Length; i++)
+        {
+            attributes[attributeKeys[i]] = attributeValues[i];
+        }
 
         // Act
         var cut = GetCut(parameters =>
@@ -70,7 +70,7 @@ public abstract class BsComponentTests<TComponent>([StringSyntax("Html")] string
         });
 
         // Assert
-        var expectedMarkupString = GetExpectedHtml(ClassesForDefaultTests, expected);
+        var expectedMarkupString = GetExpectedHtml(ClassesForDefaultTests, attributes);
         cut.MarkupMatches(expectedMarkupString);
     }
 
@@ -153,20 +153,11 @@ public abstract class BsComponentTests<TComponent>([StringSyntax("Html")] string
 
     protected virtual void ConfigureTestContext() { }
 
-    protected virtual string GetExpectedHtml(string? classes = null)
-    {
-        return string.Format(CultureInfo.InvariantCulture, HtmlFormatCache, classes, null);
-    }
-
-    protected virtual string GetExpectedHtml(string? classes, string? attributes)
-    {
-        return string.Format(CultureInfo.InvariantCulture, HtmlFormatCache, classes, attributes);
-    }
-
-    protected virtual string GetExpectedHtml(string? classes, Dictionary<string, string>? attributes)
+    protected virtual string GetExpectedHtml(string? classes = null, Dictionary<string, string>? attributes = null)
     {
         attributes ??= [];
+        classes ??= ClassesForDefaultTests;
         var attributeString = attributes.ToAttributeKeyValueString();
-        return GetExpectedHtml(classes, attributeString);
+        return string.Format(CultureInfo.InvariantCulture, HtmlFormatCache, classes, attributeString);
     }
 }

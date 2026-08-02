@@ -17,12 +17,14 @@ public class BsInputTextAreaTests()
     {
         // Arrange
         Value = "";
+        var attributes = AttributesForDefaultTests;
+        attributes["value"] = Value;
 
         // Act
         var cut = GetCut(parameters => parameters.Add(p => p.Size, formSize));
 
         // Assert
-        cut.MarkupMatches(GetExpectedHtml($"{expected} {ClassesForDefaultTests}", attributes: "value=\"\""));
+        cut.MarkupMatches(GetExpectedHtml($"{expected} {ClassesForDefaultTests}", attributes));
     }
 
     [Fact]
@@ -30,11 +32,14 @@ public class BsInputTextAreaTests()
     {
         // Arrange
         Value = "";
+        var attributes = AttributesForDefaultTests;
+        attributes["value"] = Value;
+        attributes["readonly"] = "";
 
         // Act
         var cut = GetCut(parameters => parameters.Add(p => p.ReadonlyPlaintext, value: true));
 
         // Assert
-        cut.MarkupMatches(GetExpectedHtml(classes: "form-control-plaintext", attributes: "value=\"\" readonly=\"\""));
+        cut.MarkupMatches(GetExpectedHtml(classes: "form-control-plaintext", attributes));
     }
 }

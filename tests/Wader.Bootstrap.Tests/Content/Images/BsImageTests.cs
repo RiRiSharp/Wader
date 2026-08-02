@@ -15,7 +15,7 @@ public class BsImageTests() : BsComponentTests<BsImage>("""<img class=" {0}" {1}
         var cut = GetCut(parameters => parameters.Add(p => p.Src, value: null));
 
         // Assert
-        cut.MarkupMatches(GetExpectedHtml(classes: "", attributes: ""));
+        cut.MarkupMatches(GetExpectedHtml());
     }
 
     [Theory]

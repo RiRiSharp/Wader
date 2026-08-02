@@ -17,6 +17,6 @@ public class BsFormCheckTests() : BsComponentTests<BsFormCheck>("""<div class="f
         // Act
         var cut = GetCut(parameters => parameters.Add(p => p.FormCheckOptions, formCheckOptions));
         // Assert
-        cut.MarkupMatches(GetExpectedHtml(expected, attributes: ""));
+        cut.MarkupMatches(GetExpectedHtml(expected));
     }
 }
