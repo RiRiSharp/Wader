@@ -61,4 +61,20 @@ internal static class BsProgressBarBackgroundExtensions
             _ => throw new ArgumentOutOfRangeException(nameof(color), color, null),
         };
     }
+
+    internal static string ToUnderlineClass(this BsColor color)
+    {
+        return color switch
+        {
+            BsColor.Primary => "link-underline-primary",
+            BsColor.Secondary => "link-underline-secondary",
+            BsColor.Success => "link-underline-success",
+            BsColor.Danger => "link-underline-danger",
+            BsColor.Warning => "link-underline-warning",
+            BsColor.Info => "link-underline-info",
+            BsColor.Light => "link-underline-light",
+            BsColor.Dark => "link-underline-dark",
+            _ => throw new ArgumentOutOfRangeException(nameof(color), color, null),
+        };
+    }
 }

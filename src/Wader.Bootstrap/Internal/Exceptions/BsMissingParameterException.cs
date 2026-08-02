@@ -1,6 +1,6 @@
 namespace Wader.Bootstrap.Internal.Exceptions;
 
-public class BsMissingParameterException : Exception
+public class BsMissingParameterException : BsParameterException
 {
     public BsMissingParameterException() { }
 
