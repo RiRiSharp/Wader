@@ -2,7 +2,7 @@
 
 namespace Wader.Bootstrap.Helpers.TextTruncation;
 
-public partial class BsVerticalRule : BsChildContentComponent
+public partial class BsTextTruncate : BsChildContentComponent
 {
     protected override string BsComponentClasses => "text-truncate";
 }

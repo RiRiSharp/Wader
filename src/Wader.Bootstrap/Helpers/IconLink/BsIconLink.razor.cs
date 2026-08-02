@@ -3,7 +3,7 @@ using Wader.Bootstrap.Internal.BaseComponents;
 
 namespace Wader.Bootstrap.Helpers.IconLink;
 
-public partial class BsStretchedLink : BsChildContentComponent
+public partial class BsIconLink : BsChildContentComponent
 {
     protected override string BsComponentClasses => $"icon-link {AnimateClass}";
 

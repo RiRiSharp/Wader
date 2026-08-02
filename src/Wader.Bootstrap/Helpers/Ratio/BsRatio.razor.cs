@@ -3,7 +3,7 @@ using Wader.Bootstrap.Internal.BaseComponents;
 
 namespace Wader.Bootstrap.Helpers.Ratio;
 
-public partial class BsVstack : BsChildContentComponent
+public partial class BsRatio : BsChildContentComponent
 {
     protected override string BsComponentClasses => $"ratio {Variant?.ToBootstrapClass()}";
 

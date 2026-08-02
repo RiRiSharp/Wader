@@ -2,7 +2,7 @@
 
 namespace Wader.Bootstrap.Helpers.StretchedLink;
 
-public partial class BsTextTruncate : BsChildContentComponent
+public partial class BsStretchedLink : BsChildContentComponent
 {
     protected override string BsComponentClasses => "stretched-link";
 }
