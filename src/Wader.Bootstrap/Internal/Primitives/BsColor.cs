@@ -77,4 +77,20 @@ internal static class BsProgressBarBackgroundExtensions
             _ => throw new ArgumentOutOfRangeException(nameof(color), color, null),
         };
     }
+
+    internal static string ToFocusRingClass(this BsColor color)
+    {
+        return color switch
+        {
+            BsColor.Primary => "focus-ring-primary",
+            BsColor.Secondary => "focus-ring-secondary",
+            BsColor.Success => "focus-ring-success",
+            BsColor.Danger => "focus-ring-danger",
+            BsColor.Warning => "focus-ring-warning",
+            BsColor.Info => "focus-ring-info",
+            BsColor.Light => "focus-ring-light",
+            BsColor.Dark => "focus-ring-dark",
+            _ => throw new ArgumentOutOfRangeException(nameof(color), color, null),
+        };
+    }
 }
