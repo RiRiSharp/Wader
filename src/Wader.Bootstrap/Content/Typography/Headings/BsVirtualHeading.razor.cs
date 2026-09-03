@@ -1,0 +1,12 @@
+﻿using Microsoft.AspNetCore.Components;
+using Wader.Bootstrap.Internal.BaseComponents;
+
+namespace Wader.Bootstrap.Content.Typography.Headings;
+
+public partial class BsVirtualHeading : BsChildContentComponent
+{
+    protected override string? BsComponentClasses => Type.ToBootstrapClass();
+
+    [Parameter]
+    public BsHeadingType Type { get; set; }
+}

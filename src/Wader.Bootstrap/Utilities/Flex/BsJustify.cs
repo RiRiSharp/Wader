@@ -1,4 +1,4 @@
-namespace Wader.Bootstrap.Helpers;
+namespace Wader.Bootstrap.Utilities.Flex;
 
 public enum BsJustify
 {

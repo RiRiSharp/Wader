@@ -15,4 +15,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\src\Wader.Bootstrap\Wader.Bootstrap.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Content\Typography\" />
+  </ItemGroup>
 </Project>
